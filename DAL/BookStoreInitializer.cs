@@ -19,6 +19,6 @@ namespace BookStore.DAL
 
             users.ForEach(u => context.Users.Add(u));
             context.SaveChanges();
-        }
+        } 
     }
 }
