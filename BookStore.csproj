@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\BookStoreContext.cs" />
     <Compile Include="DAL\BookStoreInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,6 +187,8 @@
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Shared\_NoNav.cshtml" />
     <Content Include="Views\Admin\SignUp.cshtml" />
+    <Content Include="Views\Shared\_SideBar.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
