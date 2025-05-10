@@ -8,26 +8,27 @@ using System.Web;
 using System.Web.Mvc;
 using BookStore.DAL;
 using BookStore.Models;
-using BookStore.ViewModels;
 
 namespace BookStore.Controllers
 {
-    public class UserController : Controller
+    public class UsersController : Controller
     {
         private BookStoreContext db = new BookStoreContext();
 
-        public ActionResult Test()
+        // GET: Users
+        public ActionResult Index()
         {
-            return View();
+            return View(db.Users.ToList());
         }
 
+        // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.User.Find(id);
+            User user = db.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -35,57 +36,37 @@ namespace BookStore.Controllers
             return View(user);
         }
 
-        public ActionResult Register()
+        // GET: Users/Create
+        public ActionResult Create()
         {
             return View();
         }
 
+        // POST: Users/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Register(User user)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,Username,PasswordHash")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.User.Add(user);
+                db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(user);
         }
-        
-        public ActionResult Login()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public ActionResult Login(UserLoginViewModel userLoginViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = db.User.Where(u => u.Username == userLoginViewModel.Username).FirstOrDefault();
-
-                if (user != null)
-                {
-                    // TODO
-                    // verify hash 
-                    if (user.PasswordHash == userLoginViewModel.Password)
-                    {
-                        return Content("Success");
-                    }
-                }
-            }
-
-            return View();
-        }
-
+        // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.User.Find(id);
+            User user = db.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -93,8 +74,12 @@ namespace BookStore.Controllers
             return View(user);
         }
 
+        // POST: Users/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(User user)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ID,Username,PasswordHash")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -105,13 +90,14 @@ namespace BookStore.Controllers
             return View(user);
         }
 
+        // GET: Users/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.User.Find(id);
+            User user = db.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -119,11 +105,13 @@ namespace BookStore.Controllers
             return View(user);
         }
 
+        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.User.Find(id);
-            db.User.Remove(user);
+            User user = db.Users.Find(id);
+            db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

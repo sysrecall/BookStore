@@ -17,7 +17,7 @@ namespace BookStore.DAL
                 new User{Username="johndoe", PasswordHash="123"}
             };
 
-            users.ForEach(u => context.Users.Add(u));
+            users.ForEach(u => context.User.Add(u));
             context.SaveChanges();
         } 
     }
