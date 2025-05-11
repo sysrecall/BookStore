@@ -1,0 +1,108 @@
+﻿@model IEnumerable<BookStore.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center py-2">
+                        <h5 class="mb-0">User List</h5>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="text" class="form-control form-control-sm" id="searchInput" placeholder="Search..." style="max-width: 200px;" />
+                            
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createUserModal">
+                                Add User
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover" id="userTable">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Password Hash</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.PasswordHash)</td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary btn-sm" })
+                                        @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-secondary btn-sm" })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger btn-sm" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-between align-items-center">
+                <h5 class="modal-title" id="createUserModalLabel">Create New User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Create", "Users", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.First().Username, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.First().Username, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.First().Username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.First().PasswordHash, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.First().PasswordHash, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.First().PasswordHash, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#createUserModal').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+
+            $('#searchInput').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                $('#userTable tbody tr').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}

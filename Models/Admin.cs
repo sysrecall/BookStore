@@ -12,13 +12,11 @@ namespace BookStore.Models
         public string FirstName { get; set; }
         public string lastName { get; set; }
 
-        [DataType(DataType.Password)]
         public string Password{ get; set; }
         public string Email { get; set; }
         public string Department { get; set; }
         public string Position { get; set; }
 
-        [DataType(DataType.Date)]
         public string JoinDate { get; set; }
 
 

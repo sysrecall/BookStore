@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.Entity.Validation;
 using BookStore.Models;
 using BookStore.DAL;
+using BookStore.Controllers;
 
 namespace BookStore.Controllers
 {
@@ -20,7 +21,9 @@ namespace BookStore.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            var data = _AdminDb.User.ToList();
+
+            return View(data);
         }
         public ActionResult Login()
         {
