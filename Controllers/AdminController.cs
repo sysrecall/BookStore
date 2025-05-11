@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Data.Entity.Validation;
 using BookStore.Models;
 using BookStore.DAL;
-using BookStore.Controllers;
+
 
 namespace BookStore.Controllers
 {
@@ -51,7 +51,13 @@ namespace BookStore.Controllers
 
         public ActionResult SignUp()
         {
-            return View();
+            var admin = new Admin
+            {
+                Department = "Administration",
+                Position = "Admin"
+            };
+
+            return View(admin);
         }
 
         [HttpPost]
