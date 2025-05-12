@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BookStore.Models
+namespace BookStore.Models.Store
 {
     public class Book
     {
@@ -17,7 +17,8 @@ namespace BookStore.Models
         public decimal Price { get; set; }
         public string Description { get; set; }
         public BookType BookType { get; set; }
-        public ICollection<string> BookCoverImages { get; set; }
+
+        public virtual ICollection<BookCoverImage> BookCoverImages { get; set; }
     }
 
     public enum BookType

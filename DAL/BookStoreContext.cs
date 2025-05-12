@@ -22,5 +22,7 @@ namespace BookStore.DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public System.Data.Entity.DbSet<BookStore.Models.Store.Book> Books { get; set; }
     }
 }
