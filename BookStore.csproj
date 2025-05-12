@@ -135,6 +135,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Store\Author.cs" />
+    <Compile Include="Models\Store\Book.cs" />
+    <Compile Include="Models\Store\Category.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\UserLoginViewModel.cs" />
@@ -227,6 +230,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\NewFolder1\" />
     <Folder Include="Views\Shared\User\" />
   </ItemGroup>
   <ItemGroup>
