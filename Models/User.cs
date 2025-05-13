@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using BookStore.Models.Store;
 
 namespace BookStore.Models
 {
@@ -10,5 +11,12 @@ namespace BookStore.Models
         public int ID { get; set; }
         public string Username { get; set; }
         public string PasswordHash { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+
+        // public string SecurityQuestion { get; set; }
+        // public string SecurityAnswer { get; set }
+
+        public virtual ICollection<Book> Books { get; set; }
     }
 }

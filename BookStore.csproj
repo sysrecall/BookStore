@@ -128,6 +128,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Store\BookController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\BookStoreContext.cs" />
     <Compile Include="DAL\BookStoreInitializer.cs" />
@@ -135,6 +136,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Store\Author.cs" />
+    <Compile Include="Models\Store\Book.cs" />
+    <Compile Include="Models\Store\BookCoverImage.cs" />
+    <Compile Include="Models\Store\Category.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\UserLoginViewModel.cs" />
@@ -224,7 +229,6 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\Admin\_SideNav.cshtml" />
-    <Content Include="Views\Admin\Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
