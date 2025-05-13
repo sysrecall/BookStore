@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.Entity.Validation;
 using BookStore.Models;
 using BookStore.DAL;
+using System.Net;
 
 
 namespace BookStore.Controllers
@@ -45,6 +46,8 @@ namespace BookStore.Controllers
                 {
                     ModelState.AddModelError("", "Invalid username or password.");
                 }
+                ViewBag.admin = existingAdmin;
+
             }
             return View(admin);
         }
@@ -72,5 +75,46 @@ namespace BookStore.Controllers
             }
             return View(admin);
         }
+
+
+
+        //User related works
+        [HttpPost]
+
+        public ActionResult AddUser(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _AdminDb.User.Add(user);
+                _AdminDb.SaveChanges();
+                TempData["MsgAddUser"] = "User added successfully";
+                return RedirectToAction("Index");
+            }
+
+            return View(user);
+        }
+        public ActionResult DeleteUser(int? id)
+        {
+              User user = _AdminDb.User.Find(id);
+
+            
+                _AdminDb.User.Remove(user);
+                _AdminDb.SaveChanges();
+                TempData["MsgRem"] = "User information removed successfully";
+            return RedirectToAction("Index");
+          
+           
+        }
+
+
+
+
+        public ActionResult Report()
+        {
+            return View();
+        }
+
+
+
     }
 }

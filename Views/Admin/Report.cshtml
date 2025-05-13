@@ -1,0 +1,306 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/Admin/_SideNav.cshtml";
+}
+
+
+    <style>
+        .body {
+            background-color: #343434;
+        }
+        .sidebar {
+            padding: 20px;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .sales-amount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .category-bar {
+            background-color: #007bff;
+            height: 20px;
+            border-radius: 5px;
+        }
+
+        .trend-percentage {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .low-stock {
+            border-left: 4px solid #ffc107;
+            padding-left: 10px;
+        }
+
+        .out-of-stock {
+            border-left: 4px solid #dc3545;
+            padding-left: 10px;
+        }
+
+        .restocked {
+            border-left: 4px solid #28a745;
+            padding-left: 10px;
+        }
+
+        .stats-card {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+    <body>
+        <form id="form1" runat="server">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Sidebar -->
+                    <div class="col-md-2 sidebar">
+                        <h4>Reports</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="#salesReport" data-bs-toggle="tab" class="text-decoration-none">Monthly Sales Report<br /><small>4/11/2025</small></a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#inventoryStatus" data-bs-toggle="tab" class="text-decoration-none">Inventory Status<br /><small>4/14/2025</small></a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#" class="text-decoration-none">User Activity Report<br /><small>4/13/2025</small></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div class="col-md-10 main-content">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h2>Reports</h2>
+                            <div>
+                                <button class="btn btn-outline-secondary btn-sm me-2">Export</button>
+                                <button class="btn btn-outline-secondary btn-sm">Share</button>
+                            </div>
+                        </div>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+                            <!-- Monthly Sales Report Tab -->
+                            <div class="tab-pane fade" id="salesReport">
+                                <p class="text-muted">Generated on 4/11/2025</p>
+
+                                <!-- Total Sales -->
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h5>Total Sales</h5>
+                                                <p class="sales-amount">$15789.45</p>
+                                            </div>
+                                            <button class="btn btn-outline-primary btn-sm">Export</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Sales by Category -->
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5>Sales by Category</h5>
+                                                <div class="mb-3">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Fiction</span>
+                                                        <span>$8243.52</span>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="category-bar progress-bar" style="width: 70%;"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Non-fiction</span>
+                                                        <span>$4325.78</span>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="category-bar progress-bar" style="width: 40%;"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Fantasy</span>
+                                                        <span>$1985.45</span>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="category-bar progress-bar" style="width: 20%;"></div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Memoir</span>
+                                                        <span>$1234.90</span>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="category-bar progress-bar" style="width: 15%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Top Selling Books -->
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5>Top Selling Books</h5>
+                                                <ol>
+                                                    <li>
+                                                        <div class="d-flex justify-content-between">
+                                                            <span>The Great Gatsby</span>
+                                                            <span>32 copies</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="d-flex justify-content-between">
+                                                            <span>To Kill a Mockingbird</span>
+                                                            <span>28 copies</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="d-flex justify-content-between">
+                                                            <span>The Alchemist</span>
+                                                            <span>25 copies</span>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Monthly Sales Trend -->
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h5>Monthly Sales Trend</h5>
+                                            <span class="trend-percentage">+12.5%</span>
+                                        </div>
+                                        <p class="text-muted">[Graph placeholder]</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Inventory Status Tab -->
+                            <div class="tab-pane fade show active" id="inventoryStatus">
+                                <p class="text-muted">Generated on 4/14/2025</p>
+
+                                <!-- Total Books in Inventory -->
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h5>Total Books in Inventory</h5>
+                                                <p class="sales-amount">427</p>
+                                            </div>
+                                            <button class="btn btn-outline-primary btn-sm">Export</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Low Stock Items -->
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5>Low Stock Items</h5>
+                                                <div class="low-stock mb-3">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Sapiens: A Brief History of Humankind</span>
+                                                        <span>12 left in stock</span>
+                                                    </div>
+                                                </div>
+                                                <div class="low-stock">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Educated: A Memoir</span>
+                                                        <span>15 left in stock</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Out of Stock Items -->
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5>Out of Stock Items</h5>
+                                                <div class="out-of-stock mb-3">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>1984</span>
+                                                        <span>by George Orwell</span>
+                                                    </div>
+                                                </div>
+                                                <div class="out-of-stock">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Pride and Prejudice</span>
+                                                        <span>by Jane Austen</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Recently Restocked Items -->
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>Recently Restocked Items</h5>
+                                        <div class="restocked mb-3">
+                                            <div class="d-flex justify-content-between">
+                                                <span>The Alchemist</span>
+                                                <span>+30 units 4/10/2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="restocked">
+                                            <div class="d-flex justify-content-between">
+                                                <span>The Great Gatsby</span>
+                                                <span>+25 units 4/8/2025</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Summary Stats -->
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card stats-card">
+                                            <h5>6</h5>
+                                            <p>Unique Titles</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card stats-card">
+                                            <h5>2</h5>
+                                            <p>Low Stock Items</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card stats-card">
+                                            <h5>2</h5>
+                                            <p>Out of Stock Items</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </body>

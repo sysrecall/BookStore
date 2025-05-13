@@ -3,57 +3,128 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Admin/_SideNav.cshtml";
-
 }
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
+<!-- Skeleton Loader Start -->
+<style>
+    .skeleton-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+    }
+
+    .skeleton-row td {
+        padding: 0.75rem;
+    }
+
+    .skeleton-box {
+        display: inline-block;
+        height: 18px;
+        width: 100%;
+        background: #e0e0e0;
+        border-radius: 4px;
+    }
+
+    .alert-success {
+        transition: opacity 0.5s ease-out;
+    }
+</style>
+
+<!-- TempData Message -->
+@if (TempData["MsgAddUser"] != null)
+{
+    <div id="hide" class="alert alert-success">
+        <strong>Good Job !! </strong> @TempData["MsgAddUser"]
+    </div>
+}
+@if (TempData["MsgRem"] != null)
+{
+    <div id="successMessage" class="alert alert-success">
+        <strong>Good Job !! </strong> @TempData["MsgRem"]
+    </div>
+}
+
 <div class="container-fluid">
+
     <div class="row">
         <div class="col-12">
             <div class="card shadow-sm">
-                <div class="card-header">
+                <div class="card-header" style="background-color: #191970; color: #ffffff">
                     <div class="d-flex justify-content-between align-items-center py-2">
                         <h5 class="mb-0">User List</h5>
                         <div class="d-flex align-items-center gap-2">
-                            <input type="text" class="form-control form-control-sm" id="searchInput" placeholder="Search..." style="max-width: 200px;" />
+                            <div class="input-group" style="max-width: 200px;">
+                                <span class="input-group-text">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </span>
+                                <input type="text" class="form-control form-control-sm" id="searchInput" placeholder="Search..." />
+                            </div>
                         </div>
-                        <div class="d-flex align-items-center gap-2">
-                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createUserModal">
-                                Add User
-                            </button>
-                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createUserModal">
+                            Add User
+                        </button>
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover" id="userTable">
-                        <thead>
-                            <tr>
-                                <th>Username</th>
-                                <th>Password Hash</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Username)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.PasswordHash)</td>
-                                    <td>
-                                        <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-primary btn-sm">
-                                            <i class="fa-solid fa-pen-to-square"></i> Edit
-                                        </a>
-                                        <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-secondary btn-sm">
-                                            <i class="fa-solid fa-info-circle"></i> Details
-                                        </a>
-                                        <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger btn-sm">
-                                            <i class="fa-solid fa-trash"></i> Delete
-                                        </a>
-                                    </td>
+                    <div id="loaderContainer">
+                        <!-- Skeleton Loader Table -->
+                        <table class="skeleton-table">
+                            <thead>
+                                <tr class="skeleton-row">
+                                    <td><div class="skeleton-box" style="width: 80px"></div></td>
+                                    <td><div class="skeleton-box" style="width: 120px"></div></td>
+                                    <td><div class="skeleton-box" style="width: 90px"></div></td>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <tr class="skeleton-row">
+                                    <td><div class="skeleton-box"></div></td>
+                                    <td><div class="skeleton-box"></div></td>
+                                    <td><div class="skeleton-box"></div></td>
+                                </tr>
+                                <tr class="skeleton-row">
+                                    <td><div class="skeleton-box"></div></td>
+                                    <td><div class="skeleton-box"></div></td>
+                                    <td><div class="skeleton-box"></div></td>
+                                </tr>
+                                <tr class="skeleton-row">
+                                    <td><div class="skeleton-box"></div></td>
+                                    <td><div class="skeleton-box"></div></td>
+                                    <td><div class="skeleton-box"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Actual User Table -->
+                        <table class="table table-hover" id="userTable">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Password Hash</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.PasswordHash)</td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-primary btn-sm">
+                                                <i class="fa-solid fa-pen-to-square"></i> Edit
+                                            </a>
+                                            <a href="@Url.Action("DeleteUser", new { id = item.ID })" class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,7 +140,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @using (Html.BeginForm("Create", "Users", FormMethod.Post))
+                @using (Html.BeginForm("AddUser", "Admin", FormMethod.Post))
                 {
                     <div class="form-group">
                         @Html.LabelFor(model => model.First().Username, new { @class = "control-label col-md-2" })
@@ -97,8 +168,24 @@
 </div>
 
 @section Scripts {
+
     <script>
         $(document).ready(function () {
+            $('#userTable').hide();
+            $('.skeleton-table').show();
+
+            setTimeout(function () {
+                $('.skeleton-table').hide();
+                $('#userTable').show();
+            }, 1000);
+
+            // Fade out success message after 5 seconds
+            if ($('#successMessage').length) {
+                setTimeout(function () {
+                    $('#successMessage').fadeOut(500);
+                }, 5000);
+            }
+
             $('#createUserModal').modal({
                 backdrop: 'static',
                 keyboard: false
@@ -113,3 +200,4 @@
         });
     </script>
 }
+
