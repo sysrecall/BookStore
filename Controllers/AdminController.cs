@@ -106,6 +106,25 @@ namespace BookStore.Controllers
            
         }
 
+        //Book related works here
+        public ActionResult BookIndex()
+        {
+            var data = _AdminDb.Books.ToList();
+
+            return View(data);
+        }
+
+        public ActionResult AdminProfile()
+        {
+            Admin admin = _AdminDb.Admin.FirstOrDefault();
+
+            if (admin == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(admin);
+        }
 
 
 
@@ -114,7 +133,7 @@ namespace BookStore.Controllers
             return View();
         }
 
-
+       
 
     }
 }
