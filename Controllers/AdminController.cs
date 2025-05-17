@@ -19,13 +19,10 @@ namespace BookStore.Controllers
         {
             _AdminDb = new BookStoreContext();
         }
-        // GET: Admin
-        public ActionResult Index()
-        {
-            var data = _AdminDb.User.ToList();
 
-            return View(data);
-        }
+        
+
+        //Admin Related works here
         public ActionResult Login()
         {
             return View();
@@ -76,11 +73,27 @@ namespace BookStore.Controllers
             return View(admin);
         }
 
+        public ActionResult AdminProfile()
+        {
+            Admin admin = _AdminDb.Admin.FirstOrDefault();
+
+            if (admin == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(admin);
+        }
 
 
         //User related works
-        [HttpPost]
+        public ActionResult Index()
+        {
+            var data = _AdminDb.User.ToList();
 
+            return View(data);
+        }
+        [HttpPost]
         public ActionResult AddUser(User user)
         {
             if (ModelState.IsValid)
@@ -114,21 +127,16 @@ namespace BookStore.Controllers
             return View(data);
         }
 
-        public ActionResult AdminProfile()
-        {
-            Admin admin = _AdminDb.Admin.FirstOrDefault();
-
-            if (admin == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-            return View(admin);
-        }
+        
 
 
 
         public ActionResult Report()
+        {
+            return View();
+        }
+        
+        public ActionResult DashBoard()
         {
             return View();
         }

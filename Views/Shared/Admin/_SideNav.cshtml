@@ -121,14 +121,14 @@
     </style>
 </head>
 <body>
-    <div class="top-nav">
+    <div class="top-nav py-3">
         <div class="text-white">
             BookStore
         </div>
-        <div class="user-info">
+        @*<div class="user-info">
             <img src="@Url.Action("GetProfilePicture", "Account")" alt="Profile Picture" class="profile-pic" />
             <span style="color:#f1f1f1">@ViewBag.admin</span>
-        </div>
+        </div>*@
         <button class="logout-btn" onclick="location.href='@Url.Action("Logout", "Account")'">
             <i class="fa-solid fa-sign-out"></i> Logout
         </button>
@@ -139,7 +139,10 @@
         <br>
         <br>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="@Url.Action("Books", "Dashboard")" >
+        <a href="@Url.Action("DashBoard", "Admin")">
+            <i class="fas fa-dashboard"></i> DashBoard
+        </a>
+        <a href="@Url.Action("Books", "Admin")" >
             <i class="fas fa-book"></i> Books
         </a>
         <a href="@Url.Action("Index", "Admin")" >
