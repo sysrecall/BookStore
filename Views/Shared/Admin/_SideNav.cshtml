@@ -121,18 +121,20 @@
     </style>
 </head>
 <body>
-    <div class="top-nav py-3">
+    <div class="top-nav py-3 d-flex justify-content-between align-items-center">
         <div class="text-white">
             BookStore
         </div>
-        @*<div class="user-info">
-            <img src="@Url.Action("GetProfilePicture", "Account")" alt="Profile Picture" class="profile-pic" />
-            <span style="color:#f1f1f1">@ViewBag.admin</span>
-        </div>*@
-        <button class="logout-btn" onclick="location.href='@Url.Action("Logout", "Account")'">
-            <i class="fa-solid fa-sign-out"></i> Logout
-        </button>
+        <div class="d-flex align-items-center gap-3">
+            <button class="logout-btn" onclick="location.href='@Url.Action("Logout", "Account")'">
+                <i class="fa-solid fa-sign-out"></i> Logout
+            </button>
+            <button id="btnSwitch" class="btn btn-outline-secondary mb-0">
+                Toggle Theme
+            </button>
+        </div>
     </div>
+
 
     <div id="mySidenav" class="sidenav">
         @Html.ActionLink("BookStore", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
@@ -142,10 +144,10 @@
         <a href="@Url.Action("DashBoard", "Admin")">
             <i class="fas fa-dashboard"></i> DashBoard
         </a>
-        <a href="@Url.Action("BookIndex", "Admin")" >
+        <a href="@Url.Action("BookIndex", "Admin")">
             <i class="fas fa-book"></i> Books
         </a>
-        <a href="@Url.Action("Index", "Admin")" >
+        <a href="@Url.Action("Index", "Admin")">
             <i class="fas fa-users"></i> Users
         </a>
         <a href="@Url.Action("Report","Admin")">
@@ -181,6 +183,11 @@
             topNav.style.left = "0";
             topNav.style.width = "100%";
         }
+        // Theme toggle logic
+        document.getElementById('btnSwitch').addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            document.documentElement.setAttribute('data-bs-theme', currentTheme === 'dark' ? 'light' : 'dark');
+        });
     </script>
 
 </body>

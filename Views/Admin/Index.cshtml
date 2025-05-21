@@ -9,9 +9,10 @@
 
 <!-- Skeleton Loader Start -->
 <style>
-    body {
+/*    body {
         background-color: #f5f5f5;
-    }
+    }*/
+
     .skeleton-table {
         width: 100%;
         border-collapse: collapse;
@@ -33,7 +34,28 @@
     .alert-success {
         transition: opacity 0.5s ease-out;
     }
+
+    body[data-bs-theme="light"] {
+        background-color: #f5f5f5;
+        color: #000;
+    }
+
+    body[data-bs-theme="dark"] {
+        background-color: #1e1e2f;
+        color: #f8f9fa;
+    }
+
+    [data-bs-theme="dark"] .table-light {
+        background-color: #2c2c3d;
+        color: #ccc;
+    }
+
+    [data-bs-theme="dark"] .table-bordered th,
+    [data-bs-theme="dark"] .table-bordered td {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
 </style>
+
 
 <!-- TempData Message -->
 @if (TempData["MsgAddUser"] != null)
