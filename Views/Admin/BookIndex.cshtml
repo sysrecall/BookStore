@@ -1,0 +1,157 @@
+﻿@model List<BookStore.Models.Store.Book>
+
+@{
+    ViewBag.Title = "Book List";
+    Layout = "~/Views/Shared/Admin/_SideNav.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<div class="container-fluid px-4">
+    <h4 class="mb-4">Book List</h4>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <div class="input-group w-50">
+                <span class="input-group-text bg-white"><i class="fas fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search..." id="bookSearch">
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createBookModal">
+                Add Books
+            </button>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Year</th>
+                        <th>Pages</th>
+                        <th>Edition</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="bookTable">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.Author</td>
+                            <td>@item.Publisher</td>
+                            <td>@item.PublicationYear</td>
+                            <td>@item.Pages</td>
+                            <td>@item.Edition</td>
+                            <td>@item.Price</td>
+                            <td>@item.Description</td>
+                            <td>@item.BookType</td>
+                            <td class="text-center">
+                                <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-sm btn-primary me-1">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <a href="@Url.Action("DeleteBook", new { id = item.ID })" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@*book modal*@
+<div class="modal fade" id="createBookModal" tabindex="-1" role="dialog" aria-labelledby="createBookModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <!-- large modal for more fields -->
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-between align-items-center">
+                <h5 class="modal-title" id="createBookModalLabel">Create New Book</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("AddBooks","Admin", FormMethod.Post))
+                {
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.First().Title)
+                            @Html.TextBoxFor(model => model.First().Title, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.First().Title, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.First().Author)
+                            @Html.TextBoxFor(model => model.First().Author, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.First().Author, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.First().Publisher)
+                            @Html.TextBoxFor(model => model.First().Publisher, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.First().PublicationYear)
+                            @Html.TextBoxFor(model => model.First().PublicationYear, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.First().Pages)
+                            @Html.TextBoxFor(model => model.First().Pages, new { @class = "form-control", type = "number" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.First().Edition)
+                            @Html.TextBoxFor(model => model.First().Edition, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.First().Price)
+                            @Html.TextBoxFor(model => model.First().Price, new { @class = "form-control", type = "number", step = "0.01" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.First().BookType)
+                            @Html.TextBoxFor(model => model.First().BookType, new { @class = "form-control" })
+                        </div>
+                        <div class="col-12">
+                            @Html.LabelFor(model => model.First().Description)
+                            @Html.TextAreaFor(model => model.First().Description, new { @class = "form-control", rows = 3 })
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <input type="submit" value="Create Book" class="btn btn-success" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('bookSearch');
+            const tableRows = document.querySelectorAll('#bookTable tr');
+
+            searchInput.addEventListener('keyup', function () {
+                const query = this.value.toLowerCase();
+
+                tableRows.forEach(row => {
+                    const rowText = row.textContent.toLowerCase();
+                    row.style.display = rowText.includes(query) ? '' : 'none';
+                });
+            });
+
+            // Initialize createBookModal with static backdrop and disabled keyboard
+            const createBookModalEl = document.getElementById('createBookModal');
+            if (createBookModalEl) {
+                const modal = new bootstrap.Modal(createBookModalEl, {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+
+                // Optional: Automatically show modal if needed
+                // modal.show();
+            }
+        });
+    </script>
+}

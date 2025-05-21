@@ -7,6 +7,7 @@ using System.Data.Entity.Validation;
 using BookStore.Models;
 using BookStore.DAL;
 using System.Net;
+using BookStore.Models.Store;
 
 
 namespace BookStore.Controllers
@@ -37,7 +38,7 @@ namespace BookStore.Controllers
                 {
                     Session["AdminId"] = existingAdmin.Id;
                     Session["AdminEmail"] = existingAdmin.Email;
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DashBoard");
                 }
                 else
                 {
@@ -75,15 +76,20 @@ namespace BookStore.Controllers
 
         public ActionResult AdminProfile()
         {
-            Admin admin = _AdminDb.Admin.FirstOrDefault();
-
-            if (admin == null)
+            if (Session["AdminId"] != null)
             {
-                return RedirectToAction("Index", "Home");
+                int adminId = Convert.ToInt32(Session["AdminId"]);
+                Admin admin = _AdminDb.Admin.FirstOrDefault(a => a.Id == adminId);
+
+                if (admin != null)
+                {
+                    return View(admin);
+                }
             }
 
-            return View(admin);
+            return RedirectToAction("Login");
         }
+
 
 
         //User related works
@@ -103,20 +109,18 @@ namespace BookStore.Controllers
                 TempData["MsgAddUser"] = "User added successfully";
                 return RedirectToAction("Index");
             }
-
-            return View(user);
+            return View("AddUser", user);
         }
-        public ActionResult DeleteUser(int? id)
+        public ActionResult DeleteUser(int id)
         {
-              User user = _AdminDb.User.Find(id);
-
-            
+            var user = _AdminDb.User.Find(id);
+            if (user != null)
+            {
                 _AdminDb.User.Remove(user);
                 _AdminDb.SaveChanges();
-                TempData["MsgRem"] = "User information removed successfully";
+                TempData["MsgRem"] = "User deleted successfully";
+            }
             return RedirectToAction("Index");
-          
-           
         }
 
         //Book related works here
@@ -127,7 +131,30 @@ namespace BookStore.Controllers
             return View(data);
         }
 
-        
+        [HttpPost]
+        public ActionResult AddBooks(Book book)
+        {
+            if (ModelState.IsValid)
+            {
+                _AdminDb.Books.Add(book);
+                _AdminDb.SaveChanges();
+                return RedirectToAction("BookIndex");
+            }
+
+            return View(book);
+        }
+
+        public ActionResult DeleteBook(int id)
+        {
+            Book book = _AdminDb.Books.Find(id);
+            if (book != null)
+            {
+                _AdminDb.Books.Remove(book);
+                _AdminDb.SaveChanges();
+            }
+            return RedirectToAction("BookIndex");
+        }
+
 
 
 
