@@ -50,9 +50,13 @@
         color: #ccc;
     }
 
-    [data-bs-theme="dark"] .table-bordered th,
-    [data-bs-theme="dark"] .table-bordered td {
+    [data-bs-theme="dark"] .table th,
+    [data-bs-theme="dark"] .table td {
         border-color: rgba(255, 255, 255, 0.1);
+    }
+    .card-header {
+        background-color: #555657;
+        color: #ffffff;
     }
 </style>
 
@@ -77,15 +81,13 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow-sm">
-                <div class="card-header" style="background-color: #191970; color: #ffffff">
-                    <div class="d-flex justify-content-between align-items-center py-2">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center ">
 
                         <div class="d-flex align-items-center gap-2">
-                            <div class="input-group" style="max-width: 200px;">
-                                <span class="input-group-text">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </span>
-                                <input type="text" class="form-control form-control-sm" id="searchInput" placeholder="Search..." />
+                            <div class="input-group w-200">
+                                <span class="input-group-text "><i class="fas fa-search"></i></span>
+                                <input type="text" class="form-control" placeholder="Search..." id="bookSearch">
                             </div>
                         </div>
                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createUserModal">
@@ -140,10 +142,10 @@
                                         <td>@Html.DisplayFor(modelItem => item.PasswordHash)</td>
                                         <td>
                                             <a href="@Url.Action("Edit","Admin", new { id = item.ID })" class="btn btn-primary btn-sm">
-                                                <i class="fa-solid fa-pen-to-square"></i> Edit
+                                                <i class="fa-solid fa-pen-to-square"></i> 
                                             </a>
                                             <a href="@Url.Action("DeleteUser","Admin", new { id = item.ID })" class="btn btn-danger btn-sm">
-                                                <i class="fa-solid fa-trash"></i> Delete
+                                                <i class="fa-solid fa-trash"></i> 
                                             </a>
                                         </td>
                                     </tr>

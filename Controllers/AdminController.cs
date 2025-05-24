@@ -8,6 +8,9 @@ using BookStore.Models;
 using BookStore.DAL;
 using System.Net;
 using BookStore.Models.Store;
+using BookStore.ViewModels;
+
+
 
 
 namespace BookStore.Controllers
@@ -26,12 +29,14 @@ namespace BookStore.Controllers
         //Admin Related works here
         public ActionResult Login()
         {
-            return View();
+              return View();
         }
         [HttpPost]
         public ActionResult Login(Admin admin)
         {
+
             if (ModelState.IsValid)
+
             {
                 var existingAdmin = _AdminDb.Admin.FirstOrDefault(a => a.Email == admin.Email && a.Password == admin.Password);
                 if (existingAdmin != null)
@@ -95,6 +100,10 @@ namespace BookStore.Controllers
         //User related works
         public ActionResult Index()
         {
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Login");
+            }
             var data = _AdminDb.User.ToList();
 
             return View(data);
@@ -126,8 +135,12 @@ namespace BookStore.Controllers
         //Book related works here
         public ActionResult BookIndex()
         {
-            var data = _AdminDb.Books.ToList();
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Login");
+            }
 
+            var data = _AdminDb.Books.ToList();
             return View(data);
         }
 
@@ -156,19 +169,40 @@ namespace BookStore.Controllers
         }
 
 
-
-
         public ActionResult Report()
         {
-            return View();
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var books = _AdminDb.Books.ToList();
+
+            var reportViewModel = new ReportViewModel
+            {
+                Books = books,
+                BookCount = books.Count,
+                SalesByCategory = "Category data here",
+                TopSellingBooks = "Top selling books data here",
+                TotalSales = "Total sales data here"
+            };
+
+            return View(reportViewModel);
         }
-        
+
+
+
         public ActionResult DashBoard()
         {
+            if (Session["AdminId"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
-       
+
 
     }
 }

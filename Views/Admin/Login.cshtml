@@ -2,106 +2,131 @@
 
 @{
     ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_NoNav.cshtml";
+    Layout = "~/Views/Shared/Admin/_NoNavBar.cshtml";
 }
-
 <style>
     body {
-        background-color: #f5f5f5;
+        background-color: #eee;
     }
 
     .card {
+        width: 400px;
+        margin: 80px auto;
+        padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
-    .card-header {
-        background-color: #007bff;
-        color: #fff;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+    .nav-tabs .nav-link.active {
+        font-weight: bold;
+        color: #3b5998 ;
+        border: none;
+        border-bottom: 2px solid #3b5998;
     }
 
-    .form-signin {
-        width: 100%;
-        max-width: 400px;
-        padding: 15px;
-        margin: auto;
+    .form-control::placeholder {
+        color: #ccc;
     }
 
-        .form-signin .form-control {
-            position: relative;
-            box-sizing: border-box;
-            height: auto;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-            .form-signin .form-control:focus {
-                z-index: 2;
-            }
-
-        .form-signin input[type="email"],
-        .form-signin input[type="password"] {
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-
-        .form-signin button[type="submit"] {
-            margin-top: 20px;
-        }
-
-    .btn-success {
-        background-color: #28a745;
-        border-color: #28a745;
+    .tab-pane {
+        padding-top: 20px;
     }
 
-        .btn-success:hover {
-            background-color: #218838;
-            border-color: #1e7e34;
-        }
+    .btn-custom {
+        background-color: #6c80b4;
+        color: white;
+    }
+    .btn-custom:hover {
+        background-color: #5a6e9e;
+        color: white;
+     }
+
 </style>
+<body>
+    <div class="card shadow bg-white">
+        <ul class="nav nav-tabs justify-content-center" id="authTabs" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">Login</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab">Register</button>
+            </li>
+        </ul>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="text-center">Login to InsideBox</h2>
-                </div>
-                <div class="card-body">
-                    @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { @class = "form-signin" }))
-                    {
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="tab-content" id="authTabsContent">
+            <!-- Login Tab -->
+            <div class="tab-pane fade show active" id="login" role="tabpanel">
+                <h6 class="text-center mt-3">Welcome to Login</h6>
+                @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { @class = "form-signin" }))
+                {
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                        </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "abc@gmail.com" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                        </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "******" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
 
-                        
-                        <input type="submit" value="Login" class="btn btn-primary" />
-
-                    }
-                </div>
-                <div class="card-footer text-center">
-                    Don't have an account? @Html.ActionLink("Sign up", "Signup", "Users")
-                </div>
+                    <button type="submit" class="btn btn-custom w-100">Log In</button>
+                }
             </div>
 
-           
+            <!-- Register Tab -->
+            <div class="tab-pane fade" id="register" role="tabpanel">
+                <h6 class="text-center mt-3">Create an Account</h6>
+                @using (Html.BeginForm("SignUp", "Admin", FormMethod.Post))
+                {
+
+                    <div class="mb-2">
+                        @Html.LabelFor(m => m.FirstName)
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-2">
+                        @Html.LabelFor(m => m.lastName)
+                        @Html.TextBoxFor(m => m.lastName, new { @class = "form-control", placeholder = "Last Name" })
+                        @Html.ValidationMessageFor(m => m.lastName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-2">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-2">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-2">
+                        @Html.LabelFor(m => m.Department)
+                        @Html.TextBoxFor(m => m.Department, new { @class = "form-control", placeholder = "Administration", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(m => m.Department, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-2">
+                        @Html.LabelFor(m => m.Position)
+                        @Html.TextBoxFor(m => m.Position, new { @class = "form-control", placeholder = "Admin", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(m => m.Position, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-2">
+                        @Html.LabelFor(m => m.JoinDate)
+                        @Html.TextBoxFor(m => m.JoinDate, "{0:yyyy-MM-dd}", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.JoinDate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button type="submit" class="btn btn-custom w-100 mt-2">Sign Up</button>
+                }
+            </div>
         </div>
     </div>
-</div>
 
-<div class="text-center">
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-link" })
-</div>
+</body>

@@ -1,4 +1,5 @@
-﻿
+﻿@model BookStore.ViewModels.ReportViewModel
+
 @{
     ViewBag.Title = "Report";
     Layout = "~/Views/Shared/Admin/_SideNav.cshtml";
@@ -94,9 +95,9 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h5>Total Sales</h5>
-                                <p class="sales-amount">$15789.45</p>
+                                <p class="sales-amount">@Model.TotalSales</p>
                             </div>
-                            <button class="btn btn-outline-primary btn-sm">Export</button>
+                            <button class="btn btn-outline-primary btn-sm" onclick="exportReport('sales')">Export</button>
                         </div>
                     </div>
                 </div>
@@ -116,7 +117,6 @@
                                         <div class="category-bar progress-bar" style="width: 70%;"></div>
                                     </div>
                                 </div>
-                                <!-- Add more category sections -->
                             </div>
                         </div>
                     </div>
@@ -157,17 +157,19 @@
                 <p class="text-muted">Generated on  @currentDate</p>
 
                 <!-- Total Books in Inventory -->
+
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h5>Total Books in Inventory</h5>
-                                <p class="sales-amount">427</p>
+                                <p class="sales-amount"> @Model.BookCount</p> <!-- Display total number of books -->
                             </div>
                             <button class="btn btn-outline-primary btn-sm">Export</button>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="row">
                     <!-- Low Stock Items -->
@@ -243,7 +245,101 @@
             <!-- User Activity Report Tab -->
             <div class="tab-pane fade" id="userActivity" role="tabpanel" aria-labelledby="userActivity-tab">
                 <!-- User Activity Report Content -->
+                <p class="text-muted">Generated on @currentDate</p>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Total Users</h5>
+                                <p class="sales-amount">a</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Active Users</h5>
+                                <p class="sales-amount">a</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>New Users This Month</h5>
+                                <p class="sales-amount">a</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>User Engagement</h5>
+                                <p class="sales-amount">a</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Most Active Users</h5>
+                        <ol>
+                            @*@foreach (var admin in Model)
+                            {*@
+                                <li>
+                                    <div class="d-flex justify-content-between">
+                                        <span>a</span>
+                                        <span>a actions</span>
+                                    </div>
+                                </li>
+                            @*}*@
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Recent Logins</h5>
+                        <ol>
+                            @*@foreach (var login in Model.RecentLogins)
+                            {*@
+                                <li>
+                                    <div class="d-flex justify-content-between">
+                                        <span>a</span>
+                                        <span>a</span>
+                                    </div>
+                                </li>
+                            @*}*@
+                        </ol>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        function exportReport(reportType) {
+            // Make an AJAX request to your backend to generate the invoice
+            const url = `/Export/GenerateInvoice?reportType=${reportType}`;
+
+            // Create a link to trigger the download
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `invoice_${reportType}_${new Date().toISOString().slice(0, 10)}.pdf`; // Adjust the file name as needed
+
+            // Append to the body and trigger the download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+
+}
