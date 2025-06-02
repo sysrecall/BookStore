@@ -8,19 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using BookStore.DAL;
 using BookStore.Models;
-using BookStore.ViewModels;
 
 namespace BookStore.Controllers
 {
     public class UserController : Controller
     {
         private BookStoreContext db = new BookStoreContext();
-
-        public ActionResult Test()
-        {
-            return View();
-        }
-
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -45,40 +39,15 @@ namespace BookStore.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.Account.Role = "User";
                 db.User.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Login");
             }
 
             return View(user);
         }
         
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login(UserLoginViewModel userLoginViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = db.User.Where(u => u.Username == userLoginViewModel.Username).FirstOrDefault();
-
-                if (user != null)
-                {
-                    // TODO
-                    // verify hash 
-                    if (user.PasswordHash == userLoginViewModel.Password)
-                    {
-                        return Content("Success");
-                    }
-                }
-            }
-
-            return View();
-        }
-
         public ActionResult Edit(int? id)
         {
             if (id == null)

@@ -138,8 +138,8 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.Username)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.PasswordHash)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Account.Username)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Account.PasswordHash)</td>
                                         <td>
                                             <a href="@Url.Action("Edit","Admin", new { id = item.ID })" class="btn btn-primary btn-sm">
                                                 <i class="fa-solid fa-pen-to-square"></i> 
@@ -171,18 +171,18 @@
                 @using (Html.BeginForm("AddUser", "Admin", FormMethod.Post))
                 {
                     <div class="form-group">
-                        @Html.LabelFor(model => model.First().Username, new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.First().Account.Username, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.TextBoxFor(model => model.First().Username, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.First().Username, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.First().Account.Username, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.First().Account.Username, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.First().PasswordHash, new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.First().Account.PasswordHash, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.TextBoxFor(model => model.First().PasswordHash, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.First().PasswordHash, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.First().Account.PasswordHash, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.First().Account.PasswordHash, "", new { @class = "text-danger" })
                         </div>
                     </div>
 

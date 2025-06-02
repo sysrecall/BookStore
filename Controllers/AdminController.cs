@@ -36,7 +36,6 @@ namespace BookStore.Controllers
         {
 
             if (ModelState.IsValid)
-
             {
                 var existingAdmin = _AdminDb.Admin.FirstOrDefault(a => a.Email == admin.Email && a.Password == admin.Password);
                 if (existingAdmin != null)
@@ -194,7 +193,7 @@ namespace BookStore.Controllers
 
         public ActionResult DashBoard()
         {
-            if (Session["AdminId"] == null)
+            if (Session["AdminID"] == null)
             {
                 return RedirectToAction("Login");
             }

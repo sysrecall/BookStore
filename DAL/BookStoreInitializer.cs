@@ -12,12 +12,13 @@ namespace BookStore.DAL
         protected override void Seed(BookStoreContext context)
         {
             // base.Seed(context);
-            var users = new List<User>
+            var accounts = new List<Account>
             {
-                new User{Username="johndoe", PasswordHash="123"}
+                new Account{Username="admin", PasswordHash="admin", Role = "Admin"},
+                new Account{Username="user", PasswordHash="user", Role = "User"}
             };
 
-            users.ForEach(u => context.User.Add(u));
+            accounts.ForEach(a => context.Account.Add(a));
             context.SaveChanges();
         } 
     }

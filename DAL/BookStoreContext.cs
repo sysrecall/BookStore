@@ -15,6 +15,7 @@ namespace BookStore.DAL
 
         }
 
+        public DbSet<Account> Account { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Admin> Admin { get; set; }
 
