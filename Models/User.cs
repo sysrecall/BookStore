@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using BookStore.Models.Store;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookStore.Models
 {
@@ -13,9 +14,12 @@ namespace BookStore.Models
         public string FullName { get; set; }
         public string Email { get; set; }
 
+        [NotMapped] 
+        public string AccountUsername { get; set; }
+
         // public string SecurityQuestion { get; set; }
         // public string SecurityAnswer { get; set }
-        
+
         public virtual Account Account { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }

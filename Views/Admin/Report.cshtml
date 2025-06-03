@@ -252,7 +252,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5>Total Users</h5>
-                                <p class="sales-amount">a</p>
+                                <p class="sales-amount">@Model.TotalUsers</p>
                             </div>
                         </div>
                     </div>
@@ -260,7 +260,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5>Active Users</h5>
-                                <p class="sales-amount">a</p>
+                                <p class="sales-amount">@Model.ActiveUsers</p>
                             </div>
                         </div>
                     </div>
@@ -271,7 +271,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5>New Users This Month</h5>
-                                <p class="sales-amount">a</p>
+                                <p class="sales-amount">@Model.NewUsersThisMonth</p>
                             </div>
                         </div>
                     </div>
@@ -289,15 +289,15 @@
                     <div class="card-body">
                         <h5>Most Active Users</h5>
                         <ol>
-                            @*@foreach (var admin in Model)
-                            {*@
+                            @foreach (var user in Model.MostActiveUsers)
+                            {
                                 <li>
                                     <div class="d-flex justify-content-between">
-                                        <span>a</span>
-                                        <span>a actions</span>
+                                        <span>@user.FullName</span>
+                                        <span>@(user.Books?.Count ?? 0) actions</span>
                                     </div>
                                 </li>
-                            @*}*@
+                            }
                         </ol>
                     </div>
                 </div>

@@ -24,9 +24,10 @@ namespace BookStore.Controllers
             _AdminDb = new BookStoreContext();
         }
 
-        
 
+        //=======================
         //Admin Related works here
+        //=======================
         public ActionResult Login()
         {
               return View();
@@ -40,7 +41,7 @@ namespace BookStore.Controllers
                 var existingAdmin = _AdminDb.Admin.FirstOrDefault(a => a.Email == admin.Email && a.Password == admin.Password);
                 if (existingAdmin != null)
                 {
-                    Session["AdminId"] = existingAdmin.Id;
+                    Session["AdminID"] = existingAdmin.Id;
                     Session["AdminEmail"] = existingAdmin.Email;
                     return RedirectToAction("DashBoard");
                 }
@@ -72,7 +73,7 @@ namespace BookStore.Controllers
             {
                 _AdminDb.Admin.Add(admin);
                 _AdminDb.SaveChanges();
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "Account");
 
             }
             return View(admin);
@@ -80,9 +81,9 @@ namespace BookStore.Controllers
 
         public ActionResult AdminProfile()
         {
-            if (Session["AdminId"] != null)
+            if (Session["AdminID"] != null)
             {
-                int adminId = Convert.ToInt32(Session["AdminId"]);
+                int adminId = Convert.ToInt32(Session["AdminID"]);
                 Admin admin = _AdminDb.Admin.FirstOrDefault(a => a.Id == adminId);
 
                 if (admin != null)
@@ -91,17 +92,25 @@ namespace BookStore.Controllers
                 }
             }
 
-            return RedirectToAction("Login");
+            return RedirectToAction("Login", "Account");
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Login", "Account");
         }
 
 
-
+        //=======================
         //User related works
+        //=======================
         public ActionResult Index()
         {
-            if (Session["AdminId"] == null)
+            if (Session["AdminID"] == null)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "Account");
             }
             var data = _AdminDb.User.ToList();
 
@@ -110,6 +119,10 @@ namespace BookStore.Controllers
         [HttpPost]
         public ActionResult AddUser(User user)
         {
+            if (Session["AdminID"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             if (ModelState.IsValid)
             {
                 _AdminDb.User.Add(user);
@@ -131,12 +144,60 @@ namespace BookStore.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public ActionResult EditUser(int id)
+        {
+            var user = _AdminDb.User.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new User
+            {
+                ID = user.ID,
+                AccountUsername = user.Account?.Username,
+                FullName = user.FullName,
+                Email = user.Email
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditUser(User model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _AdminDb.User.Find(model.ID);
+                if (user != null)
+                {
+                    if (user.Account != null)
+                    {
+                        user.Account.Username = model.AccountUsername; // ✅ Update username via Account
+                    }
+
+                    user.FullName = model.FullName;
+                    user.Email = model.Email;
+
+                    _AdminDb.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View(model);
+        }
+
+
+
+        //=======================
         //Book related works here
+        //=======================
         public ActionResult BookIndex()
         {
-            if (Session["AdminId"] == null)
+            if (Session["AdminID"] == null)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "Account");
             }
 
             var data = _AdminDb.Books.ToList();
@@ -156,6 +217,46 @@ namespace BookStore.Controllers
             return View(book);
         }
 
+    
+        public ActionResult EditBook(int id)
+        {
+            var book = _AdminDb.Books.Find(id);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(book);
+        }
+
+      
+        [HttpPost]
+        public ActionResult EditBook(Book model)
+        {
+            if (ModelState.IsValid)
+            {
+                var book = _AdminDb.Books.Find(model.ID);
+                if (book != null)
+                {
+                    book.Title = model.Title;
+                    book.Author = model.Author;
+                    book.Publisher = model.Publisher;
+                    book.PublicationYear = model.PublicationYear;
+                    book.Pages = model.Pages;
+                    book.Edition = model.Edition;
+                    book.Price = model.Price;
+                    book.Description = model.Description;
+                    book.BookType = model.BookType;
+
+
+                    _AdminDb.SaveChanges();
+                    return RedirectToAction("BookIndex");
+                }
+            }
+
+            return View(model);
+        }
+
         public ActionResult DeleteBook(int id)
         {
             Book book = _AdminDb.Books.Find(id);
@@ -167,15 +268,21 @@ namespace BookStore.Controllers
             return RedirectToAction("BookIndex");
         }
 
-
+        //=======================
+        //Report                |
+        //=======================
         public ActionResult Report()
         {
-            if (Session["AdminId"] == null)
+            if (Session["AdminID"] == null)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Account");
             }
 
             var books = _AdminDb.Books.ToList();
+            var users = _AdminDb.User.ToList();
+
+            var mostActiveUsers = users.OrderByDescending(u => u.Books != null ? u.Books.Count : 0).Take(5).ToList();
+            var newUser = users.OrderByDescending(u => u.ID).FirstOrDefault(); 
 
             var reportViewModel = new ReportViewModel
             {
@@ -183,19 +290,27 @@ namespace BookStore.Controllers
                 BookCount = books.Count,
                 SalesByCategory = "Category data here",
                 TopSellingBooks = "Top selling books data here",
-                TotalSales = "Total sales data here"
+                TotalSales = "Total sales data here",
+
+                Users = users,
+                MostActiveUsers = mostActiveUsers,
+                NewUsersThisMonth = newUser != null ? 1 : 0,
+
+                RecentLogins = new List<User>() 
             };
 
             return View(reportViewModel);
         }
 
 
-
+        //=======================
+        //Dashboard             |
+        //=======================
         public ActionResult DashBoard()
         {
             if (Session["AdminID"] == null)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "Account");
             }
 
             return View();

@@ -137,6 +137,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202505240937478_InitialCreate.cs" />
+    <Compile Include="Migrations\202505240937478_InitialCreate.Designer.cs">
+      <DependentUpon>202505240937478_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506031123489_InitialCreate1.cs" />
+    <Compile Include="Migrations\202506031123489_InitialCreate1.Designer.cs">
+      <DependentUpon>202506031123489_InitialCreate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -244,6 +252,8 @@
     <Content Include="Views\Admin\Report.cshtml" />
     <Content Include="Views\Admin\BookIndex.cshtml" />
     <Content Include="Views\Shared\Admin\_NoNavBar.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\Admin\EditBook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -253,6 +263,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202505240937478_InitialCreate.resx">
+      <DependentUpon>202505240937478_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506031123489_InitialCreate1.resx">
+      <DependentUpon>202506031123489_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
