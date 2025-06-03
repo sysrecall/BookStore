@@ -116,22 +116,59 @@ namespace BookStore.Controllers
 
             return View(data);
         }
+        //[HttpPost]
+        //public ActionResult AddUser(User user)
+        //{
+        //    if (Session["AdminID"] == null)
+        //    {
+        //        return RedirectToAction("Login", "Account");
+        //    }
+        //    if (ModelState.IsValid)
+        //    {
+        //        _AdminDb.User.Add(user);
+        //        _AdminDb.SaveChanges();
+        //        TempData["MsgAddUser"] = "User added successfully";
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View("AddUser", user);
+        //}
         [HttpPost]
-        public ActionResult AddUser(User user)
+        public ActionResult AddUser(User user, string PasswordHash, string Role = "User")
         {
             if (Session["AdminID"] == null)
             {
                 return RedirectToAction("Login", "Account");
             }
+
             if (ModelState.IsValid)
             {
-                _AdminDb.User.Add(user);
-                _AdminDb.SaveChanges();
-                TempData["MsgAddUser"] = "User added successfully";
-                return RedirectToAction("Index");
+                var account = new Account
+                {
+                    Username = user.AccountUsername,
+                    PasswordHash = PasswordHash,
+                    Role = Role
+                };
+
+              
+                    _AdminDb.Account.Add(account);
+                    _AdminDb.SaveChanges();
+
+                    user.AccountID = account.ID.ToString();
+                    user.Account = account;
+
+                    _AdminDb.User.Add(user);
+                    _AdminDb.SaveChanges();
+
+                    TempData["MsgAddUser"] = "User added successfully";
+                    return RedirectToAction("Index");
+               
             }
+
             return View("AddUser", user);
         }
+
+
+
         public ActionResult DeleteUser(int id)
         {
             var user = _AdminDb.User.Find(id);

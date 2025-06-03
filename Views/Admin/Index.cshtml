@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BookStore.Models.User>
+﻿@model List<BookStore.Models.User>
 
 @{
     ViewBag.Title = "Index";
@@ -138,7 +138,6 @@
                             <thead>
                                 <tr>
                                     <th>Username</th>
-                                    <th>Password Hash</th>
                                     <th>Full Name</th>
                                     <th>Email</th>
                                     <th>Actions</th>
@@ -148,15 +147,14 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        @*<td>@Html.DisplayFor(modelItem => item.Account.Username)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.Account.PasswordHash)</td>*@
+                                        <td>@Html.DisplayFor(modelItem => item.Account.Username)</td>
                                         <td>@Html.DisplayFor(modelItem => item.FullName)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Email)</td>
                                         <td>
-                                            <a href="@Url.Action("EditUser", "Admin", new { id = item.ID })" class="btn btn-primary btn-sm" title="Edit">
+                                            <a href="@Url.Action("EditUser","Admin", new { id = item.ID })" class="btn btn-primary btn-sm">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </a>
-                                            <a href="@Url.Action("DeleteUser", "Admin", new { id = item.ID })" class="btn btn-danger btn-sm" title="Delete">
+                                            <a href="@Url.Action("DeleteUser","Admin", new { id = item.ID })" class="btn btn-danger btn-sm">
                                                 <i class="fa-solid fa-trash"></i>
                                             </a>
                                         </td>
@@ -171,7 +169,7 @@
     </div>
 </div>
 @*user modal*@
-@*<div class="modal fade" id="createUserModal" tabindex="-1" aria-labelledby="createUserModalLabel" aria-hidden="true">
+<div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header d-flex justify-content-between align-items-center">
@@ -181,31 +179,37 @@
             <div class="modal-body">
                 @using (Html.BeginForm("AddUser", "Admin", FormMethod.Post))
                 {
-                    <div class="mb-3 row">
-                        @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "col-md-2 col-form-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(model => model.Account.Username, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Account.Username, "", new { @class = "text-danger" })
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            @Html.Label("Username")
+                            @Html.TextBox("AccountUsername", null, new { @class = "form-control" })
+                            @Html.ValidationMessage("AccountUsername", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.Label("PasswordHash")
+                            @Html.TextBox("PasswordHash", null, new { @class = "form-control" })
+                            @Html.ValidationMessage("PasswordHash", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.Label("FullName")
+                            @Html.TextBox("FullName", null, new { @class = "form-control" })
+                            @Html.ValidationMessage("FullName", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.Label("Email")
+                            @Html.TextBox("Email", null, new { @class = "form-control" })
+                            @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
                         </div>
                     </div>
 
-                    <div class="mb-3 row">
-                        @Html.LabelFor(model => model.Account.PasswordHash, htmlAttributes: new { @class = "col-md-2 col-form-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(model => model.Account.PasswordHash, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Account.PasswordHash, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="mt-4 text-end">
+                    <div class="form-group mt-4">
                         <input type="submit" value="Create User" class="btn btn-success" />
                     </div>
                 }
             </div>
         </div>
     </div>
-</div>*@
-
+</div>
 
 @section Scripts {
 
