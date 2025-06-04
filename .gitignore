@@ -365,3 +365,5 @@ FodyWeavers.xsd
 .idea
 
 Web.config
+
+Migrations/
