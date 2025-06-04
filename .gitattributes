@@ -63,4 +63,3 @@
 #*.RTF   diff=astextplain
 
 Web.config merge=ours
-BookStore.csproj merge=ours
