@@ -42,7 +42,7 @@ namespace BookStore.Controllers
                 user.Account.Role = "User";
                 db.User.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "Account");
             }
 
             return View(user);

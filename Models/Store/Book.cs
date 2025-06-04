@@ -14,7 +14,7 @@ namespace BookStore.Models.Store
         public DateTime PublicationYear { get; set; }
         public int Pages { get; set; }
         public string Edition { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         public string Description { get; set; }
         public BookType BookType { get; set; }
 

@@ -90,15 +90,15 @@
                 @Html.HiddenFor(model => model.ID)
 
                 <div class="mb-3">
-                    @Html.LabelFor(model => model.Username, new { @class = "form-label" })
-                    @Html.TextBoxFor(model => model.Username, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.Account.Username, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.Account.Username, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Account.Username, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="mb-3">
-                    @Html.LabelFor(model => model.PasswordHash, new { @class = "form-label" })
-                    @Html.TextBoxFor(model => model.PasswordHash, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.PasswordHash, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.Account.PasswordHash, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.Account.PasswordHash, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Account.PasswordHash, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="mb-3">

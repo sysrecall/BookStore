@@ -144,7 +144,7 @@ namespace BookStore.Controllers
             {
                 var account = new Account
                 {
-                    Username = user.AccountUsername,
+                    Username = user.Account.Username,
                     PasswordHash = PasswordHash,
                     Role = Role
                 };
@@ -153,7 +153,7 @@ namespace BookStore.Controllers
                     _AdminDb.Account.Add(account);
                     _AdminDb.SaveChanges();
 
-                    user.AccountID = account.ID.ToString();
+                    user.AccountID = account.ID;
                     user.Account = account;
 
                     _AdminDb.User.Add(user);
@@ -193,7 +193,6 @@ namespace BookStore.Controllers
             var viewModel = new User
             {
                 ID = user.ID,
-                AccountUsername = user.Account?.Username,
                 FullName = user.FullName,
                 Email = user.Email
             };
@@ -211,7 +210,7 @@ namespace BookStore.Controllers
                 {
                     if (user.Account != null)
                     {
-                        user.Account.Username = model.AccountUsername; // ✅ Update username via Account
+                        user.Account.Username = model.Account.Username; // ✅ Update username via Account
                     }
 
                     user.FullName = model.FullName;

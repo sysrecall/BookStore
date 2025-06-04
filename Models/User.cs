@@ -10,12 +10,10 @@ namespace BookStore.Models
     public class User
     {
         public int ID { get; set; }
-        public string AccountID { get; set; }
+        
+        public int AccountID { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
-
-        [NotMapped] 
-        public string AccountUsername { get; set; }
 
         // public string SecurityQuestion { get; set; }
         // public string SecurityAnswer { get; set }

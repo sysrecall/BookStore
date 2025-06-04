@@ -1,0 +1,30 @@
+﻿@model BookStore.Models.Store.Book    
+<style>
+    .book-card img {
+        height: 200px;
+        object-fit: contain;
+    }
+    .book-title {
+        font-size: 1rem;
+        font-weight: 600;
+        min-height: 3em;
+    }
+    .star-rating {
+        color: #f0c14b;
+    }
+</style>
+
+<div class="col">
+    <div class="card book-card h-100">
+        <img src="@Model.BookCoverImages.First().ImageURL" class="card-img-top" alt="Book Cover">
+        <div class="card-body d-flex flex-column">
+            <div class="book-title">@Model.Title</div>
+            <div class="text-muted small mb-1">by @Model.Author</div>
+            <div class="mb-2 star-rating">
+                ★★★★☆ <span class="text-muted small">(1,234)</span>
+            </div>
+            <div class="fw-bold mb-2">$@Model.Price</div>
+            <a href="#" class="btn btn-sm btn-warning mt-auto">Add to Cart</a>
+        </div>
+    </div>
+</div>
