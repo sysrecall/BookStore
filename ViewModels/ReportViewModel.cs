@@ -23,5 +23,14 @@ namespace BookStore.ViewModels
         public List<User> MostActiveUsers { get; set; }
         public List<User> RecentLogins { get; set; }
 
+        //Books
+        public List<Book> LowStockItems { get; set; }
+        public List<Book> OutOfStockItems { get; set; }
+        public List<Book> RecentlyRestockedItems { get; set; }
+        public int UniqueTitlesCount { get; set; }
+
+        
+
+
     }
 }

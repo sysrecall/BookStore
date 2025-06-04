@@ -154,22 +154,20 @@
 
             <!-- Inventory Status Tab -->
             <div class="tab-pane fade" id="inventoryStatus" role="tabpanel" aria-labelledby="inventoryStatus-tab">
-                <p class="text-muted">Generated on  @currentDate</p>
+                <p class="text-muted">Generated on @DateTime.Now.ToString("MMMM dd, yyyy")</p>
 
                 <!-- Total Books in Inventory -->
-
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h5>Total Books in Inventory</h5>
-                                <p class="sales-amount"> @Model.BookCount</p> <!-- Display total number of books -->
+                                <p class="sales-amount">@Model.BookCount</p> <!-- Display total number of books -->
                             </div>
                             <button class="btn btn-outline-primary btn-sm">Export</button>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="row">
                     <!-- Low Stock Items -->
@@ -177,13 +175,22 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5>Low Stock Items</h5>
-                                <div class="low-stock mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span>Sapiens: A Brief History of Humankind</span>
-                                        <span>12 left in stock</span>
-                                    </div>
-                                </div>
-                                <!-- Add more low stock items -->
+                                @if (Model.LowStockItems.Any())
+                                {
+                                    foreach (var item in Model.LowStockItems)
+                                    {
+                                        <div class="low-stock mb-3">
+                                            <div class="d-flex justify-content-between">
+                                                <span>@item.Title</span>
+                                                @*<span>@(item.Stock ?? 0) left in stock</span>*@
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <p>No low stock items.</p>
+                                }
                             </div>
                         </div>
                     </div>
@@ -193,13 +200,22 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5>Out of Stock Items</h5>
-                                <div class="out-of-stock mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span>1984</span>
-                                        <span>by George Orwell</span>
-                                    </div>
-                                </div>
-                                <!-- Add more out of stock items -->
+                                @if (Model.OutOfStockItems.Any())
+                                {
+                                    foreach (var item in Model.OutOfStockItems)
+                                    {
+                                        <div class="out-of-stock mb-3">
+                                            <div class="d-flex justify-content-between">
+                                                <span>@item.Title</span>
+                                                <span>by @item.Author</span> <!-- Assuming you have an Author property -->
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <p>No out of stock items.</p>
+                                }
                             </div>
                         </div>
                     </div>
@@ -210,12 +226,8 @@
                     <div class="card-body">
                         <h5>Recently Restocked Items</h5>
                         <div class="restocked mb-3">
-                            <div class="d-flex justify-content-between">
-                                <span>The Alchemist</span>
-                                <span>+30 units 4/10/2025</span>
-                            </div>
+                            <p>No recently restocked items available.</p> <!-- Placeholder for now -->
                         </div>
-                        <!-- Add more recently restocked items -->
                     </div>
                 </div>
 
@@ -223,19 +235,19 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card stats-card">
-                            <h5>6</h5>
+                            <h5>@Model.UniqueTitlesCount</h5>
                             <p>Unique Titles</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card stats-card">
-                            <h5>2</h5>
+                            <h5>@Model.LowStockItems.Count()</h5>
                             <p>Low Stock Items</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card stats-card">
-                            <h5>2</h5>
+                            <h5>@Model.OutOfStockItems.Count()</h5>
                             <p>Out of Stock Items</p>
                         </div>
                     </div>
@@ -307,13 +319,13 @@
                         <h5>Recent Logins</h5>
                         <ol>
                             @*@foreach (var login in Model.RecentLogins)
-                            {*@
-                                <li>
-                                    <div class="d-flex justify-content-between">
-                                        <span>a</span>
-                                        <span>a</span>
-                                    </div>
-                                </li>
+                        {*@
+                            <li>
+                                <div class="d-flex justify-content-between">
+                                    <span>a</span>
+                                    <span>a</span>
+                                </div>
+                            </li>
                             @*}*@
                         </ol>
                     </div>

@@ -9,6 +9,7 @@ using BookStore.DAL;
 using System.Net;
 using BookStore.Models.Store;
 using BookStore.ViewModels;
+using System.IO;
 
 
 
@@ -240,11 +241,42 @@ namespace BookStore.Controllers
             return View(data);
         }
 
+        //[HttpPost]
+        //public ActionResult AddBooks(Book book)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _AdminDb.Books.Add(book);
+        //        _AdminDb.SaveChanges();
+        //        return RedirectToAction("BookIndex");
+        //    }
+
+        //    return View(book);
+        //}
         [HttpPost]
-        public ActionResult AddBooks(Book book)
+        public ActionResult AddBooks(Book book, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                if (image != null && image.ContentLength > 0)
+                {
+                    string folderPath = Server.MapPath("~/Books/cover/");
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(image.FileName);
+                    string filePath = Path.Combine(folderPath, uniqueFileName);
+
+                    image.SaveAs(filePath);
+                    book.BookCoverImages = new List<BookCoverImage>{
+                new BookCoverImage
+                {
+                    ImageURL = Url.Content("~/Books/cover/" + uniqueFileName)
+                }};
+
+                }
+
                 _AdminDb.Books.Add(book);
                 _AdminDb.SaveChanges();
                 return RedirectToAction("BookIndex");
@@ -253,7 +285,10 @@ namespace BookStore.Controllers
             return View(book);
         }
 
-    
+
+
+
+
         public ActionResult EditBook(int id)
         {
             var book = _AdminDb.Books.Find(id);
@@ -307,23 +342,84 @@ namespace BookStore.Controllers
         //=======================
         //Report                |
         //=======================
+        //public ActionResult Report()
+        //{
+        //    if (Session["AdminID"] == null)
+        //    {
+        //        return RedirectToAction("Login", "Account");
+        //    }
+
+        //    var books = _AdminDb.Books.ToList();
+        //    var users = _AdminDb.User.ToList();
+
+        //    var mostActiveUsers = users
+        //        .OrderByDescending(u => u.Books != null ? u.Books.Count : 0)
+        //        .Take(5)
+        //        .ToList();
+
+        //    var newUser = users.OrderByDescending(u => u.ID).FirstOrDefault();
+
+        //    var reportViewModel = new ReportViewModel
+        //    {
+        //        Books = books,
+        //        BookCount = books.Sum(b => b.StockQuantity),
+        //        SalesByCategory = "Category data here",
+        //        TopSellingBooks = "Top selling books data here",
+        //        TotalSales = "Total sales data here",
+
+        //        Users = users,
+        //        MostActiveUsers = mostActiveUsers,
+        //        NewUsersThisMonth = newUser != null ? 1 : 0,
+
+        //        LowStockItems = books.Where(b => b.StockQuantity > 0 && b.StockQuantity <= 15).ToList(),
+        //        OutOfStockItems = books.Where(b => b.StockQuantity == 0).ToList(),
+        //        RecentlyRestockedItems = books
+        //            .Where(b => b.RestockDate.HasValue && b.RestockDate.Value >= DateTime.Now.AddDays(-30)).ToList(),
+        //        UniqueTitlesCount = books.Select(b => b.Title).Distinct().Count(),
+
+        //        RecentLogins = new List<User>()
+        //    };
+
+        //    return View(reportViewModel);
+        //}
         public ActionResult Report()
         {
             if (Session["AdminID"] == null)
             {
-                return RedirectToAction("Login","Account");
+                return RedirectToAction("Login", "Account");
             }
 
             var books = _AdminDb.Books.ToList();
             var users = _AdminDb.User.ToList();
 
-            var mostActiveUsers = users.OrderByDescending(u => u.Books != null ? u.Books.Count : 0).Take(5).ToList();
-            var newUser = users.OrderByDescending(u => u.ID).FirstOrDefault(); 
+            var groupedBooks = books
+                .GroupBy(b => b.Title)
+                .Select(g => new
+                {
+                    Title = g.Key,
+                    Count = g.Count(),
+                    SampleBook = g.FirstOrDefault()
+                }).ToList();
+
+        
+            var lowStockItems = groupedBooks
+                .Where(g => g.Count <= 2 && g.Count > 0)
+                .Select(g => g.SampleBook)
+                .ToList();
+
+            var outOfStockItems = new List<Book>(); 
+
+            var mostActiveUsers = users
+                .OrderByDescending(u => u.Books != null ? u.Books.Count() : 0)
+                .Take(5)
+                .ToList();
+
+            var newUser = users.OrderByDescending(u => u.ID).FirstOrDefault();
 
             var reportViewModel = new ReportViewModel
             {
                 Books = books,
-                BookCount = books.Count,
+                BookCount = books.Count(), // total number of book records
                 SalesByCategory = "Category data here",
                 TopSellingBooks = "Top selling books data here",
                 TotalSales = "Total sales data here",
@@ -332,11 +428,17 @@ namespace BookStore.Controllers
                 MostActiveUsers = mostActiveUsers,
                 NewUsersThisMonth = newUser != null ? 1 : 0,
 
-                RecentLogins = new List<User>() 
+                LowStockItems = lowStockItems,
+                OutOfStockItems = outOfStockItems,
+                RecentlyRestockedItems = new List<Book>(), 
+                UniqueTitlesCount = groupedBooks.Count(),
+
+                RecentLogins = new List<User>()
             };
 
             return View(reportViewModel);
         }
+
 
 
         //=======================

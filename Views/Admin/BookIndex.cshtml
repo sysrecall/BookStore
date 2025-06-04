@@ -6,7 +6,6 @@
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
-
     body[data-bs-theme="light"] {
         background-color: #f5f5f5;
         color: #000;
@@ -20,7 +19,6 @@
     [data-bs-theme="dark"] thead {
         background-color: #696969;
         color: #f8f9fa;
-        /*        border-color: #444;*/
     }
 
     [data-bs-theme="dark"] .table-bordered th,
@@ -44,16 +42,25 @@
         background-color: #555657;
         color: #ffffff;
     }
-</style>
 
+
+    td img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 100px;
+        width: 100px;
+    }
+
+</style>
 
 <div class="container-fluid px-4">
     <h4 class="mb-4">Book List</h4>
 
     <div class="card shadow-sm">
-        <div class="card-header  d-flex justify-content-between align-items-center">
+        <div class="card-header d-flex justify-content-between align-items-center">
             <div class="input-group w-50">
-                <span class="input-group-text "><i class="fas fa-search"></i></span>
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
                 <input type="text" class="form-control" placeholder="Search..." id="searchInput">
             </div>
             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createBookModal">
@@ -62,86 +69,82 @@
         </div>
 
         <div class="card-body">
-            <div class="card-body">
-                <table class="table table-bordered table-hover "  id="bookTable">
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Publisher</th>
-                            <th>Year</th>
-                            <th>Pages</th>
-                            <th>Edition</th>
-                            <th>Price</th>
-                            <th>Description</th>
-                            <th>Type</th>
-                            <th class="text-center">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="bookTable">
-                        @if (Model != null && Model.Any())
-                        {
-                            foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @if (item.BookCoverImages != null && item.BookCoverImages.Any())
-                                        {
-                                            var base64Image = item.BookCoverImages.First();
-                                            <img src="data:~image/jpg;base64,@base64Image" alt="@item.Title" class="img-fluid" style="max-height: 50px;" />
-                                        }
-                                        else
-                                        {
-                                            <span>No Image</span>
-                                        }
-                                    </td>
-
-                                    <td>@item.Title</td>
-                                    <td>@item.Author</td>
-                                    <td>@item.Publisher</td>
-                                    <td>@item.PublicationYear</td>
-                                    <td>@item.Pages</td>
-                                    <td>@item.Edition</td>
-                                    <td>@item.Price</td>
-                                    <td>@item.Description</td>
-                                    <td>@item.BookType</td>
-                                    <td class="text-center">
-                                        <a href="@Url.Action("EditBook", new { id = item.ID })" class="btn btn-sm btn-primary me-1">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a href="@Url.Action("DeleteBook", new { id = item.ID })" class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            }
-                        }
-                        else
+            <table class="table table-bordered table-hover" id="bookTable">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Year</th>
+                        <th>Pages</th>
+                        <th>Edition</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
                         {
                             <tr>
-                                <td colspan="11" class="text-center">No data available.</td>
+                                <td>
+                                    @if (item.BookCoverImages != null && item.BookCoverImages.Any())
+                                    {
+                                        var coverImage = item.BookCoverImages.First();
+                                        <img src="@coverImage.ImageURL" alt="@item.Title" class="img-fluid" />
+                                    }
+                                    else
+                                    {
+                                        <span>No Image</span>
+                                    }
+                                </td>
+
+                                <td>@item.Title</td>
+                                <td>@item.Author</td>
+                                <td>@item.Publisher</td>
+                                <td>@item.PublicationYear.Year</td>
+                                <td>@item.Pages</td>
+                                <td>@item.Edition</td>
+                                <td>@item.Price</td>
+                                <td>@item.Description</td>
+                                <td>@item.BookType</td>
+                                <td class="text-center">
+                                    <a href="@Url.Action("EditBook", new { id = item.ID })" class="btn btn-sm btn-primary me-1">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="@Url.Action("DeleteBook", new { id = item.ID })" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
                             </tr>
                         }
-                    </tbody>
-                </table>
-            </div>
-
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="11" class="text-center">No data available.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
-
     </div>
 </div>
-@*book modal*@
+
+@* Book modal *@
 <div class="modal fade" id="createBookModal" tabindex="-1" role="dialog" aria-labelledby="createBookModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <!-- large modal for more fields -->
         <div class="modal-content">
             <div class="modal-header d-flex justify-content-between align-items-center">
                 <h5 class="modal-title" id="createBookModalLabel">Create New Book</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @using (Html.BeginForm("AddBooks", "Admin", FormMethod.Post))
+                @using (Html.BeginForm("AddBooks", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -160,7 +163,7 @@
                         </div>
                         <div class="col-md-6">
                             @Html.Label("Publication Year")
-                            @Html.TextBox("PublicationYear", null, new { @class = "form-control" })
+                            @Html.TextBox("PublicationYear", null, new { @class = "form-control", type = "date" })
                         </div>
                         <div class="col-md-6">
                             @Html.Label("Pages")
@@ -183,8 +186,8 @@
                             @Html.TextArea("Description", null, new { @class = "form-control", rows = 3 })
                         </div>
                         <div class="col-md-6">
-                            @Html.Label("Book Cover Images")
-                            <input type="file" class="form-control" name="image" />
+                            @Html.Label("Book Cover Image")
+                            <input type="file" class="form-control" name="image" accept="image/*" />
                         </div>
                     </div>
 
@@ -200,7 +203,6 @@
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-
             $('#searchInput').on('keyup', function () {
                 var value = $(this).val().toLowerCase();
                 $('#bookTable tbody tr').filter(function () {
