@@ -39,11 +39,11 @@
         color: #ccc;
         border-color: rgba(255, 255, 255, 0.1);
     }
+
     .card-header {
         background-color: #555657;
         color: #ffffff;
     }
-    
 </style>
 
 
@@ -54,7 +54,7 @@
         <div class="card-header  d-flex justify-content-between align-items-center">
             <div class="input-group w-50">
                 <span class="input-group-text "><i class="fas fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search..." id="bookSearch">
+                <input type="text" class="form-control" placeholder="Search..." id="searchInput">
             </div>
             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createBookModal">
                 Add Books
@@ -63,7 +63,7 @@
 
         <div class="card-body">
             <div class="card-body">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover "  id="bookTable">
                     <thead>
                         <tr>
                             <th>Image</th>
@@ -107,7 +107,7 @@
                                     <td>@item.Description</td>
                                     <td>@item.BookType</td>
                                     <td class="text-center">
-                                        <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-sm btn-primary me-1">
+                                        <a href="@Url.Action("EditBook", new { id = item.ID })" class="btn btn-sm btn-primary me-1">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a href="@Url.Action("DeleteBook", new { id = item.ID })" class="btn btn-sm btn-danger">
@@ -197,19 +197,14 @@
     </div>
 </div>
 
-
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const searchInput = document.getElementById('bookSearch');
-            const tableRows = document.querySelectorAll('#bookTable tr');
 
-            searchInput.addEventListener('keyup', function () {
-                const query = this.value.toLowerCase();
-
-                tableRows.forEach(row => {
-                    const rowText = row.textContent.toLowerCase();
-                    row.style.display = rowText.includes(query) ? '' : 'none';
+            $('#searchInput').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                $('#bookTable tbody tr').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
 
@@ -220,9 +215,6 @@
                     backdrop: 'static',
                     keyboard: false
                 });
-
-                // Optional: Automatically show modal if needed
-                // modal.show();
             }
         });
     </script>
