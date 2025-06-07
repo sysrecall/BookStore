@@ -1,13 +1,64 @@
-﻿@model IEnumerable<BookStore.Models.Store.Book>
+﻿@using BookStore.Models.Store
+@model BookStore.ViewModels.HomeIndexViewModel
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home - Book Haven";
 }
-<div class="container py-4">
-<div class="row row-cols-1 row-cols-md-4 row-cols-lg-4 g-5">
-    @foreach (var book in Model)
-    {
-        @Html.Partial("Store/_BookItem", book)
-    }
-</div>
+
+<div class="container mt-4">
+    <!-- Search and Category Row -->
+    <div class="row mb-4">
+        <!-- Category Sidebar -->
+        <div class="col-md-3">
+            <h5>Categories</h5>
+            <ul class="list-group">
+                <li class="list-group-item @(Model.SelectedCategory == null ? "active" : "")">
+                    <a href="@Url.Action("Index", new { SelectedCategory = (Category?)null, search = Model.SearchQuery })" class="text-decoration-none @(Model.SelectedCategory == null ? "text-white" : "")">All</a>
+                </li>
+                @foreach (var category in Model.Categories)
+                {
+                    <li class="list-group-item @(Model.SelectedCategory == category ? "active" : "")">
+                        <a href="@Url.Action("Index", new { SelectedCategory = category, search = Model.SearchQuery })" class="text-decoration-none @(Model.SelectedCategory == category ? "text-white" : "")">@category.ToString()</a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <!-- Book Grid and Search -->
+        <div class="col-md-9">
+            <!-- Search Bar -->
+            <form class="input-group mb-4" method="get" action="@Url.Action("Index")">
+                <input type="text" name="SearchQuery" class="form-control" placeholder="Search for books..." value="@Model.SearchQuery" />
+                <input type="hidden" name="SelectedCategory" value="@Model.SelectedCategory" />
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+
+            <!-- Book Grid -->
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var book in Model.Books)
+                {
+                    <div class="col">
+                        @Html.Partial("Store/_BookItem", book)
+                    </div>
+                }
+
+                @if (!Model.Books.Any())
+                {
+                    <div class="alert alert-warning">No books found matching your criteria.</div>
+                }
+            </div>
+
+            <!-- Pagination -->
+            <nav class="mt-4">
+                <ul class="pagination justify-content-center">
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new { page = i, search = Model.SearchQuery, Category = Model.SelectedCategory })">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -17,8 +18,22 @@ namespace BookStore.Models.Store
         public double Price { get; set; }
         public string Description { get; set; }
         public BookType BookType { get; set; }
+        
+        public Category Category { get; set; }
 
         public virtual ICollection<BookCoverImage> BookCoverImages { get; set; }
+    }
+
+    public enum Category
+    {
+        Classic,
+        Fantasy,
+        Fiction,
+        SciFi,
+        NonFiction,
+        Adventure,
+        Biography,
+        History,
     }
 
     public enum BookType

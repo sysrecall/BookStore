@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BookStore.DAL;
+using BookStore.Models.Store;
+using BookStore.ViewModels;
 
 namespace BookStore.Controllers
 {
@@ -14,10 +17,29 @@ namespace BookStore.Controllers
         {
             db = new BookStoreContext();
         }
-        public ActionResult Index()
+        public ActionResult Index(HomeIndexViewModel model)
         {
-            var books = db.Books.ToList();
-            return View(books);
+            var books = model.SearchQuery != null 
+                ? db.Book
+                    .Where(x => x.Title.ToLower().Contains(model.SearchQuery.ToLower()))
+                    .Cast<Book>()
+                    .ToList()
+                : db.Book.ToList();
+
+            if (model.SelectedCategory != null)
+                books = books.Where(x => x.Category == model.SelectedCategory).ToList();
+            
+            var homeIndexViewModel = new HomeIndexViewModel()
+            {
+                Books = books,
+                Categories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList(),
+                CurrentPage = model.CurrentPage,
+                SelectedCategory = model.SelectedCategory,
+                SearchQuery = model.SearchQuery,
+                TotalPages = 10,
+            };
+            
+            return View(homeIndexViewModel);
         }
 
         public ActionResult About()

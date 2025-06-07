@@ -17,7 +17,7 @@ namespace BookStore.Controllers.Store
 
         public ActionResult Index()
         {
-            return View(db.Books.ToList());
+            return View(db.Book.ToList());
         }
 
         public ActionResult Details(int? id)
@@ -26,7 +26,7 @@ namespace BookStore.Controllers.Store
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = db.Books.Find(id);
+            Book book = db.Book.Find(id);
             if (book == null)
             {
                 return HttpNotFound();
@@ -44,7 +44,7 @@ namespace BookStore.Controllers.Store
         {
             if (ModelState.IsValid)
             {
-                db.Books.Add(book);
+                db.Book.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -58,7 +58,7 @@ namespace BookStore.Controllers.Store
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = db.Books.Find(id);
+            Book book = db.Book.Find(id);
             if (book == null)
             {
                 return HttpNotFound();
@@ -84,7 +84,7 @@ namespace BookStore.Controllers.Store
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = db.Books.Find(id);
+            Book book = db.Book.Find(id);
             if (book == null)
             {
                 return HttpNotFound();
@@ -95,8 +95,8 @@ namespace BookStore.Controllers.Store
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Book book = db.Books.Find(id);
-            db.Books.Remove(book);
+            Book book = db.Book.Find(id);
+            db.Book.Remove(book);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -18,14 +18,14 @@ namespace BookStore.DAL
                 new Account{Username="admin", PasswordHash="admin", Role = "Admin"},
                 new Account{Username="user", PasswordHash="user", Role = "User"}
             };
-
+            
             var books = new List<Book>
             {
                 new Book
                 {
                     Title = "To Kill a Mockingbird", Author = "Harper Lee", Publisher = "Grand Central Publishing",
                     PublicationYear = new DateTime(1988, 10, 11), Pages = 384, Edition = "1st Edition",
-                    Price = 21.25, BookType = BookType.eBook,
+                    Price = 21.25, BookType = BookType.eBook, Category = Category.Classic,
                     BookCoverImages = new List<BookCoverImage>
                     {
                         new BookCoverImage
@@ -37,7 +37,7 @@ namespace BookStore.DAL
             };
 
             accounts.ForEach(a => context.Account.Add(a));
-            books.ForEach(b => context.Books.Add(b));
+            books.ForEach(b => context.Book.Add(b));
             
             context.SaveChanges();
         } 
