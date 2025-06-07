@@ -237,7 +237,7 @@ namespace BookStore.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var data = _AdminDb.Books.ToList();
+            var data = _AdminDb.Book.ToList();
             return View(data);
         }
 
@@ -246,7 +246,7 @@ namespace BookStore.Controllers
         //{
         //    if (ModelState.IsValid)
         //    {
-        //        _AdminDb.Books.Add(book);
+        //        _AdminDb.Book.Add(book);
         //        _AdminDb.SaveChanges();
         //        return RedirectToAction("BookIndex");
         //    }
@@ -277,7 +277,7 @@ namespace BookStore.Controllers
 
                 }
 
-                _AdminDb.Books.Add(book);
+                _AdminDb.Book.Add(book);
                 _AdminDb.SaveChanges();
                 return RedirectToAction("BookIndex");
             }
@@ -291,7 +291,7 @@ namespace BookStore.Controllers
 
         public ActionResult EditBook(int id)
         {
-            var book = _AdminDb.Books.Find(id);
+            var book = _AdminDb.Book.Find(id);
             if (book == null)
             {
                 return HttpNotFound();
@@ -306,7 +306,7 @@ namespace BookStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                var book = _AdminDb.Books.Find(model.ID);
+                var book = _AdminDb.Book.Find(model.ID);
                 if (book != null)
                 {
                     book.Title = model.Title;
@@ -330,10 +330,10 @@ namespace BookStore.Controllers
 
         public ActionResult DeleteBook(int id)
         {
-            Book book = _AdminDb.Books.Find(id);
+            Book book = _AdminDb.Book.Find(id);
             if (book != null)
             {
-                _AdminDb.Books.Remove(book);
+                _AdminDb.Book.Remove(book);
                 _AdminDb.SaveChanges();
             }
             return RedirectToAction("BookIndex");
@@ -349,7 +349,7 @@ namespace BookStore.Controllers
         //        return RedirectToAction("Login", "Account");
         //    }
 
-        //    var books = _AdminDb.Books.ToList();
+        //    var books = _AdminDb.Book.ToList();
         //    var users = _AdminDb.User.ToList();
 
         //    var mostActiveUsers = users
@@ -389,7 +389,7 @@ namespace BookStore.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var books = _AdminDb.Books.ToList();
+            var books = _AdminDb.Book.ToList();
             var users = _AdminDb.User.ToList();
 
             var groupedBooks = books
