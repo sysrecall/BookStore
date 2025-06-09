@@ -113,10 +113,13 @@ namespace BookStore.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            var data = _AdminDb.User.ToList();
+            var users = _AdminDb.User.Include("Account").ToList();
+            ViewBag.NewUser = new User(); // Pass a new User object for the modal
 
-            return View(data);
+            return View(users);
         }
+       
+
         //[HttpPost]
         //public ActionResult AddUser(User user)
         //{
@@ -185,7 +188,8 @@ namespace BookStore.Controllers
 
         public ActionResult EditUser(int id)
         {
-            var user = _AdminDb.User.Find(id);
+            var user = _AdminDb.User.Include("Account").FirstOrDefault(u => u.ID == id);
+
             if (user == null)
             {
                 return HttpNotFound();
@@ -195,11 +199,17 @@ namespace BookStore.Controllers
             {
                 ID = user.ID,
                 FullName = user.FullName,
-                Email = user.Email
+                Email = user.Email,
+                Account = new Account
+                {
+                    Username = user.Account?.Username,
+                    PasswordHash = user.Account?.PasswordHash
+                }
             };
 
             return View(viewModel);
         }
+
 
         [HttpPost]
         public ActionResult EditUser(User model)
@@ -211,7 +221,7 @@ namespace BookStore.Controllers
                 {
                     if (user.Account != null)
                     {
-                        user.Account.Username = model.Account.Username; // ✅ Update username via Account
+                        user.Account.Username = model.Account.Username;
                     }
 
                     user.FullName = model.FullName;
@@ -237,9 +247,24 @@ namespace BookStore.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var data = _AdminDb.Book.ToList();
+            ViewBag.BookTypeList = new SelectList(Enum.GetValues(typeof(BookType)).Cast<BookType>().Select(e => new SelectListItem
+            {
+                Value = e.ToString(),
+                Text = e.ToString()
+            }));
+
+            ViewBag.CategoryList = new SelectList(Enum.GetValues(typeof(Category)).Cast<Category>().Select(e => new SelectListItem
+            {
+                Value = e.ToString(),
+                Text = e.ToString()
+            }));
+
+            var data = _AdminDb.Book.ToList(); 
             return View(data);
         }
+
+        
+
 
         //[HttpPost]
         //public ActionResult AddBooks(Book book)
@@ -330,14 +355,29 @@ namespace BookStore.Controllers
 
         public ActionResult DeleteBook(int id)
         {
-            Book book = _AdminDb.Book.Find(id);
+            var book = _AdminDb.Book
+                .Include("BookCoverImages")
+                .FirstOrDefault(b => b.ID == id);
+
             if (book != null)
             {
+                foreach (var coverImage in book.BookCoverImages.ToList())
+                {
+                    _AdminDb.BookCoverImages.Remove(coverImage);
+                }
+
                 _AdminDb.Book.Remove(book);
                 _AdminDb.SaveChanges();
+                
+               
             }
+           
+
             return RedirectToAction("BookIndex");
         }
+
+
+
 
         //=======================
         //Report                |
@@ -451,8 +491,45 @@ namespace BookStore.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            return View();
+            var books = _AdminDb.Book.ToList();
+
+            var groupedBooks = books
+                .GroupBy(b => b.Title)
+                .Select(g => new
+                {
+                    Title = g.Key,
+                    Count = g.Count(),
+                    SampleBook = g.FirstOrDefault()
+                })
+                .ToList();
+
+            var lowStockItems = groupedBooks
+                .Where(g => g.Count <= 2 && g.Count > 0)
+                .Select(g => g.SampleBook)
+                .ToList();
+
+            var viewModel = new DashBoardViewModel
+            {
+                //TotalSales = _AdminDb.Orders.Sum(o => o.TotalAmount), 
+                TotalOrders = _AdminDb.Book.Count(),
+
+                //BooksInStock = _AdminDb.Book.Sum(b => b.StockQuantity), 
+
+                ActiveUsers = _AdminDb.User.Count(),
+
+                LowStockItems = lowStockItems,
+
+                //TopSellingBooks = _AdminDb.OrderDetails
+                //    .GroupBy(od => od.BookID)
+                //    .OrderByDescending(g => g.Sum(od => od.Quantity))
+                //    .Take(3)
+                //    .Select(g => g.FirstOrDefault().Book)
+                //    .ToList()
+            };
+
+            return View(viewModel);
         }
+
 
 
 

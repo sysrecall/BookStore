@@ -80,6 +80,7 @@
                         <th>Pages</th>
                         <th>Edition</th>
                         <th>Price</th>
+                        @*<th>Category</th>*@
                         <th>Description</th>
                         <th>Type</th>
                         <th class="text-center">Actions</th>
@@ -110,6 +111,7 @@
                                 <td>@item.Pages</td>
                                 <td>@item.Edition</td>
                                 <td>@item.Price</td>
+                                @*<td>@item.Category</td>*@
                                 <td>@item.Description</td>
                                 <td>@item.BookType</td>
                                 <td class="text-center">
@@ -179,8 +181,12 @@
                         </div>
                         <div class="col-md-6">
                             @Html.Label("Book Type")
-                            @Html.TextBox("BookType", null, new { @class = "form-control" })
+                            @Html.DropDownList("BookType", ViewBag.BookTypeList as SelectList, "--Select--", new { @class = "form-control" })
                         </div>
+                        @*<div class="col-md-6">
+                            @Html.Label("Category")
+                            @Html.DropDownList("Category", ViewBag.CategoryList as SelectList, "--Select--", new { @class = "form-control" })
+                        </div>*@
                         <div class="col-12">
                             @Html.Label("Description")
                             @Html.TextArea("Description", null, new { @class = "form-control", rows = 3 })
