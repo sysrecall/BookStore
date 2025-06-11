@@ -363,7 +363,7 @@ namespace BookStore.Controllers
             {
                 foreach (var coverImage in book.BookCoverImages.ToList())
                 {
-                    _AdminDb.BookCoverImages.Remove(coverImage);
+                    _AdminDb.BookCoverImage.Remove(coverImage);
                 }
 
                 _AdminDb.Book.Remove(book);
@@ -530,7 +530,14 @@ namespace BookStore.Controllers
             return View(viewModel);
         }
 
-
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _AdminDb.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
 
     }

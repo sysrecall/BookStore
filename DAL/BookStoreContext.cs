@@ -20,6 +20,10 @@ namespace BookStore.DAL
         public DbSet<User> User { get; set; }
         public DbSet<Admin> Admin { get; set; }
         public DbSet<Book> Book { get; set; }
+        
+        public DbSet<BookCoverImage> BookCoverImage { get; set; }
+        
+        public DbSet<Cart> Cart { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

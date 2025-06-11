@@ -28,10 +28,25 @@ namespace BookStore.Controllers
 
             if (model.SelectedCategory != null)
                 books = books.Where(x => x.Category == model.SelectedCategory).ToList();
-            
+
+            Cart cart = null;
+            if (Session["UserID"] != null)
+            {
+                int _id = Convert.ToInt32(Session["UserID"]);
+                cart = db.Cart.Include(c => c.Books).FirstOrDefault(x => x.UserID == _id);
+            }
+
+            var bookCards = books.Select(book => new BookCardViewModel
+            {
+                Book = book,
+                IsInCart = cart?.Books != null &&
+                           cart.UserID == Convert.ToInt32(Session["UserID"]) && 
+                           cart.Books.Contains(book)
+            }).ToList();
+
             var homeIndexViewModel = new HomeIndexViewModel()
             {
-                Books = books,
+                BookCards = bookCards,
                 Categories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList(),
                 CurrentPage = model.CurrentPage,
                 SelectedCategory = model.SelectedCategory,
@@ -55,5 +70,14 @@ namespace BookStore.Controllers
 
             return View();
         }
+        
+       protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        } 
     }
 }

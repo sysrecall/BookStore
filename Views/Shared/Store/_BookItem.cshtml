@@ -1,4 +1,5 @@
-﻿@model BookStore.Models.Store.Book    
+﻿@model BookStore.ViewModels.BookCardViewModel   
+@using BookStore.Models.Store
 <style>
     .book-card img {
         height: 200px;
@@ -16,15 +17,22 @@
 
 <div class="col">
     <div class="card book-card h-100">
-        <img src="@Model.BookCoverImages.First().ImageURL" class="card-img-top" alt="Book Cover">
+        <img src="@Model.Book.BookCoverImages.First().ImageURL" class="card-img-top" alt="Book Cover">
         <div class="card-body d-flex flex-column">
-            <div class="book-title">@Model.Title</div>
-            <div class="text-muted small mb-1">by @Model.Author</div>
+            <div class="book-title">@Model.Book.Title</div>
+            <div class="text-muted small mb-1">by @Model.Book.Author</div>
             <div class="mb-2 star-rating">
                 ★★★★☆ <span class="text-muted small">(1,234)</span>
             </div>
-            <div class="fw-bold mb-2">$@Model.Price</div>
-            <a href="#" class="btn btn-sm btn-warning mt-auto">Add to Cart</a>
+            <div class="fw-bold mb-2">$@Model.Book.Price</div>
+            @using (Html.BeginForm(@Model.IsInCart ? "RemoveBook" : "AddBook", "Cart", FormMethod.Post))
+            {
+                @Html.Hidden("UserID", Session["UserID"])
+                @Html.Hidden("BookID", Model.Book.ID)
+                <button type="submit" class="btn btn-sm @(Model.IsInCart ? "btn-danger" : "btn-warning") mt-auto">
+                    @(Model.IsInCart ? "Remove from Cart" : "Add to Cart")
+                </button>
+            }
         </div>
     </div>
 </div>

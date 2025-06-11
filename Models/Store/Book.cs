@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace BookStore.Models.Store
         public Category Category { get; set; }
 
         public virtual ICollection<BookCoverImage> BookCoverImages { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 
     public enum Category

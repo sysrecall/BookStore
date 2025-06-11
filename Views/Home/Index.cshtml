@@ -2,7 +2,7 @@
 @model BookStore.ViewModels.HomeIndexViewModel
 
 @{
-    ViewBag.Title = "Home - Book Haven";
+    ViewBag.Title = "Home - Book Store";
 }
 
 <div class="container mt-4">
@@ -35,14 +35,14 @@
 
             <!-- Book Grid -->
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                @foreach (var book in Model.Books)
+                @foreach (var bookCard in Model.BookCards)
                 {
                     <div class="col">
-                        @Html.Partial("Store/_BookItem", book)
+                        @Html.Partial("Store/_BookItem", model: bookCard)
                     </div>
                 }
 
-                @if (!Model.Books.Any())
+                @if (!Model.BookCards.Any())
                 {
                     <div class="alert alert-warning">No books found matching your criteria.</div>
                 }

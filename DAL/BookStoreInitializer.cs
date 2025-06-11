@@ -16,7 +16,24 @@ namespace BookStore.DAL
             var accounts = new List<Account>
             {
                 new Account{Username="admin", PasswordHash="admin", Role = "Admin"},
-                new Account{Username="user", PasswordHash="user", Role = "User"}
+            };
+
+            var users = new List<User>
+            {
+                new User
+                {
+                    Account = new Account { Username = "john", PasswordHash = "john", Role = "User" },
+                    Books = null,
+                    Email = "john@john.john",
+                    FullName = "John",
+                },
+                new User
+                {
+                    Account = new Account { Username = "user", PasswordHash = "user", Role = "User" },
+                    Books = null,
+                    Email = "user@user.user",
+                    FullName = "User",
+                }
             };
             
             var books = new List<Book>
@@ -37,6 +54,7 @@ namespace BookStore.DAL
             };
 
             accounts.ForEach(a => context.Account.Add(a));
+            users.ForEach(u => context.User.Add(u));
             books.ForEach(b => context.Book.Add(b));
             
             context.SaveChanges();

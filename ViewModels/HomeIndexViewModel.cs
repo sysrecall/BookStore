@@ -5,7 +5,7 @@ namespace BookStore.ViewModels
 {
     public class HomeIndexViewModel
     {
-        public List<Book> Books { get; set; }
+        public List<BookCardViewModel> BookCards { get; set; }
         public List<Category> Categories { get; set; }
         public string SearchQuery { get; set; }
         public Category? SelectedCategory { get; set; }
