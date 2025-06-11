@@ -7,8 +7,8 @@ using BookStore.Models.Store;
 
 namespace BookStore.ViewModels
 {
-	public class DashBoardViewModel
-	{
+    public class DashBoardViewModel
+    {
 
         public decimal TotalSales { get; set; }
         public int TotalOrders { get; set; }

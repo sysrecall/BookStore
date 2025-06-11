@@ -513,7 +513,7 @@ namespace BookStore.Controllers
                 //TotalSales = _AdminDb.Orders.Sum(o => o.TotalAmount), 
                 TotalOrders = _AdminDb.Book.Count(),
 
-                //BooksInStock = _AdminDb.Book.Sum(b => b.StockQuantity), 
+                BooksInStock = books.Count(),
 
                 ActiveUsers = _AdminDb.User.Count(),
 

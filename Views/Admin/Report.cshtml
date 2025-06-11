@@ -97,7 +97,7 @@
                                 <h5>Total Sales</h5>
                                 <p class="sales-amount">@Model.TotalSales</p>
                             </div>
-                            <button class="btn btn-outline-primary btn-sm" onclick="exportReport('sales')">Export</button>
+                            <button class="btn btn-outline-primary btn-sm" onclick="exportReport('monthlySales')">Export</button>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between">
                                         <span>Fiction</span>
-                                        <span>$8243.52</span>
+                                        <span>@Model.SalesByCategory</span>
                                     </div>
                                     <div class="progress">
                                         <div class="category-bar progress-bar" style="width: 70%;"></div>
@@ -127,13 +127,15 @@
                             <div class="card-body">
                                 <h5>Top Selling Books</h5>
                                 <ol>
-                                    <li>
-                                        <div class="d-flex justify-content-between">
-                                            <span>The Great Gatsby</span>
-                                            <span>32 copies</span>
-                                        </div>
-                                    </li>
-                                    <!-- Add more top selling books -->
+                                    @foreach (var book in Model.TopSellingBooks)
+                                    {
+                                        <li>
+                                            <div class="d-flex justify-content-between">
+                                                @*<span>@book.Title</span>
+                                                <span>@book.Copies copies</span>*@
+                                            </div>
+                                        </li>
+                                    }
                                 </ol>
                             </div>
                         </div>
@@ -164,7 +166,7 @@
                                 <h5>Total Books in Inventory</h5>
                                 <p class="sales-amount">@Model.BookCount</p> <!-- Display total number of books -->
                             </div>
-                            <button class="btn btn-outline-primary btn-sm">Export</button>
+                            <button class="btn btn-outline-primary btn-sm" onclick="exportInventoryStatus()">Export</button>
                         </div>
                     </div>
                 </div>
@@ -287,14 +289,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    @*<div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <h5>User Engagement</h5>
                                 <p class="sales-amount">a</p>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
 
                 <div class="card">
@@ -314,44 +316,156 @@
                     </div>
                 </div>
 
-                <div class="card">
+                <!--<div class="card">
                     <div class="card-body">
                         <h5>Recent Logins</h5>
-                        <ol>
+                        <ol>-->
                             @*@foreach (var login in Model.RecentLogins)
-                        {*@
-                            <li>
+                                {*@
+                            <!--<li>
                                 <div class="d-flex justify-content-between">
                                     <span>a</span>
                                     <span>a</span>
                                 </div>
-                            </li>
+                            </li>-->
                             @*}*@
-                        </ol>
+                        <!--</ol>
                     </div>
-                </div>
+                </div>-->
 
             </div>
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 
 @section Scripts {
     <script>
-        function exportReport(reportType) {
-            // Make an AJAX request to your backend to generate the invoice
-            const url = `/Export/GenerateInvoice?reportType=${reportType}`;
-
-            // Create a link to trigger the download
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `invoice_${reportType}_${new Date().toISOString().slice(0, 10)}.pdf`; // Adjust the file name as needed
-
-            // Append to the body and trigger the download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+    async function exportReport(reportType) {
+        if (reportType !== 'monthlySales') {
+            alert("Unsupported report type");
+            return;
         }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Sample monthly sales data
+        const salesData = [
+            { month: "January", sales: 1200 },
+            { month: "February", sales: 1500 },
+            { month: "March", sales: 1700 },
+            { month: "April", sales: 1600 },
+            { month: "May", sales: 1900 },
+        ];
+
+        // Title
+        doc.setFontSize(18);
+        doc.text("Monthly Sales Report", 20, 20);
+        doc.setFontSize(12);
+        doc.text("Generated on: " + new Date().toLocaleDateString(), 20, 30);
+
+        // Table Header
+        let y = 50;
+        doc.setFontSize(14);
+        doc.text("Month", 20, y);
+        doc.text("Sales ($)", 100, y);
+        y += 10;
+
+        // Table Rows
+        doc.setFontSize(12);
+        salesData.forEach(item => {
+            doc.text(item.month, 20, y);
+            doc.text(item.sales.toString(), 100, y);
+            y += 10;
+        });
+
+        // Save as PDF
+        const filename = `invoice_monthlySales_${new Date().toISOString().slice(0, 10)}.pdf`;
+        doc.save(filename);
+    }
+
+
+    async function exportInventoryStatus() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        const today = new Date().toLocaleDateString();
+        let y = 20;
+
+        // Title and Date
+        doc.setFontSize(16);
+        doc.text("Inventory Status Report", 20, y);
+        doc.setFontSize(10);
+        doc.text(`Generated on ${today}`, 20, y + 6);
+        y += 16;
+
+        // Fetch data from DOM
+        const bookCount = document.querySelector(".sales-amount")?.innerText || "N/A";
+        const uniqueTitles = document.querySelector(".stats-card:nth-child(1) h5")?.innerText || "N/A";
+        const lowStockCount = document.querySelector(".stats-card:nth-child(2) h5")?.innerText || "N/A";
+        const outOfStockCount = document.querySelector(".stats-card:nth-child(3) h5")?.innerText || "N/A";
+
+        // Total Books
+        doc.setFontSize(12);
+        doc.text("Total Books in Inventory: " + bookCount, 20, y);
+        y += 10;
+
+        // Low Stock Items
+        doc.text("Low Stock Items:", 20, y);
+        y += 8;
+        const lowStockElements = document.querySelectorAll(".low-stock span:first-child");
+        if (lowStockElements.length > 0) {
+            lowStockElements.forEach(el => {
+                doc.text("- " + el.innerText, 25, y);
+                y += 6;
+            });
+        } else {
+            doc.text("None", 25, y);
+            y += 6;
+        }
+
+        // Out of Stock Items
+        y += 4;
+        doc.text("Out of Stock Items:", 20, y);
+        y += 8;
+        const outOfStockElements = document.querySelectorAll(".out-of-stock");
+        if (outOfStockElements.length > 0) {
+            outOfStockElements.forEach(el => {
+                const spans = el.querySelectorAll("span");
+                if (spans.length >= 2) {
+                    doc.text(`- ${spans[0].innerText} by ${spans[1].innerText}`, 25, y);
+                    y += 6;
+                }
+            });
+        } else {
+            doc.text("None", 25, y);
+            y += 6;
+        }
+
+        // Recently Restocked Items Placeholder
+        y += 4;
+        doc.text("Recently Restocked Items:", 20, y);
+        y += 8;
+        const restockedText = document.querySelector(".restocked p")?.innerText || "No recently restocked items.";
+        doc.text(restockedText, 25, y);
+        y += 10;
+
+        // Summary Stats
+        doc.text("Summary:", 20, y);
+        y += 8;
+        doc.text(`- Unique Titles: ${uniqueTitles}`, 25, y);
+        y += 6;
+        doc.text(`- Low Stock Items: ${lowStockCount}`, 25, y);
+        y += 6;
+        doc.text(`- Out of Stock Items: ${outOfStockCount}`, 25, y);
+
+        // Save as PDF
+        const filename = `Inventory_Status_Report_${new Date().toISOString().slice(0, 10)}.pdf`;
+        doc.save(filename);
+    }
     </script>
+
 
 }
