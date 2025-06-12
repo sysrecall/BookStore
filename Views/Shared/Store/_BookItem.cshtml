@@ -17,9 +17,15 @@
 
 <div class="col">
     <div class="card book-card h-100">
-        <img src="@Model.Book.BookCoverImages.First().ImageURL" class="card-img-top" alt="Book Cover">
+        <a href="@Url.Action("Index", "Book", new { BookID = Model.Book.ID })">
+            <img src="@Model.Book.BookCoverImages.First().ImageURL" class="card-img-top" alt="Book Cover">
+        </a>
         <div class="card-body d-flex flex-column">
-            <div class="book-title">@Model.Book.Title</div>
+            <div class="book-title">
+                <a href="@Url.Action("Index", "Book", new { BookID = Model.Book.ID })" class="text-dark text-decoration-none">
+                    @Model.Book.Title
+                </a>
+            </div>
             <div class="text-muted small mb-1">by @Model.Book.Author</div>
             <div class="mb-2 star-rating">
                 ★★★★☆ <span class="text-muted small">(1,234)</span>

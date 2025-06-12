@@ -48,6 +48,9 @@ namespace BookStore.Controllers.Store
                 db.SaveChanges();
             }
 
+            if (Request.UrlReferrer != null)
+                return Redirect(Request.UrlReferrer.ToString());
+            
             return RedirectToAction("Index", "Home");
         }
         
@@ -78,6 +81,9 @@ namespace BookStore.Controllers.Store
                 }
                 db.SaveChanges();
             }
+            
+            if (Request.UrlReferrer != null)
+                return Redirect(Request.UrlReferrer.ToString());
             
             return RedirectToAction("Index", "Home");
         }

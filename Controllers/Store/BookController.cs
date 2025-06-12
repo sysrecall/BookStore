@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BookStore.DAL;
 using BookStore.Models.Store;
+using BookStore.ViewModels;
 
 namespace BookStore.Controllers.Store
 {
@@ -15,9 +16,34 @@ namespace BookStore.Controllers.Store
     {
         private BookStoreContext db = new BookStoreContext();
 
-        public ActionResult Index()
+        [Route("Book/{BookID:int}")]
+        public ActionResult Index(int? BookID)
         {
-            return View(db.Book.ToList());
+           if (BookID == null)
+           {
+               return RedirectToAction("Index", "Home");
+           }
+
+           var bookCardViewModel = new BookCardViewModel();
+           
+           var book = db.Book.FirstOrDefault(b => b.ID == BookID);
+           if (book == null) return RedirectToAction("Index", "Home");
+           
+           bookCardViewModel.Book = book;
+           
+           if (Session["UserID"] == null) return View(bookCardViewModel);
+           var UserID = Convert.ToInt32(Session["UserID"]);
+           
+           var _user = db.User.FirstOrDefault(x => x.ID == UserID);
+           if (_user == null) return View(bookCardViewModel);
+           
+           var cart = db.Cart.Include(c => c.Books).FirstOrDefault(x => x.UserID == UserID);
+           if (cart?.Books != null && cart.Books.Contains(book))
+           {
+               bookCardViewModel.IsInCart = true;
+           }
+           
+           return View(bookCardViewModel);
         }
 
         public ActionResult Details(int? id)

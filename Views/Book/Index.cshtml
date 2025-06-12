@@ -1,81 +1,81 @@
-﻿ @model IEnumerable<BookStore.Models.Store.Book>
-
+﻿@model BookStore.ViewModels.BookCardViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Model.Book.Title;
+    var mainImageId = "main-book-image";
 }
 
-<h2>Index</h2>
+<style>
+    .thumbnail-list img {
+        cursor: pointer;
+        margin-bottom: 10px;
+        border: 2px solid transparent;
+        transition: border 0.3s;
+        max-width: 100%;
+        height: auto;
+    }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Publisher)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PublicationYear)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pages)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Edition)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BookType)
-        </th>
-        <th></th>
-    </tr>
+    .thumbnail-list img:hover {
+        border-color: #007bff;
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Publisher)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PublicationYear)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pages)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Edition)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BookType)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    .book-meta {
+        font-size: 0.9rem;
+        color: #555;
+    }
 
-</table>
+    .description-section {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 6px;
+        margin-top: 30px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Left column: thumbnails -->
+        <div class="col-md-2 thumbnail-list">
+            @foreach (var img in Model.Book.BookCoverImages)
+            {
+                <img src="@img.ImageURL" alt="Thumbnail" class="img-fluid rounded" onclick="document.getElementById('@mainImageId').src='@img.ImageURL'" />
+            }
+        </div>
+
+        <!-- Main image and details -->
+        <div class="col-md-4">
+            <img id="@mainImageId" src="@Model.Book.BookCoverImages.First().ImageURL" alt="@Model.Book.Title" class="img-fluid rounded shadow w-100" />
+        </div>
+
+        <div class="col-md-6">
+            <h2 class="mb-2">@Model.Book.Title</h2>
+            <h5 class="text-muted mb-4">by @Model.Book.Author</h5>
+
+            <div class="book-meta mb-3">
+                <p><strong>Category:</strong> @Model.Book.</p>
+                <p><strong>Published:</strong> @Model.Book.PublicationYear.ToString("MMMM yyyy")</p>
+                <p><strong>Publisher:</strong> @Model.Book.Publisher</p>
+            </div>
+
+            <h4 class="text-success mb-4">$@Model.Book.Price.ToString("0.00")</h4>
+
+            @using (Html.BeginForm(Model.IsInCart ? "RemoveBook" : "AddBook", "Cart", FormMethod.Post))
+            {
+                @Html.Hidden("UserID", Session["UserID"])
+                @Html.Hidden("BookID", Model.Book.ID)
+                <button type="submit" class="btn btn-lg @(Model.IsInCart ? "btn-outline-danger" : "btn-primary")">
+                    @(Model.IsInCart ? "Remove from Cart" : "Add to Cart")
+                </button>
+            }
+        </div>
+    </div>
+
+    <!-- Description -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="description-section">
+                <h4>Description</h4>
+                <p>@Model.Book.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
