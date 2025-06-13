@@ -11,9 +11,12 @@ namespace BookStore.Models
     {
         public int ID { get; set; }
         
+        [ForeignKey("Account")]
         public int AccountID { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
+        public string ShippingAddress { get; set; }
+        public string BillingAddress { get; set; }
 
         // public string SecurityQuestion { get; set; }
         // public string SecurityAnswer { get; set }

@@ -1,40 +1,160 @@
-﻿@model IEnumerable<BookStore.Models.User>
-
+﻿@model BookStore.Models.User
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "My Account";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Account.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Account.PasswordHash)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Account.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Account.PasswordHash)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+<h2>My Account</h2>
+@if (TempData["Message"] != null)
+{
+    var type = TempData["MessageType"] as string ?? "info";
+    <div class="alert alert-@type alert-dismissible fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
 }
 
-</table>
+<div class="row mt-4">
+    <div class="col-md-3">
+        <div class="nav flex-column nav-pills" id="account-tabs" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" data-toggle="pill" href="#settings" role="tab">Account Settings</a>
+            <a class="nav-link" data-toggle="pill" href="#password" role="tab">Change Password</a>
+            <a class="nav-link" data-toggle="pill" href="#orders" role="tab">My Books</a>
+            <a class="nav-link text-danger" data-toggle="pill" href="#delete" role="tab">Delete Account</a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="tab-content" id="account-tabs-content">
+
+            <div class="tab-pane fade show active" id="settings" role="tabpanel">
+                @using (Html.BeginForm("UpdateUser", "User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.ID)
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FullName)
+                        @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+                    </div>
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ShippingAddress)
+                        @Html.TextBoxFor(m => m.ShippingAddress, new { @class = "form-control", type = "text" })
+                    </div>
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BillingAddress)
+                        @Html.TextBoxFor(m => m.BillingAddress, new { @class = "form-control", type = "text" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                }
+            </div>
+
+            <div class="tab-pane fade" id="password" role="tabpanel">
+                @using (Html.BeginForm("ChangePassword", "User", FormMethod.Post, new { id = "changePasswordForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("id", Model.ID)
+
+                    <div class="form-group">
+                        <label>Current Password</label>
+                        <input type="password" name="currentPassword" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input id="newPassword" type="password" name="newPassword" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirm New Password</label>
+                        <input id="confirmPassword" type="password" name="confirmPassword" class="form-control" />
+                    </div>
+
+                    <button type="submit" id="changePasswordSubmitButton" class="btn btn-warning">Change Password</button>
+                }
+            </div>
+
+            <div class="tab-pane fade" id="orders" role="tabpanel">
+                <h4>Your Books</h4>
+                @if (Model.Books != null && Model.Books.Any())
+                {
+                    <ul class="list-group">
+                        @foreach (var book in Model.Books)
+                        {
+                            <li class="list-group-item">
+                                <strong>@book.Title</strong>
+                                <span class="text-muted">(@book.Author)</span>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>You have no books in your account.</p>
+                }
+            </div>
+
+            <div class="tab-pane fade" id="delete" role="tabpanel">
+                @using (Html.BeginForm("Delete", "User", FormMethod.Post, new { onsubmit = "return confirm('Are you sure you want to delete your account?');" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("id", Model.ID)
+
+                    <p class="text-danger">This action is irreversible. All your data will be permanently removed.</p>
+                    <button type="submit" class="btn btn-danger">Delete My Account</button>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#account-tabs a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+            $('#changePasswordSubmitButton').click(function (e) {
+                var newPassword = $('#newPassword').val();
+                var confirmPassword = $('#confirmPassword').val();
+
+                $('#change-password-alert').remove();
+
+                if (newPassword !== confirmPassword) {
+                    e.preventDefault();
+
+                    var alertHtml = `
+                        <div id="change-password-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            New password and confirmation do not match.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`;
+                    
+                    $('#password').prepend(alertHtml);
+                }
+                if (newPassword.length === 0) {
+                    e.preventDefault();
+
+                    var alertHtml = `
+                        <div id="change-password-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            New Password cannot be empty.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`;
+                    
+                    $('#password').prepend(alertHtml);
+                }
+            });
+        });
+    </script>
+}

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
 using BookStore.DAL;
@@ -35,10 +36,16 @@ namespace BookStore.Controllers
                         switch (acc.Role)
                         {
                             case "Admin":
-                                Session["AdminID"] = acc.ID;
+                                // var admin = db.Admin.FirstOrDefault(a => a.Account.ID == account.ID);
+                                // Session["AdminID"] = acc.ID;
                                 return RedirectToAction("DashBoard", "Admin");
                             case "User":
-                                Session["UserID"] = acc.ID;
+                                var user = db.User.Include("Account").FirstOrDefault(u => u.AccountID == acc.ID);
+                                if (user == null)
+                                {
+                                    return RedirectToAction("Login", "Account");
+                                }
+                                Session["UserID"] = user.ID;
                                 return RedirectToAction("Index", "Home");
                             default:
                                 return RedirectToAction("Login", "Account");
