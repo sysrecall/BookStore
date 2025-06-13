@@ -1,4 +1,4 @@
-﻿
+﻿@model BookStore.ViewModels.DashBoardViewModel
 @{
     ViewBag.Title = "DashBoard";
     Layout = "~/Views/Shared/Admin/_SideNav.cshtml";
@@ -22,13 +22,13 @@
 </style>
 
 @{
-    var totalSales = "15789.45";
+    //var totalSales = "15789.45";
     var totalSalesChange = "+12.5% from last month";
-    var orders = 156;
+    //var orders = 156;
     var ordersChange = "+5.2% from last month";
-    var booksInStock = 122;
+    //var booksInStock = 122;
     var booksInStockChange = "+3 +2.1% from last month";
-    var activeUsers = 4;
+    //var activeUsers = 4;
     var activeUsersChange = "+3 +8.4% from last month";
 }
 
@@ -38,7 +38,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Total Sales</h5>
-                    <p class="card-text"><i class="fa-solid fa-dollar-sign text-primary"></i> @totalSales</p>
+                    <p class="card-text"><i class="fa-solid fa-dollar-sign text-primary"></i> @Model.TotalSales</p>
                     <p class="card-text text-success"><i class="fa-solid fa-arrow-up text-success"></i> @totalSalesChange</p>
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Orders</h5>
-                    <p class="card-text"><i class="fa-solid fa-shopping-cart text-warning"></i> @orders</p>
+                    <p class="card-text"><i class="fa-solid fa-shopping-cart text-warning"></i> @Model.TotalOrders</p>
                     <p class="card-text text-success"><i class="fa-solid fa-arrow-up text-success"></i> @ordersChange</p>
                 </div>
             </div>
@@ -56,7 +56,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Books in Stock</h5>
-                    <p class="card-text"><i class="fa-solid fa-book text-info"></i> @booksInStock</p>
+                    <p class="card-text"><i class="fa-solid fa-book text-info"></i>@Model.BooksInStock</p>
                     <p class="card-text text-success"><i class="fa-solid fa-arrow-up text-success"></i> @booksInStockChange</p>
                 </div>
             </div>
@@ -65,7 +65,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Active Users</h5>
-                    <p class="card-text"><i class="fa-solid fa-users text-danger"></i> @activeUsers</p>
+                    <p class="card-text"><i class="fa-solid fa-users text-danger"></i>@Model.ActiveUsers</p>
                     <p class="card-text text-success"><i class="fa-solid fa-arrow-up text-success"></i> @activeUsersChange</p>
                 </div>
             </div>

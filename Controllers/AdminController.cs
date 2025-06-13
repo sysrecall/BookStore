@@ -118,7 +118,7 @@ namespace BookStore.Controllers
 
             return View(users);
         }
-       
+
 
         //[HttpPost]
         //public ActionResult AddUser(User user)
@@ -146,14 +146,15 @@ namespace BookStore.Controllers
 
             if (ModelState.IsValid)
             {
-                var account = new Account
+                try
                 {
-                    Username = user.Account.Username,
-                    PasswordHash = PasswordHash,
-                    Role = Role
-                };
+                    var account = new Account
+                    {
+                        Username = user.Account?.Username ?? string.Empty,
+                        PasswordHash = PasswordHash, // Consider hashing
+                        Role = Role
+                    };
 
-              
                     _AdminDb.Account.Add(account);
                     _AdminDb.SaveChanges();
 
@@ -165,13 +166,18 @@ namespace BookStore.Controllers
 
                     TempData["MsgAddUser"] = "User added successfully";
                     return RedirectToAction("Index");
-               
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "An error occurred while saving the user: " + ex.Message);
+                }
             }
 
-            return View("AddUser", user);
+            // On validation failure, fetch the user list and pass the invalid user
+            var users = _AdminDb.User.Include("Account").ToList();
+            ViewBag.NewUser = user; // Pass the invalid user for the modal
+            return View("Index", users);
         }
-
-
 
         public ActionResult DeleteUser(int id)
         {
@@ -247,23 +253,23 @@ namespace BookStore.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            ViewBag.BookTypeList = new SelectList(Enum.GetValues(typeof(BookType)).Cast<BookType>().Select(e => new SelectListItem
-            {
-                Value = e.ToString(),
-                Text = e.ToString()
-            }));
+            //ViewBag.BookTypeList = new SelectList(Enum.GetValues(typeof(BookType)).Cast<BookType>().Select(e => new SelectListItem
+            //{
+            //    Value = e.ToString(),
+            //    Text = e.ToString()
+            //}));
 
-            ViewBag.CategoryList = new SelectList(Enum.GetValues(typeof(Category)).Cast<Category>().Select(e => new SelectListItem
-            {
-                Value = e.ToString(),
-                Text = e.ToString()
-            }));
+            //ViewBag.CategoryList = new SelectList(Enum.GetValues(typeof(Category)).Cast<Category>().Select(e => new SelectListItem
+            //{
+            //    Value = e.ToString(),
+            //    Text = e.ToString()
+            //}));
 
             var data = _AdminDb.Book.ToList(); 
             return View(data);
         }
 
-        
+
 
 
         //[HttpPost]
@@ -279,27 +285,28 @@ namespace BookStore.Controllers
         //    return View(book);
         //}
         [HttpPost]
-        public ActionResult AddBooks(Book book, HttpPostedFileBase image)
+        public ActionResult AddBooks(Book book, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
-                if (image != null && image.ContentLength > 0)
+                if (Image != null && Image.ContentLength > 0)
                 {
                     string folderPath = Server.MapPath("~/Books/cover/");
                     if (!Directory.Exists(folderPath))
                     {
                         Directory.CreateDirectory(folderPath);
                     }
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(image.FileName);
+                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(Image.FileName);
                     string filePath = Path.Combine(folderPath, uniqueFileName);
 
-                    image.SaveAs(filePath);
-                    book.BookCoverImages = new List<BookCoverImage>{
+                    Image.SaveAs(filePath);
+                    book.BookCoverImages = new List<BookCoverImage>
+            {
                 new BookCoverImage
                 {
                     ImageURL = Url.Content("~/Books/cover/" + uniqueFileName)
-                }};
-
+                }
+            };
                 }
 
                 _AdminDb.Book.Add(book);
@@ -307,10 +314,13 @@ namespace BookStore.Controllers
                 return RedirectToAction("BookIndex");
             }
 
-            return View(book);
+            // Repopulate ViewBag for the modal if validation fails
+            ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookType.ToString());
+
+            // Fetch the book list for the main view
+            var books = BookIndex(); // Replace with your logic to get the book list
+            return View("BookIndex", books);
         }
-
-
 
 
 
@@ -508,27 +518,28 @@ namespace BookStore.Controllers
                 .Select(g => g.SampleBook)
                 .ToList();
 
+            // ✅ TotalSales = Sum of (Price * number of users who bought the book)
+            var totalSales = _AdminDb.User
+                .SelectMany(u => u.Books)
+                .Sum(b => b.Price);
+
+            // ✅ TotalOrders = Total number of books bought by users
+            var totalOrders = _AdminDb.User
+                .SelectMany(u => u.Books)
+                .Count();
+
             var viewModel = new DashBoardViewModel
             {
-                //TotalSales = _AdminDb.Orders.Sum(o => o.TotalAmount), 
-                TotalOrders = _AdminDb.Book.Count(),
-
+                TotalSales = (decimal)totalSales,
+                TotalOrders = totalOrders,
                 BooksInStock = books.Count(),
-
                 ActiveUsers = _AdminDb.User.Count(),
-
-                LowStockItems = lowStockItems,
-
-                //TopSellingBooks = _AdminDb.OrderDetails
-                //    .GroupBy(od => od.BookID)
-                //    .OrderByDescending(g => g.Sum(od => od.Quantity))
-                //    .Take(3)
-                //    .Select(g => g.FirstOrDefault().Book)
-                //    .ToList()
+                LowStockItems = lowStockItems
             };
 
             return View(viewModel);
         }
+
 
         protected override void Dispose(bool disposing)
         {
