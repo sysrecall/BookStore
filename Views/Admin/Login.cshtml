@@ -66,9 +66,9 @@
                     </div>
 
                     <div class="mb-3">
-                        @Html.LabelFor(m => m.Password)
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "******" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.Account.PasswordHash)
+                        @Html.PasswordFor(m => m.Account.PasswordHash, new { @class = "form-control", placeholder = "******" })
+                        @Html.ValidationMessageFor(m => m.Account.PasswordHash, "", new { @class = "text-danger" })
                     </div>
 
                     <button type="submit" class="btn btn-custom w-100">Log In</button>
@@ -88,9 +88,9 @@
                     </div>
 
                     <div class="mb-2">
-                        @Html.LabelFor(m => m.lastName)
-                        @Html.TextBoxFor(m => m.lastName, new { @class = "form-control", placeholder = "Last Name" })
-                        @Html.ValidationMessageFor(m => m.lastName, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.LastName)
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="mb-2">
@@ -100,9 +100,9 @@
                     </div>
 
                     <div class="mb-2">
-                        @Html.LabelFor(m => m.Password)
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.Account.PasswordHash)
+                        @Html.PasswordFor(m => m.Account.PasswordHash, new { @class = "form-control", placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Account.PasswordHash, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="mb-2">

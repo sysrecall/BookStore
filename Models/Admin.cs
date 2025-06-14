@@ -13,7 +13,8 @@ namespace BookStore.Models
         public int Id { get; set; }
         [ForeignKey("Account")]
         public int AccountID { get; set; }
-        public string lastName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         [Required(ErrorMessage = "Email is required")]
         public string Email { get; set; }

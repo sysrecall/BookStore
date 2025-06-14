@@ -318,9 +318,7 @@ namespace BookStore.Controllers
             // Repopulate ViewBag for the modal if validation fails
             ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookType.ToString());
 
-            // Fetch the book list for the main view
-            var books = BookIndex(); // Replace with your logic to get the book list
-            return View("BookIndex", books);
+            return View("BookIndex");
         }
 
 

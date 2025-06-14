@@ -13,9 +13,21 @@ namespace BookStore.DAL
         protected override void Seed(BookStoreContext context)
         {
             // base.Seed(context);
-            var accounts = new List<Account>
+            var admins = new List<Admin>
             {
-                new Account{Username="admin", PasswordHash="admin", Role = "Admin"},
+                new Admin
+                {
+                    Department = "Admin",
+                    Email = "admin@admin.com",
+                    Account = new Account
+                    {
+                        Username="admin", PasswordHash="admin", Role = "Admin"
+                    },
+                    FirstName = "Admin",
+                    LastName = "Admin",
+                    Position = "Admin",
+                    JoinDate = "2/2/2025"
+                }
             };
 
             var users = new List<User>
@@ -53,7 +65,7 @@ namespace BookStore.DAL
                 }
             };
 
-            accounts.ForEach(a => context.Account.Add(a));
+            admins.ForEach(a => context.Admin.Add(a));
             users.ForEach(u => context.User.Add(u));
             books.ForEach(b => context.Book.Add(b));
             

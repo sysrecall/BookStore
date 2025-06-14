@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -5,6 +6,8 @@ using BookStore.DAL;
 using BookStore.Models;
 using BookStore.Models.Store;
 using System.Data.Entity;
+using BookStore.ViewModels;
+
 namespace BookStore.Controllers.Store
 {
     public class CartController : Controller
@@ -14,6 +17,25 @@ namespace BookStore.Controllers.Store
         {
             db = new BookStoreContext();
         }
+        
+        public ActionResult Index(CartViewModel model)
+        {
+            if (Session["UserID"] == null)
+            {
+                if (Request.UrlReferrer != null) return Redirect(Request.UrlReferrer.ToString());
+                return RedirectToAction("Login", "Account");
+            }
+            var UserID = Convert.ToInt32(Session["UserID"]);
+
+            var cart = db.Cart.Include(c => c.Books).FirstOrDefault(c => c.UserID == UserID);
+            var cartViewModel = new CartViewModel
+            {
+                Books = cart?.Books.ToList() ?? new List<Book>()
+            };
+
+            return View(cartViewModel);
+        }
+
         
         [HttpPost]
         public ActionResult AddBook(int? UserID, int? BookID)
