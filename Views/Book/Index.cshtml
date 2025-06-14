@@ -1,6 +1,8 @@
 ﻿@model BookStore.ViewModels.BookCardViewModel
 @{
     ViewBag.Title = Model.Book.Title;
+    Layout = "~/Views/Shared/Store/_StoreLayout.cshtml";
+    
     var mainImageId = "main-book-image";
 }
 
@@ -51,7 +53,7 @@
             <h5 class="text-muted mb-4">by @Model.Book.Author</h5>
 
             <div class="book-meta mb-3">
-                <p><strong>Category:</strong> @Model.Book.</p>
+                <p><strong>Category:</strong> @Model.Book.Category</p>
                 <p><strong>Published:</strong> @Model.Book.PublicationYear.ToString("MMMM yyyy")</p>
                 <p><strong>Publisher:</strong> @Model.Book.Publisher</p>
             </div>

@@ -54,7 +54,8 @@ namespace BookStore.DAL
                 {
                     Title = "To Kill a Mockingbird", Author = "Harper Lee", Publisher = "Grand Central Publishing",
                     PublicationYear = new DateTime(1988, 10, 11), Pages = 384, Edition = "1st Edition",
-                    Price = 21.25, BookType = BookType.eBook, Category = Category.Classic,
+                    Price = 21.25, BookType = BookType.eBook, Category = Category.Classic, SoldInLifetime = 1234,
+                    Rating = 4.0f,
                     BookCoverImages = new List<BookCoverImage>
                     {
                         new BookCoverImage

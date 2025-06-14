@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -19,6 +20,9 @@ namespace BookStore.Models.Store
         public double Price { get; set; }
         public string Description { get; set; }
         public BookType BookType { get; set; }
+        public int SoldInLifetime { get; set; }
+        [Range(0,5)]
+        public float Rating { get; set; }
         
         public Category Category { get; set; }
 

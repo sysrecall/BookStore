@@ -28,7 +28,14 @@
             </div>
             <div class="text-muted small mb-1">by @Model.Book.Author</div>
             <div class="mb-2 star-rating">
-                ★★★★☆ <span class="text-muted small">(1,234)</span>
+                @{
+                    var rating = Model.Book.Rating;
+                    for (var i = 1; i <= 5; i++)
+                    {
+                        <span>@Html.Raw(i <= rating ? "&#9733;" : "&#9734;")</span>
+                    }
+                }
+                <span class="text-muted small">(@Model.Book.SoldInLifetime)</span>
             </div>
             <div class="fw-bold mb-2">$@Model.Book.Price</div>
             @using (Html.BeginForm(@Model.IsInCart ? "RemoveBook" : "AddBook", "Cart", FormMethod.Post))
