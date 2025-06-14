@@ -29,32 +29,32 @@ namespace BookStore.Controllers
         //=======================
         //Admin Related works here
         //=======================
-        public ActionResult Login()
-        {
-              return View();
-        }
-        [HttpPost]
-        public ActionResult Login(Admin admin)
-        {
+        //public ActionResult Login()
+        //{
+        //      return View();
+        //}
+        //[HttpPost]
+        //public ActionResult Login(Admin admin)
+        //{
 
-            if (ModelState.IsValid)
-            {
-                var existingAdmin = _AdminDb.Admin.FirstOrDefault(a => a.Email == admin.Email && a.Password == admin.Password);
-                if (existingAdmin != null)
-                {
-                    Session["AdminID"] = existingAdmin.Id;
-                    Session["AdminEmail"] = existingAdmin.Email;
-                    return RedirectToAction("DashBoard");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Invalid username or password.");
-                }
-                ViewBag.admin = existingAdmin;
+        //    if (ModelState.IsValid)
+        //    {
+        //        var existingAdmin = _AdminDb.Admin.FirstOrDefault(a => a.Email == admin.Email );
+        //        if (existingAdmin != null)
+        //        {
+        //            Session["AdminID"] = existingAdmin.Id;
+        //            Session["AdminEmail"] = existingAdmin.Email;
+        //            return RedirectToAction("DashBoard");
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("", "Invalid username or password.");
+        //        }
+        //        ViewBag.admin = existingAdmin;
 
-            }
-            return View(admin);
-        }
+        //    }
+        //    return View(admin);
+        //}
 
         public ActionResult SignUp()
         {
@@ -72,11 +72,12 @@ namespace BookStore.Controllers
         {
             if (ModelState.IsValid)
             {
+                admin.Account.Role = "Admin";
                 _AdminDb.Admin.Add(admin);
                 _AdminDb.SaveChanges();
                 return RedirectToAction("Login", "Account");
-
             }
+
             return View(admin);
         }
 

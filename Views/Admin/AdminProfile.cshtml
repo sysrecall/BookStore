@@ -59,7 +59,7 @@
         <!-- Left Card -->
         <div class="col-md-4 mb-4">
             <div class="profile-card">
-                <h4>@Model.FirstName</h4>
+                <h4>@Model.Account.Username</h4>
                 <small>@Model.Position</small>
                 <hr />
                 <p><i class="fas fa-envelope me-2"></i>@Model.Email</p>
@@ -73,7 +73,7 @@
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <strong>First Name:</strong><br />
-                        @Model.FirstName
+                        @Model.Account.Username
                     </div>
                     <div class="col-md-6">
                         <strong>Email:</strong><br />

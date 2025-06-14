@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using BookStore.Models.Store;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Models
@@ -9,10 +11,9 @@ namespace BookStore.Models
 	public class Admin
 	{
         public int Id { get; set; }
-        public string FirstName { get; set; }
+        [ForeignKey("Account")]
+        public int AccountID { get; set; }
         public string lastName { get; set; }
-        [Required]
-        public string Password{ get; set; }
 
         [Required(ErrorMessage = "Email is required")]
         public string Email { get; set; }
@@ -20,6 +21,8 @@ namespace BookStore.Models
         public string Position { get; set; }
 
         public string JoinDate { get; set; }
+        public virtual Account Account { get; set; }
+
 
 
         //public DateTime CreatedAt { get; set; }

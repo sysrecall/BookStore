@@ -36,8 +36,12 @@ namespace BookStore.Controllers
                         switch (acc.Role)
                         {
                             case "Admin":
-                                // var admin = db.Admin.FirstOrDefault(a => a.Account.ID == account.ID);
-                                // Session["AdminID"] = acc.ID;
+                                var admin = db.Admin.FirstOrDefault(a => a.AccountID == acc.ID);
+                                if (admin == null)
+                                {
+                                    return RedirectToAction("Login", "Account");
+                                }
+                                Session["AdminID"] = admin.Id;
                                 return RedirectToAction("DashBoard", "Admin");
                             case "User":
                                 var user = db.User.Include("Account").FirstOrDefault(u => u.AccountID == acc.ID);
