@@ -301,11 +301,11 @@ namespace BookStore.Controllers
                     string filePath = Path.Combine(folderPath, uniqueFileName);
 
                     Image.SaveAs(filePath);
-                    book.BookCoverImages = new List<BookCoverImage>
+                    book.BookImages = new List<BookImage>
             {
-                new BookCoverImage
+                new BookImage
                 {
-                    ImageURL = Url.Content("~/Books/cover/" + uniqueFileName)
+                    Url = Url.Content("~/Books/cover/" + uniqueFileName)
                 }
             };
                 }
@@ -370,9 +370,9 @@ namespace BookStore.Controllers
 
             if (book != null)
             {
-                foreach (var coverImage in book.BookCoverImages.ToList())
+                foreach (var coverImage in book.BookImages.ToList())
                 {
-                    _AdminDb.BookCoverImage.Remove(coverImage);
+                    _AdminDb.BookImage.Remove(coverImage);
                 }
 
                 _AdminDb.Book.Remove(book);

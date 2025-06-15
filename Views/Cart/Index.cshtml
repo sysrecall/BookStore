@@ -1,4 +1,5 @@
 @model BookStore.ViewModels.CartViewModel
+@using System.Diagnostics
 @using BookStore.Models.Store
 
 @{
@@ -9,7 +10,7 @@
 <div class="container mt-5">
     <h2 class="mb-4">🛒 Your Shopping Cart</h2>
 
-    @if (Model.Books == null || !Model.Books.Any())
+    @if (Model.Cart.CartItems == null || !Model.Cart.CartItems.Any())
     {
         <div class="alert alert-info">
             Your cart is empty. <a href="@Url.Action("Index", "Home")" class="text-secondary">Browse books</a> to add some!
@@ -28,37 +29,58 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var book in Model.Books)
-                {
-                    <tr>
-                        <td style="width: 100px;">
-                            <img src="@book.BookCoverImages.First().ImageURL" class="img-thumbnail" style="height: 100px;" />
-                        </td>
-                        <td>
-                            <a href="@Url.Action("Index", "Book", new { BookID = book.ID })" class="fw-bold">
-                                @book.Title
-                            </a>
-                        </td>
-                        <td>@book.Author</td>
-                        <td>$@book.Price.ToString("0.00")</td>
-                        <td>
-                            @using (Html.BeginForm("RemoveBook", "Cart", FormMethod.Post))
-                            {
+            @foreach (var item in Model.Cart.CartItems)
+            {
+                var book = item.Book;
+                var quantity = item.Quantity;
+
+                <tr>
+                    <td style="width: 100px;">
+                        <img src="@book.BookImages.First().Url" class="img-thumbnail" style="height: 100px;"/>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Index", "Book", new { BookID = book.ID })" class="fw-bold">
+                            @book.Title
+                        </a>
+                    </td>
+                    <td>@book.Author</td>
+                    <td>$@book.Price.ToString("0.00")</td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <form method="post" action="@Url.Action("DecrementBook", "Cart")" style="display:inline;">
                                 @Html.Hidden("UserID", Session["UserID"])
                                 @Html.Hidden("BookID", book.ID)
-                                <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
-                            }
-                        </td>
-                    </tr>
-                }
+                                <button type="submit" class="btn btn-sm btn-outline-secondary" @(quantity <= 1 ? "disabled" : "")>-</button>
+                            </form>
+                            <span class="mx-2">@quantity</span>
+                            <form method="post" action="@Url.Action("AddBook", "Cart")" style="display:inline;">
+                                @Html.Hidden("UserID", Session["UserID"])
+                                @Html.Hidden("BookID", book.ID)
+                                <button type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+                            </form>
+                        </div>
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("RemoveBook", "Cart", FormMethod.Post))
+                        {
+                            @Html.Hidden("UserID", Session["UserID"])
+                            @Html.Hidden("BookID", book.ID)
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
+                        }
+                    </td>
+                </tr>
+            }
             </tbody>
+
+
         </table>
 
         <div class="d-flex justify-content-between align-items-center mt-4">
             <h4>Total: $@Model.TotalPrice.ToString("0.00")</h4>
-            <a href="@Url.Action("Checkout", "Cart")" class="btn btn-success btn-lg">
-                Proceed to Checkout
-            </a>
+            @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
+            {
+                <input type="submit" class="btn btn-success btn-lg" value="Proceed to Checkout"/>
+            }
         </div>
     }
 </div>

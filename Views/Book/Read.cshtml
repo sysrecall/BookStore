@@ -1,0 +1,11 @@
+@model BookStore.Models.Store.Book
+@{
+    ViewBag.Title = Model.Title;
+    var bookPath = Url.Content(Model.BookPath); // e.g. ~/Content/Books/test.pdf
+    var pdfPath = HttpUtility.UrlEncode(bookPath);
+    var viewerUrl = Url.Action("Mjs", "Mime", new { path = "pdfjs/web/viewer.html" }) + "?file=" + pdfPath;
+    // Layout = "~/Views/Shared/Store/_StoreLayout.cshtml";
+}
+
+<iframe id="pdf-frame" src="@viewerUrl"
+width="100%" height="1000px" style="border: none;"></iframe>

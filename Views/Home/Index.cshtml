@@ -7,9 +7,7 @@
 }
 
 <div class="container mt-4">
-    <!-- Search and Category Row -->
     <div class="row mb-4">
-        <!-- Category Sidebar -->
         <div class="col-md-3">
             <h5>Categories</h5>
             <ul class="list-group">
@@ -25,16 +23,13 @@
             </ul>
         </div>
 
-        <!-- Book Grid and Search -->
         <div class="col-md-9">
-            <!-- Search Bar -->
             <form class="input-group mb-4" method="get" action="@Url.Action("Index")">
                 <input type="text" name="SearchQuery" class="form-control" placeholder="Search for books..." value="@Model.SearchQuery" />
                 <input type="hidden" name="SelectedCategory" value="@Model.SelectedCategory" />
                 <button class="btn btn-primary" type="submit">Search</button>
             </form>
 
-            <!-- Book Grid -->
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 @foreach (var bookCard in Model.BookCards)
                 {

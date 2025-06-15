@@ -18,6 +18,7 @@ namespace BookStore.Models.Store
         public int Pages { get; set; }
         public string Edition { get; set; }
         public double Price { get; set; }
+        public string BookPath { get; set; }
         public string Description { get; set; }
         public BookType BookType { get; set; }
         public int SoldInLifetime { get; set; }
@@ -26,7 +27,7 @@ namespace BookStore.Models.Store
         
         public Category Category { get; set; }
 
-        public virtual ICollection<BookCoverImage> BookCoverImages { get; set; }
+        public virtual ICollection<BookImage> BookImages { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
     }
 

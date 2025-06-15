@@ -21,9 +21,11 @@ namespace BookStore.DAL
         public DbSet<Admin> Admin { get; set; }
         public DbSet<Book> Book { get; set; }
         public DbSet<Inventory> Inventory { get; set; }
-        public DbSet<Transaction> Transaction { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderItem> OrderItem { get; set; }
         
-        public DbSet<BookCoverImage> BookCoverImage { get; set; }
+        public DbSet<CartItem> CartItem { get; set; }
+        public DbSet<BookImage> BookImage { get; set; }
         
         public DbSet<Cart> Cart { get; set; }
 

@@ -1,17 +1,18 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookStore.Models.Store
 {
-    public class Cart
+    public class Order
     {
         public int ID { get; set; }
         [ForeignKey("User")]
         public int UserID { get; set; }
-        
+        public DateTime DatePlaced { get; set; } = DateTime.Now;
+        public double TotalAmount { get; set; }
+
         public virtual User User { get; set; }
-        
-        public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+        public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>(); 
     }
 }

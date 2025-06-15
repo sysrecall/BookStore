@@ -91,10 +91,10 @@
                         {
                             <tr>
                                 <td>
-                                    @if (item.BookCoverImages != null && item.BookCoverImages.Any())
+                                    @if (item.BookImages != null && item.BookImages.Any())
                                     {
-                                        var coverImage = item.BookCoverImages.First();
-                                        <img src="@coverImage.ImageURL" alt="@item.Title" class="img-fluid" />
+                                        var coverImage = item.BookImages.First();
+                                        <img src="@coverImage" alt="@item.Title" class="img-fluid" />
                                     }
                                     else
                                     {

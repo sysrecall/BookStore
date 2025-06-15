@@ -37,15 +37,15 @@
     <div class="row">
         <!-- Left column: thumbnails -->
         <div class="col-md-2 thumbnail-list">
-            @foreach (var img in Model.Book.BookCoverImages)
+            @foreach (var img in Model.Book.BookImages)
             {
-                <img src="@img.ImageURL" alt="Thumbnail" class="img-fluid rounded" onclick="document.getElementById('@mainImageId').src='@img.ImageURL'" />
+                <img src="@img.Url" alt="Thumbnail" class="img-fluid rounded" onclick="document.getElementById('@mainImageId').src='@img'" />
             }
         </div>
 
         <!-- Main image and details -->
         <div class="col-md-4">
-            <img id="@mainImageId" src="@Model.Book.BookCoverImages.First().ImageURL" alt="@Model.Book.Title" class="img-fluid rounded shadow w-100" />
+            <img id="@mainImageId" src="@Model.Book.BookImages.First().Url" alt="@Model.Book.Title" class="img-fluid rounded shadow w-100" />
         </div>
 
         <div class="col-md-6">

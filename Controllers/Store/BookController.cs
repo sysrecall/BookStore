@@ -19,32 +19,39 @@ namespace BookStore.Controllers.Store
         [Route("Book/{BookID:int}")]
         public ActionResult Index(int? BookID)
         {
-           if (BookID == null)
-           {
-               return RedirectToAction("Index", "Home");
-           }
+            if (BookID == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
-           var bookCardViewModel = new BookCardViewModel();
-           
-           var book = db.Book.FirstOrDefault(b => b.ID == BookID);
-           if (book == null) return RedirectToAction("Index", "Home");
-           
-           bookCardViewModel.Book = book;
-           
-           if (Session["UserID"] == null) return View(bookCardViewModel);
-           var UserID = Convert.ToInt32(Session["UserID"]);
-           
-           var _user = db.User.FirstOrDefault(x => x.ID == UserID);
-           if (_user == null) return View(bookCardViewModel);
-           
-           var cart = db.Cart.Include(c => c.Books).FirstOrDefault(x => x.UserID == UserID);
-           if (cart?.Books != null && cart.Books.Contains(book))
-           {
-               bookCardViewModel.IsInCart = true;
-           }
-           
-           return View(bookCardViewModel);
+            var book = db.Book.FirstOrDefault(b => b.ID == BookID);
+            if (book == null) return RedirectToAction("Index", "Home");
+
+            var bookCardViewModel = new BookCardViewModel
+            {
+                Book = book,
+                IsInCart = false
+            };
+
+            if (Session["UserID"] != null)
+            {
+                int userId = Convert.ToInt32(Session["UserID"]);
+                var user = db.User.Include("Books").FirstOrDefault(u => u.ID == userId);
+
+                var cart = db.Cart
+                    .Include(c => c.CartItems)
+                    .FirstOrDefault(c => c.UserID == userId);
+
+                if (cart != null && cart.CartItems.Any(ci => ci.BookID == book.ID))
+                {
+                    bookCardViewModel.IsInCart = true;
+                    bookCardViewModel.IsOwned = user?.Books.Contains(book) ?? false;
+                }
+            }
+
+            return View(bookCardViewModel);
         }
+ 
 
         public ActionResult Details(int? id)
         {
@@ -127,6 +134,28 @@ namespace BookStore.Controllers.Store
             return RedirectToAction("Index");
         }
 
+        public ActionResult Read(int bookId)
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Book");
+            }
+            
+            int userId = Convert.ToInt32(Session["UserID"]);
+            var user = db.User.Include("Books").FirstOrDefault(u => u.ID == userId);
+            if (user == null)
+                return RedirectToAction("Login", "Account");
+                
+            var book = db.Book.FirstOrDefault(b => b.ID == bookId);
+            if (book == null)
+                return HttpNotFound();
+
+            if (!user.Books.Contains(book))
+                return RedirectToAction("Index", "Book", new { BookId = bookId });
+            
+            return View(book);
+        }
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

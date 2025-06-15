@@ -6,5 +6,7 @@ namespace BookStore.ViewModels
     {
         public Book Book { get; set; }
         public bool IsInCart { get; set; }
+        public bool IsOwned { get; set; }
+        public int QuantityInCart { get; set; } = 0;
     }
 }

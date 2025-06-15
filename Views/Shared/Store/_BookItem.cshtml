@@ -1,5 +1,10 @@
 ﻿@model BookStore.ViewModels.BookCardViewModel   
 @using BookStore.Models.Store
+
+@{
+    var imageUrl = Model?.Book?.BookImages?.First().Url ?? 
+   "https://w7.pngwing.com/pngs/790/734/png-transparent-hardcover-book-cover-cover-rectangle-publishing-black.png";
+}
 <style>
     .book-card img {
         height: 200px;
@@ -18,7 +23,7 @@
 <div class="col">
     <div class="card book-card h-100">
         <a href="@Url.Action("Index", "Book", new { BookID = Model.Book.ID })">
-            <img src="@Model.Book.BookCoverImages.First().ImageURL" class="card-img-top" alt="Book Cover">
+            <img src="@imageUrl" class="card-img-top" alt="Book Cover">
         </a>
         <div class="card-body d-flex flex-column">
             <div class="book-title">
@@ -29,7 +34,7 @@
             <div class="text-muted small mb-1">by @Model.Book.Author</div>
             <div class="mb-2 star-rating">
                 @{
-                    var rating = Model.Book.Rating;
+                    var rating = Math.Round(Model.Book.Rating);
                     for (var i = 1; i <= 5; i++)
                     {
                         <span>@Html.Raw(i <= rating ? "&#9733;" : "&#9734;")</span>
@@ -38,12 +43,15 @@
                 <span class="text-muted small">(@Model.Book.SoldInLifetime)</span>
             </div>
             <div class="fw-bold mb-2">$@Model.Book.Price</div>
-            @using (Html.BeginForm(@Model.IsInCart ? "RemoveBook" : "AddBook", "Cart", FormMethod.Post))
+            @using (Html.BeginForm(
+                Model.IsOwned ? "Read" : Model.IsInCart ? "RemoveBook" : "AddBook",
+                Model.IsOwned ? "Book" : "Cart",
+                Model.IsOwned ? FormMethod.Get : FormMethod.Post
+            ))
             {
-                @Html.Hidden("UserID", Session["UserID"])
-                @Html.Hidden("BookID", Model.Book.ID)
-                <button type="submit" class="btn btn-sm @(Model.IsInCart ? "btn-danger" : "btn-warning") mt-auto">
-                    @(Model.IsInCart ? "Remove from Cart" : "Add to Cart")
+                @Html.Hidden("bookID", Model.Book.ID)
+                <button type="submit" class="btn btn-sm @(Model.IsOwned ? "btn-success" : Model.IsInCart ? "btn-danger" : "btn-warning") mt-auto">
+                    @(Model.IsOwned ? "Read" : Model.IsInCart ? "Remove from Cart" : "Add to Cart")
                 </button>
             }
         </div>

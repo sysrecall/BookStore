@@ -6,7 +6,7 @@ namespace BookStore.ViewModels
 {
     public class CartViewModel
     {
-        public List<Book> Books { get; set; } = new List<Book>();
-        public double TotalPrice => Books?.Sum(b => b.Price) ?? 0; 
+        public Cart Cart { get; set; }
+        public double TotalPrice => Cart.CartItems.Sum(ci => ci.Book.Price * ci.Quantity); 
     }
 }
