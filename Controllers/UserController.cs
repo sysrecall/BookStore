@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BookStore.DAL;
 using BookStore.Models;
+using BookStore.Models.Store;
 
 namespace BookStore.Controllers
 {
@@ -42,6 +43,44 @@ namespace BookStore.Controllers
         {
             return View();
         }
+        private void MigrateGuestCartToUser(int userId)
+        {
+            string guestId = Request.Cookies["GuestID"]?.Value;
+            if (string.IsNullOrEmpty(guestId)) return;
+
+            var guestCart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.GuestID == guestId);
+            if (guestCart == null) return;
+
+            var userCart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.UserID == userId);
+
+            if (userCart == null)
+            {
+                userCart = new Cart { UserID = userId };
+                db.Cart.Add(userCart);
+            }
+
+            foreach (var guestItem in guestCart.CartItems)
+            {
+                var existingItem = userCart.CartItems.FirstOrDefault(ci => ci.BookID == guestItem.BookID);
+                if (existingItem != null)
+                {
+                    existingItem.Quantity += guestItem.Quantity;
+                }
+                else
+                {
+                    userCart.CartItems.Add(new CartItem
+                    {
+                        BookID = guestItem.BookID,
+                        Quantity = guestItem.Quantity
+                    });
+                }
+            }
+
+            db.CartItem.RemoveRange(guestCart.CartItems);
+            db.Cart.Remove(guestCart);
+
+            db.SaveChanges();
+        }
 
         [HttpPost]
         public ActionResult Register(User user)
@@ -51,9 +90,16 @@ namespace BookStore.Controllers
                 user.Account.Role = "User";
                 db.User.Add(user);
                 db.SaveChanges();
+                
+                if (Session["GuestID"] != null)
+                    MigrateGuestCartToUser(user.ID);
+
                 return RedirectToAction("Login", "Account");
             }
-
+            
+            if (TempData["RedirectAfterLogin"] != null)
+                return RedirectToAction("Checkout", "Cart");
+            
             return View(user);
         }
         

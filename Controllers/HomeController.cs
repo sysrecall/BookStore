@@ -18,7 +18,7 @@ namespace BookStore.Controllers
         {
             db = new BookStoreContext();
         }
-        public ActionResult Index(HomeIndexViewModel model)
+       public ActionResult Index(HomeIndexViewModel model)
         {
             var booksQuery = db.Book.AsQueryable();
 
@@ -28,33 +28,57 @@ namespace BookStore.Controllers
                 booksQuery = booksQuery.Where(x => x.Title.ToLower().Contains(searchLower));
             }
 
-            var books = booksQuery.ToList();
-
             if (model.SelectedCategory != null)
             {
-                books = books.Where(x => x.Category == model.SelectedCategory).ToList();
+                booksQuery = booksQuery.Where(x => x.Category == model.SelectedCategory);
             }
 
-            Cart cart = null;
-            Dictionary<int, int> bookQuantities = new Dictionary<int, int>(); // BookID -> Quantity
-            
-            int userId = Convert.ToInt32(Session["UserID"]);
-            User user = null;
+            int pageSize = 20;
+            int currentPage = model.CurrentPage > 0 ? model.CurrentPage : 1;
 
-            if (Session["UserID"] != null)
+            int totalBooks = booksQuery.Count();
+            int totalPages = (int)Math.Ceiling((double)totalBooks / pageSize);
+
+            var pagedBooks = booksQuery
+                .OrderBy(b => b.Title)
+                .Skip((currentPage - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            Dictionary<int, int> bookQuantities = new Dictionary<int, int>();
+            User user = null;
+            int userId = 0;
+
+            if (Session["UserID"] != null && int.TryParse(Session["UserID"].ToString(), out userId))
             {
-                user = db.User.Include("Books").FirstOrDefault(u => u.ID == userId);
-                cart = db.Cart
+                user = db.User.Include(u => u.Books).FirstOrDefault(u => u.ID == userId);
+                var cart = db.Cart
                     .Include(c => c.CartItems.Select(ci => ci.Book))
-                    .FirstOrDefault(x => x.UserID == userId);
+                    .FirstOrDefault(c => c.UserID == userId);
 
                 if (cart?.CartItems != null)
                 {
                     bookQuantities = cart.CartItems.ToDictionary(ci => ci.BookID, ci => ci.Quantity);
                 }
             }
+            else
+            {
+                // Guest user: get guest ID cookie
+                var guestId = Request.Cookies["GuestID"]?.Value;
+                if (!string.IsNullOrEmpty(guestId))
+                {
+                    var guestCart = db.Cart
+                        .Include(c => c.CartItems.Select(ci => ci.Book))
+                        .FirstOrDefault(c => c.GuestID == guestId);
 
-            var bookCards = books.Select(book => new BookCardViewModel
+                    if (guestCart?.CartItems != null)
+                    {
+                        bookQuantities = guestCart.CartItems.ToDictionary(ci => ci.BookID, ci => ci.Quantity);
+                    }
+                }
+            }
+
+            var bookCards = pagedBooks.Select(book => new BookCardViewModel
             {
                 Book = book,
                 QuantityInCart = bookQuantities.ContainsKey(book.ID) ? bookQuantities[book.ID] : 0,
@@ -66,15 +90,15 @@ namespace BookStore.Controllers
             {
                 BookCards = bookCards,
                 Categories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList(),
-                CurrentPage = model.CurrentPage,
+                CurrentPage = currentPage,
                 SelectedCategory = model.SelectedCategory,
                 SearchQuery = model.SearchQuery,
-                TotalPages = 10,
+                TotalPages = totalPages,
             };
 
             return View(homeIndexViewModel);
         }
- 
+         
 
         public ActionResult About()
         {

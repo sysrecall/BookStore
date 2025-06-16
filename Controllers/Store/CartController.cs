@@ -183,28 +183,24 @@ namespace BookStore.Controllers.Store
         [HttpGet]
         public ActionResult Checkout(CartViewModel cartViewModel)
         {
-            Cart cart;
+            if (Session["UserID"] == null)
+            {
+                TempData["RedirectAfterLogin"] = "Cart/Checkout";
+                Session["GuestID"] = GetGuestId();
+                return RedirectToAction("Register", "User");
+            }
+
+            var userId = Convert.ToInt32(Session["UserID"]);
+            var cart = db.Cart.Include(c => c.CartItems.Select(ci => ci.Book))
+                .FirstOrDefault(c => c.UserID == userId);
 
             if (cartViewModel == null)
                 cartViewModel = new CartViewModel();
-            
-            if (Session["UserID"] != null)
-            {
-                var userId = Convert.ToInt32(Session["UserID"]);
-                cart = db.Cart.Include(c => c.CartItems.Select(ci => ci.Book))
-                              .FirstOrDefault(c => c.UserID == userId);
-            }
-            else
-            {
-                string guestId = GetGuestId();
-                cart = db.Cart.Include(c => c.CartItems.Select(ci => ci.Book))
-                              .FirstOrDefault(c => c.GuestID == guestId);
-            } 
-            
-            cartViewModel.Cart = cart;
 
+            cartViewModel.Cart = cart;
             return View(cartViewModel);
         }
+
 
         [HttpPost]
         public ActionResult Checkout()
