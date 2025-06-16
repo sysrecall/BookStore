@@ -608,6 +608,7 @@
     <Content Include="Scripts\pdfjs\web\wasm\qcms_bg.wasm" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Book\Read.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\Store\_BookItem.cshtml" />
     <Content Include="Views\Shared\Store\_StoreLayout.cshtml" />

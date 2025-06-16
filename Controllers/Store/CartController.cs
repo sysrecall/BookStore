@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Web;
 using BookStore.DAL;
 using BookStore.Models.Store;
 using BookStore.ViewModels;
@@ -18,26 +19,34 @@ namespace BookStore.Controllers.Store
         {
             db = new BookStoreContext();
         }
-
-        public ActionResult Index()
+        
+        private string GetGuestId()
         {
-            if (Session["UserID"] == null)
+            var cookie = Request.Cookies["GuestID"];
+            return cookie?.Value;
+        }
+
+        public ActionResult Index(CartViewModel cartViewModel)
+        {
+            if (cartViewModel == null)
+                cartViewModel = new CartViewModel();
+            
+            Cart cart;
+            
+            if (Session["UserID"] != null)
             {
-                if (Request.UrlReferrer != null) 
-                    return Redirect(Request.UrlReferrer.ToString());
-                return RedirectToAction("Login", "Account");
+                var userId = Convert.ToInt32(Session["UserID"]);
+                cart = db.Cart.Include(c => c.CartItems.Select(ci => ci.Book))
+                              .FirstOrDefault(c => c.UserID == userId);
+            }
+            else
+            {
+                string guestId = GetGuestId();
+                cart = db.Cart.Include(c => c.CartItems.Select(ci => ci.Book))
+                              .FirstOrDefault(c => c.GuestID == guestId);
             }
 
-            var userId = Convert.ToInt32(Session["UserID"]);
-
-            var cart = db.Cart
-                         .Include(c => c.CartItems.Select(ci => ci.Book))
-                         .FirstOrDefault(c => c.UserID == userId);
-
-            var cartViewModel = new CartViewModel
-            {
-                Cart = cart
-            };
+            cartViewModel.Cart = cart;
 
             return View(cartViewModel);
         }
@@ -45,50 +54,64 @@ namespace BookStore.Controllers.Store
         [HttpPost]
         public ActionResult AddBook(int? bookId)
         {
-            if (Session["UserID"] == null || bookId == null)
-                return RedirectToAction("Login", "Account");
+            if (bookId == null)
+                return RedirectToAction("Index");
 
-            int userId = Convert.ToInt32(Session["UserID"]);
+            Cart cart;
 
-            var cart = db.Cart
-                         .Include(c => c.CartItems)
-                         .FirstOrDefault(c => c.UserID == userId);
-
-            if (cart == null)
+            if (Session["UserID"] != null)
             {
-                var user = db.User.Find(userId);
-                cart = new Cart { UserID = userId, User = user };
-                db.Cart.Add(cart);
+                int userId = Convert.ToInt32(Session["UserID"]);
+                cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.UserID == userId);
+                if (cart == null)
+                {
+                    var user = db.User.Find(userId);
+                    cart = new Cart { UserID = userId, User = user };
+                    db.Cart.Add(cart);
+                }
+            }
+            else
+            {
+                string guestId = GetGuestId();
+                cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.GuestID == guestId);
+                if (cart == null)
+                {
+                    cart = new Cart { GuestID = guestId };
+                    db.Cart.Add(cart);
+                }
             }
 
             var existingItem = cart.CartItems.FirstOrDefault(ci => ci.BookID == bookId.Value);
             if (existingItem != null)
-            {
                 existingItem.Quantity++;
-            }
             else
-            {
-                cart.CartItems.Add(new CartItem
-                {
-                    BookID = bookId.Value,
-                    Quantity = 1
-                });
-            }
+                cart.CartItems.Add(new CartItem { BookID = bookId.Value, Quantity = 1 });
 
             db.SaveChanges();
+
             return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Index", "Home"));
         }
+ 
 
         [HttpPost]
         public ActionResult DecrementBook(int? bookId)
         {
-            if (Session["UserID"] == null || bookId == null)
+            if (bookId == null)
                 return RedirectToAction("Login", "Account");
-
-            int userId = Convert.ToInt32(Session["UserID"]);
-
-            var cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.UserID == userId);
-            var item = cart?.CartItems.FirstOrDefault(ci => ci.BookID == bookId.Value);
+            
+            Cart cart;
+            if (Session["UserID"] != null)
+            {
+                int userId = Convert.ToInt32(Session["UserID"]);
+                cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.UserID == userId);
+            }
+            else
+            {
+                string guestId = GetGuestId();
+                cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.GuestID == guestId);
+            }
+ 
+            var item = cart?.CartItems.FirstOrDefault(ci => bookId != null && ci.BookID == bookId.Value);
 
             if (item != null)
             {
@@ -105,12 +128,21 @@ namespace BookStore.Controllers.Store
         [HttpPost]
         public ActionResult RemoveBook(int? bookId)
         {
-            if (Session["UserID"] == null || bookId == null)
+            if (bookId == null)
                 return RedirectToAction("Login", "Account");
 
-            int userId = Convert.ToInt32(Session["UserID"]);
-
-            var cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.UserID == userId);
+            Cart cart;
+            if (Session["UserID"] != null)
+            {
+                int userId = Convert.ToInt32(Session["UserID"]);
+                cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.UserID == userId);
+            }
+            else
+            {
+                string guestId = GetGuestId();
+                cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.GuestID == guestId);
+            }
+            
             var item = cart?.CartItems.FirstOrDefault(ci => ci.BookID == bookId.Value);
 
             if (item != null)
@@ -125,12 +157,18 @@ namespace BookStore.Controllers.Store
         [HttpPost]
         public ActionResult DeleteCart()
         {
-            if (Session["UserID"] == null)
-                return RedirectToAction("Login", "Account");
+            Cart cart;
+            if (Session["UserID"] != null)
+            {
+                int userId = Convert.ToInt32(Session["UserID"]);
+                cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.UserID == userId);
+            }
+            else
+            {
+                string guestId = GetGuestId();
+                cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.GuestID == guestId);
+            }
 
-            int userId = Convert.ToInt32(Session["UserID"]);
-
-            var cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.UserID == userId);
             if (cart != null)
             {
                 db.CartItem.RemoveRange(cart.CartItems);
@@ -139,6 +177,33 @@ namespace BookStore.Controllers.Store
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+
+        [HttpGet]
+        public ActionResult Checkout(CartViewModel cartViewModel)
+        {
+            Cart cart;
+
+            if (cartViewModel == null)
+                cartViewModel = new CartViewModel();
+            
+            if (Session["UserID"] != null)
+            {
+                var userId = Convert.ToInt32(Session["UserID"]);
+                cart = db.Cart.Include(c => c.CartItems.Select(ci => ci.Book))
+                              .FirstOrDefault(c => c.UserID == userId);
+            }
+            else
+            {
+                string guestId = GetGuestId();
+                cart = db.Cart.Include(c => c.CartItems.Select(ci => ci.Book))
+                              .FirstOrDefault(c => c.GuestID == guestId);
+            } 
+            
+            cartViewModel.Cart = cart;
+
+            return View(cartViewModel);
         }
 
         [HttpPost]
@@ -188,7 +253,7 @@ namespace BookStore.Controllers.Store
 
             db.Order.Add(order);
             db.CartItem.RemoveRange(cart.CartItems);
-            db.Cart.Remove(cart);
+            // db.Cart.Remove(cart);
             
             order.OrderItems.ForEach(oi => user.Books.Add(oi.Book)); 
 

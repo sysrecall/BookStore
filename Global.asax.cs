@@ -22,5 +22,24 @@ namespace BookStore
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Application_BeginRequest()
+        {
+            var context = HttpContext.Current;
+            var guestCookie = context.Request.Cookies["GuestID"];
+
+            if (guestCookie == null || string.IsNullOrWhiteSpace(guestCookie.Value))
+            {
+                string newGuestId = Guid.NewGuid().ToString();
+
+                var cookie = new HttpCookie("GuestID", newGuestId)
+                {
+                    HttpOnly = true,
+                    Expires = DateTime.Now.AddDays(7) 
+                };
+
+                context.Response.Cookies.Add(cookie);
+            }
+        }
     }
 }

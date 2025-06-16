@@ -13,6 +13,7 @@ namespace BookStore.Models.Store
 
         public int Quantity { get; set; }
         public double Price { get; set; }
+        
         public double Total => Price * Quantity;
 
         public virtual Book Book { get; set; }

@@ -8,10 +8,17 @@ namespace BookStore.Models.Store
     {
         public int ID { get; set; }
         [ForeignKey("User")]
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
+        public string GuestID { get; set; }
         
         public virtual User User { get; set; }
+        public virtual ICollection<CartItem> CartItems { get; set; }
         
-        public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+        
+        public Cart()
+        {
+            CartItems = new List<CartItem>();
+        }
+
     }
 }
