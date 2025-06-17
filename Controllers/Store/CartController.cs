@@ -45,7 +45,7 @@ namespace BookStore.Controllers.Store
                 cart = db.Cart.Include(c => c.CartItems.Select(ci => ci.Book))
                               .FirstOrDefault(c => c.GuestID == guestId);
             }
-
+            
             cartViewModel.Cart = cart;
 
             return View(cartViewModel);

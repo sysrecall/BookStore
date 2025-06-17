@@ -19,65 +19,255 @@
     .thumbnail-list img:hover {
         border-color: #007bff;
     }
-
-    .book-meta {
-        font-size: 0.9rem;
-        color: #555;
-    }
-
+    
     .description-section {
         background: #f9f9f9;
         padding: 20px;
         border-radius: 6px;
         margin-top: 30px;
     }
+    
+    .metadata-container {
+        position: relative;
+        margin: 20px 0;
+    }
+    
+    .metadata-carousel {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        padding: 15px 0;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        width: 100%;
+    }
+    
+    .metadata-carousel::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .metadata-card {
+        min-width: 110px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 4px;
+        background: white;
+        flex-shrink: 0;
+    }
+    
+    .metadata-label {
+        font-size: 0.8rem;
+        color: #555;
+        margin-bottom: 8px;
+    }
+    
+    .metadata-value {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .metadata-icon {
+        margin-bottom: 8px;
+        color: #555;
+        font-size: 1.5rem;
+    }
+
+    .metadata-icon i {
+        font-size: inherit;
+    }
+
+    .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .carousel-nav.prev {
+        left: -16px;
+    }
+
+    .carousel-nav.next {
+        right: -16px;
+    }
+
+    .carousel-nav:hover {
+        background: #f5f5f5;
+    }
+
+    .carousel-nav i {
+        color: #555;
+        font-size: 12px;
+    }
+
+    .carousel-nav.hidden {
+        display: none;
+    }
 </style>
 
 <div class="container mt-5">
     <div class="row">
-        <!-- Left column: thumbnails -->
-        <div class="col-md-2 thumbnail-list">
+        <div class="col-md-1 thumbnail-list">
             @foreach (var img in Model.Book.BookImages)
             {
-                <img src="@img.Url" alt="Thumbnail" class="img-fluid rounded" onclick="document.getElementById('@mainImageId').src='@img'" />
+                <img src="@img.Url" alt="Thumbnail" class="img-fluid rounded" onclick="document.getElementById('@mainImageId').src='@img.Url'" />
             }
         </div>
 
-        <!-- Main image and details -->
-        <div class="col-md-4">
+        <div class="col-md-3">
             <img id="@mainImageId" src="@Model.Book.BookImages.First().Url" alt="@Model.Book.Title" class="img-fluid rounded shadow w-100" />
         </div>
 
         <div class="col-md-6">
             <h2 class="mb-2">@Model.Book.Title</h2>
             <h5 class="text-muted mb-4">by @Model.Book.Author</h5>
+            
+            <div class="metadata-container">
+                <button class="carousel-nav prev hidden" aria-label="Previous metadata">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="metadata-carousel">
+                    <div class="metadata-card">
+                        <div class="metadata-label">Publisher</div>
+                        <div class="metadata-icon"><i class="fas fa-building"></i></div>
+                        <div class="metadata-value">@Model.Book.BookInfo.Publisher</div>
+                    </div>
 
-            <div class="book-meta mb-3">
-                <p><strong>Category:</strong> @Model.Book.Category</p>
-                <p><strong>Published:</strong> @Model.Book.PublicationYear.ToString("MMMM yyyy")</p>
-                <p><strong>Publisher:</strong> @Model.Book.Publisher</p>
+                    <div class="metadata-card">
+                        <div class="metadata-label">Published</div>
+                        <div class="metadata-icon"><i class="far fa-calendar-alt"></i></div>
+                        <div class="metadata-value">@Model.Book.BookInfo.PublicationYear.ToString("MMMM yyyy")</div>
+                    </div>
+
+                    <div class="metadata-card">
+                        <div class="metadata-label">Edition</div>
+                        <div class="metadata-icon"><i class="fas fa-book-open"></i></div>
+                        <div class="metadata-value">@Model.Book.BookInfo.Edition</div>
+                    </div>
+
+                    <div class="metadata-card">
+                        <div class="metadata-label">Pages</div>
+                        <div class="metadata-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="metadata-value">@Model.Book.BookInfo.Pages</div>
+                    </div>
+
+                    <div class="metadata-card">
+                        <div class="metadata-label">Book Type</div>
+                        <div class="metadata-icon"><i class="fas fa-book"></i></div>
+                        <div class="metadata-value">@Model.Book.BookInfo.BookType</div>
+                    </div>
+
+                    <div class="metadata-card">
+                        <div class="metadata-label">Category</div>
+                        <div class="metadata-icon"><i class="fas fa-tag"></i></div>
+                        <div class="metadata-value">@Model.Book.Category</div>
+                    </div>
+
+                    <div class="metadata-card">
+                        <div class="metadata-label">Rating</div>
+                        <div class="metadata-icon"><i class="fas fa-star"></i></div>
+                        <div class="metadata-value">@Model.Book.Rating.ToString("0.0")</div>
+                    </div>
+                </div>
+                
+                <button class="carousel-nav next" aria-label="Next metadata">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
 
             <h4 class="text-success mb-4">$@Model.Book.Price.ToString("0.00")</h4>
 
-            @using (Html.BeginForm(Model.IsInCart ? "RemoveBook" : "AddBook", "Cart", FormMethod.Post))
-            {
-                @Html.Hidden("UserID", Session["UserID"])
-                @Html.Hidden("BookID", Model.Book.ID)
-                <button type="submit" class="btn btn-lg @(Model.IsInCart ? "btn-outline-danger" : "btn-primary")">
-                    @(Model.IsInCart ? "Remove from Cart" : "Add to Cart")
-                </button>
-            }
+            @using (Html.BeginForm(
+                  Model.IsOwned ? "Read" : Model.IsInCart ? "RemoveBook" : "AddBook",
+                  Model.IsOwned ? "Book" : "Cart",
+                  Model.IsOwned ? FormMethod.Get : FormMethod.Post
+              ))
+              {
+                  @Html.Hidden("bookID", Model.Book.ID)
+                  <button type="submit" class="btn btn-lg @(Model.IsOwned ? "btn-success" : Model.IsInCart ? "btn-outline-danger" : "btn-primary") mt-auto">
+                      @(Model.IsOwned ? "Read" : Model.IsInCart ? "Remove from Cart" : "Add to Cart")
+                  </button>
+              } 
         </div>
     </div>
 
-    <!-- Description -->
     <div class="row mt-4">
         <div class="col-12">
             <div class="description-section">
                 <h4>Description</h4>
-                <p>@Model.Book.Description</p>
+                <p>@Model.Book.BookInfo.Description</p>
             </div>
         </div>
     </div>
+
+    @if (Model.RecommendedBooks.Any())
+    {
+        <div class="mt-5">
+            <h4 class="mb-3">
+                <span class="metadata-icon"><i class="fas fa-book"></i></span>
+                Books You May Like
+            </h4>
+            <div class="row">
+                @foreach (var rec in Model.RecommendedBooks)
+                {
+                    <div class="col-md-2 mb-4">
+                        <div class="card h-100 shadow-sm p-2">
+                            <a href="@Url.Action("Index", "Book", new { BookID = rec.ID })">
+                                <img src="@rec.BookImages.First().Url" alt="Thumbnail" class="img-fluid rounded" />
+                            </a>
+                            <div class="card-body d-none d-lg-block">
+                                <h6 class="card-title">@rec.Title</h6>
+                                <p class="card-text text-muted">by @rec.Author</p>
+                                <p class="text-success font-weight-bold">$@rec.Price.ToString("0.00")</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.querySelector('.metadata-carousel');
+        const prevBtn = document.querySelector('.carousel-nav.prev');
+        const nextBtn = document.querySelector('.carousel-nav.next');
+        
+        const card = document.querySelector('.metadata-card');
+        const cardWidth = card.offsetWidth;
+        const gap = 20;
+        const scrollAmount = cardWidth + gap;
+        
+        prevBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+        
+        const updateNavButtons = () => {
+            prevBtn.classList.toggle('hidden', carousel.scrollLeft <= 0);
+            nextBtn.classList.toggle('hidden', 
+                carousel.scrollLeft >= (carousel.scrollWidth - carousel.clientWidth - 1));
+        };
+        
+        carousel.addEventListener('scroll', updateNavButtons);
+        
+        updateNavButtons();
+        
+        window.addEventListener('resize', updateNavButtons);
+    });
+</script>

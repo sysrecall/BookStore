@@ -7,7 +7,7 @@
 }
 <style>
     .book-card img {
-        height: 200px;
+        height: 250px;
         object-fit: contain;
     }
     .book-title {
@@ -21,7 +21,7 @@
 </style>
 
 <div class="col">
-    <div class="card book-card h-100">
+    <div class="card book-card border-0">
         <a href="@Url.Action("Index", "Book", new { BookID = Model.Book.ID })">
             <img src="@imageUrl" class="card-img-top" alt="Book Cover">
         </a>
@@ -32,7 +32,7 @@
                 </a>
             </div>
             <div class="text-muted small mb-1">by @Model.Book.Author</div>
-            <div class="mb-2 star-rating">
+            <div class="mb-1 star-rating">
                 @{
                     var rating = Math.Round(Model.Book.Rating);
                     for (var i = 1; i <= 5; i++)
@@ -40,20 +40,9 @@
                         <span>@Html.Raw(i <= rating ? "&#9733;" : "&#9734;")</span>
                     }
                 }
-                <span class="text-muted small">(@Model.Book.SoldInLifetime)</span>
+                <span class="text-muted small">(@Model.Book.RatingCount)</span>
             </div>
             <div class="fw-bold mb-2">$@Model.Book.Price</div>
-            @using (Html.BeginForm(
-                Model.IsOwned ? "Read" : Model.IsInCart ? "RemoveBook" : "AddBook",
-                Model.IsOwned ? "Book" : "Cart",
-                Model.IsOwned ? FormMethod.Get : FormMethod.Post
-            ))
-            {
-                @Html.Hidden("bookID", Model.Book.ID)
-                <button type="submit" class="btn btn-sm @(Model.IsOwned ? "btn-success" : Model.IsInCart ? "btn-danger" : "btn-warning") mt-auto">
-                    @(Model.IsOwned ? "Read" : Model.IsInCart ? "Remove from Cart" : "Add to Cart")
-                </button>
-            }
         </div>
     </div>
 </div>

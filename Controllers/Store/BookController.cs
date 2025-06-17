@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BookStore.DAL;
+using BookStore.Models;
 using BookStore.Models.Store;
 using BookStore.ViewModels;
 
@@ -24,33 +25,67 @@ namespace BookStore.Controllers.Store
                 return RedirectToAction("Index", "Home");
             }
 
-            var book = db.Book.FirstOrDefault(b => b.ID == BookID);
-            if (book == null) return RedirectToAction("Index", "Home");
+            var book = db.Book
+                .Include(b => b.BookInfo)
+                .Include(b => b.BookImages)
+                .FirstOrDefault(b => b.ID == BookID);
+
+            if (book == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var recommendedBooks = db.Book
+                .Include(b => b.BookImages)
+                .Where(b => b.Category == book.Category && b.ID != book.ID)
+                .Take(10)
+                .ToList();
+
+            int bookQuantity = 0;
+            User user = null;
+
+            if (Session["UserID"] != null)
+            {
+               int userId = Convert.ToInt32(Session["UserID"]);
+                
+                user = db.User.Include(u => u.Books).FirstOrDefault(u => u.ID == userId);
+                var cart = db.Cart
+                    .Include(c => c.CartItems.Select(ci => ci.Book))
+                    .FirstOrDefault(c => c.UserID == userId);
+
+                if (cart?.CartItems != null)
+                {
+                    bookQuantity = cart.CartItems.FirstOrDefault(c => c.BookID == book.ID)?.Quantity ?? 0;
+                } 
+            }
+            else
+            {
+                var guestId = Request.Cookies["GuestID"]?.Value;
+                if (!string.IsNullOrEmpty(guestId))
+                {
+                    var guestCart = db.Cart
+                        .Include(c => c.CartItems.Select(ci => ci.Book))
+                        .FirstOrDefault(c => c.GuestID == guestId);
+
+                    if (guestCart?.CartItems != null)
+                    {
+                        bookQuantity = guestCart.CartItems.FirstOrDefault(c => c.BookID == book.ID)?.Quantity ?? 0;
+                    }
+                } 
+            }
 
             var bookCardViewModel = new BookCardViewModel
             {
                 Book = book,
-                IsInCart = false
+                IsInCart = bookQuantity > 0 ? true : false,
+                IsOwned = user?.Books.Contains(book) ?? false,
+                RecommendedBooks = recommendedBooks,
+                QuantityInCart = bookQuantity,
             };
-
-            if (Session["UserID"] != null)
-            {
-                int userId = Convert.ToInt32(Session["UserID"]);
-                var user = db.User.Include("Books").FirstOrDefault(u => u.ID == userId);
-
-                var cart = db.Cart
-                    .Include(c => c.CartItems)
-                    .FirstOrDefault(c => c.UserID == userId);
-
-                if (cart != null && cart.CartItems.Any(ci => ci.BookID == book.ID))
-                {
-                    bookCardViewModel.IsInCart = true;
-                    bookCardViewModel.IsOwned = user?.Books.Contains(book) ?? false;
-                }
-            }
-
+            
             return View(bookCardViewModel);
         }
+
  
 
         public ActionResult Details(int? id)

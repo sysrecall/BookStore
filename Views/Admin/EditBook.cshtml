@@ -6,7 +6,7 @@
 }
 
 <style>
-    .edit-book-container {
+    .BookInfo.Edit-book-container {
         min-height: 80vh;
         display: flex;
         justify-content: center;
@@ -86,25 +86,25 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.Publisher, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.Publisher, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Publisher, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.BookInfo.Publisher, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.BookInfo.Publisher, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BookInfo.Publisher, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.PublicationYear, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.PublicationYear, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.PublicationYear, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.BookInfo.PublicationYear, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.BookInfo.PublicationYear, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BookInfo.PublicationYear, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.Pages, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.Pages, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Pages, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.BookInfo.Pages, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.BookInfo.Pages, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BookInfo.Pages, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.Edition, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.Edition, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Edition, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.BookInfo.Edition, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.BookInfo.Edition, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BookInfo.Edition, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -113,15 +113,15 @@
                         @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.BookType, new { @class = "form-label" })
-                        @Html.EnumDropDownListFor(model => model.BookType, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.BookType, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.BookInfo.BookType, new { @class = "form-label" })
+                        @Html.EnumDropDownListFor(model => model.BookInfo.BookType, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BookInfo.BookType, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="col-12 mb-3">
-                        @Html.LabelFor(model => model.Description, new { @class = "form-label" })
-                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = 3 })
-                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.BookInfo.Description, new { @class = "form-label" })
+                        @Html.TextAreaFor(model => model.BookInfo.Description, new { @class = "form-control", rows = 3 })
+                        @Html.ValidationMessageFor(model => model.BookInfo.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="mb-3 d-flex justify-content-center " style="min-width: 200px;">

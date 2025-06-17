@@ -316,7 +316,7 @@ namespace BookStore.Controllers
             }
 
             // Repopulate ViewBag for the modal if validation fails
-            ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookType.ToString());
+            ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookInfo.BookType.ToString());
 
             return View("BookIndex");
         }
@@ -340,18 +340,18 @@ namespace BookStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                var book = _AdminDb.Book.Find(model.ID);
+                var book = _AdminDb.Book.Include("BookInfo").FirstOrDefault(b => b.ID == model.ID);
                 if (book != null)
                 {
                     book.Title = model.Title;
                     book.Author = model.Author;
-                    book.Publisher = model.Publisher;
-                    book.PublicationYear = model.PublicationYear;
-                    book.Pages = model.Pages;
-                    book.Edition = model.Edition;
+                    book.BookInfo.Publisher = model.BookInfo.Publisher;
+                    book.BookInfo.PublicationYear = model.BookInfo.PublicationYear;
+                    book.BookInfo.Pages = model.BookInfo.Pages;
+                    book.BookInfo.Edition = model.BookInfo.Edition;
                     book.Price = model.Price;
-                    book.Description = model.Description;
-                    book.BookType = model.BookType;
+                    book.BookInfo.Description = model.BookInfo.Description;
+                    book.BookInfo.BookType = model.BookInfo.BookType;
 
 
                     _AdminDb.SaveChanges();

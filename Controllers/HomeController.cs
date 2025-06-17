@@ -18,9 +18,10 @@ namespace BookStore.Controllers
         {
             db = new BookStoreContext();
         }
-       public ActionResult Index(HomeIndexViewModel model)
+        
+        public ActionResult Index(HomeIndexViewModel model)
         {
-            var booksQuery = db.Book.AsQueryable();
+            var booksQuery = db.Book.Include(b => b.BookInfo).Include(b => b.BookImages).AsQueryable();
 
             if (!string.IsNullOrEmpty(model.SearchQuery))
             {
@@ -47,10 +48,11 @@ namespace BookStore.Controllers
 
             Dictionary<int, int> bookQuantities = new Dictionary<int, int>();
             User user = null;
-            int userId = 0;
 
-            if (Session["UserID"] != null && int.TryParse(Session["UserID"].ToString(), out userId))
+            if (Session["UserID"] != null)
             {
+                int userId = Convert.ToInt32(Session["UserID"]);
+                
                 user = db.User.Include(u => u.Books).FirstOrDefault(u => u.ID == userId);
                 var cart = db.Cart
                     .Include(c => c.CartItems.Select(ci => ci.Book))
@@ -63,7 +65,6 @@ namespace BookStore.Controllers
             }
             else
             {
-                // Guest user: get guest ID cookie
                 var guestId = Request.Cookies["GuestID"]?.Value;
                 if (!string.IsNullOrEmpty(guestId))
                 {
@@ -83,7 +84,12 @@ namespace BookStore.Controllers
                 Book = book,
                 QuantityInCart = bookQuantities.ContainsKey(book.ID) ? bookQuantities[book.ID] : 0,
                 IsInCart = bookQuantities.ContainsKey(book.ID),
-                IsOwned = user?.Books.Contains(book) ?? false
+                IsOwned = user?.Books.Contains(book) ?? false,
+                RecommendedBooks = db.Book
+                    .Where(b => b.Category == book.Category && b.ID != book.ID)
+                    .OrderByDescending(b => b.Rating)
+                    .Take(10)
+                    .ToList()
             }).ToList();
 
             var homeIndexViewModel = new HomeIndexViewModel()
@@ -98,7 +104,7 @@ namespace BookStore.Controllers
 
             return View(homeIndexViewModel);
         }
-         
+
 
         public ActionResult About()
         {

@@ -7,7 +7,7 @@
 }
 
 <div class="container mt-5">
-    <h2 class="mb-4">🧾 Checkout</h2>
+    <h2 class="mb-4"><i class="fa fa-check-square"></i> Checkout</h2>
 
     @if (Model.Cart.CartItems == null || !Model.Cart.CartItems.Any())
     {
@@ -18,9 +18,8 @@
     else
     {
         <div class="row">
-            <!-- Cart Summary -->
             <div class="col-md-6">
-                <h4>🛒 Your Items</h4>
+                <h4><i class="fa fa-cart-plus"></i> Your Items</h4>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -50,11 +49,10 @@
                 </table>
             </div>
 
-            <!-- Shipping, Billing, Payment -->
             <div class="col-md-6">
                 @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
                 {
-                    <h4>📦 Shipping Address</h4>
+                    <h4><i class="fa fa-shipping-fast"></i> Shipping Address</h4>
                     <div class="mb-3">
                         <label class="form-label">Full Name</label>
                         <input type="text" name="ShippingName" class="form-control" required
@@ -69,7 +67,7 @@
 
                     </div>
 
-                    <h4>💳 Payment Method</h4>
+                    <h4><i class="fa fa-credit-card"></i> Payment Method</h4>
                     <div class="mb-3">
                         <select name="PaymentMethod" class="form-select" required>
                             <option value="CreditCard">Credit Card</option>
@@ -77,7 +75,7 @@
                         </select>
                     </div>
 
-                    <h4>🏠 Billing Address</h4>
+                    <h4><i class="fa fa-address-card"></i> Billing Address</h4>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="sameAsShipping" checked onclick="toggleBilling()">
                         <label class="form-check-label" for="sameAsShipping">Same as Shipping</label>
@@ -98,7 +96,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-success mt-3 w-100">✅ Confirm & Place Order</button>
+                    <button type="submit" class="btn btn-lg btn-success mt-3 w-100"><i class="fa fa-check-to-slot"></i> Confirm & Place Order</button>
                 }
             </div>
         </div>

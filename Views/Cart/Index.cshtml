@@ -6,11 +6,33 @@
     ViewBag.Title = "Your Cart";
     Layout = "~/Views/Shared/Store/_StoreLayout.cshtml";
 }
+<style>
+       .metadata-label {
+        font-size: 0.8rem;
+        color: #555;
+        margin-bottom: 8px;
+    }
+    
+    .metadata-value {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .metadata-icon {
+        margin-bottom: 8px;
+        color: #555;
+        font-size: 1.5rem;
+    }
+
+    .metadata-icon i {
+        font-size: inherit;
+    }
+</style>
 
 <div class="container mt-5">
-    <h2 class="mb-4">🛒 Your Shopping Cart</h2>
+    <h2 class="mb-4"><span class="metadata-icon"><i class="fa fa-cart-arrow-down"></i></span> Your Shopping Cart</h2>
 
-    @if (Model.Cart.CartItems == null || !Model.Cart.CartItems.Any())
+    @if (Model.Cart?.CartItems == null || !Model.Cart.CartItems.Any())
     {
         <div class="alert alert-info">
             Your cart is empty. <a href="@Url.Action("Index", "Home")" class="text-secondary">Browse books</a> to add some!
