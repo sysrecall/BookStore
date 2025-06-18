@@ -46,50 +46,9 @@ namespace BookStore.Controllers
                 .Take(pageSize)
                 .ToList();
 
-            Dictionary<int, int> bookQuantities = new Dictionary<int, int>();
-            User user = null;
-
-            if (Session["UserID"] != null)
-            {
-                int userId = Convert.ToInt32(Session["UserID"]);
-                
-                user = db.User.Include(u => u.Books).FirstOrDefault(u => u.ID == userId);
-                var cart = db.Cart
-                    .Include(c => c.CartItems.Select(ci => ci.Book))
-                    .FirstOrDefault(c => c.UserID == userId);
-
-                if (cart?.CartItems != null)
-                {
-                    bookQuantities = cart.CartItems.ToDictionary(ci => ci.BookID, ci => ci.Quantity);
-                }
-            }
-            else
-            {
-                var guestId = Request.Cookies["GuestID"]?.Value;
-                if (!string.IsNullOrEmpty(guestId))
-                {
-                    var guestCart = db.Cart
-                        .Include(c => c.CartItems.Select(ci => ci.Book))
-                        .FirstOrDefault(c => c.GuestID == guestId);
-
-                    if (guestCart?.CartItems != null)
-                    {
-                        bookQuantities = guestCart.CartItems.ToDictionary(ci => ci.BookID, ci => ci.Quantity);
-                    }
-                }
-            }
-
             var bookCards = pagedBooks.Select(book => new BookCardViewModel
             {
                 Book = book,
-                QuantityInCart = bookQuantities.ContainsKey(book.ID) ? bookQuantities[book.ID] : 0,
-                IsInCart = bookQuantities.ContainsKey(book.ID),
-                IsOwned = user?.Books.Contains(book) ?? false,
-                RecommendedBooks = db.Book
-                    .Where(b => b.Category == book.Category && b.ID != book.ID)
-                    .OrderByDescending(b => b.Rating)
-                    .Take(10)
-                    .ToList()
             }).ToList();
 
             var homeIndexViewModel = new HomeIndexViewModel()
@@ -103,6 +62,49 @@ namespace BookStore.Controllers
             };
 
             return View(homeIndexViewModel);
+        }
+
+        public ActionResult Library(string searchQuery, Category? selectedCategory, int page = 1)
+        {
+            if (Session["UserID"] == null)
+                return RedirectToAction("Login", "Account");
+
+            int PageSize = 10;
+            int userId = Convert.ToInt32(Session["UserID"]);
+            var user = db.User.Include("Books").FirstOrDefault(u => u.ID == userId);
+
+            if (user == null)
+                return RedirectToAction("Login", "Account");
+
+            IEnumerable<Book> books = user.Books;
+
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                var query = searchQuery.ToLower();
+                books = books.Where(b => b.Title.ToLower().Contains(query));
+            }
+
+            if (selectedCategory != null)
+            {
+                books = books.Where(b => b.Category == selectedCategory);
+            }
+
+            var totalBooks = books.Count();
+            var totalPages = (int)Math.Ceiling((double)totalBooks / PageSize);
+
+            books = books.Skip((page - 1) * PageSize).Take(PageSize);
+
+            var model = new LibraryViewModel
+            {
+                Books = books.ToList(),
+                SearchQuery = searchQuery,
+                SelectedCategory = selectedCategory,
+                Categories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList(),
+                CurrentPage = page,
+                TotalPages = totalPages
+            };
+
+            return View(model);
         }
 
 

@@ -64,7 +64,7 @@ namespace BookStore.DAL
 For more than seventy years, Penguin has been the leading publisher of classic literature in the English-speaking world. With more than 1,700 titles, Penguin Classics represents a global bookshelf of the best works throughout history and across genres and disciplines. Readers trust the series to provide authoritative texts enhanced by introductions and notes by distinguished scholars and contemporary authors, as well as up-to-date translations by award-winning translators.",
                         
                     },
-                    Price = 12.00, Category = Category.Classic, SoldInLifetime = 4123,
+                    Price = 12.00, Category = Category.Classic, RatingCount = 4123,
                     Rating = 4.7f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -86,7 +86,7 @@ For more than seventy years, Penguin has been the leading publisher of classic l
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -108,7 +108,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -130,7 +130,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -152,7 +152,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -174,7 +174,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -196,7 +196,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -218,7 +218,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -240,7 +240,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -262,7 +262,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -284,7 +284,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -306,7 +306,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -328,7 +328,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -350,7 +350,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -372,7 +372,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -395,7 +395,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -417,7 +417,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -439,7 +439,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -461,7 +461,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -483,7 +483,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -505,7 +505,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -527,7 +527,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -549,7 +549,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -571,7 +571,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -593,7 +593,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
@@ -615,7 +615,7 @@ Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers 
 
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
-                    Price = 21.25, Category = Category.Classic, SoldInLifetime = 1234,
+                    Price = 21.25, Category = Category.Classic, RatingCount = 1234,
                     Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {

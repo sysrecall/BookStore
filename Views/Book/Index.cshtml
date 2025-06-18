@@ -222,11 +222,11 @@
                 @foreach (var rec in Model.RecommendedBooks)
                 {
                     <div class="col-md-2 mb-4">
-                        <div class="card h-100 shadow-sm p-2">
+                        <div class="card h-100 p-2 border-0">
                             <a href="@Url.Action("Index", "Book", new { BookID = rec.ID })">
                                 <img src="@rec.BookImages.First().Url" alt="Thumbnail" class="img-fluid rounded" />
                             </a>
-                            <div class="card-body d-none d-lg-block">
+                            <div class="card-body d-none d-lg-block border-0">
                                 <h6 class="card-title">@rec.Title</h6>
                                 <p class="card-text text-muted">by @rec.Author</p>
                                 <p class="text-success font-weight-bold">$@rec.Price.ToString("0.00")</p>

@@ -159,6 +159,7 @@
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\DashBoardViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
+    <Compile Include="ViewModels\LibraryViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -614,6 +615,7 @@
     <Content Include="Views\Book\Read.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Home\Library.cshtml" />
     <Content Include="Views\Shared\Store\_BookItem.cshtml" />
     <Content Include="Views\Shared\Store\_StoreLayout.cshtml" />
     <Content Include="Web.config" />
