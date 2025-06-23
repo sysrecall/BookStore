@@ -6,12 +6,12 @@
 }
 
 <style>
-    .BookInfo.Edit-book-container {
+    .edit-book-container {
         min-height: 80vh;
         display: flex;
         justify-content: center;
-        align-items: flex-start;
-     }
+        align-items: center;
+    }
 
     .card {
         width: 100%;
@@ -26,7 +26,7 @@
     }
 
     .card-body {
-        padding-left: 40px;
+        padding: 40px;
     }
 
     .form-label {
@@ -41,7 +41,10 @@
         font-size: 1rem;
     }
 
-    
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
 
         .btn-primary:hover {
             background-color: #0056b3;
@@ -56,11 +59,6 @@
         .btn-link:hover {
             text-decoration: underline;
         }
-
-    .text-center-container {
-        justify-content: center;
-        padding-bottom: 20px;
-    }
 </style>
 
 <div class="edit-book-container">
@@ -130,10 +128,10 @@
 
             }
         </div>
-       
 
 
-        <div class="text-center-container text-center">
+
+        <div class="text-center-container text-center mb-3">
             @Html.ActionLink("Back to List", "BookIndex", null, new { @class = "btn btn-link" })
         </div>
     </div>

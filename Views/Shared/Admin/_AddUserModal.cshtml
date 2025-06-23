@@ -1,0 +1,41 @@
+﻿
+@model BookStore.Models.User
+
+<div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-between align-items-center">
+                <h5 class="modal-title" id="createUserModalLabel">Create New User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("AddUser", "Admin", FormMethod.Post))
+                {
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Account.Username)
+                            @Html.TextBoxFor(m => m.Account.Username, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.Label("PasswordHash")
+                            @Html.TextBox("PasswordHash", null, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.FullName)
+                            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Email)
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <input type="submit" value="Create User" class="btn btn-success" />
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

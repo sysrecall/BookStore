@@ -10,6 +10,7 @@ using System.Net;
 using BookStore.Models.Store;
 using BookStore.ViewModels;
 using System.IO;
+using System.Data.Entity;
 
 
 
@@ -97,6 +98,72 @@ namespace BookStore.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        public ActionResult EditAdminProfile(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var admin = _AdminDb.Admin.Include("Account").FirstOrDefault(a => a.Id == id);
+
+            if (admin == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(admin);
+        }
+
+        [HttpPost]
+        public ActionResult EditAdminProfile(Admin admin)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingAdmin = _AdminDb.Admin
+                    .Include("Account")
+                    .FirstOrDefault(a => a.Id == admin.Id);
+
+                //if (existingAdmin == null)
+                //{
+                //    return HttpNotFound("Admin not found with ID: " + admin.Id);
+                //}
+
+                // Update Admin fields
+                existingAdmin.FirstName = admin.FirstName;
+                existingAdmin.LastName = admin.LastName;
+                existingAdmin.Email = admin.Email;
+                existingAdmin.Department = admin.Department;
+                existingAdmin.Position = admin.Position;
+                existingAdmin.JoinDate = admin.JoinDate;
+
+                // Update Account fields only if not null
+                if (existingAdmin.Account != null && admin.Account != null)
+                {
+                    existingAdmin.Account.Username = admin.Account.Username;
+                    existingAdmin.Account.PasswordHash = admin.Account.PasswordHash;
+                    // Keep role safe
+                    existingAdmin.Account.Role = "Admin";
+                }
+
+                try
+                {
+                    _AdminDb.SaveChanges();
+                }
+                catch (System.Data.Entity.Infrastructure.DbUpdateConcurrencyException ex)
+                {
+                    ModelState.AddModelError("", "Unable to save changes. The record was updated or deleted by another user.");
+                    return View(admin);
+                }
+
+                return RedirectToAction("AdminProfile");
+            }
+
+            return View(admin);
+        }
+
+
+
         public ActionResult Logout()
         {
             Session.Clear();
@@ -140,6 +207,8 @@ namespace BookStore.Controllers
         [HttpPost]
         public ActionResult AddUser(User user, string PasswordHash, string Role = "User")
         {
+            System.Diagnostics.Debug.WriteLine("==> AddUser Action Triggered");
+
             if (Session["AdminID"] == null)
             {
                 return RedirectToAction("Login", "Account");
@@ -247,6 +316,7 @@ namespace BookStore.Controllers
         //=======================
         //Book related works here
         //=======================
+
         public ActionResult BookIndex()
         {
             if (Session["AdminID"] == null)
@@ -266,30 +336,23 @@ namespace BookStore.Controllers
             //    Text = e.ToString()
             //}));
 
-            var data = _AdminDb.Book.ToList(); 
+            var data = _AdminDb.Book.ToList();
             return View(data);
         }
-
-
-
-
-        //[HttpPost]
-        //public ActionResult AddBooks(Book book)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _AdminDb.Book.Add(book);
-        //        _AdminDb.SaveChanges();
-        //        return RedirectToAction("BookIndex");
-        //    }
-
-        //    return View(book);
-        //}
         [HttpPost]
         public ActionResult AddBooks(Book book, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
+                // Save BookInfo first
+                if (book.BookInfo != null)
+                {
+                    _AdminDb.BookInfo.Add(book.BookInfo);
+                    _AdminDb.SaveChanges();
+                    book.BookInfoID = book.BookInfo.ID; // Get the generated ID
+                }
+
+                // Save Image if present
                 if (Image != null && Image.ContentLength > 0)
                 {
                     string folderPath = Server.MapPath("~/Books/cover/");
@@ -301,6 +364,7 @@ namespace BookStore.Controllers
                     string filePath = Path.Combine(folderPath, uniqueFileName);
 
                     Image.SaveAs(filePath);
+
                     book.BookImages = new List<BookImage>
             {
                 new BookImage
@@ -310,16 +374,17 @@ namespace BookStore.Controllers
             };
                 }
 
+                // Finally save the Book
                 _AdminDb.Book.Add(book);
                 _AdminDb.SaveChanges();
+
                 return RedirectToAction("BookIndex");
             }
 
-            // Repopulate ViewBag for the modal if validation fails
-            ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookInfo.BookType.ToString());
-
+            ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookInfo?.BookType.ToString());
             return View("BookIndex");
         }
+
 
 
 
@@ -440,6 +505,8 @@ namespace BookStore.Controllers
 
             var books = _AdminDb.Book.ToList();
             var users = _AdminDb.User.ToList();
+            var inventory = _AdminDb.Inventory.ToList();
+
 
             var groupedBooks = books
                 .GroupBy(b => b.Title)
@@ -447,21 +514,29 @@ namespace BookStore.Controllers
                 {
                     Title = g.Key,
                     Count = g.Count(),
-                    SampleBook = g.FirstOrDefault()
+                    AmountInStock = g.FirstOrDefault()
                 }).ToList();
 
-        
-            var lowStockItems = groupedBooks
-                .Where(g => g.Count <= 2 && g.Count > 0)
-                .Select(g => g.SampleBook)
-                .ToList();
 
-            var outOfStockItems = new List<Book>(); 
+            var lowStockItems = inventory
+              .Where(i => i.AmountInStock <= 2 && i.AmountInStock > 0)
+              .Select(i => i.Book)
+              .ToList();
 
+
+            var outOfStockItems = inventory
+                    .Where(i => i.AmountInStock == 0)
+                    .Select(i => i.Book)
+                    .ToList();
             var mostActiveUsers = users
-                .OrderByDescending(u => u.Books != null ? u.Books.Count() : 0)
+                .Where(u => u.Books != null && u.Books.Count > 0)
+                .OrderByDescending(u => u.Books.Count)
                 .Take(5)
                 .ToList();
+
+            var totalSales = _AdminDb.User
+              .SelectMany(u => u.Books)
+              .Sum(b => b.Price);
 
             var newUser = users.OrderByDescending(u => u.ID).FirstOrDefault();
 
@@ -471,7 +546,7 @@ namespace BookStore.Controllers
                 BookCount = books.Count(), // total number of book records
                 SalesByCategory = "Category data here",
                 TopSellingBooks = "Top selling books data here",
-                TotalSales = "Total sales data here",
+                TotalSales = (decimal)totalSales,
 
                 Users = users,
                 MostActiveUsers = mostActiveUsers,
@@ -501,6 +576,7 @@ namespace BookStore.Controllers
             }
 
             var books = _AdminDb.Book.ToList();
+            var inventories = _AdminDb.Inventory.ToList();
 
             var groupedBooks = books
                 .GroupBy(b => b.Title)
@@ -508,14 +584,16 @@ namespace BookStore.Controllers
                 {
                     Title = g.Key,
                     Count = g.Count(),
-                    SampleBook = g.FirstOrDefault()
+                    AmountInStock = g.FirstOrDefault()
                 })
                 .ToList();
 
-            var lowStockItems = groupedBooks
-                .Where(g => g.Count <= 2 && g.Count > 0)
-                .Select(g => g.SampleBook)
+            var lowStockItems = _AdminDb.Inventory
+                .Where(i => i.AmountInStock <= 2 && i.AmountInStock > 0)
+                .Select(i => i.Book)
                 .ToList();
+
+            var booksInStock = _AdminDb.Book.Count();
 
             // ✅ TotalSales = Sum of (Price * number of users who bought the book)
             var totalSales = _AdminDb.User
@@ -527,13 +605,15 @@ namespace BookStore.Controllers
                 .SelectMany(u => u.Books)
                 .Count();
 
+
             var viewModel = new DashBoardViewModel
             {
                 TotalSales = (decimal)totalSales,
                 TotalOrders = totalOrders,
-                BooksInStock = books.Count(),
                 ActiveUsers = _AdminDb.User.Count(),
-                LowStockItems = lowStockItems
+                LowStockItems = lowStockItems,
+                Inventories = inventories,
+                BooksInStock = booksInStock
             };
 
             return View(viewModel);

@@ -13,7 +13,7 @@ namespace BookStore.ViewModels
         public int BookCount { get; set; }
         public string SalesByCategory { get; set; }
         public string TopSellingBooks { get; set; }
-        public string TotalSales { get; set; }
+        public decimal TotalSales { get; set; }
 
         //users
         public List<User> Users { get; set; }
@@ -28,6 +28,7 @@ namespace BookStore.ViewModels
         public List<Book> OutOfStockItems { get; set; }
         public List<Book> RecentlyRestockedItems { get; set; }
         public int UniqueTitlesCount { get; set; }
+
 
         
 

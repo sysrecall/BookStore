@@ -634,6 +634,8 @@
     <Content Include="Views\Shared\Admin\_NoNavBar.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\EditBook.cshtml" />
+    <Content Include="Views\Shared\Admin\_AddUserModal.cshtml" />
+    <Content Include="Views\Admin\EditAdminProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

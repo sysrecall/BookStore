@@ -26,6 +26,7 @@ namespace BookStore.DAL
         
         public DbSet<CartItem> CartItem { get; set; }
         public DbSet<BookImage> BookImage { get; set; }
+        public DbSet<BookInfo> BookInfo { get; set; }
         
         public DbSet<Cart> Cart { get; set; }
 

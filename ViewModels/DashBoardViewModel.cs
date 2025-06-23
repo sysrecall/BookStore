@@ -14,6 +14,7 @@ namespace BookStore.ViewModels
         public int TotalOrders { get; set; }
         public int BooksInStock { get; set; }
         public int ActiveUsers { get; set; }
+        public List<Inventory> Inventories { get; set; }
 
         //public List<MonthlySalesData> MonthlySales { get; set; }
         //public List<RecentActivityItem> RecentActivities { get; set; }

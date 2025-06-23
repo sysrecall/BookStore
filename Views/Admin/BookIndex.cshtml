@@ -68,7 +68,7 @@
         </div>
 
         <div class="card-body">
-            <table class="table table-bordered table-hover" id="bookTable">
+            <table class="table table-hover" id="bookTable">
                 <thead>
                     <tr>
                         <th>Image</th>
@@ -81,7 +81,9 @@
                         <th>Price</th>
                         <th>Description</th>
                         <th>Type</th>
-                        <th class="text-center">Actions</th>
+                        <th>Category</th>
+                        @*<th>Stock</th>*@
+                        <th class="text-center" style="width: 150px;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -110,6 +112,7 @@
                                 <td>@item.Price</td>
                                 <td>@item.BookInfo.Description</td>
                                 <td>@item.BookInfo.BookType</td>
+                                <td>@item.Category</td>
                                 <td class="text-center">
                                     <a href="@Url.Action("EditBook", new { id = item.ID })" class="btn btn-sm btn-primary me-1">
                                         <i class="fas fa-edit"></i>
@@ -182,10 +185,18 @@
                             @Html.Label("Book Type")
                             @Html.EnumDropDownListFor(model => newBook.BookInfo.BookType, "--Select--", new { @class = "form-control", Name = "BookType" })
                         </div>
+                        <div class="col-md-6">
+                            @Html.Label("Category")
+                            @Html.EnumDropDownListFor(model => newBook.Category, "--Select--", new { @class = "form-control", Name = "Category" })
+                        </div>
                         <div class="col-12">
                             @Html.Label("Description")
                             @Html.TextArea("Description", null, new { @class = "form-control", rows = 3 })
                         </div>
+                        @*<div class="col-md-6">
+                            @Html.Label("Amount in Stock")
+                            @Html.TextBox("AmountInStock", null, new { @class = "form-control", type = "number" })
+                        </div>*@
                         <div class="col-md-6">
                             @Html.Label("Book Cover Image")
                             <input type="file" class="form-control" name="Image" accept="image/*" />

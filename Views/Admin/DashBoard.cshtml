@@ -121,26 +121,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Sapiens: A Brief History of Humankind</td>
-                                <td>Yuval Noah Harari</td>
-                                <td>12</td>
-                            </tr>
-                            <tr>
-                                <td>Educated: A Memoir</td>
-                                <td>Tara Westover</td>
-                                <td>15</td>
-                            </tr>
-                            <tr>
-                                <td>To Kill a Mockingbird</td>
-                                <td>Harper Lee</td>
-                                <td>18</td>
-                            </tr>
+                            @foreach (var book in Model.LowStockItems)
+                            {
+                                <tr>
+                                    <td>@book.Title</td>
+                                    <td>@book.Author</td>
+                                    <td>@Model.Inventories.FirstOrDefault(i => i.BookID == book.ID).AmountInStock</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+
         <div class="col-6">
             <div class="card shadow-sm">
                 <div class="card-body">
