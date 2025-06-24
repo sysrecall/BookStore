@@ -123,7 +123,7 @@
 <body>
     <div class="top-nav py-3 d-flex justify-content-between align-items-center">
         <div class="text-white">
-            BookStore
+            Book Haven
         </div>
         <div class="d-flex align-items-center gap-3">
             <button class="logout-btn" onclick="location.href='@Url.Action("Logout", "Admin")'">
@@ -137,7 +137,7 @@
 
 
     <div id="mySidenav" class="sidenav">
-        @Html.ActionLink("BookStore", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("BookStore", "DashBoard", "Admin", new { area = "" }, new { @class = "navbar-brand" })
         <br>
         <br>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>

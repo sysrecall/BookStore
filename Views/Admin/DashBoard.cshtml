@@ -86,25 +86,28 @@
         <div class="col-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Recent Activity</h5>
+                    <h5 class="card-title">Admin Tips</h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <i class="fas fa-user-plus"></i> New user registered: Emily Parker 2 hours ago
+                            <i class="fas fa-exclamation-circle text-warning"></i> Review books with low ratings weekly.
                         </li>
                         <li class="list-group-item">
-                            <i class="fas fa-book-open"></i> Book stock updated: "The Great Gatsby" (+10) 3 hours ago
+                            <i class="fas fa-chart-line text-success"></i> Check sales trends monthly for marketing decisions.
                         </li>
                         <li class="list-group-item">
-                            <i class="fas fa-shopping-cart"></i> New order: #4385 ($124.95) 5 hours ago
+                            <i class="fas fa-boxes text-primary"></i> Monitor low stock and restock popular items early.
                         </li>
                         <li class="list-group-item">
-                            <i class="fas fa-user-cog"></i> User role updated: Michael Wilson (Editor - Admin) 1 day ago
+                            <i class="fas fa-users text-info"></i> Engage with active users to increase retention.
                         </li>
-
+                        <li class="list-group-item">
+                            <i class="fas fa-shield-alt text-danger"></i> Keep an eye on suspicious login activities.
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="row">
@@ -139,10 +142,17 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Top Selling Books</h5>
-                    <ol>
-                        <li>The Great Gatsby (32 copies sold)</li>
-                        <li>To Kill a Mockingbird (28 copies sold)</li>
-                        <li>The Alchemist (25 copies sold)</li>
+                    <ol class="list-group list-group-numbered">
+                        @foreach (var item in Model.TopSellingBooks)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">@item.Book.Title</div>
+                                    <small>by @item.Book.Author</small>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">@item.Count sales</span>
+                            </li>
+                        }
                     </ol>
                 </div>
             </div>

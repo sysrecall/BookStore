@@ -14,11 +14,11 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.Account.Username)
-                            @Html.TextBoxFor(m => m.Account.Username, new { @class = "form-control" })
+                            @Html.TextBox("Account.Username", Model?.Account?.Username, new { @class = "form-control" })
                         </div>
                         <div class="col-md-6">
                             @Html.Label("PasswordHash")
-                            @Html.TextBox("PasswordHash", null, new { @class = "form-control" })
+                            @Html.Password("PasswordHash", null, new { @class = "form-control" })
                         </div>
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.FullName)

@@ -19,6 +19,6 @@ namespace BookStore.ViewModels
         //public List<MonthlySalesData> MonthlySales { get; set; }
         //public List<RecentActivityItem> RecentActivities { get; set; }
         public List<Book> LowStockItems { get; set; }
-        public List<Book> TopSellingBooks { get; set; }
+        public List<(Book Book, int Count)> TopSellingBooks { get; set; }
     }
 }

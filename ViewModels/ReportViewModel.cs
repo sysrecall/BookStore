@@ -11,8 +11,10 @@ namespace BookStore.ViewModels
 	{
         public List<Book> Books { get; set; }
         public int BookCount { get; set; }
-        public string SalesByCategory { get; set; }
-        public string TopSellingBooks { get; set; }
+        public Dictionary<Category, decimal> SalesByCategory { get; set; } // Category name and total sales
+        public List<string> TopSellingBooks { get; set; }
+        //public List<Book> TopSellingBooks { get; set; }
+        //public List<int> TopSellingBooksCounts { get; set; }
         public decimal TotalSales { get; set; }
 
         //users

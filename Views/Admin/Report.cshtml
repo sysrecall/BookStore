@@ -56,17 +56,20 @@
         text-align: center;
         padding: 10px;
     }
+    .sales-amount {
+        color: #75ACB0; /* Add this line to set the text color */
+    }
 </style>
 @{var currentDate = DateTime.Now.ToString("d");}
 
 <div class="container-fluid">
     <div class="main-content">
         <div class="d-flex justify-content-between mb-3">
-            <h2>Reports</h2>
-            <div>
+            @*<h2>Reports</h2>*@
+            @*<div>
                 <button class="btn btn-outline-secondary btn-sm me-2">Export</button>
                 <button class="btn btn-outline-secondary btn-sm">Share</button>
-            </div>
+            </div>*@
         </div>
 
         <!-- Tabs -->
@@ -107,39 +110,52 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <h5>Sales by Category</h5>
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span>Fiction</span>
-                                        <span>@Model.SalesByCategory</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="category-bar progress-bar" style="width: 70%;"></div>
-                                    </div>
-                                </div>
+                                <h5 class="card-title">Sales by Category</h5>
+                                @if (Model.SalesByCategory != null && Model.SalesByCategory.Any())
+                                {
+                                    foreach (var category in Model.SalesByCategory)
+                                    {
+                                        <div class="mb-2">
+                                            <div class="d-flex justify-content-between">
+                                                <span>@category.Key</span>
+                                                <span>@category.Value.ToString("C")</span>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <p>No sales data available.</p>
+                                }
                             </div>
                         </div>
                     </div>
 
+
+
                     <!-- Top Selling Books -->
-                    @*<div class="col-md-6">
+                    <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <h5>Top Selling Books</h5>
-                                <ol>
-                                    @foreach (var book in Model.TopSellingBooks)
+                                <ol class="ps-3">
+                                    @foreach (var title in Model.TopSellingBooks)
                                     {
-                                        <li>
+                                        <li class="mb-1">
                                             <div class="d-flex justify-content-between">
-                                                <span>@book.Title</span>
-                                                <span>@book.Copies copies</span>
+                                                <span>@title</span>
+                                                @* Optional placeholder if you have copies sold:
+                                    <span>12 copies</span> *@
                                             </div>
                                         </li>
                                     }
                                 </ol>
                             </div>
                         </div>
-                    </div>*@
+                    </div>
+
+
+
                 </div>
 
                 <!-- Monthly Sales Trend -->
@@ -173,7 +189,7 @@
 
                 <div class="row">
                     <!-- Low Stock Items -->
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <h5>Low Stock Items</h5>
@@ -198,7 +214,7 @@
                     </div>
 
                     <!-- Out of Stock Items -->
-                    <div class="col-md-6">
+                    @*<div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <h5>Out of Stock Items</h5>
@@ -209,7 +225,7 @@
                                         <div class="out-of-stock mb-3">
                                             <div class="d-flex justify-content-between">
                                                 <span>@item.Title</span>
-                                                <span>by @item.Author</span> <!-- Assuming you have an Author property -->
+                                                <span>by @item.Author</span> 
                                             </div>
                                         </div>
                                     }
@@ -220,39 +236,34 @@
                                 }
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
 
                 <!-- Recently Restocked Items -->
-                <div class="card">
+                @*<div class="card">
                     <div class="card-body">
                         <h5>Recently Restocked Items</h5>
                         <div class="restocked mb-3">
-                            <p>No recently restocked items available.</p> <!-- Placeholder for now -->
+                            <p>No recently restocked items available.</p> 
                         </div>
                     </div>
-                </div>
+                </div>*@
 
                 <!-- Summary Stats -->
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="card stats-card">
                             <h5>@Model.UniqueTitlesCount</h5>
                             <p>Unique Titles</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="card stats-card">
                             <h5>@Model.LowStockItems.Count()</h5>
                             <p>Low Stock Items</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card stats-card">
-                            <h5>@Model.OutOfStockItems.Count()</h5>
-                            <p>Out of Stock Items</p>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -281,7 +292,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <h5>New Users This Month</h5>
@@ -354,12 +365,14 @@
         </div>
     </div>
 </div>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 
 @section Scripts {
     <script>
-        async function exportReport(reportType) {
+         function exportReport(reportType) {
             if (reportType !== 'monthlySales') {
                 alert("Unsupported report type");
                 return;
@@ -368,116 +381,178 @@
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            // Get values from DOM
-            const totalSales = document.querySelector(".sales-amount")?.innerText || "N/A";
-            const categoryName = "Fiction";
-            const categorySales = document.querySelector(".col-md-6 .d-flex.justify-content-between span:nth-child(2)")?.innerText || "N/A";
-            const categoryPercentage = document.querySelector(".category-bar")?.style.width || "N/A";
+            // Set document properties
+            doc.setProperties({
+                title: 'Monthly Sales Report',
+                subject: 'BookStore Sales Analysis',
+                author: 'BookStore Admin',
+                keywords: 'sales, report, bookstore',
+                creator: 'BookStore Management System'
+            });
 
-            // Title
+            // Title section
             doc.setFontSize(18);
-            doc.text("Monthly Sales Invoice", 20, 20);
-            doc.setFontSize(12);
-            doc.text("Generated on: " + new Date().toLocaleDateString(), 20, 30);
+            doc.setTextColor(40, 40, 40);
+            doc.text("Monthly Sales Report", 105, 20, { align: 'center' });
 
-            // Total Sales
-            doc.setFontSize(14);
-            doc.text("Total Sales", 20, 50);
             doc.setFontSize(12);
+            doc.setTextColor(100, 100, 100);
+            const generatedDate = document.querySelector(".text-muted")?.innerText || new Date().toLocaleDateString();
+            doc.text(generatedDate, 105, 30, { align: 'center' });
+
+            doc.setDrawColor(200, 200, 200);
+            doc.line(20, 35, 190, 35);
+
+            // Total Sales section
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text("Total Sales:", 20, 50);
+
+            doc.setFontSize(16);
+            doc.setTextColor(0, 100, 0);
+            const totalSales = document.querySelector(".sales-amount")?.innerText || "N/A";
             doc.text(totalSales, 100, 50);
 
-            // Sales by Category
+            // Sales by Category section
             doc.setFontSize(14);
-            doc.text("Sales by Category", 20, 70);
+            doc.setTextColor(40, 40, 40);
+            doc.text("Sales by Category:", 20, 70);
+
             doc.setFontSize(12);
-            doc.text(`Category: ${categoryName}`, 20, 80);
-            doc.text(`Amount: ${categorySales}`, 20, 90);
-            doc.text(`Progress: ${categoryPercentage}`, 20, 100);
+            let yPosition = 80;
+
+            const categoryItems = document.querySelectorAll(".col-md-6 .mb-2");
+            if (categoryItems.length > 0) {
+                categoryItems.forEach(item => {
+                    const categoryName = item.querySelector("span:nth-child(1)")?.innerText || "Unknown";
+                    const categoryValue = item.querySelector("span:nth-child(2)")?.innerText || "N/A";
+
+                    doc.setTextColor(40, 40, 40);
+                    doc.text(`${categoryName}:`, 20, yPosition);
+                    doc.setTextColor(0, 100, 0);
+                    doc.text(categoryValue, 100, yPosition);
+
+                    yPosition += 10;
+                });
+            } else {
+                doc.text("No category data available", 20, yPosition);
+                yPosition += 10;
+            }
+
+            // Top Selling Books section
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text("Top Selling Books:", 20, yPosition + 10);
+
+            doc.setFontSize(12);
+            yPosition += 20;
+
+            const bookItems = document.querySelectorAll(".ps-3 li");
+            if (bookItems.length > 0) {
+                bookItems.forEach((item, index) => {
+                    const bookTitle = item.querySelector("span:nth-child(1)")?.innerText || "Unknown Book";
+                    doc.text(`${index + 1}. ${bookTitle}`, 20, yPosition);
+                    yPosition += 10;
+                });
+            } else {
+                doc.text("No top selling books data available", 20, yPosition);
+                yPosition += 10;
+            }
+
+            // Footer
+            doc.setFontSize(10);
+            doc.setTextColor(150, 150, 150);
+            doc.text("Generated by BookStore Management System", 105, 290, { align: 'center' });
 
             // Save PDF
-            const filename = `invoice_monthlySales_${new Date().toISOString().slice(0, 10)}.pdf`;
+            const filename = `BookStore_Sales_Report_${new Date().toISOString().slice(0, 10)}.pdf`;
             doc.save(filename);
         }
 
+         function exportInventoryStatus() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
 
-    async function exportInventoryStatus() {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-
-        const today = new Date().toLocaleDateString();
-        let y = 20;
-
-        // Title and Date
-        doc.setFontSize(16);
-        doc.text("Inventory Status Report", 20, y);
-        doc.setFontSize(10);
-        doc.text(`Generated on ${today}`, 20, y + 6);
-        y += 16;
-
-        // Fetch data from DOM
-        const bookCount = document.querySelector(".sales-amount")?.innerText || "N/A";
-        const uniqueTitles = document.querySelector(".stats-card:nth-child(1) h5")?.innerText || "N/A";
-        const lowStockCount = document.querySelector(".stats-card:nth-child(2) h5")?.innerText || "N/A";
-        const outOfStockCount = document.querySelector(".stats-card:nth-child(3) h5")?.innerText || "N/A";
-
-        // Total Books
-        doc.setFontSize(12);
-        doc.text("Total Books in Inventory: " + bookCount, 20, y);
-        y += 10;
-
-        // Low Stock Items
-        doc.text("Low Stock Items:", 20, y);
-        y += 8;
-        const lowStockElements = document.querySelectorAll(".low-stock span:first-child");
-        if (lowStockElements.length > 0) {
-            lowStockElements.forEach(el => {
-                doc.text("- " + el.innerText, 25, y);
-                y += 6;
+            // Set document properties
+            doc.setProperties({
+                title: 'Inventory Status Report',
+                subject: 'BookStore Inventory Analysis',
+                author: 'BookStore Admin',
+                keywords: 'inventory, report, bookstore',
+                creator: 'BookStore Management System'
             });
-        } else {
-            doc.text("None", 25, y);
-            y += 6;
+
+            // Title section
+            doc.setFontSize(18);
+            doc.setTextColor(40, 40, 40);
+            doc.text("Inventory Status Report", 105, 20, { align: 'center' });
+
+            doc.setFontSize(12);
+            doc.setTextColor(100, 100, 100);
+            const generatedDate = document.querySelector("#inventoryStatus .text-muted")?.innerText || new Date().toLocaleDateString();
+            doc.text(generatedDate, 105, 30, { align: 'center' });
+
+            doc.setDrawColor(200, 200, 200);
+            doc.line(20, 35, 190, 35);
+
+            // Total Books section
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text("Total Books in Inventory:", 20, 50);
+
+            doc.setFontSize(14);
+            doc.setTextColor(0, 100, 0);
+            const bookCount = document.querySelector("#inventoryStatus .sales-amount")?.innerText || "N/A";
+            doc.text(bookCount, 100, 50);
+
+            // Low Stock Items section
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text("Low Stock Items:", 20, 70);
+
+            doc.setFontSize(12);
+            let yPosition = 80;
+
+            const lowStockItems = document.querySelectorAll("#inventoryStatus .low-stock");
+            const lowStockCount = lowStockItems.length; // Get actual count from DOM elements
+
+            if (lowStockCount > 0) {
+                lowStockItems.forEach(item => {
+                    const title = item.querySelector("span:nth-child(1)")?.innerText || "Unknown Title";
+                    doc.text(`- ${title}`, 25, yPosition);
+                    yPosition += 7;
+                });
+            } else {
+                doc.text("No low stock items", 25, yPosition);
+                yPosition += 7;
+            }
+
+            // Summary Stats section
+            yPosition += 10;
+            doc.setFontSize(14);
+            doc.setTextColor(40, 40, 40);
+            doc.text("Summary Statistics:", 20, yPosition);
+
+            doc.setFontSize(12);
+            yPosition += 10;
+
+            const uniqueTitles = document.querySelector("#inventoryStatus .stats-card:nth-child(1) h5")?.innerText || "N/A";
+
+            // Use the actual count we got from DOM elements
+            doc.text(`- Unique Titles: ${uniqueTitles}`, 25, yPosition);
+            yPosition += 7;
+            doc.text(`- Low Stock Items: ${lowStockCount}`, 25, yPosition); // Fixed: Using actual count
+            yPosition += 7;
+
+            // Footer
+            doc.setFontSize(10);
+            doc.setTextColor(150, 150, 150);
+            doc.text("Generated by BookStore Management System", 105, 290, { align: 'center' });
+
+            // Save PDF
+            const filename = `BookStore_Inventory_Report_${new Date().toISOString().slice(0, 10)}.pdf`;
+            doc.save(filename);
         }
-
-        // Out of Stock Items
-        y += 4;
-        doc.text("Out of Stock Items:", 20, y);
-        y += 8;
-        const outOfStockElements = document.querySelectorAll(".out-of-stock");
-        if (outOfStockElements.length > 0) {
-            outOfStockElements.forEach(el => {
-                const spans = el.querySelectorAll("span");
-                if (spans.length >= 2) {
-                    doc.text(`- ${spans[0].innerText} by ${spans[1].innerText}`, 25, y);
-                    y += 6;
-                }
-            });
-        } else {
-            doc.text("None", 25, y);
-            y += 6;
-        }
-
-        // Recently Restocked Items Placeholder
-        y += 4;
-        doc.text("Recently Restocked Items:", 20, y);
-        y += 8;
-        const restockedText = document.querySelector(".restocked p")?.innerText || "No recently restocked items.";
-        doc.text(restockedText, 25, y);
-        y += 10;
-
-        // Summary Stats
-        doc.text("Summary:", 20, y);
-        y += 8;
-        doc.text(`- Unique Titles: ${uniqueTitles}`, 25, y);
-        y += 6;
-        doc.text(`- Low Stock Items: ${lowStockCount}`, 25, y);
-        y += 6;
-        doc.text(`- Out of Stock Items: ${outOfStockCount}`, 25, y);
-
-        // Save as PDF
-        const filename = `Inventory_Status_Report_${new Date().toISOString().slice(0, 10)}.pdf`;
-        doc.save(filename);
-    }
     </script>
 
 

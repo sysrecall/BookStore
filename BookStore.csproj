@@ -636,6 +636,7 @@
     <Content Include="Views\Admin\EditBook.cshtml" />
     <Content Include="Views\Shared\Admin\_AddUserModal.cshtml" />
     <Content Include="Views\Admin\EditAdminProfile.cshtml" />
+    <Content Include="Views\Shared\Admin\_AddBooksModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

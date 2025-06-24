@@ -182,8 +182,7 @@ namespace BookStore.Controllers
                 return RedirectToAction("Login", "Account");
             }
             var users = _AdminDb.User.Include("Account").ToList();
-            ViewBag.NewUser = new User(); // Pass a new User object for the modal
-
+            ViewBag.NewUser = new User { Account = new Account() };
             return View(users);
         }
 
@@ -207,47 +206,37 @@ namespace BookStore.Controllers
         [HttpPost]
         public ActionResult AddUser(User user, string PasswordHash, string Role = "User")
         {
-            System.Diagnostics.Debug.WriteLine("==> AddUser Action Triggered");
-
             if (Session["AdminID"] == null)
-            {
                 return RedirectToAction("Login", "Account");
-            }
+
+            // Ensure Account is not null
+            if (user.Account == null)
+                user.Account = new Account();
+
+            // Assign values from form if needed
+            user.Account.PasswordHash = PasswordHash;
+            user.Account.Role = Role;
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    var account = new Account
-                    {
-                        Username = user.Account?.Username ?? string.Empty,
-                        PasswordHash = PasswordHash, // Consider hashing
-                        Role = Role
-                    };
+                _AdminDb.Account.Add(user.Account);
+                _AdminDb.SaveChanges();
 
-                    _AdminDb.Account.Add(account);
-                    _AdminDb.SaveChanges();
+                user.AccountID = user.Account.ID;
+                _AdminDb.User.Add(user);
+                _AdminDb.SaveChanges();
 
-                    user.AccountID = account.ID;
-                    user.Account = account;
-
-                    _AdminDb.User.Add(user);
-                    _AdminDb.SaveChanges();
-
-                    TempData["MsgAddUser"] = "User added successfully";
-                    return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", "An error occurred while saving the user: " + ex.Message);
-                }
+                TempData["MsgAddUser"] = "User added successfully";
+                return RedirectToAction("Index");
             }
 
-            // On validation failure, fetch the user list and pass the invalid user
+            // On validation failure
             var users = _AdminDb.User.Include("Account").ToList();
-            ViewBag.NewUser = user; // Pass the invalid user for the modal
+            ViewBag.NewUser = user;
             return View("Index", users);
         }
+
+
 
         public ActionResult DeleteUser(int id)
         {
@@ -336,20 +325,24 @@ namespace BookStore.Controllers
             //    Text = e.ToString()
             //}));
 
-            var data = _AdminDb.Book.ToList();
-            return View(data);
+            //var data = _AdminDb.Book.ToList();
+            //return View(data);
+             var books = _AdminDb.Book.Include(b => b.BookInfo).ToList();
+             return View(books);
         }
+
+
         [HttpPost]
         public ActionResult AddBooks(Book book, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
-                // Save BookInfo first
+                // Save BookInfo first (this logic is fine)
                 if (book.BookInfo != null)
                 {
                     _AdminDb.BookInfo.Add(book.BookInfo);
                     _AdminDb.SaveChanges();
-                    book.BookInfoID = book.BookInfo.ID; // Get the generated ID
+                    book.BookInfoID = book.BookInfo.ID;
                 }
 
                 // Save Image if present
@@ -365,16 +358,16 @@ namespace BookStore.Controllers
 
                     Image.SaveAs(filePath);
 
+                    // CORRECT: Create the URL and add it to the BookImages collection
+                    string imageUrl = Url.Content("~/Books/cover/" + uniqueFileName);
+
                     book.BookImages = new List<BookImage>
             {
-                new BookImage
-                {
-                    Url = Url.Content("~/Books/cover/" + uniqueFileName)
-                }
+                new BookImage { Url = imageUrl }
             };
                 }
 
-                // Finally save the Book
+                // Finally save the Book (EF will automatically save the related BookImage)
                 _AdminDb.Book.Add(book);
                 _AdminDb.SaveChanges();
 
@@ -382,8 +375,33 @@ namespace BookStore.Controllers
             }
 
             ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookInfo?.BookType.ToString());
-            return View("BookIndex");
+            return View("BookIndex"); // Consider returning to the Add form with errors
         }
+
+
+        //[HttpPost]
+        //public ActionResult AddBooks(Book book, HttpPostedFileBase file)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (file != null && file.ContentLength > 0)
+        //        {
+        //            // Save the file and get the URL/path
+        //            var bookImage = new BookImage { Url = "/Uploads/Books/" + Guid.NewGuid().ToString() + ".pdf" }; // Generate unique file path logic
+        //            book.BookImages = new List<BookImage> { bookImage };
+        //            book.BookPath = bookImage.Url; // Set BookPath to the image URL
+        //        }
+
+        //        _AdminDb.Book.Add(book);
+        //        _AdminDb.SaveChanges();
+
+        //        return RedirectToAction("BookIndex");
+        //    }
+
+        //    ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookInfo?.BookType.ToString());
+        //    return View("AddBooks", book);
+        //}
+
 
 
 
@@ -430,25 +448,27 @@ namespace BookStore.Controllers
         public ActionResult DeleteBook(int id)
         {
             var book = _AdminDb.Book
-                .Include("BookCoverImages")
+                .Include(b => b.BookImages)
                 .FirstOrDefault(b => b.ID == id);
 
             if (book != null)
             {
+                // Delete associated BookImage entities first
                 foreach (var coverImage in book.BookImages.ToList())
                 {
                     _AdminDb.BookImage.Remove(coverImage);
                 }
+                _AdminDb.SaveChanges();
 
+                // Then delete the Book entity
                 _AdminDb.Book.Remove(book);
                 _AdminDb.SaveChanges();
-                
-               
             }
-           
 
             return RedirectToAction("BookIndex");
         }
+
+
 
 
 
@@ -538,14 +558,29 @@ namespace BookStore.Controllers
               .SelectMany(u => u.Books)
               .Sum(b => b.Price);
 
+
+            var topSellingBooks = mostActiveUsers
+                .SelectMany(u => u.Books)
+                .GroupBy(b => b.Title)
+                .OrderByDescending(g => g.Count())
+                .Take(5)
+                .Select(g => g.Key)
+                .ToList();
+
+            var salesByCategory = _AdminDb.User
+                  .SelectMany(u => u.Books)
+                  .GroupBy(b => b.Category)
+                  .ToDictionary(g => g.Key, g => (decimal)g.Sum(b => b.Price));
+
+
             var newUser = users.OrderByDescending(u => u.ID).FirstOrDefault();
 
             var reportViewModel = new ReportViewModel
             {
                 Books = books,
                 BookCount = books.Count(), // total number of book records
-                SalesByCategory = "Category data here",
-                TopSellingBooks = "Top selling books data here",
+                SalesByCategory = salesByCategory,
+                TopSellingBooks = topSellingBooks,
                 TotalSales = (decimal)totalSales,
 
                 Users = users,
@@ -606,6 +641,33 @@ namespace BookStore.Controllers
                 .Count();
 
 
+            // First get the raw data from database
+            var topSellingData = _AdminDb.User
+                .SelectMany(u => u.Books)
+                .GroupBy(b => b.Title)
+                .Select(g => new
+                {
+                    Title = g.Key,
+                    Count = g.Count(),
+                    FirstBook = g.FirstOrDefault() // Get one book from the group
+                })
+                .OrderByDescending(g => g.Count)
+                .Take(5)
+                .ToList();
+
+            // Then transform to the format we need
+            var topSellingBooks = topSellingData.Select(g => (
+                Book: new Book
+                {
+                    Title = g.Title,
+                    Author = g.FirstBook?.Author ?? "Unknown",
+                    Price = g.FirstBook?.Price ?? 0
+                },
+                Count: g.Count
+            )).ToList();
+
+
+
             var viewModel = new DashBoardViewModel
             {
                 TotalSales = (decimal)totalSales,
@@ -613,7 +675,9 @@ namespace BookStore.Controllers
                 ActiveUsers = _AdminDb.User.Count(),
                 LowStockItems = lowStockItems,
                 Inventories = inventories,
-                BooksInStock = booksInStock
+                BooksInStock = booksInStock,
+                TopSellingBooks = topSellingBooks 
+
             };
 
             return View(viewModel);
