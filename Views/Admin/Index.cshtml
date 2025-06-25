@@ -64,14 +64,14 @@
 <!-- TempData Message -->
 @if (TempData["MsgAddUser"] != null)
 {
-    <div id="successMessage" class="alert alert-success">
+    <div id="hide" class="alert alert-success">
         <strong>Good Job !! </strong> @TempData["MsgAddUser"]
     </div>
 }
 @if (TempData["MsgRem"] != null)
 {
-    <div id="successMessage" class="alert alert-success">
-        <strong>Good Job !! </strong> @TempData["MsgRem"]
+    <div id="successMessage" class="alert alert-danger">
+        <strong>Caution !! </strong> @TempData["MsgRem"]
     </div>
 }
 
@@ -169,7 +169,7 @@
     </div>
 </div>
 @*user modal*@
-@Html.Partial("Admin/_AddUserModal", new BookStore.Models.User())
+@Html.Partial("Admin/_AddUserModal", new BookStore.ViewModels.AddUserViewModel())
 
 @section Scripts {
 
@@ -190,7 +190,7 @@
             }
             if ($('#hide').length) {
                 setTimeout(function () {
-                    $('#successMessage').fadeOut(500);
+                    $('#hide').fadeOut(500);
                 }, 3000);
             }
 

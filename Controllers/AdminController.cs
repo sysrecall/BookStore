@@ -172,9 +172,9 @@ namespace BookStore.Controllers
         }
 
 
-        //=======================
+        //========================================================================
         //User related works
-        //=======================
+        //========================================================================
         public ActionResult Index()
         {
             if (Session["AdminID"] == null)
@@ -203,39 +203,77 @@ namespace BookStore.Controllers
         //    }
         //    return View("AddUser", user);
         //}
-        [HttpPost]
-        public ActionResult AddUser(User user, string PasswordHash, string Role = "User")
+
+        public ActionResult AddUser()
         {
-            if (Session["AdminID"] == null)
-                return RedirectToAction("Login", "Account");
+            return View();
+        }
 
-            // Ensure Account is not null
-            if (user.Account == null)
-                user.Account = new Account();
 
-            // Assign values from form if needed
-            user.Account.PasswordHash = PasswordHash;
-            user.Account.Role = Role;
+        //[HttpPost]
+        //public ActionResult AddUser(User user, string PasswordHash, string Role = "User")
+        //{
+        //    if (Session["AdminID"] == null)
+        //        return RedirectToAction("Login", "Account");
 
+        //    // Ensure Account is not null
+        //    if (user.Account == null)
+        //        user.Account = new Account();
+
+        //    // Assign values from form if needed
+        //    user.Account.PasswordHash = PasswordHash;
+        //    user.Account.Role = Role;
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        _AdminDb.Account.Add(user.Account);
+        //        _AdminDb.SaveChanges();
+
+        //        user.AccountID = user.Account.ID;
+        //        _AdminDb.User.Add(user);
+        //        _AdminDb.SaveChanges();
+
+        //        TempData["MsgAddUser"] = "User added successfully";
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    // On validation failure
+        //    var users = _AdminDb.User.Include("Account").ToList();
+        //    ViewBag.NewUser = user;
+        //    return View("Index", users);
+        //}
+        [HttpPost]
+        public ActionResult AddUser(AddUserViewModel model)
+        {
             if (ModelState.IsValid)
             {
-                _AdminDb.Account.Add(user.Account);
-                _AdminDb.SaveChanges();
+                var account = new Account
+                {
+                    Username = model.Username,
+                    PasswordHash = model.Password, // optionally hash this
+                    Role = "User"
+                };
 
-                user.AccountID = user.Account.ID;
+                _AdminDb.Account.Add(account);
+                _AdminDb.SaveChanges(); // Save first to get the Account ID
+
+                var user = new User
+                {
+                    AccountID = account.ID,
+                    FullName = model.FullName,
+                    Email = model.Email,
+
+                };
+
                 _AdminDb.User.Add(user);
                 _AdminDb.SaveChanges();
 
-                TempData["MsgAddUser"] = "User added successfully";
+                TempData["MsgAddUser"] = "User added successfully!";
                 return RedirectToAction("Index");
             }
 
-            // On validation failure
-            var users = _AdminDb.User.Include("Account").ToList();
-            ViewBag.NewUser = user;
-            return View("Index", users);
+            return View(model);
         }
-
 
 
         public ActionResult DeleteUser(int id)
@@ -245,7 +283,7 @@ namespace BookStore.Controllers
             {
                 _AdminDb.User.Remove(user);
                 _AdminDb.SaveChanges();
-                TempData["MsgRem"] = "User deleted successfully";
+                TempData["MsgRem"] = "User has been deleted ";
             }
             return RedirectToAction("Index");
         }
@@ -302,9 +340,9 @@ namespace BookStore.Controllers
 
 
 
-        //=======================
+        //===================================================================
         //Book related works here
-        //=======================
+        //===================================================================
 
         public ActionResult BookIndex()
         {
@@ -473,9 +511,9 @@ namespace BookStore.Controllers
 
 
 
-        //=======================
-        //Report                |
-        //=======================
+        //======================================================================
+        //Report                
+        //======================================================================
         //public ActionResult Report()
         //{
         //    if (Session["AdminID"] == null)
@@ -600,9 +638,9 @@ namespace BookStore.Controllers
 
 
 
-        //=======================
+        //===================================================================
         //Dashboard             |
-        //=======================
+        //===================================================================
         public ActionResult DashBoard()
         {
             if (Session["AdminID"] == null)
