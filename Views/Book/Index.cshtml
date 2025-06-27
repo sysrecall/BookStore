@@ -206,23 +206,28 @@
                 </div>
             }
 
-            @using (Html.BeginForm(
-                  Model.IsOwned ? "Read" : Model.IsInCart ? "RemoveBook" : "AddBook",
-                  Model.IsOwned ? "Book" : "Cart",
-                  Model.IsOwned ? FormMethod.Get : FormMethod.Post
-                ))
+            <div class="d-flex gap-2 mt-2">
+                @using (Html.BeginForm(Model.IsInCart ? "RemoveBook" : "AddBook", "Cart", FormMethod.Post))
                 {
                     @Html.Hidden("bookID", Model.Book.ID)
                     @Html.Hidden("selectedBookType", Model.SelectedBookType)
-            
-                    <br/>
+
                     <button type="submit"
-                            class="btn btn-lg @(!(Model.IsInStock) ? "btn-secondary " : Model.IsOwned ? "btn-success" : Model.IsInCart ? "btn-outline-danger" : "btn-primary") mt-auto"
+                            class="btn btn-lg @(!(Model.IsInStock) ? "btn-secondary " : Model.IsInCart ? "btn-outline-danger" : "btn-primary")"
                             @(Model.IsInStock ? "" : "disabled")>
-                        @(!(Model.IsInStock) ? "Out of Stock" : Model.IsOwned ? "Read" : Model.IsInCart ? "Remove from Cart" : "Add to Cart")
+                        @(!(Model.IsInStock) ? "Out of Stock" : Model.IsInCart ? "Remove from Cart" : "Add to Cart")
                     </button>
- 
-                } 
+                }
+
+                @if (Model.IsOwned)
+                {
+                    using (Html.BeginForm("Read", "Book"))
+                    {
+                        <button type="submit" class="btn btn-lg btn-info">Read</button>
+                    }
+                }
+            </div>
+
         </div>
     </div>
 

@@ -57,6 +57,10 @@ namespace BookStore.Controllers.Store
             if (bookId == null)
                 return RedirectToAction("Index");
             
+            var inv = db.Inventory.FirstOrDefault(i => i.BookID == bookId);
+            if (inv == null || inv.AmountInStock <= 0 )
+                return RedirectToAction("Index");
+            
             Cart cart;
 
             if (Session["UserID"] != null)
@@ -82,12 +86,20 @@ namespace BookStore.Controllers.Store
             }
 
             var existingItem = cart.CartItems.FirstOrDefault(ci => ci.BookID == bookId.Value && ci.SelectedBookType == selectedBookType);
-            if (existingItem != null)
-                existingItem.Quantity++;
-            else
-                cart.CartItems.Add(new CartItem { BookID = bookId.Value, Quantity = 1, SelectedBookType = selectedBookType ?? BookType.eBook });
 
-            db.SaveChanges();
+
+            if (existingItem != null)
+            {
+                existingItem.Quantity++;
+            }
+            else
+            {
+                cart.CartItems.Add(new CartItem { BookID = bookId.Value, Quantity = 1, SelectedBookType = selectedBookType ?? BookType.eBook });
+                existingItem = cart.CartItems.FirstOrDefault(ci => ci.BookID == bookId.Value && ci.SelectedBookType == selectedBookType);
+            }
+            
+            if (inv.AmountInStock > existingItem?.Quantity)
+                db.SaveChanges();
 
             return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Index", "Home"));
         }
@@ -234,16 +246,22 @@ namespace BookStore.Controllers.Store
             
             foreach (var cartItem in cart.CartItems)
             {
-                var orderItem = new OrderItem
+                var inv = db.Inventory.FirstOrDefault(i => i.BookID == cartItem.BookID);
+                if (inv != null && inv.AmountInStock > 0 && inv.AmountInStock > cartItem.Quantity)
                 {
-                    BookID = cartItem.BookID,
-                    BookType = cartItem.SelectedBookType,
-                    Quantity = cartItem.Quantity,
-                    Price = cartItem.Book.Price
-                };
-                totalAmount += orderItem.Total;
+                    var orderItem = new OrderItem
+                    {
+                        BookID = cartItem.BookID,
+                        BookType = cartItem.SelectedBookType,
+                        Quantity = cartItem.Quantity,
+                        Price = cartItem.Book.Price
+                    };
+                    totalAmount += orderItem.Total;
 
-                order.OrderItems.Add(orderItem);
+                    order.OrderItems.Add(orderItem);
+                }
+                else
+                    return RedirectToAction("Index", "Cart");
             }
 
             order.TotalAmount = totalAmount;
