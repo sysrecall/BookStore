@@ -115,6 +115,11 @@
                         @Html.EnumDropDownListFor(model => model.BookInfo.AvailableTypes, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.BookInfo.AvailableTypes, "", new { @class = "text-danger" })
                     </div>
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(model => model.Category, new { @class = "form-label" })
+                        @Html.EnumDropDownListFor(model => model.Category, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                    </div>
 
                     <div class="col-12 mb-3">
                         @Html.LabelFor(model => model.BookInfo.Description, new { @class = "form-label" })

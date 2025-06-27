@@ -27,7 +27,10 @@ namespace BookStore.Models.Store
         public virtual BookInfo BookInfo { get; set; }
         public virtual ICollection<BookImage> BookImages { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
-        public virtual ICollection<User> Users { get; set; } 
+        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Inventory> Inventory { get; set; }
+        [NotMapped]
+        public int TempAmountInStock { get; set; }
     }
 
     public enum Category

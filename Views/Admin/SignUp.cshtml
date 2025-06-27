@@ -10,7 +10,7 @@
         <div class="col-md-6">
             <div class="card shadow">
                 <div class="card-header text-center">
-                    <h2>Sign Up to InsideBox</h2>
+                    <h2>Sign Up</h2>
                 </div>
                 <div class="card-body">
                     @using (Html.BeginForm("SignUp", "Admin", FormMethod.Post, new { @class = "form-signin" }))
@@ -19,7 +19,7 @@
                             <h4 class="text-center">Admin</h4>
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                            <div class="form-group text-center">
+                            <div class="form-group ">
                                 @Html.LabelFor(model => model.Account.Username)
                                 @Html.TextBoxFor(model => model.Account.Username, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.Account.Username, "", new { @class = "text-danger" })
@@ -67,13 +67,13 @@
                             </div>
 
                             <div class="form-group text-center">
-                                <input type="submit" value="SignUp" class="btn btn-primary px-4" />
+                                <input type="submit" value="SignUp" class="btn btn-primary mt-3" />
                             </div>
                         </div>
                     }
                 </div>
                 <div class="card-footer text-center">
-                    Already have an account? @Html.ActionLink("Sign in", "Login", "Users")
+                    Already have an account? @Html.ActionLink("Sign in", "Login", "Account")
                 </div>
             </div>
         </div>

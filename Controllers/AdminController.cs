@@ -146,21 +146,15 @@ namespace BookStore.Controllers
                     existingAdmin.Account.Role = "Admin";
                 }
 
-                try
-                {
-                    _AdminDb.SaveChanges();
-                }
-                catch (System.Data.Entity.Infrastructure.DbUpdateConcurrencyException ex)
-                {
-                    ModelState.AddModelError("", "Unable to save changes. The record was updated or deleted by another user.");
-                    return View(admin);
-                }
+                // Save changes without try-catch
+                _AdminDb.SaveChanges();
 
                 return RedirectToAction("AdminProfile");
             }
 
             return View(admin);
         }
+
 
 
 
@@ -365,17 +359,16 @@ namespace BookStore.Controllers
 
             //var data = _AdminDb.Book.ToList();
             //return View(data);
-             var books = _AdminDb.Book.Include(b => b.BookInfo).ToList();
+             var books = _AdminDb.Book.Include(b => b.BookInfo).Include(b=>b.Inventory).ToList();
              return View(books);
         }
-
 
         [HttpPost]
         public ActionResult AddBooks(Book book, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
-                // Save BookInfo first (this logic is fine)
+                // Save BookInfo
                 if (book.BookInfo != null)
                 {
                     _AdminDb.BookInfo.Add(book.BookInfo);
@@ -383,37 +376,39 @@ namespace BookStore.Controllers
                     book.BookInfoID = book.BookInfo.ID;
                 }
 
-                // Save Image if present
+                // Save image
                 if (Image != null && Image.ContentLength > 0)
                 {
                     string folderPath = Server.MapPath("~/Books/cover/");
                     if (!Directory.Exists(folderPath))
-                    {
                         Directory.CreateDirectory(folderPath);
-                    }
+
                     string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(Image.FileName);
                     string filePath = Path.Combine(folderPath, uniqueFileName);
-
                     Image.SaveAs(filePath);
 
-                    // CORRECT: Create the URL and add it to the BookImages collection
                     string imageUrl = Url.Content("~/Books/cover/" + uniqueFileName);
-
-                    book.BookImages = new List<BookImage>
-            {
-                new BookImage { Url = imageUrl }
-            };
+                    book.BookImages = new List<BookImage> { new BookImage { Url = imageUrl } };
                 }
 
-                // Finally save the Book (EF will automatically save the related BookImage)
+                // Save Book first
                 _AdminDb.Book.Add(book);
+                _AdminDb.SaveChanges();
+
+                // Save Inventory using the Book ID
+                var inventory = new Inventory
+                {
+                    BookID = book.ID,
+                    AmountInStock = book.TempAmountInStock // get value from temporary field
+                };
+
+                _AdminDb.Inventory.Add(inventory);
                 _AdminDb.SaveChanges();
 
                 return RedirectToAction("BookIndex");
             }
 
-            ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookInfo?.AvailableTypes.ToString());
-            return View("BookIndex"); // Consider returning to the Add form with errors
+            return View("BookIndex");
         }
 
 
@@ -471,6 +466,7 @@ namespace BookStore.Controllers
                     book.BookInfo.Pages = model.BookInfo.Pages;
                     book.BookInfo.Edition = model.BookInfo.Edition;
                     book.Price = model.Price;
+                    book.Category = model.Category;
                     book.BookInfo.Description = model.BookInfo.Description;
                     book.BookInfo.AvailableTypes = model.BookInfo.AvailableTypes;
 
@@ -597,7 +593,7 @@ namespace BookStore.Controllers
               .Sum(b => b.Price);
 
 
-            var topSellingBooks = mostActiveUsers
+            var topSellingBooks = users
                 .SelectMany(u => u.Books)
                 .GroupBy(b => b.Title)
                 .OrderByDescending(g => g.Count())
@@ -605,7 +601,7 @@ namespace BookStore.Controllers
                 .Select(g => g.Key)
                 .ToList();
 
-            var salesByCategory = _AdminDb.User
+            var salesByCategory = users
                   .SelectMany(u => u.Books)
                   .GroupBy(b => b.Category)
                   .ToDictionary(g => g.Key, g => (decimal)g.Sum(b => b.Price));
@@ -670,8 +666,9 @@ namespace BookStore.Controllers
 
             // ✅ TotalSales = Sum of (Price * number of users who bought the book)
             var totalSales = _AdminDb.User
-                .SelectMany(u => u.Books)
-                .Sum(b => b.Price);
+            .SelectMany(u => u.Books)
+            .Sum(b => (double?)b.Price) ?? 0.0;
+
 
             // ✅ TotalOrders = Total number of books bought by users
             var totalOrders = _AdminDb.User
