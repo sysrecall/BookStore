@@ -113,6 +113,18 @@
     .carousel-nav.hidden {
         display: none;
     }
+
+    .btn-group input[type="submit"] {
+        display: none;
+    }
+    .btn-group label.btn {
+        cursor: pointer;
+    }
+    .btn-group input[type="submit"]:checked + label {
+        background-color: #0d6efd;
+        color: white;
+    }
+
 </style>
 
 <div class="container mt-5">
@@ -131,6 +143,7 @@
         <div class="col-md-6">
             <h2 class="mb-2">@Model.Book.Title</h2>
             <h5 class="text-muted mb-4">by @Model.Book.Author</h5>
+            <h4 class="text-success mb-4">$@Model.Book.Price.ToString("0.00")</h4>
             
             <div class="metadata-container">
                 <button class="carousel-nav prev hidden" aria-label="Previous metadata">
@@ -163,12 +176,6 @@
                     </div>
 
                     <div class="metadata-card">
-                        <div class="metadata-label">Book Type</div>
-                        <div class="metadata-icon"><i class="fas fa-book"></i></div>
-                        <div class="metadata-value">@Model.Book.BookInfo.BookType</div>
-                    </div>
-
-                    <div class="metadata-card">
                         <div class="metadata-label">Category</div>
                         <div class="metadata-icon"><i class="fas fa-tag"></i></div>
                         <div class="metadata-value">@Model.Book.Category</div>
@@ -186,19 +193,36 @@
                 </button>
             </div>
 
-            <h4 class="text-success mb-4">$@Model.Book.Price.ToString("0.00")</h4>
+            @using (Html.BeginForm("Index", "Book"))
+            {
+                <div class="btn-group mb-3" role="group" aria-label="Book type selector">
+                    @foreach (var type in Model.Book.BookInfo.AvailableTypes)
+                    {
+                        <label class="btn btn-outline-primary @(type.BookType == Model.SelectedBookType ? "active" : "")">
+                            <input type="submit" name="selectedBookType" value="@type.BookType"/>
+                            @type.BookType.ToString()
+                        </label>
+                    }
+                </div>
+            }
 
             @using (Html.BeginForm(
                   Model.IsOwned ? "Read" : Model.IsInCart ? "RemoveBook" : "AddBook",
                   Model.IsOwned ? "Book" : "Cart",
                   Model.IsOwned ? FormMethod.Get : FormMethod.Post
-              ))
-              {
-                  @Html.Hidden("bookID", Model.Book.ID)
-                  <button type="submit" class="btn btn-lg @(Model.IsOwned ? "btn-success" : Model.IsInCart ? "btn-outline-danger" : "btn-primary") mt-auto">
-                      @(Model.IsOwned ? "Read" : Model.IsInCart ? "Remove from Cart" : "Add to Cart")
-                  </button>
-              } 
+                ))
+                {
+                    @Html.Hidden("bookID", Model.Book.ID)
+                    @Html.Hidden("selectedBookType", Model.SelectedBookType)
+            
+                    <br/>
+                    <button type="submit"
+                            class="btn btn-lg @(!(Model.IsInStock) ? "btn-secondary " : Model.IsOwned ? "btn-success" : Model.IsInCart ? "btn-outline-danger" : "btn-primary") mt-auto"
+                            @(Model.IsInStock ? "" : "disabled")>
+                        @(!(Model.IsInStock) ? "Out of Stock" : Model.IsOwned ? "Read" : Model.IsInCart ? "Remove from Cart" : "Add to Cart")
+                    </button>
+ 
+                } 
         </div>
     </div>
 

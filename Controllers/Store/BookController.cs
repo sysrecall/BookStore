@@ -18,7 +18,7 @@ namespace BookStore.Controllers.Store
         private BookStoreContext db = new BookStoreContext();
 
         [Route("Book/{BookID:int}")]
-        public ActionResult Index(int? BookID)
+        public ActionResult Index(int? BookID, BookType? selectedBookType)
         {
             if (BookID == null)
             {
@@ -27,6 +27,7 @@ namespace BookStore.Controllers.Store
 
             var book = db.Book
                 .Include(b => b.BookInfo)
+                .Include(b => b.BookInfo.AvailableTypes)
                 .Include(b => b.BookImages)
                 .FirstOrDefault(b => b.ID == BookID);
 
@@ -55,7 +56,8 @@ namespace BookStore.Controllers.Store
 
                 if (cart?.CartItems != null)
                 {
-                    bookQuantity = cart.CartItems.FirstOrDefault(c => c.BookID == book.ID)?.Quantity ?? 0;
+                    bookQuantity = cart.CartItems
+                        .FirstOrDefault(c => c.BookID == book.ID)?.Quantity ?? 0;
                 } 
             }
             else
@@ -69,7 +71,8 @@ namespace BookStore.Controllers.Store
 
                     if (guestCart?.CartItems != null)
                     {
-                        bookQuantity = guestCart.CartItems.FirstOrDefault(c => c.BookID == book.ID)?.Quantity ?? 0;
+                        bookQuantity = guestCart.CartItems
+                            .FirstOrDefault(c => c.BookID == book.ID)?.Quantity ?? 0;
                     }
                 } 
             }
@@ -77,8 +80,10 @@ namespace BookStore.Controllers.Store
             var bookCardViewModel = new BookCardViewModel
             {
                 Book = book,
-                IsInCart = bookQuantity > 0 ? true : false,
+                SelectedBookType = selectedBookType,
+                IsInCart = bookQuantity > 0,
                 IsOwned = user?.Books.Contains(book) ?? false,
+                IsInStock = db.Inventory.Find(BookID)?.AmountInStock > 0,
                 RecommendedBooks = recommendedBooks,
                 QuantityInCart = bookQuantity,
             };

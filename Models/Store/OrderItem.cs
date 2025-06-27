@@ -10,6 +10,7 @@ namespace BookStore.Models.Store
         public int OrderID { get; set; }
         [ForeignKey("Book")]
         public int BookID { get; set; }
+        public BookType BookType { get; set; }
 
         public int Quantity { get; set; }
         public double Price { get; set; }

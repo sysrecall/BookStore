@@ -412,7 +412,7 @@ namespace BookStore.Controllers
                 return RedirectToAction("BookIndex");
             }
 
-            ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookInfo?.BookType.ToString());
+            ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookInfo?.AvailableTypes.ToString());
             return View("BookIndex"); // Consider returning to the Add form with errors
         }
 
@@ -472,7 +472,7 @@ namespace BookStore.Controllers
                     book.BookInfo.Edition = model.BookInfo.Edition;
                     book.Price = model.Price;
                     book.BookInfo.Description = model.BookInfo.Description;
-                    book.BookInfo.BookType = model.BookInfo.BookType;
+                    book.BookInfo.AvailableTypes = model.BookInfo.AvailableTypes;
 
 
                     _AdminDb.SaveChanges();

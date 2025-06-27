@@ -49,7 +49,7 @@
                     @for (int i = 1; i <= Model.TotalPages; i++)
                     {
                         <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                            <a class="page-link" href="@Url.Action("Index", new { page = i, search = Model.SearchQuery, Category = Model.SelectedCategory })">@i</a>
+                            <a class="page-link" href="@Url.Action("Index", new { CurrentPage = i, SearchQuery = Model.SearchQuery, SelectedCategory = Model.SelectedCategory })">@i</a>
                         </li>
                     }
                 </ul>

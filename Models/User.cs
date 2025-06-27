@@ -24,5 +24,6 @@ namespace BookStore.Models
         public virtual Account Account { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

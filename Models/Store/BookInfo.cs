@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace BookStore.Models.Store
 {
@@ -11,8 +14,7 @@ namespace BookStore.Models.Store
         public int Pages { get; set; }
         public string Edition { get; set; }
         public string Description { get; set; }
-        public BookType BookType { get; set; }
-        
+        public virtual ICollection<BookInfoAvailableType> AvailableTypes { get; set; }
     }
     
     public enum BookType
@@ -20,6 +22,5 @@ namespace BookStore.Models.Store
         Hardcover,
         Paperback,
         eBook,
-        Audiobook
     }
 }

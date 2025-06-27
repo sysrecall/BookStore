@@ -167,7 +167,6 @@ namespace BookStore.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult UpdateUser(User user)
         {
             if (!ModelState.IsValid)
@@ -197,7 +196,6 @@ namespace BookStore.Controllers
             return RedirectToAction("Index");
         }
 
-        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult ChangePassword(int? id, string currentPassword, string newPassword)
         {

@@ -46,6 +46,7 @@
                     <th>Cover</th>
                     <th>Title</th>
                     <th>Author</th>
+                    <th>Type</th>
                     <th>Price</th>
                     <th></th>
                 </tr>
@@ -55,6 +56,7 @@
             {
                 var book = item.Book;
                 var quantity = item.Quantity;
+                var selectedBookType = item.SelectedBookType;
 
                 <tr>
                     <td style="width: 100px;">
@@ -66,18 +68,19 @@
                         </a>
                     </td>
                     <td>@book.Author</td>
+                    <td>@selectedBookType</td>
                     <td>$@book.Price.ToString("0.00")</td>
                     <td>
                         <div class="d-flex align-items-center">
                             <form method="post" action="@Url.Action("DecrementBook", "Cart")" style="display:inline;">
-                                @Html.Hidden("UserID", Session["UserID"])
-                                @Html.Hidden("BookID", book.ID)
+                                @Html.Hidden("bookID", book.ID)
+                                @Html.Hidden("selectedBookType", selectedBookType)
                                 <button type="submit" class="btn btn-sm btn-outline-secondary" @(quantity <= 1 ? "disabled" : "")>-</button>
                             </form>
                             <span class="mx-2">@quantity</span>
                             <form method="post" action="@Url.Action("AddBook", "Cart")" style="display:inline;">
-                                @Html.Hidden("UserID", Session["UserID"])
-                                @Html.Hidden("BookID", book.ID)
+                                @Html.Hidden("bookID", book.ID)
+                                @Html.Hidden("selectedBookType", selectedBookType)
                                 <button type="submit" class="btn btn-sm btn-outline-secondary">+</button>
                             </form>
                         </div>
@@ -85,8 +88,8 @@
                     <td>
                         @using (Html.BeginForm("RemoveBook", "Cart", FormMethod.Post))
                         {
-                            @Html.Hidden("UserID", Session["UserID"])
-                            @Html.Hidden("BookID", book.ID)
+                            @Html.Hidden("bookID", book.ID)
+                            @Html.Hidden("selectedBookType", selectedBookType)
                             <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
                         }
                     </td>

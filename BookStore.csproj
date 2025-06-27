@@ -147,6 +147,7 @@
     <Compile Include="Models\Store\Author.cs" />
     <Compile Include="Models\Store\Book.cs" />
     <Compile Include="Models\Store\BookImage.cs" />
+    <Compile Include="Models\Store\BookInfoAvailableType.cs" />
     <Compile Include="Models\Store\Cart.cs" />
     <Compile Include="Models\Store\CartItem.cs" />
     <Compile Include="Models\Store\BookInfo.cs" />

@@ -111,9 +111,9 @@
                         @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.BookInfo.BookType, new { @class = "form-label" })
-                        @Html.EnumDropDownListFor(model => model.BookInfo.BookType, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.BookInfo.BookType, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.BookInfo.AvailableTypes, new { @class = "form-label" })
+                        @Html.EnumDropDownListFor(model => model.BookInfo.AvailableTypes, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BookInfo.AvailableTypes, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="col-12 mb-3">

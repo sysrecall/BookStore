@@ -52,11 +52,11 @@ namespace BookStore.Controllers.Store
         }
 
         [HttpPost]
-        public ActionResult AddBook(int? bookId)
+        public ActionResult AddBook(int? bookId, BookType? selectedBookType)
         {
             if (bookId == null)
                 return RedirectToAction("Index");
-
+            
             Cart cart;
 
             if (Session["UserID"] != null)
@@ -81,11 +81,11 @@ namespace BookStore.Controllers.Store
                 }
             }
 
-            var existingItem = cart.CartItems.FirstOrDefault(ci => ci.BookID == bookId.Value);
+            var existingItem = cart.CartItems.FirstOrDefault(ci => ci.BookID == bookId.Value && ci.SelectedBookType == selectedBookType);
             if (existingItem != null)
                 existingItem.Quantity++;
             else
-                cart.CartItems.Add(new CartItem { BookID = bookId.Value, Quantity = 1 });
+                cart.CartItems.Add(new CartItem { BookID = bookId.Value, Quantity = 1, SelectedBookType = selectedBookType ?? BookType.eBook });
 
             db.SaveChanges();
 
@@ -94,7 +94,7 @@ namespace BookStore.Controllers.Store
  
 
         [HttpPost]
-        public ActionResult DecrementBook(int? bookId)
+        public ActionResult DecrementBook(int? bookId, BookType selectedBookType)
         {
             if (bookId == null)
                 return RedirectToAction("Login", "Account");
@@ -111,7 +111,7 @@ namespace BookStore.Controllers.Store
                 cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.GuestID == guestId);
             }
  
-            var item = cart?.CartItems.FirstOrDefault(ci => bookId != null && ci.BookID == bookId.Value);
+            var item = cart?.CartItems.FirstOrDefault(ci => bookId != null && ci.BookID == bookId.Value && ci.SelectedBookType == selectedBookType);
 
             if (item != null)
             {
@@ -124,9 +124,9 @@ namespace BookStore.Controllers.Store
 
             return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Index", "Home"));
         }
-
+        
         [HttpPost]
-        public ActionResult RemoveBook(int? bookId)
+        public ActionResult RemoveBook(int? bookId, BookType? selectedBookType)
         {
             if (bookId == null)
                 return RedirectToAction("Login", "Account");
@@ -143,7 +143,7 @@ namespace BookStore.Controllers.Store
                 cart = db.Cart.Include(c => c.CartItems).FirstOrDefault(c => c.GuestID == guestId);
             }
             
-            var item = cart?.CartItems.FirstOrDefault(ci => ci.BookID == bookId.Value);
+            var item = cart?.CartItems.FirstOrDefault(ci => ci.BookID == bookId.Value && ci.SelectedBookType == selectedBookType);
 
             if (item != null)
             {
@@ -212,7 +212,7 @@ namespace BookStore.Controllers.Store
             var user = db.User.Find(userId);
             if (user == null)
                 return RedirectToAction("Login", "Account");
-
+            
             var cart = db.Cart
                 .Include(c => c.CartItems.Select(ci => ci.Book))
                 .FirstOrDefault(c => c.UserID == userId);
@@ -229,7 +229,7 @@ namespace BookStore.Controllers.Store
                 DatePlaced = DateTime.Now,
                 OrderItems = new List<OrderItem>()
             };
-
+            
             double totalAmount = 0;
             
             foreach (var cartItem in cart.CartItems)
@@ -237,6 +237,7 @@ namespace BookStore.Controllers.Store
                 var orderItem = new OrderItem
                 {
                     BookID = cartItem.BookID,
+                    BookType = cartItem.SelectedBookType,
                     Quantity = cartItem.Quantity,
                     Price = cartItem.Book.Price
                 };
@@ -251,7 +252,9 @@ namespace BookStore.Controllers.Store
             db.CartItem.RemoveRange(cart.CartItems);
             // db.Cart.Remove(cart);
             
-            order.OrderItems.ForEach(oi => user.Books.Add(oi.Book)); 
+            order.OrderItems
+                .Where(oi => oi.BookType == BookType.eBook)
+                .ForEach(oi => user.Books.Add(oi.Book)); 
 
             db.SaveChanges();
             

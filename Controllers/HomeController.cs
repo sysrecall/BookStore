@@ -55,6 +55,7 @@ namespace BookStore.Controllers
             {
                 BookCards = bookCards,
                 Categories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList(),
+                
                 CurrentPage = currentPage,
                 SelectedCategory = model.SelectedCategory,
                 SearchQuery = model.SearchQuery,
