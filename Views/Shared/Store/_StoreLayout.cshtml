@@ -9,13 +9,26 @@
         .dropdown-toggle::after {
             margin-left: 0.5em;
         }
+        html, body {
+            height:  100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .body-content {
+            flex: 1;
+        }
+        footer {
+            margin-top:  auto;
+        }
     </style>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/fontawesome")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-4 sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
     <div class="container">
         <a class="navbar-brand fw-bold" href="@Url.Action("Index", "Home")"><i class="fa fa-book-reader"></i> Book Haven</a>
 
@@ -37,7 +50,7 @@
                         My Account
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                        <li><a class="dropdown-item" href="@Url.Action("Index", "User")">Account Settings</a></li>
+                        <li><a class="dropdown-item" href="@Url.Action("Index", "User")">Manage Account</a></li>
                         <li><a class="dropdown-item" href="@Url.Action("Logout", "User")">Logout</a></li>
                     </ul>
                 </div>
@@ -51,11 +64,11 @@
 
 <div class="container body-content">
     @RenderBody()
-    <hr />
-    <footer class="text-center text-muted mt-4">
-        <p>&copy; @DateTime.Now.Year - Book Haven</p>
-    </footer>
 </div>
+<hr />
+<footer class="text-center text-muted py-1">
+    <p>&copy; @DateTime.Now.Year - Book Haven</p>
+</footer>
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
