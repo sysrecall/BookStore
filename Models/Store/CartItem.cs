@@ -9,6 +9,7 @@ namespace BookStore.Models.Store
         public int BookID { get; set; }
         public Book Book { get; set; }
         public BookType SelectedBookType { get; set; }
+        
 
         public int CartID { get; set; }
         public Cart Cart { get; set; }

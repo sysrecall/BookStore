@@ -92,7 +92,6 @@ namespace BookStore.Controllers.Store
         }
 
  
-
         public ActionResult Details(int? id)
         {
             if (id == null)

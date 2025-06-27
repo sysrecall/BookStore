@@ -87,18 +87,18 @@ namespace BookStore.Controllers.Store
 
             var existingItem = cart.CartItems.FirstOrDefault(ci => ci.BookID == bookId.Value && ci.SelectedBookType == selectedBookType);
 
-
             if (existingItem != null)
             {
                 existingItem.Quantity++;
             }
             else
             {
-                cart.CartItems.Add(new CartItem { BookID = bookId.Value, Quantity = 1, SelectedBookType = selectedBookType ?? BookType.eBook });
-                existingItem = cart.CartItems.FirstOrDefault(ci => ci.BookID == bookId.Value && ci.SelectedBookType == selectedBookType);
+                existingItem = new CartItem
+                    { BookID = bookId.Value, Quantity = 1, SelectedBookType = selectedBookType ?? BookType.eBook };
+                cart.CartItems.Add(existingItem);
             }
             
-            if (inv.AmountInStock > existingItem?.Quantity)
+            if (inv.AmountInStock >= existingItem?.Quantity)
                 db.SaveChanges();
 
             return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Index", "Home"));
@@ -247,7 +247,7 @@ namespace BookStore.Controllers.Store
             foreach (var cartItem in cart.CartItems)
             {
                 var inv = db.Inventory.FirstOrDefault(i => i.BookID == cartItem.BookID);
-                if (inv != null && inv.AmountInStock > 0 && inv.AmountInStock > cartItem.Quantity)
+                if (inv != null && inv.AmountInStock > 0 && inv.AmountInStock >= cartItem.Quantity)
                 {
                     var orderItem = new OrderItem
                     {
@@ -257,8 +257,8 @@ namespace BookStore.Controllers.Store
                         Price = cartItem.Book.Price
                     };
                     totalAmount += orderItem.Total;
-
                     order.OrderItems.Add(orderItem);
+                    inv.AmountInStock -= cartItem.Quantity;
                 }
                 else
                     return RedirectToAction("Index", "Cart");
