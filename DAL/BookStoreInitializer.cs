@@ -70,11 +70,11 @@ For more than seventy years, Penguin has been the leading publisher of classic l
                         
                     },
                     Price = 12.00, Category = Category.Classic, RatingCount = 4123,
-                    Rating = 4.7f, BookPath = "~/Content/Books/test.pdf",
+                    Rating = 4.7f, BookPath = "Data/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
                         new BookImage {
-                            Url =  "https://m.media-amazon.com/images/I/61yeM7H40SL._SY466_.jpg"
+                            Url =  "Data/BookImage/ivanilyich.jpg"
                         }
                     }
                 },
@@ -97,11 +97,11 @@ For more than seventy years, Penguin has been the leading publisher of classic l
 Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. Now with over 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Harper Lee always considered her book to be a simple love story. Today it is regarded as a masterpiece of American literature."
                     },
                     Price = 21.25, Category = Category.Classic, RatingCount = 1234,
-                    Rating = 4.0f, BookPath = "~/Content/Books/test.pdf",
+                    Rating = 4.0f, BookPath = "Data/Books/test.pdf",
                     BookImages = new List<BookImage>
                     {
                         new BookImage {
-                            Url =  "https://m.media-amazon.com/images/I/71FxgtFKcQL._SL1500_.jpg"
+                            Url =  "Data/BookImage/tokillamockingbird.jpg"
                         }
                     }
                 },

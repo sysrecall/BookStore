@@ -225,7 +225,7 @@
 
                 @if (Model.IsOwned)
                 {
-                    using (Html.BeginForm("Read", "Book"))
+                    using (Html.BeginForm("Read", "Book", new { bookId = Model.Book.ID }))
                     {
                         <button type="submit" class="btn btn-lg btn-info">Read</button>
                     }

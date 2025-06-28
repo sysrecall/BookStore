@@ -3,23 +3,25 @@
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
+
 <style>
-    body {
-        background-color: #eee;
+    .center-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
 
     .card {
         width: 400px;
-        margin: 80px auto;
         padding: 20px;
         border-radius: 10px;
     }
 
     .nav-tabs .nav-link.active {
         font-weight: bold;
-        color: #3b5998 ;
+        color: #3b5998;
         border: none;
         border-bottom: 2px solid #3b5998;
     }
@@ -36,47 +38,45 @@
         background-color: #6c80b4;
         color: white;
     }
+
     .btn-custom:hover {
         background-color: #5a6e9e;
         color: white;
     }
-
 </style>
 
-<div class="card shadow bg-white">
+<div class="center-wrapper">
+    <div class="card shadow bg-white">
+        <div class="tab-pane fade show active" id="register" role="tabpanel">
+            <h6 class="text-center mt-3">Create an Account</h6>
+            @using (Html.BeginForm())
+            {
+                <div class="mb-2">
+                    @Html.LabelFor(m => m.FullName)
+                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Full Name" })
+                    @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                </div>
 
- <div class="tab-pane fade show active" id="register" role="tabpanel">
-    <h6 class="text-center mt-3">Create an Account</h6>
-    @using (Html.BeginForm())
-    {
-        <div class="mb-2">
-            @Html.LabelFor(m => m.FullName)
-            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "First Name" })
-            @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                <div class="mb-2">
+                    @Html.LabelFor(m => m.Account.Username)
+                    @Html.TextBoxFor(m => m.Account.Username, new { @class = "form-control", placeholder = "Username" })
+                    @Html.ValidationMessageFor(m => m.Account.Username, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-2">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-2">
+                    @Html.LabelFor(m => m.Account.PasswordHash)
+                    @Html.PasswordFor(m => m.Account.PasswordHash, new { @class = "form-control", placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Account.PasswordHash, "", new { @class = "text-danger" })
+                </div>
+
+                <button type="submit" class="btn btn-custom w-100 mt-2">Sign Up</button>
+            }
         </div>
-
-        <div class="mb-2">
-            @Html.LabelFor(m => m.Account.Username)
-            @Html.TextBoxFor(m => m.Account.Username, new { @class = "form-control", placeholder = "Last Name" })
-            @Html.ValidationMessageFor(m => m.Account.Username, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="mb-2">
-            @Html.LabelFor(m => m.Email)
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
-            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="mb-2">
-            @Html.LabelFor(m => m.Account.PasswordHash)
-            @Html.PasswordFor(m => m.Account.PasswordHash, new { @class = "form-control", placeholder = "Password" })
-            @Html.ValidationMessageFor(m => m.Account.PasswordHash, "", new { @class = "text-danger" })
-        </div>
-
-        <button type="submit" class="btn btn-custom w-100 mt-2">Sign Up</button>
-    }
+    </div>
 </div>
-</div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
