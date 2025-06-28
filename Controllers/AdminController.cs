@@ -30,32 +30,7 @@ namespace BookStore.Controllers
         //=======================
         //Admin Related works here
         //=======================
-        //public ActionResult Login()
-        //{
-        //      return View();
-        //}
-        //[HttpPost]
-        //public ActionResult Login(Admin admin)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        var existingAdmin = _AdminDb.Admin.FirstOrDefault(a => a.Email == admin.Email );
-        //        if (existingAdmin != null)
-        //        {
-        //            Session["AdminID"] = existingAdmin.Id;
-        //            Session["AdminEmail"] = existingAdmin.Email;
-        //            return RedirectToAction("DashBoard");
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError("", "Invalid username or password.");
-        //        }
-        //        ViewBag.admin = existingAdmin;
-
-        //    }
-        //    return View(admin);
-        //}
+       
 
         public ActionResult SignUp()
         {
@@ -124,12 +99,7 @@ namespace BookStore.Controllers
                     .Include("Account")
                     .FirstOrDefault(a => a.Id == admin.Id);
 
-                //if (existingAdmin == null)
-                //{
-                //    return HttpNotFound("Admin not found with ID: " + admin.Id);
-                //}
 
-                // Update Admin fields
                 existingAdmin.FirstName = admin.FirstName;
                 existingAdmin.LastName = admin.LastName;
                 existingAdmin.Email = admin.Email;
@@ -137,16 +107,13 @@ namespace BookStore.Controllers
                 existingAdmin.Position = admin.Position;
                 existingAdmin.JoinDate = admin.JoinDate;
 
-                // Update Account fields only if not null
                 if (existingAdmin.Account != null && admin.Account != null)
                 {
                     existingAdmin.Account.Username = admin.Account.Username;
                     existingAdmin.Account.PasswordHash = admin.Account.PasswordHash;
-                    // Keep role safe
                     existingAdmin.Account.Role = "Admin";
                 }
 
-                // Save changes without try-catch
                 _AdminDb.SaveChanges();
 
                 return RedirectToAction("AdminProfile");
@@ -181,61 +148,12 @@ namespace BookStore.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult AddUser(User user)
-        //{
-        //    if (Session["AdminID"] == null)
-        //    {
-        //        return RedirectToAction("Login", "Account");
-        //    }
-        //    if (ModelState.IsValid)
-        //    {
-        //        _AdminDb.User.Add(user);
-        //        _AdminDb.SaveChanges();
-        //        TempData["MsgAddUser"] = "User added successfully";
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View("AddUser", user);
-        //}
-
         public ActionResult AddUser()
         {
             return View();
         }
 
 
-        //[HttpPost]
-        //public ActionResult AddUser(User user, string PasswordHash, string Role = "User")
-        //{
-        //    if (Session["AdminID"] == null)
-        //        return RedirectToAction("Login", "Account");
-
-        //    // Ensure Account is not null
-        //    if (user.Account == null)
-        //        user.Account = new Account();
-
-        //    // Assign values from form if needed
-        //    user.Account.PasswordHash = PasswordHash;
-        //    user.Account.Role = Role;
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        _AdminDb.Account.Add(user.Account);
-        //        _AdminDb.SaveChanges();
-
-        //        user.AccountID = user.Account.ID;
-        //        _AdminDb.User.Add(user);
-        //        _AdminDb.SaveChanges();
-
-        //        TempData["MsgAddUser"] = "User added successfully";
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    // On validation failure
-        //    var users = _AdminDb.User.Include("Account").ToList();
-        //    ViewBag.NewUser = user;
-        //    return View("Index", users);
-        //}
         [HttpPost]
         public ActionResult AddUser(AddUserViewModel model)
         {
@@ -244,12 +162,12 @@ namespace BookStore.Controllers
                 var account = new Account
                 {
                     Username = model.Username,
-                    PasswordHash = model.Password, // optionally hash this
+                    PasswordHash = model.Password, 
                     Role = "User"
                 };
 
                 _AdminDb.Account.Add(account);
-                _AdminDb.SaveChanges(); // Save first to get the Account ID
+                _AdminDb.SaveChanges(); 
 
                 var user = new User
                 {
@@ -345,30 +263,15 @@ namespace BookStore.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            //ViewBag.BookTypeList = new SelectList(Enum.GetValues(typeof(BookType)).Cast<BookType>().Select(e => new SelectListItem
-            //{
-            //    Value = e.ToString(),
-            //    Text = e.ToString()
-            //}));
-
-            //ViewBag.CategoryList = new SelectList(Enum.GetValues(typeof(Category)).Cast<Category>().Select(e => new SelectListItem
-            //{
-            //    Value = e.ToString(),
-            //    Text = e.ToString()
-            //}));
-
-            //var data = _AdminDb.Book.ToList();
-            //return View(data);
              var books = _AdminDb.Book.Include(b => b.BookInfo).Include(b=>b.Inventory).ToList();
              return View(books);
         }
 
         [HttpPost]
-        public ActionResult AddBooks(Book book, HttpPostedFileBase Image)
+        public ActionResult AddBooks(Book book, string[] SelectedBookTypes, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
-                // Save BookInfo
                 if (book.BookInfo != null)
                 {
                     _AdminDb.BookInfo.Add(book.BookInfo);
@@ -376,7 +279,6 @@ namespace BookStore.Controllers
                     book.BookInfoID = book.BookInfo.ID;
                 }
 
-                // Save image
                 if (Image != null && Image.ContentLength > 0)
                 {
                     string folderPath = Server.MapPath("~/Books/cover/");
@@ -391,50 +293,38 @@ namespace BookStore.Controllers
                     book.BookImages = new List<BookImage> { new BookImage { Url = imageUrl } };
                 }
 
-                // Save Book first
                 _AdminDb.Book.Add(book);
                 _AdminDb.SaveChanges();
 
-                // Save Inventory using the Book ID
                 var inventory = new Inventory
                 {
                     BookID = book.ID,
-                    AmountInStock = book.TempAmountInStock // get value from temporary field
+                    AmountInStock = book.TempAmountInStock
                 };
-
                 _AdminDb.Inventory.Add(inventory);
-                _AdminDb.SaveChanges();
 
+                if (SelectedBookTypes != null && SelectedBookTypes.Length > 0)
+                {
+                    foreach (var type in SelectedBookTypes)
+                    {
+                        if (Enum.TryParse(type, out BookType parsedType))
+                        {
+                            var bookTypeEntry = new BookInfoAvailableType
+                            {
+                                BookType = parsedType,
+                                BookInfoID = book.BookInfoID
+                            };
+                            _AdminDb.BookInfoAvailableTypes.Add(bookTypeEntry);
+                        }
+                    }
+                }
+
+                _AdminDb.SaveChanges();
                 return RedirectToAction("BookIndex");
             }
 
             return View("BookIndex");
         }
-
-
-        //[HttpPost]
-        //public ActionResult AddBooks(Book book, HttpPostedFileBase file)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (file != null && file.ContentLength > 0)
-        //        {
-        //            // Save the file and get the URL/path
-        //            var bookImage = new BookImage { Url = "/Uploads/Books/" + Guid.NewGuid().ToString() + ".pdf" }; // Generate unique file path logic
-        //            book.BookImages = new List<BookImage> { bookImage };
-        //            book.BookPath = bookImage.Url; // Set BookPath to the image URL
-        //        }
-
-        //        _AdminDb.Book.Add(book);
-        //        _AdminDb.SaveChanges();
-
-        //        return RedirectToAction("BookIndex");
-        //    }
-
-        //    ViewBag.BookTypeList = new SelectList(Enum.GetNames(typeof(BookType)), book.BookInfo?.BookType.ToString());
-        //    return View("AddBooks", book);
-        //}
-
 
 
 
@@ -532,46 +422,7 @@ namespace BookStore.Controllers
         //======================================================================
         //Report                
         //======================================================================
-        //public ActionResult Report()
-        //{
-        //    if (Session["AdminID"] == null)
-        //    {
-        //        return RedirectToAction("Login", "Account");
-        //    }
-
-        //    var books = _AdminDb.Book.ToList();
-        //    var users = _AdminDb.User.ToList();
-
-        //    var mostActiveUsers = users
-        //        .OrderByDescending(u => u.Books != null ? u.Books.Count : 0)
-        //        .Take(5)
-        //        .ToList();
-
-        //    var newUser = users.OrderByDescending(u => u.ID).FirstOrDefault();
-
-        //    var reportViewModel = new ReportViewModel
-        //    {
-        //        Books = books,
-        //        BookCount = books.Sum(b => b.StockQuantity),
-        //        SalesByCategory = "Category data here",
-        //        TopSellingBooks = "Top selling books data here",
-        //        TotalSales = "Total sales data here",
-
-        //        Users = users,
-        //        MostActiveUsers = mostActiveUsers,
-        //        NewUsersThisMonth = newUser != null ? 1 : 0,
-
-        //        LowStockItems = books.Where(b => b.StockQuantity > 0 && b.StockQuantity <= 15).ToList(),
-        //        OutOfStockItems = books.Where(b => b.StockQuantity == 0).ToList(),
-        //        RecentlyRestockedItems = books
-        //            .Where(b => b.RestockDate.HasValue && b.RestockDate.Value >= DateTime.Now.AddDays(-30)).ToList(),
-        //        UniqueTitlesCount = books.Select(b => b.Title).Distinct().Count(),
-
-        //        RecentLogins = new List<User>()
-        //    };
-
-        //    return View(reportViewModel);
-        //}
+       
         public ActionResult Report()
         {
             if (Session["AdminID"] == null)
@@ -634,7 +485,7 @@ namespace BookStore.Controllers
             var reportViewModel = new ReportViewModel
             {
                 Books = books,
-                BookCount = books.Count(), // total number of book records
+                BookCount = books.Count(), 
                 SalesByCategory = salesByCategory,
                 TopSellingBooks = topSellingBooks,
                 TotalSales = (decimal)totalSales,
@@ -686,19 +537,15 @@ namespace BookStore.Controllers
 
             var booksInStock = _AdminDb.Book.Count();
 
-            // ✅ TotalSales = Sum of (Price * number of users who bought the book)
             var totalSales = _AdminDb.User
             .SelectMany(u => u.Books)
             .Sum(b => (double?)b.Price) ?? 0.0;
 
 
-            // ✅ TotalOrders = Total number of books bought by users
             var totalOrders = _AdminDb.User
                 .SelectMany(u => u.Books)
                 .Count();
 
-
-            // First get the raw data from database
             var topSellingData = _AdminDb.User
                 .SelectMany(u => u.Books)
                 .GroupBy(b => b.Title)
@@ -706,13 +553,12 @@ namespace BookStore.Controllers
                 {
                     Title = g.Key,
                     Count = g.Count(),
-                    FirstBook = g.FirstOrDefault() // Get one book from the group
+                    FirstBook = g.FirstOrDefault() 
                 })
                 .OrderByDescending(g => g.Count)
                 .Take(5)
                 .ToList();
 
-            // Then transform to the format we need
             var topSellingBooks = topSellingData.Select(g => (
                 Book: new Book
                 {

@@ -1,7 +1,7 @@
 ﻿@model BookStore.Models.Store.Book
-@{
+@*@{
     var newBook = new BookStore.Models.Store.Book();
-}
+}*@
 
 <div class="modal fade" id="createBookModal" tabindex="-1" role="dialog" aria-labelledby="createBookModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -46,13 +46,23 @@
                         </div>
                         <div class="col-md-6">
                             <label>Available Types</label>
-                            @Html.ListBox("SelectedBookTypes", new MultiSelectList(Enum.GetValues(typeof(BookStore.Models.Store.BookType)).Cast<BookStore.Models.Store.BookType>()
-                           .Select(e => new SelectListItem
-                            {
-                                Value = e.ToString(),
-                                Text = e.ToString()
-                            }), "--Select--"), new { @class = "form-control", multiple = "multiple" })
+                            <div>
+                                @foreach (BookStore.Models.Store.BookType type in Enum.GetValues(typeof(BookStore.Models.Store.BookType)))
+                                {
+                                    <div class="form-check">
+                                        <input type="checkbox"
+                                               name="SelectedBookTypes"
+                                               value="@type"
+                                               class="form-check-input"
+                                               id="booktype_@type" />
+                                        <label class="form-check-label" for="booktype_@type">
+                                            @type.ToString()
+                                        </label>
+                                    </div>
+                                }
+                            </div>
                         </div>
+
                         <div class="col-md-6">
                             @Html.LabelFor(model => model.TempAmountInStock, "Amount in Stock")
                             @Html.TextBoxFor(model => model.TempAmountInStock, new { @class = "form-control", type = "number" })

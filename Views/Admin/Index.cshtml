@@ -207,7 +207,6 @@
             });
         });
         $(document).ready(function () {
-    // If there's a new user with validation errors, open the modal automatically
     var hasInvalidUser = @((ViewBag.NewUser != null && !ViewData.ModelState.IsValid) ? "true" : "false");
     if (hasInvalidUser === "true") {
         $('#createUserModal').modal('show');

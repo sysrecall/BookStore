@@ -158,16 +158,7 @@
 
                 </div>
 
-                <!-- Monthly Sales Trend -->
-                @*<div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5>Monthly Sales Trend</h5>
-                            <span class="trend-percentage">+12.5%</span>
-                        </div>
-                        <p class="text-muted">[Graph placeholder]</p>
-                    </div>
-                </div>*@
+
             </div>
 
             <!-- Inventory Status Tab -->
@@ -180,7 +171,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h5>Total Books in Inventory</h5>
-                                <p class="sales-amount">@Model.BookCount</p> <!-- Display total number of books -->
+                                <p class="sales-amount">@Model.BookCount</p> 
                             </div>
                             <button class="btn btn-outline-primary btn-sm" onclick="exportInventoryStatus()">Export</button>
                         </div>
@@ -213,41 +204,10 @@
                         </div>
                     </div>
 
-                    <!-- Out of Stock Items -->
-                    @*<div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5>Out of Stock Items</h5>
-                                @if (Model.OutOfStockItems.Any())
-                                {
-                                    foreach (var item in Model.OutOfStockItems)
-                                    {
-                                        <div class="out-of-stock mb-3">
-                                            <div class="d-flex justify-content-between">
-                                                <span>@item.Title</span>
-                                                <span>by @item.Author</span> 
-                                            </div>
-                                        </div>
-                                    }
-                                }
-                                else
-                                {
-                                    <p>No out of stock items.</p>
-                                }
-                            </div>
-                        </div>
-                    </div>*@
+
                 </div>
 
-                <!-- Recently Restocked Items -->
-                @*<div class="card">
-                    <div class="card-body">
-                        <h5>Recently Restocked Items</h5>
-                        <div class="restocked mb-3">
-                            <p>No recently restocked items available.</p> 
-                        </div>
-                    </div>
-                </div>*@
+
 
                 <!-- Summary Stats -->
                 <div class="row">
@@ -300,32 +260,10 @@
                             </div>
                         </div>
                     </div>
-                    @*<div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5>User Engagement</h5>
-                        <p class="sales-amount">a</p>
-                    </div>
-                </div>
-            </div>*@
+
                 </div>
 
-                @*<div class="card">
-                    <div class="card-body">
-                        <h5>Most Active Users</h5>
-                        <ol>
-                            @foreach (var user in Model.MostActiveUsers)
-                            {
-                                <li>
-                                    <div class="d-flex justify-content-between">
-                                        <span>@user.FullName</span>
-                                        <span>@(user.Books?.Count ?? 0) actions</span>
-                                    </div>
-                                </li>
-                            }
-                        </ol>
-                    </div>
-                </div>*@
+
                 <div class="card">
                     <div class="card-body">
                         <h5>Most Active Users</h5>
@@ -344,22 +282,7 @@
                 </div>
 
 
-                <!--<div class="card">
-        <div class="card-body">
-            <h5>Recent Logins</h5>
-            <ol>-->
-                @*@foreach (var login in Model.RecentLogins)
-        {*@
-                <!--<li>
-        <div class="d-flex justify-content-between">
-            <span>a</span>
-            <span>a</span>
-        </div>
-    </li>-->
-                @*}*@
-                <!--</ol>
-        </div>
-    </div>-->
+
 
             </div>
         </div>
@@ -514,7 +437,7 @@
             let yPosition = 80;
 
             const lowStockItems = document.querySelectorAll("#inventoryStatus .low-stock");
-            const lowStockCount = lowStockItems.length; // Get actual count from DOM elements
+            const lowStockCount = lowStockItems.length; 
 
             if (lowStockCount > 0) {
                 lowStockItems.forEach(item => {
@@ -538,10 +461,9 @@
 
             const uniqueTitles = document.querySelector("#inventoryStatus .stats-card:nth-child(1) h5")?.innerText || "N/A";
 
-            // Use the actual count we got from DOM elements
             doc.text(`- Unique Titles: ${uniqueTitles}`, 25, yPosition);
             yPosition += 7;
-            doc.text(`- Low Stock Items: ${lowStockCount}`, 25, yPosition); // Fixed: Using actual count
+            doc.text(`- Low Stock Items: ${lowStockCount}`, 25, yPosition); 
             yPosition += 7;
 
             // Footer

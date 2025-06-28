@@ -183,7 +183,6 @@
             topNav.style.left = "0";
             topNav.style.width = "100%";
         }
-        // Theme toggle logic
         document.getElementById('btnSwitch').addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
             document.documentElement.setAttribute('data-bs-theme', currentTheme === 'dark' ? 'light' : 'dark');
