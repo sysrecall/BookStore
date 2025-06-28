@@ -307,6 +307,8 @@ namespace BookStore.Controllers.Store
                         .Where(oi => oi.BookType == BookType.eBook)
                         .ForEach(oi => user.Books.Add(oi.Book));
 
+                    order.PaymentID = createdPayment.ID;
+
                     db.SaveChanges();
                 }
                 else

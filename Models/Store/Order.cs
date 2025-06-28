@@ -19,7 +19,6 @@ namespace BookStore.Models.Store
         public string BillingName { get; set; }
         public string BillingAddress { get; set; }
 
-        public string PaymentMethod { get; set; }
         public int PaymentID { get; set; }
 
         public virtual User User { get; set; }
