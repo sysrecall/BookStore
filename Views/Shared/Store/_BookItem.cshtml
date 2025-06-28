@@ -2,8 +2,7 @@
 @using BookStore.Models.Store
 
 @{
-    var imageUrl = Model?.Book?.BookImages?.First().Url ?? 
-   "https://w7.pngwing.com/pngs/790/734/png-transparent-hardcover-book-cover-cover-rectangle-publishing-black.png";
+    var imageUrl = Url.Action("Index", "BookImage", new { id = Model.Book.BookImages.First().ID });
 }
 <style>
     .book-card img {
@@ -22,7 +21,7 @@
 <div class="col">
     <div class="card book-card border-0">
         <a href="@Url.Action("Index", "Book", new { BookID = Model.Book.ID })">
-            <img src="@imageUrl" class="card-img-top" alt="Book Cover">
+            <img src="@imageUrl" class="card-img-top">
         </a>
         <div class="card-body d-flex flex-column">
             <div class="book-title">

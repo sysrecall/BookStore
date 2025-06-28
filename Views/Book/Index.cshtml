@@ -1,8 +1,12 @@
-﻿@model BookStore.ViewModels.BookCardViewModel
+﻿@using BookStore.ViewModels
+@using Microsoft.Ajax.Utilities
+@model BookStore.ViewModels.BookCardViewModel
 @{
     ViewBag.Title = Model.Book.Title;
     Layout = "~/Views/Shared/Store/_StoreLayout.cshtml";
-    
+    var imageIds = Model.Book.BookImages.Select(bi => bi.ID);
+    var imageUrls = imageIds.Select(id => Url.Action("Index", "BookImage", new { id = id }));
+ 
     var mainImageId = "main-book-image";
 }
 
@@ -130,14 +134,14 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-1 thumbnail-list">
-            @foreach (var img in Model.Book.BookImages)
+            @foreach (var img in imageUrls)
             {
-                <img src="@img.Url" alt="Thumbnail" class="img-fluid rounded" onclick="document.getElementById('@mainImageId').src='@img.Url'" />
+                <img src="@img" alt="Thumbnail" class="img-fluid rounded" onclick="document.getElementById('@mainImageId').src='@img'" />
             }
         </div>
 
         <div class="col-md-3">
-            <img id="@mainImageId" src="@Model.Book.BookImages.First().Url" alt="@Model.Book.Title" class="img-fluid rounded shadow w-100" />
+            <img id="@mainImageId" src="@imageUrls.First()" alt="@Model.Book.Title" class="img-fluid rounded shadow w-100" />
         </div>
 
         <div class="col-md-6">
@@ -242,6 +246,7 @@
 
     @if (Model.RecommendedBooks.Any())
     {
+
         <div class="mt-5">
             <h4 class="mb-3">
                 <span class="metadata-icon"><i class="fas fa-book"></i></span>
@@ -250,10 +255,12 @@
             <div class="row">
                 @foreach (var rec in Model.RecommendedBooks)
                 {
+                    var tmp = rec.BookImages.Select(bi => Url.Action("Index", "BookImage", new { id = bi.ID }));
+                    
                     <div class="col-md-2 mb-4">
                         <div class="card h-100 p-2 border-0">
                             <a href="@Url.Action("Index", "Book", new { BookID = rec.ID })">
-                                <img src="@rec.BookImages.First().Url" alt="Thumbnail" class="img-fluid rounded" />
+                                <img src="@tmp.First()" alt="Thumbnail" class="img-fluid rounded" />
                             </a>
                             <div class="card-body d-none d-lg-block border-0">
                                 <h6 class="card-title">@rec.Title</h6>

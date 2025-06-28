@@ -54,13 +54,18 @@
             <tbody>
             @foreach (var item in Model.Cart.CartItems)
             {
+
+                
                 var book = item.Book;
                 var quantity = item.Quantity;
                 var selectedBookType = item.SelectedBookType;
+                
+                var imageIds = book.BookImages.Select(bi => bi.ID);
+                var imageUrls = imageIds.Select(id => Url.Action("Index", "BookImage", new { id = id }));
 
                 <tr>
                     <td style="width: 100px;">
-                        <img src="@book.BookImages.First().Url" class="img-thumbnail" style="height: 100px;"/>
+                        <img src="@imageUrls.First()" class="img-thumbnail" style="height: 100px;"/>
                     </td>
                     <td>
                         <a href="@Url.Action("Index", "Book", new { BookID = book.ID })" class="fw-bold">

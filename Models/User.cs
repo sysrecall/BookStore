@@ -22,9 +22,6 @@ namespace BookStore.Models
         public string CardPin { get; set; }
         public DateTime? CardExpiryDate { get; set; }
 
-        // public string SecurityQuestion { get; set; }
-        // public string SecurityAnswer { get; set }
-
         public virtual Account Account { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }

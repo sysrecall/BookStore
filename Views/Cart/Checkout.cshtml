@@ -63,9 +63,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Address</label>
-                        <textarea name="ShippingAddress" class="form-control" rows="2" required>
-                            @(Model.Cart.User?.ShippingAddress ?? "")
-                            </textarea>
+                        <textarea name="ShippingAddress" class="form-control" rows="2" required>@(Model.Cart.User?.ShippingAddress ?? "")</textarea>
 
                     </div>
                     
@@ -101,9 +99,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Address</label>
-                            <textarea name="BillingAddress" class="form-control" rows="2">
-                                @(Model.Cart.User?.BillingAddress ?? "")
-                                </textarea>
+                            <textarea name="BillingAddress" class="form-control" rows="2">@(Model.Cart.User?.BillingAddress ?? "")</textarea>
 
                         </div>
                     </div>

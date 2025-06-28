@@ -23,13 +23,5 @@ namespace BookStore.Models
 
         public string JoinDate { get; set; }
         public virtual Account Account { get; set; }
-
-
-
-        //public DateTime CreatedAt { get; set; }
-        //public Admin()
-        //{
-        //    CreatedAt = DateTime.Now;
-        //}
     }
 }

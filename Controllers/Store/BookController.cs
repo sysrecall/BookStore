@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -199,8 +200,11 @@ namespace BookStore.Controllers.Store
             if (!user.Books.Contains(book))
                 return RedirectToAction("Index", "Book", new { BookId = bookId });
             
-            return View(book);
-        }
+            string contentType = "application/pdf";
+            string fileName = Path.GetFileName(book.BookPath);
+            Response.AddHeader("Content-Disposition", $"inline; filename=\"{fileName}\""); 
+            return File(book.BookPath, contentType);
+        }  
         
         protected override void Dispose(bool disposing)
         {

@@ -105,7 +105,7 @@ namespace BookStore.Controllers.Store
             if (inv.AmountInStock >= existingItem?.Quantity)
                 db.SaveChanges();
 
-            return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Browse", "Home", new {selectedBookType = selectedBookType}));
+            return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Browse", "Home"));
         }
  
 
