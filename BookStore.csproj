@@ -639,7 +639,6 @@
     <Content Include="Scripts\pdfjs\web\viewer.js" />
     <Content Include="Scripts\pdfjs\web\viewer.js.map" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Book\Read.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
