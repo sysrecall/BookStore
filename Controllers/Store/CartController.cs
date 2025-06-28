@@ -239,7 +239,9 @@ namespace BookStore.Controllers.Store
             {
                 UserID = userId,
                 DatePlaced = DateTime.Now,
-                OrderItems = new List<OrderItem>()
+                OrderItems = new List<OrderItem>(),
+                ShippingAddress = user.ShippingAddress,
+                BillingAddress = user.BillingAddress,
             };
             
             double totalAmount = 0;
@@ -256,6 +258,7 @@ namespace BookStore.Controllers.Store
                         Quantity = cartItem.Quantity,
                         Price = cartItem.Book.Price
                     };
+                    
                     totalAmount += orderItem.Total;
                     order.OrderItems.Add(orderItem);
                     inv.AmountInStock -= cartItem.Quantity;

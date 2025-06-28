@@ -1,20 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.35826.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore", "BookStore.csproj", "{D02687A4-F798-40A6-813E-0EAA99C44FA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D02687A4-F798-40A6-813E-0EAA99C44FA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D02687A4-F798-40A6-813E-0EAA99C44FA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D02687A4-F798-40A6-813E-0EAA99C44FA2}.Debug|x64.ActiveCfg = Debug|x64
+		{D02687A4-F798-40A6-813E-0EAA99C44FA2}.Debug|x64.Build.0 = Debug|x64
 		{D02687A4-F798-40A6-813E-0EAA99C44FA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D02687A4-F798-40A6-813E-0EAA99C44FA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D02687A4-F798-40A6-813E-0EAA99C44FA2}.Release|x64.ActiveCfg = Release|x64
+		{D02687A4-F798-40A6-813E-0EAA99C44FA2}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

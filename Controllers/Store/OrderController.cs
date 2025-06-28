@@ -6,15 +6,37 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Drawing;
 using QuestPDF.Infrastructure;
+using BookStore.DAL;
+using System.Web.Services.Description;
 
 namespace BookStore.Controllers.Store
 {
     public class OrderController : Controller
     {
-        public void GetInvoice(Order order)
+        private BookStoreContext db;
+        public OrderController()
         {
-            var document = new InvoiceDocument(order);
-            document.GeneratePdfAndShow();
+            db = new BookStoreContext();
+        }   
+
+  public FileStreamResult GetInvoice(int? orderID)
+        {
+            var order = db.Order.Include("OrderItems").Include("User").FirstOrDefault(_o => _o.ID == orderID);
+            if (order != null)
+            {
+                var document = new InvoiceDocument(order);
+                var pdfBytes = document.GeneratePdf(); // GeneratePdf returns a byte array
+                var pdfStream = new MemoryStream(pdfBytes); // Wrap the byte array in a MemoryStream
+                pdfStream.Seek(0, SeekOrigin.Begin); // Seek to the beginning of the stream
+                return new FileStreamResult(pdfStream, "application/pdf") // Explicitly create a FileStreamResult
+                {
+                    FileDownloadName = $"Invoice_Order_{order.ID}.pdf"
+                };
+            }
+            return new FileStreamResult(new MemoryStream(new byte[] { }), "application/pdf") // Explicitly create a FileStreamResult
+            {
+                FileDownloadName = "empty.pdf"
+            };
         }
     }
 
@@ -34,10 +56,20 @@ namespace BookStore.Controllers.Store
         {
             container.Page(page =>
             {
-                
+                page.Size(PageSizes.A4);
+                page.Margin(30);
+                page.PageColor(Colors.White);
+                page.DefaultTextStyle(x => x.FontSize(12));
+
+                page.Header().Element(ComposeHeader);
+
+                page.Content().Element(ComposeContent);
+
+                page.Footer().Element(ComposeComments);
             });
         }
-        
+
+
         void ComposeHeader(IContainer container)
         {
             container.Row(row =>
@@ -55,7 +87,7 @@ namespace BookStore.Controllers.Store
                     });
                 });
 
-                row.ConstantItem(100).Height(50).Placeholder();
+                // row.ConstantItem(100).Height(50).Placeholder();
             });
         }
 
@@ -88,6 +120,7 @@ namespace BookStore.Controllers.Store
                 {
                     columns.ConstantColumn(25);
                     columns.RelativeColumn(3);
+                    columns.RelativeColumn();
                     columns.RelativeColumn();
                     columns.RelativeColumn();
                     columns.RelativeColumn();

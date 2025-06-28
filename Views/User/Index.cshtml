@@ -94,7 +94,7 @@
                             <span>
                                 <strong>Order ID: @order.ID</strong> - @order.DatePlaced.ToString("MMMM dd, yyyy")
                             </span>
-                            @using (Html.BeginForm("GetInvoice", "Order", new { id = order.ID }))
+                            @using (Html.BeginForm("GetInvoice", "Order", new { orderID = order.ID }))
                             {
                                 <button type="submit" class="btn btn-sm btn-primary">Download</button>
                             }

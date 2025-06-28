@@ -7,6 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
 using BookStore.DAL;
+using QuestPDF.Infrastructure;
 
 namespace BookStore
 {
@@ -16,6 +17,9 @@ namespace BookStore
         {
             // delete when prod
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BookStoreContext>());
+
+            QuestPDF.Settings.License = LicenseType.Community;
+
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
