@@ -17,6 +17,10 @@ namespace BookStore.Models
         public string Email { get; set; }
         public string ShippingAddress { get; set; }
         public string BillingAddress { get; set; }
+        
+        public string CardNumber { get; set; }
+        public string CardPin { get; set; }
+        public DateTime? CardExpiryDate { get; set; }
 
         // public string SecurityQuestion { get; set; }
         // public string SecurityAnswer { get; set }

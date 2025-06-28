@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Net.Http;
+using System.Text;
 using System.Web;
 using BookStore.DAL;
+using BookStore.Models.api;
 using BookStore.Models.Store;
 using BookStore.ViewModels;
 using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 
 namespace BookStore.Controllers.Store
 {
@@ -215,7 +219,7 @@ namespace BookStore.Controllers.Store
 
 
         [HttpPost]
-        public ActionResult Checkout()
+        public ActionResult Checkout(Checkout checkout)
         {
             if (Session["UserID"] == null)
                 return RedirectToAction("Login", "Account");
@@ -240,8 +244,10 @@ namespace BookStore.Controllers.Store
                 UserID = userId,
                 DatePlaced = DateTime.Now,
                 OrderItems = new List<OrderItem>(),
-                ShippingAddress = user.ShippingAddress,
-                BillingAddress = user.BillingAddress,
+                ShippingAddress = checkout.ShippingAddress ?? user.ShippingAddress,
+                BillingAddress = checkout.BillingAddress ?? user.BillingAddress,
+                BillingName = checkout.BillingName,
+                ShippingName = checkout.ShippingName,
             };
             
             double totalAmount = 0;
@@ -272,12 +278,43 @@ namespace BookStore.Controllers.Store
             db.Order.Add(order);
             db.CartItem.RemoveRange(cart.CartItems);
             // db.Cart.Remove(cart);
-            
-            order.OrderItems
-                .Where(oi => oi.BookType == BookType.eBook)
-                .ForEach(oi => user.Books.Add(oi.Book)); 
 
-            db.SaveChanges();
+            var payment = checkout.Payment;
+            payment.Amount = totalAmount;
+            payment.PaymentDate = DateTime.Now;
+            
+            // Serialize to JSON
+            var json = JsonConvert.SerializeObject(payment);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(Request.Url.GetLeftPart(UriPartial.Authority));
+
+                HttpResponseMessage response = client.PostAsync("/api/payment", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseData = response.Content.ReadAsStringAsync().Result;
+                    var createdPayment = JsonConvert.DeserializeObject<Payment>(responseData);
+
+                    ViewBag.Payment = createdPayment;
+                    TempData["Message"] = "Payment Successful";
+                    TempData["MessageType"] = "success";
+                    
+                    // add books to user
+                    order.OrderItems
+                        .Where(oi => oi.BookType == BookType.eBook)
+                        .ForEach(oi => user.Books.Add(oi.Book));
+
+                    db.SaveChanges();
+                }
+                else
+                {
+                    TempData["Message"] = "Payment Failed!";
+                    TempData["MessageType"] = "danger";
+                }
+            }
             
             return RedirectToAction("Index", "Home");
             // return RedirectToAction("OrderConfirmation", new { orderId = order.ID });

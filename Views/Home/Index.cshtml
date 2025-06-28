@@ -6,6 +6,16 @@
     Layout = "~/Views/Shared/Store/_StoreLayout.cshtml";
 }
 
+@if (TempData["Message"] != null)
+{
+    var type = TempData["MessageType"] as string ?? "info";
+    <div class="alert alert-@type alert-dismissible fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+}
+
 <div class="container mt-4">
     <div class="row mb-4">
         <div class="col-md-3">

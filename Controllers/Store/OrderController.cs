@@ -19,7 +19,7 @@ namespace BookStore.Controllers.Store
             db = new BookStoreContext();
         }   
 
-  public FileStreamResult GetInvoice(int? orderID)
+        public FileStreamResult GetInvoice(int? orderID)
         {
             var order = db.Order.Include("OrderItems").Include("User").FirstOrDefault(_o => _o.ID == orderID);
             if (order != null)
