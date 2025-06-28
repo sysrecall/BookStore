@@ -18,10 +18,41 @@ namespace BookStore.Controllers
         {
             db = new BookStoreContext();
         }
-        
-        public ActionResult Index(HomeIndexViewModel model)
+
+        public ActionResult Index()
         {
-            var booksQuery = db.Book.Include(b => b.BookInfo).Include(b => b.BookImages).AsQueryable();
+            var booksQuery = db.Book
+                .Include(b => b.BookInfo)
+                .Include(b => b.BookImages);
+
+            var pagedBooks = booksQuery
+                .OrderBy(b => b.Title)
+                .Take(6)
+                .ToList();
+
+            var bookCards = pagedBooks
+                .Select(book => new BookCardViewModel { Book = book })
+                .ToList();
+
+            var homeIndexViewModel = new HomeIndexViewModel
+            {
+                BookCards = bookCards,
+                Categories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList(),
+                CurrentPage = 1,
+                SelectedCategory = null,
+                SearchQuery = null,
+                TotalPages = 1
+            };
+
+            return View(homeIndexViewModel);
+        }
+
+        
+        public ActionResult Browse(HomeIndexViewModel model)
+        {
+            var booksQuery = db.Book
+                .Include(b => b.BookInfo)
+                .Include(b => b.BookImages);
 
             if (!string.IsNullOrEmpty(model.SearchQuery))
             {
@@ -31,14 +62,16 @@ namespace BookStore.Controllers
 
             if (model.SelectedCategory != null)
             {
-                booksQuery = booksQuery.Where(x => x.Category == model.SelectedCategory);
+                booksQuery = booksQuery
+                    .Where(x => x.Category == model.SelectedCategory)
+                    .OrderBy(b => b.Rating);
             }
 
             int pageSize = 20;
             int currentPage = model.CurrentPage > 0 ? model.CurrentPage : 1;
 
             int totalBooks = booksQuery.Count();
-            int totalPages = (int)Math.Ceiling((double)totalBooks / pageSize);
+            int totalPages = totalBooks / pageSize;
 
             var pagedBooks = booksQuery
                 .OrderBy(b => b.Title)
@@ -46,16 +79,14 @@ namespace BookStore.Controllers
                 .Take(pageSize)
                 .ToList();
 
-            var bookCards = pagedBooks.Select(book => new BookCardViewModel
-            {
-                Book = book,
-            }).ToList();
-
+            var bookCards = pagedBooks
+                .Select(book => new BookCardViewModel { Book = book, })
+                .ToList(); 
+            
             var homeIndexViewModel = new HomeIndexViewModel()
             {
                 BookCards = bookCards,
                 Categories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList(),
-                
                 CurrentPage = currentPage,
                 SelectedCategory = model.SelectedCategory,
                 SearchQuery = model.SearchQuery,

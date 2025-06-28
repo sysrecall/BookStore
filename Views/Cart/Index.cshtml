@@ -35,7 +35,7 @@
     @if (Model.Cart?.CartItems == null || !Model.Cart.CartItems.Any())
     {
         <div class="alert alert-info">
-            Your cart is empty. <a href="@Url.Action("Index", "Home")" class="text-secondary">Browse books</a> to add some!
+            Your cart is empty. <a href="@Url.Action("Browse", "Home")" class="text-secondary">Browse books</a> to add some!
         </div>
     }
     else

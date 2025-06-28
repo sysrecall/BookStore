@@ -50,7 +50,7 @@ namespace BookStore.Controllers
                                     return RedirectToAction("Login", "Account");
                                 }
                                 Session["UserID"] = user.ID;
-                                return RedirectToAction("Index", "Home");
+                                return RedirectToAction("Browse", "Home");
                             default:
                                 return RedirectToAction("Login", "Account");
                         }

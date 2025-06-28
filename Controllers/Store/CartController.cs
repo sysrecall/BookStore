@@ -105,7 +105,7 @@ namespace BookStore.Controllers.Store
             if (inv.AmountInStock >= existingItem?.Quantity)
                 db.SaveChanges();
 
-            return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Index", "Home"));
+            return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Browse", "Home", new {selectedBookType = selectedBookType}));
         }
  
 
@@ -138,7 +138,7 @@ namespace BookStore.Controllers.Store
                 db.SaveChanges();
             }
 
-            return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Index", "Home"));
+            return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Browse", "Home"));
         }
         
         [HttpPost]
@@ -167,7 +167,7 @@ namespace BookStore.Controllers.Store
                 db.SaveChanges();
             }
 
-            return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Index", "Home"));
+            return Redirect(Request.UrlReferrer?.ToString() ?? Url.Action("Browse", "Home"));
         }
 
         [HttpPost]
@@ -192,7 +192,7 @@ namespace BookStore.Controllers.Store
                 db.SaveChanges();
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Browse", "Home");
         }
 
 
@@ -318,7 +318,7 @@ namespace BookStore.Controllers.Store
                 }
             }
             
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Browse", "Home");
             // return RedirectToAction("OrderConfirmation", new { orderId = order.ID });
         }
 

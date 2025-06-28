@@ -1,0 +1,69 @@
+﻿@using BookStore.Models.Store
+@model BookStore.ViewModels.HomeIndexViewModel
+
+@{
+    ViewBag.Title = "Home - Book Store";
+    Layout = "~/Views/Shared/Store/_StoreLayout.cshtml";
+}
+
+@if (TempData["Message"] != null)
+{
+    var type = TempData["MessageType"] as string ?? "info";
+    <div class="alert alert-@type alert-dismissible fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <h5>Categories</h5>
+            <ul class="list-group">
+                <li class="list-group-item @(Model.SelectedCategory == null ? "active" : "")">
+                    <a href="@Url.Action("Browse", new { SelectedCategory = (Category?)null, search = Model.SearchQuery })" class="text-decoration-none @(Model.SelectedCategory == null ? "text-white" : "")">All</a>
+                </li>
+                @foreach (var category in Model.Categories)
+                {
+                    <li class="list-group-item @(Model.SelectedCategory == category ? "active" : "")">
+                        <a href="@Url.Action("Browse", new { SelectedCategory = category, search = Model.SearchQuery })" class="text-decoration-none @(Model.SelectedCategory == category ? "text-white" : "")">@category.ToString()</a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+            <form class="input-group mb-4" method="get" action="@Url.Action("Browse")">
+                <input type="text" name="SearchQuery" class="form-control" placeholder="Search for books..." value="@Model.SearchQuery" />
+                <input type="hidden" name="SelectedCategory" value="@Model.SelectedCategory" />
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                @foreach (var bookCard in Model.BookCards)
+                {
+                    <div class="col">
+                        @Html.Partial("Store/_BookItem", model: bookCard)
+                    </div>
+                }
+
+                @if (!Model.BookCards.Any())
+                {
+                    <div class="alert alert-warning">No books found matching your criteria.</div>
+                }
+            </div>
+
+            <nav class="mt-4">
+                <ul class="pagination justify-content-center">
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Browse", new { CurrentPage = i, SearchQuery = Model.SearchQuery, SelectedCategory = Model.SelectedCategory })">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

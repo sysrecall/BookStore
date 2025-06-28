@@ -22,7 +22,7 @@ namespace BookStore.Controllers.Store
         {
             if (BookID == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Browse", "Home");
             }
 
             var book = db.Book
@@ -33,7 +33,7 @@ namespace BookStore.Controllers.Store
 
             if (book == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Browse", "Home");
             }
 
             var recommendedBooks = db.Book
@@ -77,10 +77,17 @@ namespace BookStore.Controllers.Store
                 } 
             }
 
+            if (!book.BookInfo.AvailableTypes.Any())
+            {
+                TempData["Message"] = "No available book type";
+                TempData["MessageType"] = "danger";
+                return RedirectToAction("Browse", "Home");
+            }
+
             var bookCardViewModel = new BookCardViewModel
             {
                 Book = book,
-                SelectedBookType = selectedBookType,
+                SelectedBookType = selectedBookType ?? book.BookInfo.AvailableTypes.FirstOrDefault()?.BookType,
                 IsInCart = bookQuantity > 0,
                 IsOwned = user?.Books.Contains(book) ?? false,
                 IsInStock = db.Inventory.Find(BookID)?.AmountInStock > 0,
