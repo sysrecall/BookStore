@@ -438,46 +438,68 @@ namespace BookStore.Controllers
 
 
 
-
         public ActionResult EditBook(int id)
         {
-            var book = _AdminDb.Book.Find(id);
-            if (book == null)
-            {
-                return HttpNotFound();
-            }
+            var book = _AdminDb.Book.Include("BookInfo.AvailableTypes").FirstOrDefault(b => b.ID == id);
+            if (book == null) return HttpNotFound();
 
-            return View(book);
+            var viewModel = new EditBookViewModel
+            {
+                ID = book.ID,
+                Title = book.Title,
+                Author = book.Author,
+                Price = book.Price,
+                Publisher = book.BookInfo.Publisher,
+                PublicationYear = book.BookInfo.PublicationYear,
+                Pages = book.BookInfo.Pages,
+                Edition = book.BookInfo.Edition,
+                Description = book.BookInfo.Description,
+                Category = book.Category,
+                SelectedTypes = book.BookInfo.AvailableTypes.Select(at => at.BookType).ToList()
+            };
+
+            return View(viewModel);
         }
 
       
         [HttpPost]
-        public ActionResult EditBook(Book model)
+        public ActionResult EditBook(EditBookViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var book = _AdminDb.Book
+                .Include("BookInfo.AvailableTypes")
+                .FirstOrDefault(b => b.ID == model.ID);
+
+            if (book == null)
+                return HttpNotFound();
+
+            book.Title = model.Title;
+            book.Author = model.Author;
+            book.Price = model.Price;
+            book.Category = model.Category;
+
+            book.BookInfo.Publisher = model.Publisher;
+            book.BookInfo.PublicationYear = model.PublicationYear;
+            book.BookInfo.Pages = model.Pages;
+            book.BookInfo.Edition = model.Edition;
+            book.BookInfo.Description = model.Description;
+
+            _AdminDb.BookInfoAvailableTypes.RemoveRange(book.BookInfo.AvailableTypes);
+
+            book.BookInfo.AvailableTypes = model.SelectedTypes.Select(t => new BookInfoAvailableType
             {
-                var book = _AdminDb.Book.Include("BookInfo").FirstOrDefault(b => b.ID == model.ID);
-                if (book != null)
-                {
-                    book.Title = model.Title;
-                    book.Author = model.Author;
-                    book.BookInfo.Publisher = model.BookInfo.Publisher;
-                    book.BookInfo.PublicationYear = model.BookInfo.PublicationYear;
-                    book.BookInfo.Pages = model.BookInfo.Pages;
-                    book.BookInfo.Edition = model.BookInfo.Edition;
-                    book.Price = model.Price;
-                    book.Category = model.Category;
-                    book.BookInfo.Description = model.BookInfo.Description;
-                    book.BookInfo.AvailableTypes = model.BookInfo.AvailableTypes;
+                BookType = t,
+                BookInfoID = book.BookInfo.ID
+            }).ToList();
 
+            _AdminDb.SaveChanges();
 
-                    _AdminDb.SaveChanges();
-                    return RedirectToAction("BookIndex");
-                }
-            }
-
-            return View(model);
+            return RedirectToAction("BookIndex");
         }
+
+ 
 
         public ActionResult DeleteBook(int id)
         {

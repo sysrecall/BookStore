@@ -202,6 +202,7 @@
     <Compile Include="ViewModels\BookCardViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\DashBoardViewModel.cs" />
+    <Compile Include="ViewModels\EditBookViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\LibraryViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />

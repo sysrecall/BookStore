@@ -1,7 +1,8 @@
-﻿@model BookStore.Models.Store.Book
+﻿@using BookStore.Models.Store
+@model BookStore.ViewModels.EditBookViewModel
 
 @{
-    ViewBag.Title = "EditBook";
+    ViewBag.Title = "Edit Book";
     Layout = "~/Views/Shared/Admin/_SideNav.cshtml";
 }
 
@@ -46,9 +47,9 @@
         border-color: #007bff;
     }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
 
     .btn-link {
         color: #007bff;
@@ -56,9 +57,9 @@
         font-size: 0.9rem;
     }
 
-        .btn-link:hover {
-            text-decoration: underline;
-        }
+    .btn-link:hover {
+        text-decoration: underline;
+    }
 </style>
 
 <div class="edit-book-container">
@@ -73,68 +74,75 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.Title, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.Title, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.Author, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.Author, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.BookInfo.Publisher, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.BookInfo.Publisher, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.BookInfo.Publisher, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.BookInfo.PublicationYear, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.BookInfo.PublicationYear, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.BookInfo.PublicationYear, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.Author, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.BookInfo.Pages, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.BookInfo.Pages, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.BookInfo.Pages, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.Publisher, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Publisher, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.BookInfo.Edition, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.BookInfo.Edition, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.BookInfo.Edition, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.PublicationYear, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.PublicationYear, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PublicationYear, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.Price, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.Pages, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Pages, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Pages, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.BookInfo.AvailableTypes, new { @class = "form-label" })
-                        @Html.EnumDropDownListFor(model => model.BookInfo.AvailableTypes, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.BookInfo.AvailableTypes, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.Edition, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Edition, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Edition, "", new { @class = "text-danger" })
                     </div>
+
                     <div class="col-md-6 mb-3">
-                        @Html.LabelFor(model => model.Category, new { @class = "form-label" })
-                        @Html.EnumDropDownListFor(model => model.Category, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.Price, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(m => m.Category, new { @class = "form-label" })
+                        @Html.EnumDropDownListFor(m => m.Category, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(m => m.SelectedTypes, new { @class = "form-label d-block" })
+                        @foreach (BookType type in Enum.GetValues(typeof(BookType)))
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="SelectedTypes" value="@type"
+                                       @(Model.SelectedTypes.Contains(type) ? "checked" : "") />
+                                <label class="form-check-label">@type</label>
+                            </div>
+                        }
+                        @Html.ValidationMessageFor(m => m.SelectedTypes, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="col-12 mb-3">
-                        @Html.LabelFor(model => model.BookInfo.Description, new { @class = "form-label" })
-                        @Html.TextAreaFor(model => model.BookInfo.Description, new { @class = "form-control", rows = 3 })
-                        @Html.ValidationMessageFor(model => model.BookInfo.Description, "", new { @class = "text-danger" })
+                        @Html.LabelFor(m => m.Description, new { @class = "form-label" })
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 3 })
+                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="mb-3 d-flex justify-content-center " style="min-width: 200px;">
+
+                <div class="mb-3 d-flex justify-content-center" style="min-width: 200px;">
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
-
             }
         </div>
-
-
 
         <div class="text-center-container text-center mb-3">
             @Html.ActionLink("Back to List", "BookIndex", null, new { @class = "btn btn-link" })

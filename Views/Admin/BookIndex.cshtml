@@ -112,7 +112,7 @@
                                 <td>@item.BookInfo.Edition</td>
                                 <td>@item.Price</td>
                                 <td>@item.BookInfo.Description</td>
-                                <td>@item.BookInfo.AvailableTypes</td>
+                                <td>@String.Join(",", item.BookInfo.AvailableTypes.Select(at => at.BookType))</td>
                                 <td>@item.Category</td>
                                 <td>@(item.Inventory?.FirstOrDefault()?.AmountInStock ?? 0)</td>
                                 <td class="text-center">
@@ -137,10 +137,8 @@
         </div>
     </div>
 </div>
-
 @* Book modal *@
 @Html.Partial("~/Views/Shared/Admin/_AddBooKsModal.cshtml", new BookStore.Models.Store.Book())
-
 
 
 @section Scripts {
