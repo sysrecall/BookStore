@@ -27,6 +27,7 @@ namespace BookStore.Controllers
 
             var pagedBooks = booksQuery
                 .OrderBy(b => b.Title)
+                .Skip(10)
                 .Take(6)
                 .ToList();
 
