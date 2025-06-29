@@ -52,7 +52,8 @@ namespace BookStore.Controllers
         {
             var booksQuery = db.Book
                 .Include(b => b.BookInfo)
-                .Include(b => b.BookImages);
+                .Include(b => b.BookImages)
+                .AsQueryable();
 
             if (!string.IsNullOrEmpty(model.SearchQuery))
             {
