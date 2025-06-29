@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using BookStore.Models.Store;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Models
 {
@@ -14,6 +15,7 @@ namespace BookStore.Models
         [ForeignKey("Account")]
         public int AccountID { get; set; }
         public string FullName { get; set; }
+        [Required]
         public string Email { get; set; }
         public string ShippingAddress { get; set; }
         public string BillingAddress { get; set; }

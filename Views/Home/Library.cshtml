@@ -32,13 +32,10 @@
             <div class="row">
                 @foreach (var book in Model.Books)
                 {
-                    var imageIds = book.BookImages.Select(bi => bi.ID);
-                    var imageUrls = imageIds.Select(id => Url.Action("Index", "BookImage", new { id = id }));
-                    
-                     <div class="col-md-2 mb-9">
+                    <div class="col-md-2 mb-9">
                         <div class="card h-100 p-2 border-0">
                             <a href="@Url.Action("Read", "Book", new { BookID = book.ID })">
-                                <img src="@imageUrls.First()" alt="Thumbnail" class="img-fluid rounded" />
+                                <img src="@book.BookImages.First().Url" alt="Thumbnail" class="img-fluid rounded" />
                             </a>
                             <div class="card-body d-none p-0 m-0 mt-1 d-lg-block border-0">
                                 <h6 class="card-title mb-1">@book.Title</h6>

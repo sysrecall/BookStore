@@ -72,10 +72,10 @@ namespace BookStore.DAL
                 Category = Category.Classic,
                 RatingCount = 338,
                 Rating = 4.1f,
-                BookPath = "Data/Books/book_01e3ef6d.pdf",
+                BookPath = "Data/Books/test.pdf",
                 BookImages = new List<BookImage>
                 {
-                    new BookImage { Url = "Data/BookImage/5017156ac3cdb363e9cb07b68754ec8c.jpg" }
+                    new BookImage { Url = "/Data/BookImage/5017156ac3cdb363e9cb07b68754ec8c.jpg" }
                 }
             },
             new Book
@@ -100,10 +100,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_01e3ef6d.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/5017156ac3cdb363e9cb07b68754ec8c.jpg" }
+                            new BookImage { Url = "/Data/BookImage/5017156ac3cdb363e9cb07b68754ec8c.jpg" }
                         }
                     },
             new Book
@@ -128,10 +128,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 318,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_6e7e1050.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/fe36f4602ffb832359cd6463674b99a4.jpg" }
+                            new BookImage { Url = "/Data/BookImage/fe36f4602ffb832359cd6463674b99a4.jpg" }
                         }
                     },
             new Book
@@ -156,10 +156,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 610,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_51b1ebc4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ff8d8b3d15fc5b2df6b582921632724f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ff8d8b3d15fc5b2df6b582921632724f.jpg" }
                         }
                     },
             new Book
@@ -184,10 +184,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 7,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_35c26b87.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3da3ce694e95fc157eec5d9ec2078260.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3da3ce694e95fc157eec5d9ec2078260.jpg" }
                         }
                     },
             new Book
@@ -212,10 +212,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 1,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_73214483.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4ce63397e604a28981bc57783bfdddd9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4ce63397e604a28981bc57783bfdddd9.jpg" }
                         }
                     },
             new Book
@@ -240,10 +240,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 133,
                         Rating = 4.3f,
-                        BookPath = "Data/Books/book_f4b98a21.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/76e3acf07139095e92fc7601d9c0549a.jpg" }
+                            new BookImage { Url = "/Data/BookImage/76e3acf07139095e92fc7601d9c0549a.jpg" }
                         }
                     },
             new Book
@@ -268,10 +268,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 557,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_383c024e.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/69af02f9c0586b3f7fe4a65d7667a754.jpg" }
+                            new BookImage { Url = "/Data/BookImage/69af02f9c0586b3f7fe4a65d7667a754.jpg" }
                         }
                     },
             new Book
@@ -296,10 +296,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 938,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_dce462a4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/99756b6ad008dc652a08cee559e4775a.jpg" }
+                            new BookImage { Url = "/Data/BookImage/99756b6ad008dc652a08cee559e4775a.jpg" }
                         }
                     },
             new Book
@@ -324,10 +324,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 175,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_1e166711.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8152bcd9d304fa5a302a5be0de919885.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8152bcd9d304fa5a302a5be0de919885.jpg" }
                         }
                     },
             new Book
@@ -352,10 +352,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 50,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_fc073675.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3577a33a9e7fa5ccdfa6179def746c6e.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3577a33a9e7fa5ccdfa6179def746c6e.jpg" }
                         }
                     },
             new Book
@@ -380,10 +380,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 610,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_c5aac2ca.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4e24428544c32cd2c6bd66e4babeb243.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4e24428544c32cd2c6bd66e4babeb243.jpg" }
                         }
                     },
             new Book
@@ -408,10 +408,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 470,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_acef872c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4cbfbfb95ce0f7f7f6d3dbe6420e1a53.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4cbfbfb95ce0f7f7f6d3dbe6420e1a53.jpg" }
                         }
                     },
             new Book
@@ -436,10 +436,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 369,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_e8b5d725.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8272250d7c098001c6c7dd398653a3a8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8272250d7c098001c6c7dd398653a3a8.jpg" }
                         }
                     },
             new Book
@@ -464,10 +464,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 864,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_8a7719d9.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2c47a8cc4bedda30a44bc7fb4722a4a9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2c47a8cc4bedda30a44bc7fb4722a4a9.jpg" }
                         }
                     },
             new Book
@@ -492,10 +492,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 502,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_adcfb76a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/87c6ae0c1d8b6b9ba211a0cd10249a89.jpg" }
+                            new BookImage { Url = "/Data/BookImage/87c6ae0c1d8b6b9ba211a0cd10249a89.jpg" }
                         }
                     },
             new Book
@@ -520,10 +520,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 413,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_510144cc.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4a4cdfee8a3d3512ccafb4e25c6eeb1c.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4a4cdfee8a3d3512ccafb4e25c6eeb1c.jpg" }
                         }
                     },
             new Book
@@ -548,10 +548,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 310,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_8119997d.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/82db804f409dda5ca043e239ea2ee8f8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/82db804f409dda5ca043e239ea2ee8f8.jpg" }
                         }
                     },
             new Book
@@ -576,10 +576,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 3,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_4507d52a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/65ed72f435ddd53cb3efb0b018ce2af4.jpg" }
+                            new BookImage { Url = "/Data/BookImage/65ed72f435ddd53cb3efb0b018ce2af4.jpg" }
                         }
                     },
             new Book
@@ -604,10 +604,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 205,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_12f02815.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3649b27bac7a265f8d5e5a7d0feb12b9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3649b27bac7a265f8d5e5a7d0feb12b9.jpg" }
                         }
                     },
             new Book
@@ -632,10 +632,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 216,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_dd33f8e9.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/39d2f832be2027356c8aeb62f760924f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/39d2f832be2027356c8aeb62f760924f.jpg" }
                         }
                     },
             new Book
@@ -660,10 +660,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 863,
                         Rating = 5.0f,
-                        BookPath = "Data/Books/book_5ff325e5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6e8b432d8fc548122b13058e381c47c8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6e8b432d8fc548122b13058e381c47c8.jpg" }
                         }
                     },
             new Book
@@ -688,10 +688,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 351,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_df7ea037.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/77948e0910ae6cbf9f80a3dc46fd257a.jpg" }
+                            new BookImage { Url = "/Data/BookImage/77948e0910ae6cbf9f80a3dc46fd257a.jpg" }
                         }
                     },
             new Book
@@ -716,10 +716,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 732,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_d45303cd.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4fb9f1ba0ace5ffdfae01926507b1303.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4fb9f1ba0ace5ffdfae01926507b1303.jpg" }
                         }
                     },
             new Book
@@ -744,10 +744,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 530,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_1ccbf076.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c9a52f5499c2d5b7bd1f61da14ebe68d.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c9a52f5499c2d5b7bd1f61da14ebe68d.jpg" }
                         }
                     },
             new Book
@@ -772,10 +772,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 947,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_de42e1fe.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/65af46ae6ba7190f3ad38c401be94169.jpg" }
+                            new BookImage { Url = "/Data/BookImage/65af46ae6ba7190f3ad38c401be94169.jpg" }
                         }
                     },
             new Book
@@ -800,10 +800,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 3,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_c4fbb50a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/e2c3f5222b81126c2a072aae1adf5b2c.jpg" }
+                            new BookImage { Url = "/Data/BookImage/e2c3f5222b81126c2a072aae1adf5b2c.jpg" }
                         }
                     },
             new Book
@@ -828,10 +828,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 337,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_0f9e6c57.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/465618d2144aa8db56caea27c4a543a0.jpg" }
+                            new BookImage { Url = "/Data/BookImage/465618d2144aa8db56caea27c4a543a0.jpg" }
                         }
                     },
             new Book
@@ -856,10 +856,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 4,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_ab18c443.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/50a0db6303071418f335768d325aff13.jpg" }
+                            new BookImage { Url = "/Data/BookImage/50a0db6303071418f335768d325aff13.jpg" }
                         }
                     },
             new Book
@@ -884,10 +884,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 964,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_f82a7048.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9773cc66e2b62c2ee12799062e5aa20b.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9773cc66e2b62c2ee12799062e5aa20b.jpg" }
                         }
                     },
             new Book
@@ -912,10 +912,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 325,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_c68cdb9c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/93be596e258dbaa1088952b84b84fda4.jpg" }
+                            new BookImage { Url = "/Data/BookImage/93be596e258dbaa1088952b84b84fda4.jpg" }
                         }
                     },
             new Book
@@ -940,10 +940,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 726,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_a121d527.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ef1fc153722574bf2351ff0a3f024ecf.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ef1fc153722574bf2351ff0a3f024ecf.jpg" }
                         }
                     },
             new Book
@@ -968,10 +968,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 332,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_1434c98f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a2607535ccdcf06dde5903466979468f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a2607535ccdcf06dde5903466979468f.jpg" }
                         }
                     },
             new Book
@@ -996,10 +996,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 598,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_5e51d87a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c37177d93803a8f6ee3b95c10e24ff65.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c37177d93803a8f6ee3b95c10e24ff65.jpg" }
                         }
                     },
             new Book
@@ -1024,10 +1024,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 276,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_91026ac5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2b5b04bbd02a9b3b7e562b6f6ffb68f4.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2b5b04bbd02a9b3b7e562b6f6ffb68f4.jpg" }
                         }
                     },
             new Book
@@ -1052,10 +1052,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_6ae78012.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/67836d5d16fbc8bddca15b84409e6888.jpg" }
+                            new BookImage { Url = "/Data/BookImage/67836d5d16fbc8bddca15b84409e6888.jpg" }
                         }
                     },
             new Book
@@ -1080,10 +1080,10 @@ namespace BookStore.DAL
                         Category = Category.Classic,
                         RatingCount = 465,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_265aee05.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/215e9234d1ab8e3ff0e70e2d0d91bf9e.jpg" }
+                            new BookImage { Url = "/Data/BookImage/215e9234d1ab8e3ff0e70e2d0d91bf9e.jpg" }
                         }
                     },
             new Book
@@ -1108,10 +1108,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 159,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_2935faf6.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/85dd252ea0787b367c029e9597efae2f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/85dd252ea0787b367c029e9597efae2f.jpg" }
                         }
                     },
             new Book
@@ -1136,10 +1136,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 65,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_1416b705.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ac72d0af0beb5d4dbcab1a9c7a286b3e.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ac72d0af0beb5d4dbcab1a9c7a286b3e.jpg" }
                         }
                     },
             new Book
@@ -1164,10 +1164,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 773,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_ae3d780f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8c74f7158471ba8580df88b9c3f1f80d.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8c74f7158471ba8580df88b9c3f1f80d.jpg" }
                         }
                     },
             new Book
@@ -1192,10 +1192,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 11,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_fd330ac8.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/22af39e452ddccedf205ee3e81ab92c3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/22af39e452ddccedf205ee3e81ab92c3.jpg" }
                         }
                     },
             new Book
@@ -1220,10 +1220,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 11,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_ec4b901c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/cbb53f9167aa781b5359ea7f8e22b4f6.jpg" }
+                            new BookImage { Url = "/Data/BookImage/cbb53f9167aa781b5359ea7f8e22b4f6.jpg" }
                         }
                     },
             new Book
@@ -1248,10 +1248,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 761,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_854f2958.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/afa85b47f977f61922214ae2183bd88f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/afa85b47f977f61922214ae2183bd88f.jpg" }
                         }
                     },
             new Book
@@ -1276,10 +1276,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 837,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_0aa41c89.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ae1c2f92d4b69184b3e94c2eb38ac808.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ae1c2f92d4b69184b3e94c2eb38ac808.jpg" }
                         }
                     },
             new Book
@@ -1304,10 +1304,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_92f8a275.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8232809a1582f5c76e1126a7ebb7d8b6.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8232809a1582f5c76e1126a7ebb7d8b6.jpg" }
                         }
                     },
             new Book
@@ -1332,10 +1332,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 177,
                         Rating = 4.3f,
-                        BookPath = "Data/Books/book_2b8e38f0.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/59fbd4a167efd86426995e18220b876d.jpg" }
+                            new BookImage { Url = "/Data/BookImage/59fbd4a167efd86426995e18220b876d.jpg" }
                         }
                     },
             new Book
@@ -1360,10 +1360,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 5,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_d1c1dbff.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/14a60f2a6d239c479280c3aa1394d639.jpg" }
+                            new BookImage { Url = "/Data/BookImage/14a60f2a6d239c479280c3aa1394d639.jpg" }
                         }
                     },
             new Book
@@ -1388,10 +1388,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 8,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_c5a089c4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d621263b555edf5d267fa089472570b4.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d621263b555edf5d267fa089472570b4.jpg" }
                         }
                     },
             new Book
@@ -1416,10 +1416,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 7,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_f6b36d66.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6dd1bc9445f9c3c3fff565985b15b57c.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6dd1bc9445f9c3c3fff565985b15b57c.jpg" }
                         }
                     },
             new Book
@@ -1444,10 +1444,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 4,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_57a29532.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d4791f0a0d5f1212751efbc86ab1ab2e.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d4791f0a0d5f1212751efbc86ab1ab2e.jpg" }
                         }
                     },
             new Book
@@ -1472,10 +1472,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 712,
                         Rating = 5.0f,
-                        BookPath = "Data/Books/book_8119997d.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/82db804f409dda5ca043e239ea2ee8f8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/82db804f409dda5ca043e239ea2ee8f8.jpg" }
                         }
                     },
             new Book
@@ -1500,10 +1500,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 7,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_8a0f513f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/482260e0c4d84280e24ce585ccaddbcc.jpg" }
+                            new BookImage { Url = "/Data/BookImage/482260e0c4d84280e24ce585ccaddbcc.jpg" }
                         }
                     },
             new Book
@@ -1528,10 +1528,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 14,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_746be0da.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/b240223dabdab096c4bd3724e0784df9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/b240223dabdab096c4bd3724e0784df9.jpg" }
                         }
                     },
             new Book
@@ -1556,10 +1556,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 740,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_b1b13eca.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/844ff56abae4434d2038573423854ca8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/844ff56abae4434d2038573423854ca8.jpg" }
                         }
                     },
             new Book
@@ -1584,10 +1584,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 92,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_0ca5b42a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/af0d7e2fac9870d3d80ded2c95269886.jpg" }
+                            new BookImage { Url = "/Data/BookImage/af0d7e2fac9870d3d80ded2c95269886.jpg" }
                         }
                     },
             new Book
@@ -1612,10 +1612,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_cbe11622.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6c4ebc27af4efb1005407567b59fb5e6.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6c4ebc27af4efb1005407567b59fb5e6.jpg" }
                         }
                     },
             new Book
@@ -1640,10 +1640,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 12,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_b2a5e8d5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c9f89832700980edf3ef8bc8fd30bcda.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c9f89832700980edf3ef8bc8fd30bcda.jpg" }
                         }
                     },
             new Book
@@ -1668,10 +1668,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 716,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_c809cbc2.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/fce4257357b2fb486044aedb07bcb806.jpg" }
+                            new BookImage { Url = "/Data/BookImage/fce4257357b2fb486044aedb07bcb806.jpg" }
                         }
                     },
             new Book
@@ -1696,10 +1696,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 2,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_65a462b1.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/464070f4d48aab89c07063bdc43aed40.jpg" }
+                            new BookImage { Url = "/Data/BookImage/464070f4d48aab89c07063bdc43aed40.jpg" }
                         }
                     },
             new Book
@@ -1724,10 +1724,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 3,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_9fe5db69.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/76cbd9f043cf859e0d5b7a55fd85e4e2.jpg" }
+                            new BookImage { Url = "/Data/BookImage/76cbd9f043cf859e0d5b7a55fd85e4e2.jpg" }
                         }
                     },
             new Book
@@ -1752,10 +1752,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 878,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_c61ff8e5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ca1dde1ca64e567f9c36a2f485782589.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ca1dde1ca64e567f9c36a2f485782589.jpg" }
                         }
                     },
             new Book
@@ -1780,10 +1780,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 243,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_d629b73e.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2a4c4dcb4d90acabcd0197a76b5c87d6.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2a4c4dcb4d90acabcd0197a76b5c87d6.jpg" }
                         }
                     },
             new Book
@@ -1808,10 +1808,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 814,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_d9ae0eef.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/93fea362a3a7332bf15693948d6a11f5.jpg" }
+                            new BookImage { Url = "/Data/BookImage/93fea362a3a7332bf15693948d6a11f5.jpg" }
                         }
                     },
             new Book
@@ -1836,10 +1836,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 441,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_69eaa131.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/fdcb576a6bd01f942b71c22c6594d603.jpg" }
+                            new BookImage { Url = "/Data/BookImage/fdcb576a6bd01f942b71c22c6594d603.jpg" }
                         }
                     },
             new Book
@@ -1864,10 +1864,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 5,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_f59e274c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4dcd1da6a1d7dd6dfe1785dcf744e774.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4dcd1da6a1d7dd6dfe1785dcf744e774.jpg" }
                         }
                     },
             new Book
@@ -1892,10 +1892,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 1,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_19a92784.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3ab525d84ad56896baa286e9437419f5.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3ab525d84ad56896baa286e9437419f5.jpg" }
                         }
                     },
             new Book
@@ -1920,10 +1920,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 427,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_ae1752af.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/66038a30631a47e78625f4126f11ccff.jpg" }
+                            new BookImage { Url = "/Data/BookImage/66038a30631a47e78625f4126f11ccff.jpg" }
                         }
                     },
             new Book
@@ -1948,10 +1948,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 50,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_30ab042b.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/0387af5b12fd0bcc017786e0dbfcf69f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/0387af5b12fd0bcc017786e0dbfcf69f.jpg" }
                         }
                     },
             new Book
@@ -1976,10 +1976,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_3c7a903e.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/b1f7e8c5c5d12670675975e769ec11b9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/b1f7e8c5c5d12670675975e769ec11b9.jpg" }
                         }
                     },
             new Book
@@ -2004,10 +2004,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 705,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_748c43f1.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a443bbdfb1e43a2fac6750dc092e94ed.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a443bbdfb1e43a2fac6750dc092e94ed.jpg" }
                         }
                     },
             new Book
@@ -2032,10 +2032,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 404,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_6aab76c4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/85e08ecb6494b2b330e9ffa407e87ad9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/85e08ecb6494b2b330e9ffa407e87ad9.jpg" }
                         }
                     },
             new Book
@@ -2060,10 +2060,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 10,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_03673e00.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/00c0b0d551d406822e07164b0c1b60e2.jpg" }
+                            new BookImage { Url = "/Data/BookImage/00c0b0d551d406822e07164b0c1b60e2.jpg" }
                         }
                     },
             new Book
@@ -2088,10 +2088,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 975,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_d6fbcd02.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9008608c286b4602ba926105647926e8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9008608c286b4602ba926105647926e8.jpg" }
                         }
                     },
             new Book
@@ -2116,10 +2116,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 748,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_9e739082.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/1de89f821191210e7ad6f02bd97abc6e.jpg" }
+                            new BookImage { Url = "/Data/BookImage/1de89f821191210e7ad6f02bd97abc6e.jpg" }
                         }
                     },
             new Book
@@ -2144,10 +2144,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 20,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_011bdea1.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8272250d7c098001c6c7dd398653a3a8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8272250d7c098001c6c7dd398653a3a8.jpg" }
                         }
                     },
             new Book
@@ -2172,10 +2172,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 664,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_6812d14b.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/48211ee24b8a99c753b9b4e159f725a2.jpg" }
+                            new BookImage { Url = "/Data/BookImage/48211ee24b8a99c753b9b4e159f725a2.jpg" }
                         }
                     },
             new Book
@@ -2200,10 +2200,10 @@ namespace BookStore.DAL
                         Category = Category.Fantasy,
                         RatingCount = 270,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_e4129585.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4d066b804982a9ae719b3f2a4c112f2f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4d066b804982a9ae719b3f2a4c112f2f.jpg" }
                         }
                     },
 
@@ -2229,10 +2229,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 2,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_f8847a57.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/27cb1b66e1d7295a762b652985ea6b07.jpg" }
+                            new BookImage { Url = "/Data/BookImage/27cb1b66e1d7295a762b652985ea6b07.jpg" }
                         }
                     },
             new Book
@@ -2257,10 +2257,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 14,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_5ff325e5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6e8b432d8fc548122b13058e381c47c8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6e8b432d8fc548122b13058e381c47c8.jpg" }
                         }
                     },
             new Book
@@ -2285,10 +2285,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 3,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_e021cc1d.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a25f0543d97a32da75ceb62710d2e770.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a25f0543d97a32da75ceb62710d2e770.jpg" }
                         }
                     },
             new Book
@@ -2313,10 +2313,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 3,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_c8feec60.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4a2e733f8ca3d6e566281ed85775b293.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4a2e733f8ca3d6e566281ed85775b293.jpg" }
                         }
                     },
             new Book
@@ -2341,10 +2341,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_bca0d968.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/72dbbb0f10452fcb2840b3b364e0a8ef.jpg" }
+                            new BookImage { Url = "/Data/BookImage/72dbbb0f10452fcb2840b3b364e0a8ef.jpg" }
                         }
                     },
             new Book
@@ -2369,10 +2369,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 444,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_54b178ef.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/065e4502515e782dce3aa7390c6b60cc.jpg" }
+                            new BookImage { Url = "/Data/BookImage/065e4502515e782dce3aa7390c6b60cc.jpg" }
                         }
                     },
             new Book
@@ -2397,10 +2397,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 2,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_755ae509.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/b760080da7db9a55ed2064dc9bd47379.jpg" }
+                            new BookImage { Url = "/Data/BookImage/b760080da7db9a55ed2064dc9bd47379.jpg" }
                         }
                     },
             new Book
@@ -2425,10 +2425,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 233,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_00a8c76f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3fa1c0a2ba4cb5536c889899b79b8106.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3fa1c0a2ba4cb5536c889899b79b8106.jpg" }
                         }
                     },
             new Book
@@ -2453,10 +2453,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 710,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_4fdf0b0f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/0a7a1494bd634a4a08588b82d68b1c88.jpg" }
+                            new BookImage { Url = "/Data/BookImage/0a7a1494bd634a4a08588b82d68b1c88.jpg" }
                         }
                     },
             new Book
@@ -2481,10 +2481,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 876,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_568a8899.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a231ee50271eb9188e915b75f3b94d17.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a231ee50271eb9188e915b75f3b94d17.jpg" }
                         }
                     },
             new Book
@@ -2509,10 +2509,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 362,
                         Rating = 4.3f,
-                        BookPath = "Data/Books/book_2cdeb31f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/49ddd44d57cec26eee6b047e1f6ab197.jpg" }
+                            new BookImage { Url = "/Data/BookImage/49ddd44d57cec26eee6b047e1f6ab197.jpg" }
                         }
                     },
             new Book
@@ -2537,10 +2537,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 656,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_b7de1bde.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/dbbbe9117ac023ad163703169a60a088.jpg" }
+                            new BookImage { Url = "/Data/BookImage/dbbbe9117ac023ad163703169a60a088.jpg" }
                         }
                     },
             new Book
@@ -2565,10 +2565,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_2c071d62.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/94d1249aa2616ba3b1addae331d23eff.jpg" }
+                            new BookImage { Url = "/Data/BookImage/94d1249aa2616ba3b1addae331d23eff.jpg" }
                         }
                     },
             new Book
@@ -2593,10 +2593,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 771,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_2ac254e8.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2fb129a2fdc6601279ae5f691892595d.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2fb129a2fdc6601279ae5f691892595d.jpg" }
                         }
                     },
             new Book
@@ -2621,10 +2621,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 416,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_b4461678.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ada91cdb0ebf64bda0530563780418d8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ada91cdb0ebf64bda0530563780418d8.jpg" }
                         }
                     },
             new Book
@@ -2649,10 +2649,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 537,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_67ed8bb0.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/5bbe43d325bc190cc03df0e782e88c8a.jpg" }
+                            new BookImage { Url = "/Data/BookImage/5bbe43d325bc190cc03df0e782e88c8a.jpg" }
                         }
                     },
             new Book
@@ -2677,10 +2677,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 1,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_73741c98.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/764e4a58e3c2b8102fd32c29b7eebebe.jpg" }
+                            new BookImage { Url = "/Data/BookImage/764e4a58e3c2b8102fd32c29b7eebebe.jpg" }
                         }
                     },
             new Book
@@ -2705,10 +2705,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 837,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_2f7b20f5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/40ad1587ee8ea6ed4f622d09d82ed2c6.jpg" }
+                            new BookImage { Url = "/Data/BookImage/40ad1587ee8ea6ed4f622d09d82ed2c6.jpg" }
                         }
                     },
             new Book
@@ -2733,10 +2733,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 208,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_60293356.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/b07be5aed4716e36d140327efad13cc3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/b07be5aed4716e36d140327efad13cc3.jpg" }
                         }
                     },
             new Book
@@ -2761,10 +2761,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 1,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_1ece3758.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/b137a477e1654d22f753a51abcf575e1.jpg" }
+                            new BookImage { Url = "/Data/BookImage/b137a477e1654d22f753a51abcf575e1.jpg" }
                         }
                     },
             new Book
@@ -2789,10 +2789,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 177,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_765bf28f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/29b49982d0b2680dc0a3ea8b3bebbdd4.jpg" }
+                            new BookImage { Url = "/Data/BookImage/29b49982d0b2680dc0a3ea8b3bebbdd4.jpg" }
                         }
                     },
             new Book
@@ -2817,10 +2817,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 747,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_0de24133.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2752fdce78797086ce8e2a54c21ee999.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2752fdce78797086ce8e2a54c21ee999.jpg" }
                         }
                     },
             new Book
@@ -2845,10 +2845,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 188,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_79d00ba6.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6b3ee386d92f433ac5de42b4693808e0.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6b3ee386d92f433ac5de42b4693808e0.jpg" }
                         }
                     },
             new Book
@@ -2873,10 +2873,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 1,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_e28e61b8.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9188bea7d001950dd35b25fc2e41b6bd.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9188bea7d001950dd35b25fc2e41b6bd.jpg" }
                         }
                     },
             new Book
@@ -2901,10 +2901,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 961,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_20775c24.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9103c3f0978aeb062f3250a554115bc3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9103c3f0978aeb062f3250a554115bc3.jpg" }
                         }
                     },
             new Book
@@ -2929,10 +2929,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 939,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_75fb5670.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/f21f510a24221f6c0d41d178c3ea9db9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/f21f510a24221f6c0d41d178c3ea9db9.jpg" }
                         }
                     },
             new Book
@@ -2957,10 +2957,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_4d22abc2.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/558e7240f6316df14e0f84a36d610b60.jpg" }
+                            new BookImage { Url = "/Data/BookImage/558e7240f6316df14e0f84a36d610b60.jpg" }
                         }
                     },
             new Book
@@ -2985,10 +2985,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 426,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_684105d6.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4727e7fe4b823b4a6591b5500fea53a6.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4727e7fe4b823b4a6591b5500fea53a6.jpg" }
                         }
                     },
             new Book
@@ -3013,10 +3013,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 729,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_08a58934.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/f30e61def8239c3cd08187e3e21aae74.jpg" }
+                            new BookImage { Url = "/Data/BookImage/f30e61def8239c3cd08187e3e21aae74.jpg" }
                         }
                     },
             new Book
@@ -3041,10 +3041,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 449,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_5ee7c350.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/75a526d419af11bf4aef639966fd2519.jpg" }
+                            new BookImage { Url = "/Data/BookImage/75a526d419af11bf4aef639966fd2519.jpg" }
                         }
                     },
             new Book
@@ -3069,10 +3069,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 831,
                         Rating = 5.0f,
-                        BookPath = "Data/Books/book_c02a864d.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4db1209ae1bd4840cd13dcb3a79393c4.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4db1209ae1bd4840cd13dcb3a79393c4.jpg" }
                         }
                     },
             new Book
@@ -3097,10 +3097,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 312,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_138df5b9.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d4f5df07668402dd8a615ff01dbaa8ac.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d4f5df07668402dd8a615ff01dbaa8ac.jpg" }
                         }
                     },
             new Book
@@ -3125,10 +3125,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 644,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_162ceb2a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a284b1f8bdfce2316e8e05c8179ed5f3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a284b1f8bdfce2316e8e05c8179ed5f3.jpg" }
                         }
                     },
             new Book
@@ -3153,10 +3153,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 272,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_3a684ee6.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/393462cd3b422598835e4a5a656e2833.jpg" }
+                            new BookImage { Url = "/Data/BookImage/393462cd3b422598835e4a5a656e2833.jpg" }
                         }
                     },
             new Book
@@ -3181,10 +3181,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 148,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_c1aafd7a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a94f87912ff974956a48ff0e719eae9b.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a94f87912ff974956a48ff0e719eae9b.jpg" }
                         }
                     },
             new Book
@@ -3209,10 +3209,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 541,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_0adee340.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4acec798715d41982aa61afaec8e8e00.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4acec798715d41982aa61afaec8e8e00.jpg" }
                         }
                     },
             new Book
@@ -3237,10 +3237,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 118,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_99b17253.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c1e844aab533d4f064db7b3d81751457.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c1e844aab533d4f064db7b3d81751457.jpg" }
                         }
                     },
             new Book
@@ -3265,10 +3265,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 118,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_e1fd4023.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a38cf621b8e9172738d444886115322f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a38cf621b8e9172738d444886115322f.jpg" }
                         }
                     },
             new Book
@@ -3293,10 +3293,10 @@ namespace BookStore.DAL
                         Category = Category.Fiction,
                         RatingCount = 175,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_18dc7c1f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/0b5ac8a17be3e1dfc1d7f3d9b7a0ca5e.jpg" }
+                            new BookImage { Url = "/Data/BookImage/0b5ac8a17be3e1dfc1d7f3d9b7a0ca5e.jpg" }
                         }
                     },
             new Book
@@ -3321,10 +3321,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_911d9aeb.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/88fffc5054d6369355ec82905f85c163.jpg" }
+                            new BookImage { Url = "/Data/BookImage/88fffc5054d6369355ec82905f85c163.jpg" }
                         }
                     },
             new Book
@@ -3349,10 +3349,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 270,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_e8822f16.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9c4ee79f3383d04cc087a51f76614489.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9c4ee79f3383d04cc087a51f76614489.jpg" }
                         }
                     },
             new Book
@@ -3377,10 +3377,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 426,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_609d6084.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/63ab7c1caed6ebb0ca345e4e87dcaeac.jpg" }
+                            new BookImage { Url = "/Data/BookImage/63ab7c1caed6ebb0ca345e4e87dcaeac.jpg" }
                         }
                     },
             new Book
@@ -3405,10 +3405,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 608,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_b77310f1.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/486e999bbe7cbb63e6e8954419200be2.jpg" }
+                            new BookImage { Url = "/Data/BookImage/486e999bbe7cbb63e6e8954419200be2.jpg" }
                         }
                     },
             new Book
@@ -3433,10 +3433,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 389,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_393c90a4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3d0c44ed58ca9c0f2ef259301d0fded4.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3d0c44ed58ca9c0f2ef259301d0fded4.jpg" }
                         }
                     },
             new Book
@@ -3461,10 +3461,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 856,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_617891ad.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a3561ca52d78cc479571ff065c5721df.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a3561ca52d78cc479571ff065c5721df.jpg" }
                         }
                     },
             new Book
@@ -3489,10 +3489,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 210,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_5591bb14.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/79f52098f0ff9cfbb05dc861c0f67274.jpg" }
+                            new BookImage { Url = "/Data/BookImage/79f52098f0ff9cfbb05dc861c0f67274.jpg" }
                         }
                     },
             new Book
@@ -3517,10 +3517,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 174,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_126b51ab.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/bcb1edad8d5fc1e017566265912efb9e.jpg" }
+                            new BookImage { Url = "/Data/BookImage/bcb1edad8d5fc1e017566265912efb9e.jpg" }
                         }
                     },
             new Book
@@ -3545,10 +3545,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 937,
                         Rating = 4.3f,
-                        BookPath = "Data/Books/book_a515c461.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/11e8cd3f3dd53b406fd27217c9d2afa2.jpg" }
+                            new BookImage { Url = "/Data/BookImage/11e8cd3f3dd53b406fd27217c9d2afa2.jpg" }
                         }
                     },
             new Book
@@ -3573,10 +3573,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 457,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_83b50409.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/664568a7d97aa064fd7e276d16447c52.jpg" }
+                            new BookImage { Url = "/Data/BookImage/664568a7d97aa064fd7e276d16447c52.jpg" }
                         }
                     },
             new Book
@@ -3601,10 +3601,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 404,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_6aa1b7ee.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/bfa65b0d7b09c22d3a7465be9df09a9b.jpg" }
+                            new BookImage { Url = "/Data/BookImage/bfa65b0d7b09c22d3a7465be9df09a9b.jpg" }
                         }
                     },
             new Book
@@ -3629,10 +3629,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 471,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_ce4512d1.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ff9dc95f268770a500fc4cb85737e126.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ff9dc95f268770a500fc4cb85737e126.jpg" }
                         }
                     },
             new Book
@@ -3657,10 +3657,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 2,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_f59be12c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9ec22879a364df8dc3fef440f868fd36.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9ec22879a364df8dc3fef440f868fd36.jpg" }
                         }
                     },
             new Book
@@ -3685,10 +3685,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 1,
                         Rating = 3f,
-                        BookPath = "Data/Books/book_d387e543.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/e543c6c64f1eaba0e488e502747742e5.jpg" }
+                            new BookImage { Url = "/Data/BookImage/e543c6c64f1eaba0e488e502747742e5.jpg" }
                         }
                     },
             new Book
@@ -3713,10 +3713,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 512,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_88877f07.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/955fdf4df5e09b94663dfdf9237bba5f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/955fdf4df5e09b94663dfdf9237bba5f.jpg" }
                         }
                     },
             new Book
@@ -3741,10 +3741,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 749,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_92a697d0.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4f66b2bde693ae66204ea41406a6e1d5.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4f66b2bde693ae66204ea41406a6e1d5.jpg" }
                         }
                     },
             new Book
@@ -3769,10 +3769,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 510,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_57280675.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/65a999f67c9b67f77b36808c913c5aa9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/65a999f67c9b67f77b36808c913c5aa9.jpg" }
                         }
                     },
             new Book
@@ -3797,10 +3797,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 261,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_ee03c8e3.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/41f471d317dded871331ccdeb0310d02.jpg" }
+                            new BookImage { Url = "/Data/BookImage/41f471d317dded871331ccdeb0310d02.jpg" }
                         }
                     },
             new Book
@@ -3825,10 +3825,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 151,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_292957d4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d801ed3d4fbdd5a57aef7b2683b0a01a.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d801ed3d4fbdd5a57aef7b2683b0a01a.jpg" }
                         }
                     },
             new Book
@@ -3853,10 +3853,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 551,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_957b8da7.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8aa3309bccc6b4af7a92bbbc6e20978b.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8aa3309bccc6b4af7a92bbbc6e20978b.jpg" }
                         }
                     },
             new Book
@@ -3881,10 +3881,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 392,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_77e81632.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/fb1984a3b5ac907871c382fff42dfc82.jpg" }
+                            new BookImage { Url = "/Data/BookImage/fb1984a3b5ac907871c382fff42dfc82.jpg" }
                         }
                     },
             new Book
@@ -3909,10 +3909,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 828,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_5c0220cb.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/38af4695c20e4a500fb896dbd23b1d5a.jpg" }
+                            new BookImage { Url = "/Data/BookImage/38af4695c20e4a500fb896dbd23b1d5a.jpg" }
                         }
                     },
             new Book
@@ -3937,10 +3937,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 336,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_527313c4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d8c894dcfbda1f0cb748c025565dcf20.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d8c894dcfbda1f0cb748c025565dcf20.jpg" }
                         }
                     },
             new Book
@@ -3965,10 +3965,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 427,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_fb57f40e.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/760dbe0fffc29ca4f3220dec143238d0.jpg" }
+                            new BookImage { Url = "/Data/BookImage/760dbe0fffc29ca4f3220dec143238d0.jpg" }
                         }
                     },
             new Book
@@ -3993,10 +3993,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 656,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_c558dae0.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/cb1da70818c3b188deeaaafba43e75c2.jpg" }
+                            new BookImage { Url = "/Data/BookImage/cb1da70818c3b188deeaaafba43e75c2.jpg" }
                         }
                     },
             new Book
@@ -4021,10 +4021,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 242,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_d0ed6e49.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2e9b461b4b609e21229866caa818c75d.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2e9b461b4b609e21229866caa818c75d.jpg" }
                         }
                     },
             new Book
@@ -4049,10 +4049,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 869,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_32a52328.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c2dea2133d177fdea2f27e0824037ae5.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c2dea2133d177fdea2f27e0824037ae5.jpg" }
                         }
                     },
             new Book
@@ -4077,10 +4077,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 291,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_041da622.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d2827dfd5569ba51a03bd160c5dbe4a4.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d2827dfd5569ba51a03bd160c5dbe4a4.jpg" }
                         }
                     },
             new Book
@@ -4105,10 +4105,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 57,
                         Rating = 5.0f,
-                        BookPath = "Data/Books/book_29e54c17.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2f4c4699131236f00ff9dd65884db5af.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2f4c4699131236f00ff9dd65884db5af.jpg" }
                         }
                     },
             new Book
@@ -4133,10 +4133,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 680,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_6f0cc9a5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/616a9c9004afa4c637968f80c69bad5d.jpg" }
+                            new BookImage { Url = "/Data/BookImage/616a9c9004afa4c637968f80c69bad5d.jpg" }
                         }
                     },
             new Book
@@ -4161,10 +4161,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 936,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_c0fd8cc0.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/43a92764bb320a91e2baef424049d54c.jpg" }
+                            new BookImage { Url = "/Data/BookImage/43a92764bb320a91e2baef424049d54c.jpg" }
                         }
                     },
             new Book
@@ -4189,10 +4189,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 832,
                         Rating = 5.0f,
-                        BookPath = "Data/Books/book_b3db9ca6.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/7f13c8576435156334fb87fcac22ac91.jpg" }
+                            new BookImage { Url = "/Data/BookImage/7f13c8576435156334fb87fcac22ac91.jpg" }
                         }
                     },
             new Book
@@ -4217,10 +4217,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 640,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_8c47542a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/64ca02050e349e83a31491cd48a63097.jpg" }
+                            new BookImage { Url = "/Data/BookImage/64ca02050e349e83a31491cd48a63097.jpg" }
                         }
                     },
             new Book
@@ -4245,10 +4245,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 644,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_e8bb4dda.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6f28a6aea51e3fb61960d157205215ab.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6f28a6aea51e3fb61960d157205215ab.jpg" }
                         }
                     },
             new Book
@@ -4273,10 +4273,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 1,
                         Rating = 1f,
-                        BookPath = "Data/Books/book_286d5629.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d95228fc8307f587fc9fc3cebd24e7be.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d95228fc8307f587fc9fc3cebd24e7be.jpg" }
                         }
                     },
             new Book
@@ -4301,10 +4301,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 341,
                         Rating = 4.3f,
-                        BookPath = "Data/Books/book_554e91f4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/170a31d8ab7cc8931764599b21a2e135.jpg" }
+                            new BookImage { Url = "/Data/BookImage/170a31d8ab7cc8931764599b21a2e135.jpg" }
                         }
                     },
             new Book
@@ -4329,10 +4329,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_911d9aeb.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/88fffc5054d6369355ec82905f85c163.jpg" }
+                            new BookImage { Url = "/Data/BookImage/88fffc5054d6369355ec82905f85c163.jpg" }
                         }
                     },
             new Book
@@ -4357,10 +4357,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 818,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_158a12d9.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/170a31d8ab7cc8931764599b21a2e135.jpg" }
+                            new BookImage { Url = "/Data/BookImage/170a31d8ab7cc8931764599b21a2e135.jpg" }
                         }
                     },
             new Book
@@ -4385,10 +4385,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 344,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_7922ff6e.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/212fe2b20e70a7969702f6eb1eb49b4a.jpg" }
+                            new BookImage { Url = "/Data/BookImage/212fe2b20e70a7969702f6eb1eb49b4a.jpg" }
                         }
                     },
             new Book
@@ -4413,10 +4413,10 @@ namespace BookStore.DAL
                         Category = Category.SciFi,
                         RatingCount = 390,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_2b9b9325.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/51b697c1858f50595a284d99e77b16ba.jpg" }
+                            new BookImage { Url = "/Data/BookImage/51b697c1858f50595a284d99e77b16ba.jpg" }
                         }
                     },
 
@@ -4442,10 +4442,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 621,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_eb556624.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2f7cfa603df2a25fce27ad69cd4be673.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2f7cfa603df2a25fce27ad69cd4be673.jpg" }
                         }
                     },
             new Book
@@ -4470,10 +4470,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 272,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_5aeeb0da.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/7fe6417ac8b09e32b2e9c063404b52d5.jpg" }
+                            new BookImage { Url = "/Data/BookImage/7fe6417ac8b09e32b2e9c063404b52d5.jpg" }
                         }
                     },
             new Book
@@ -4498,10 +4498,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 2,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_e975bb90.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/967d7b5c56cacefa7b994c0674e301fe.jpg" }
+                            new BookImage { Url = "/Data/BookImage/967d7b5c56cacefa7b994c0674e301fe.jpg" }
                         }
                     },
             new Book
@@ -4526,10 +4526,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 843,
                         Rating = 5.0f,
-                        BookPath = "Data/Books/book_7521622a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/979735ee11baf8ffc29565eda6869c47.jpg" }
+                            new BookImage { Url = "/Data/BookImage/979735ee11baf8ffc29565eda6869c47.jpg" }
                         }
                     },
             new Book
@@ -4554,10 +4554,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 569,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_2698a133.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9c3520f303fd954dd91b1a415dcc9572.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9c3520f303fd954dd91b1a415dcc9572.jpg" }
                         }
                     },
             new Book
@@ -4582,10 +4582,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 957,
                         Rating = 4.3f,
-                        BookPath = "Data/Books/book_a953afdd.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d501d618ba9313f0bbca23f9b9d7851e.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d501d618ba9313f0bbca23f9b9d7851e.jpg" }
                         }
                     },
             new Book
@@ -4610,10 +4610,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 681,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_5524348e.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6a88c1783a06315d9f53ab6745fd5ba9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6a88c1783a06315d9f53ab6745fd5ba9.jpg" }
                         }
                     },
             new Book
@@ -4638,10 +4638,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 679,
                         Rating = 4.3f,
-                        BookPath = "Data/Books/book_8419abcb.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c00c4feebdcca9f3b9efe51221ba8340.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c00c4feebdcca9f3b9efe51221ba8340.jpg" }
                         }
                     },
             new Book
@@ -4666,10 +4666,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_9977450a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/45aee74053da2063703084822a2c6914.jpg" }
+                            new BookImage { Url = "/Data/BookImage/45aee74053da2063703084822a2c6914.jpg" }
                         }
                     },
             new Book
@@ -4694,10 +4694,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 729,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_2af91a1f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/30eb262333bfea7fc7dbad06860ea397.jpg" }
+                            new BookImage { Url = "/Data/BookImage/30eb262333bfea7fc7dbad06860ea397.jpg" }
                         }
                     },
             new Book
@@ -4722,10 +4722,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 623,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_87c57961.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9ebe7c8d6b473722ae66e23250c26390.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9ebe7c8d6b473722ae66e23250c26390.jpg" }
                         }
                     },
             new Book
@@ -4750,10 +4750,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 2,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_982b9381.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/71cb1567c57829c4478af2c09d92f717.jpg" }
+                            new BookImage { Url = "/Data/BookImage/71cb1567c57829c4478af2c09d92f717.jpg" }
                         }
                     },
             new Book
@@ -4778,10 +4778,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 346,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_e77d6247.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2328448636a8585c6c26a13fe221ac5b.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2328448636a8585c6c26a13fe221ac5b.jpg" }
                         }
                     },
             new Book
@@ -4806,10 +4806,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 278,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_48f8683b.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a8c60e6fda2546b5c45c4c41c700b5fb.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a8c60e6fda2546b5c45c4c41c700b5fb.jpg" }
                         }
                     },
             new Book
@@ -4834,10 +4834,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 1,
                         Rating = 1f,
-                        BookPath = "Data/Books/book_5e41879d.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/69d1845dd3f0c84385a09f3fcfcd0723.jpg" }
+                            new BookImage { Url = "/Data/BookImage/69d1845dd3f0c84385a09f3fcfcd0723.jpg" }
                         }
                     },
             new Book
@@ -4862,10 +4862,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 302,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_3c83e6c8.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3f1b0ac2b3ab9b3515785e20728a3e65.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3f1b0ac2b3ab9b3515785e20728a3e65.jpg" }
                         }
                     },
             new Book
@@ -4890,10 +4890,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 224,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_c3b77c24.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d69d8c071a5c060ac7b9b751950ad53a.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d69d8c071a5c060ac7b9b751950ad53a.jpg" }
                         }
                     },
             new Book
@@ -4918,10 +4918,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 849,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_f2a3acb2.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/bcdc5fba874cc797460696eab896e59b.jpg" }
+                            new BookImage { Url = "/Data/BookImage/bcdc5fba874cc797460696eab896e59b.jpg" }
                         }
                     },
             new Book
@@ -4946,10 +4946,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_2feacee8.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/241b2877cabf98f8eedf2af97844a587.jpg" }
+                            new BookImage { Url = "/Data/BookImage/241b2877cabf98f8eedf2af97844a587.jpg" }
                         }
                     },
             new Book
@@ -4974,10 +4974,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 3,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_9bd82da5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/10c0e7b6824122b9fc45158b791ac031.jpg" }
+                            new BookImage { Url = "/Data/BookImage/10c0e7b6824122b9fc45158b791ac031.jpg" }
                         }
                     },
             new Book
@@ -5002,10 +5002,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 722,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_81ddbc17.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/b57f8c3e0b66b48ae3f3a398c9ee6537.jpg" }
+                            new BookImage { Url = "/Data/BookImage/b57f8c3e0b66b48ae3f3a398c9ee6537.jpg" }
                         }
                     },
             new Book
@@ -5030,10 +5030,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 649,
                         Rating = 4.3f,
-                        BookPath = "Data/Books/book_794a56f4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/f20215682aba968f486b66b000b576ae.jpg" }
+                            new BookImage { Url = "/Data/BookImage/f20215682aba968f486b66b000b576ae.jpg" }
                         }
                     },
             new Book
@@ -5058,10 +5058,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 738,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_3b437f7e.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4369e827625a41cfd35edc7ccaa91354.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4369e827625a41cfd35edc7ccaa91354.jpg" }
                         }
                     },
             new Book
@@ -5086,10 +5086,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 586,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_f529c8fb.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6ed17f2266a720508cd110c6086756fc.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6ed17f2266a720508cd110c6086756fc.jpg" }
                         }
                     },
             new Book
@@ -5114,10 +5114,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 973,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_9b48d59c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/5de480b6d0ed27f6391a825af5c8c595.jpg" }
+                            new BookImage { Url = "/Data/BookImage/5de480b6d0ed27f6391a825af5c8c595.jpg" }
                         }
                     },
             new Book
@@ -5142,10 +5142,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 494,
                         Rating = 5.0f,
-                        BookPath = "Data/Books/book_2ae0e154.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/f9752d688b12749af0f5391048573a50.jpg" }
+                            new BookImage { Url = "/Data/BookImage/f9752d688b12749af0f5391048573a50.jpg" }
                         }
                     },
             new Book
@@ -5170,10 +5170,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 305,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_a1328cb6.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/56c63ed0be38ba1968f099d35c6c3c22.jpg" }
+                            new BookImage { Url = "/Data/BookImage/56c63ed0be38ba1968f099d35c6c3c22.jpg" }
                         }
                     },
             new Book
@@ -5198,10 +5198,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 701,
                         Rating = 5.0f,
-                        BookPath = "Data/Books/book_153c4f4c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2f237c884b7974cc1f8bbc127cae39d8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2f237c884b7974cc1f8bbc127cae39d8.jpg" }
                         }
                     },
             new Book
@@ -5226,10 +5226,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 377,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_23025f1a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/5f63eca783b46982529ae1402f5128cf.jpg" }
+                            new BookImage { Url = "/Data/BookImage/5f63eca783b46982529ae1402f5128cf.jpg" }
                         }
                     },
             new Book
@@ -5254,10 +5254,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 95,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_6d5303c6.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9effe0b41b4355d9aef1c20c252d6205.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9effe0b41b4355d9aef1c20c252d6205.jpg" }
                         }
                     },
             new Book
@@ -5282,10 +5282,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_4247493d.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8b8eba70220ad6554eecb5222b49cada.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8b8eba70220ad6554eecb5222b49cada.jpg" }
                         }
                     },
             new Book
@@ -5310,10 +5310,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 723,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_ed812f08.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/506ed6ee138b52e95bbea36b97102c6f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/506ed6ee138b52e95bbea36b97102c6f.jpg" }
                         }
                     },
             new Book
@@ -5338,10 +5338,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 122,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_5bec0ddc.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/366d93f621a0dc5cb08bfe0a9250064d.jpg" }
+                            new BookImage { Url = "/Data/BookImage/366d93f621a0dc5cb08bfe0a9250064d.jpg" }
                         }
                     },
             new Book
@@ -5366,10 +5366,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 151,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_2c3452e4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/1a4e2195a947d65f81784c4ff363f09a.jpg" }
+                            new BookImage { Url = "/Data/BookImage/1a4e2195a947d65f81784c4ff363f09a.jpg" }
                         }
                     },
             new Book
@@ -5394,10 +5394,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 882,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_828eb4ff.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a2ce25e46f7d765beb4afca3f48ae7be.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a2ce25e46f7d765beb4afca3f48ae7be.jpg" }
                         }
                     },
             new Book
@@ -5422,10 +5422,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 63,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_120b3bfd.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/95999deb3452eb4639d7502ced7a6b2c.jpg" }
+                            new BookImage { Url = "/Data/BookImage/95999deb3452eb4639d7502ced7a6b2c.jpg" }
                         }
                     },
             new Book
@@ -5450,10 +5450,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 887,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_f0f1437f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/e34d1e8f89fe2d4fdf9d3180a605af4f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/e34d1e8f89fe2d4fdf9d3180a605af4f.jpg" }
                         }
                     },
             new Book
@@ -5478,10 +5478,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 461,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_450032ee.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8217fc74a69691296bd90e5c8bd0642f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8217fc74a69691296bd90e5c8bd0642f.jpg" }
                         }
                     },
             new Book
@@ -5506,10 +5506,10 @@ namespace BookStore.DAL
                         Category = Category.NonFiction,
                         RatingCount = 912,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_ce8815a2.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/765376a1134670c18e21f599e9818964.jpg" }
+                            new BookImage { Url = "/Data/BookImage/765376a1134670c18e21f599e9818964.jpg" }
                         }
                     },
 
@@ -5538,10 +5538,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 34,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_c806c20a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d227f0f059737ec0bb854f2eb38a242f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d227f0f059737ec0bb854f2eb38a242f.jpg" }
                         }
                     },
             new Book
@@ -5566,10 +5566,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 1,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_f66c01b7.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c59d076ddf9d47dbffb709684cb6b559.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c59d076ddf9d47dbffb709684cb6b559.jpg" }
                         }
                     },
             new Book
@@ -5594,10 +5594,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 518,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_eb292eff.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/879ff52dce419cb99abf521b22b372af.jpg" }
+                            new BookImage { Url = "/Data/BookImage/879ff52dce419cb99abf521b22b372af.jpg" }
                         }
                     },
             new Book
@@ -5622,10 +5622,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 8,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_c68cdb9c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/93be596e258dbaa1088952b84b84fda4.jpg" }
+                            new BookImage { Url = "/Data/BookImage/93be596e258dbaa1088952b84b84fda4.jpg" }
                         }
                     },
             new Book
@@ -5650,10 +5650,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 231,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_1c00590d.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/0c674d536c0346447e37df74c122d931.jpg" }
+                            new BookImage { Url = "/Data/BookImage/0c674d536c0346447e37df74c122d931.jpg" }
                         }
                     },
             new Book
@@ -5678,10 +5678,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 616,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_d71ba981.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/b87eb3b698b874692d1ed64998e36eef.jpg" }
+                            new BookImage { Url = "/Data/BookImage/b87eb3b698b874692d1ed64998e36eef.jpg" }
                         }
                     },
             new Book
@@ -5706,10 +5706,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 6,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_69962d5b.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/1450726fe3475aee4808b8842a2d1d5d.jpg" }
+                            new BookImage { Url = "/Data/BookImage/1450726fe3475aee4808b8842a2d1d5d.jpg" }
                         }
                     },
             new Book
@@ -5734,10 +5734,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 11,
                         Rating = 3f,
-                        BookPath = "Data/Books/book_d72a3af6.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c66b92264a88ebc0d0d3b15fcc047efa.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c66b92264a88ebc0d0d3b15fcc047efa.jpg" }
                         }
                     },
             new Book
@@ -5762,10 +5762,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_ce1ca776.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8ae6e417a5fe16fa1be3bd2c6ac61840.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8ae6e417a5fe16fa1be3bd2c6ac61840.jpg" }
                         }
                     },
             new Book
@@ -5790,10 +5790,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 719,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_d8cf68e4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/74d193e418546638802804ed20a1a973.jpg" }
+                            new BookImage { Url = "/Data/BookImage/74d193e418546638802804ed20a1a973.jpg" }
                         }
                     },
             new Book
@@ -5818,10 +5818,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 527,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_bb0f6eec.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/fc4682dc98401692151b500a6fd6e7e7.jpg" }
+                            new BookImage { Url = "/Data/BookImage/fc4682dc98401692151b500a6fd6e7e7.jpg" }
                         }
                     },
             new Book
@@ -5846,10 +5846,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 1,
                         Rating = 3f,
-                        BookPath = "Data/Books/book_a2ceac4e.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d9374c550145f64b8e3f1f5f3160012c.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d9374c550145f64b8e3f1f5f3160012c.jpg" }
                         }
                     },
             new Book
@@ -5874,10 +5874,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 313,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_d6e9b5ec.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/dc0cb51764a6d220fc314141ea68ebff.jpg" }
+                            new BookImage { Url = "/Data/BookImage/dc0cb51764a6d220fc314141ea68ebff.jpg" }
                         }
                     },
             new Book
@@ -5902,10 +5902,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 767,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_89d160ba.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3da3ce694e95fc157eec5d9ec2078260.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3da3ce694e95fc157eec5d9ec2078260.jpg" }
                         }
                     },
             new Book
@@ -5930,10 +5930,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 1,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_9e31d061.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/639f352cdc511a5822fd2af5516f27b3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/639f352cdc511a5822fd2af5516f27b3.jpg" }
                         }
                     },
             new Book
@@ -5958,10 +5958,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 2,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_376048d8.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/fc2cfbd7775c3328d9bf68c42cd6b8ff.jpg" }
+                            new BookImage { Url = "/Data/BookImage/fc2cfbd7775c3328d9bf68c42cd6b8ff.jpg" }
                         }
                     },
             new Book
@@ -5986,10 +5986,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 410,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_c9e78965.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/373b23d19fe9aeff26086cbfcf54c6b6.jpg" }
+                            new BookImage { Url = "/Data/BookImage/373b23d19fe9aeff26086cbfcf54c6b6.jpg" }
                         }
                     },
             new Book
@@ -6014,10 +6014,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 4,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_e86c5398.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6306f0225c7c8801287fc421c112d1a3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6306f0225c7c8801287fc421c112d1a3.jpg" }
                         }
                     },
             new Book
@@ -6042,10 +6042,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 392,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_4b0b9b7c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d0136a95961717beb952f57e3d737f1a.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d0136a95961717beb952f57e3d737f1a.jpg" }
                         }
                     },
             new Book
@@ -6070,10 +6070,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 407,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_5e51d87a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c37177d93803a8f6ee3b95c10e24ff65.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c37177d93803a8f6ee3b95c10e24ff65.jpg" }
                         }
                     },
             new Book
@@ -6098,10 +6098,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 220,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_f2c108df.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a0b7998ac74a7bb5b998448c24498268.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a0b7998ac74a7bb5b998448c24498268.jpg" }
                         }
                     },
             new Book
@@ -6126,10 +6126,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 401,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_f2c108df.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a0b7998ac74a7bb5b998448c24498268.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a0b7998ac74a7bb5b998448c24498268.jpg" }
                         }
                     },
             new Book
@@ -6154,10 +6154,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 871,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_5cbb2fb3.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9bbe327293b0c1dcc59ede7c5618e6cf.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9bbe327293b0c1dcc59ede7c5618e6cf.jpg" }
                         }
                     },
             new Book
@@ -6182,10 +6182,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 289,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_d206d78a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/e3c5e19079819a6703804ce0cd50d5d5.jpg" }
+                            new BookImage { Url = "/Data/BookImage/e3c5e19079819a6703804ce0cd50d5d5.jpg" }
                         }
                     },
             new Book
@@ -6210,10 +6210,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 55,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_405a701c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8232809a1582f5c76e1126a7ebb7d8b6.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8232809a1582f5c76e1126a7ebb7d8b6.jpg" }
                         }
                     },
             new Book
@@ -6238,10 +6238,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 89,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_8a4ed1eb.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6540d2847f4c3716e92bc5082f6b888f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6540d2847f4c3716e92bc5082f6b888f.jpg" }
                         }
                     },
             new Book
@@ -6266,10 +6266,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 692,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_09b53630.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ff3b1833e54fd7cde567c1bc66f44abf.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ff3b1833e54fd7cde567c1bc66f44abf.jpg" }
                         }
                     },
             new Book
@@ -6294,10 +6294,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 710,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_455e8680.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c443f093680c2efe2880c62614750409.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c443f093680c2efe2880c62614750409.jpg" }
                         }
                     },
             new Book
@@ -6322,10 +6322,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_e8150592.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/5eafdb806fdf75e3a1482a40b8f6e3ff.jpg" }
+                            new BookImage { Url = "/Data/BookImage/5eafdb806fdf75e3a1482a40b8f6e3ff.jpg" }
                         }
                     },
             new Book
@@ -6350,10 +6350,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 784,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_ce1ca776.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8ae6e417a5fe16fa1be3bd2c6ac61840.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8ae6e417a5fe16fa1be3bd2c6ac61840.jpg" }
                         }
                     },
             new Book
@@ -6378,10 +6378,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 117,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_41cd9000.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/def8d499f7225ea278f4c029eb8cccf6.jpg" }
+                            new BookImage { Url = "/Data/BookImage/def8d499f7225ea278f4c029eb8cccf6.jpg" }
                         }
                     },
             new Book
@@ -6406,10 +6406,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 3,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_f91c3da5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/30f8b46d900cee32bf8b8c6859f27416.jpg" }
+                            new BookImage { Url = "/Data/BookImage/30f8b46d900cee32bf8b8c6859f27416.jpg" }
                         }
                     },
             new Book
@@ -6434,10 +6434,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 4,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_74875bf2.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3597a65c0975a84a2244507ee90a57ef.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3597a65c0975a84a2244507ee90a57ef.jpg" }
                         }
                     },
             new Book
@@ -6462,10 +6462,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 638,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_a11c92bd.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/7e4f5beb4988d0d5c6d81eb93b10adb8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/7e4f5beb4988d0d5c6d81eb93b10adb8.jpg" }
                         }
                     },
             new Book
@@ -6490,10 +6490,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 893,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_28b152a9.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ce3122cec2cb44a4541e0415d501df3c.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ce3122cec2cb44a4541e0415d501df3c.jpg" }
                         }
                     },
             new Book
@@ -6518,10 +6518,10 @@ namespace BookStore.DAL
                         Category = Category.Adventure,
                         RatingCount = 3,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_af799a57.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6420a5444008bfe0cad3d053dbd36514.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6420a5444008bfe0cad3d053dbd36514.jpg" }
                         }
                     },
             new Book
@@ -6546,10 +6546,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 4,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_e5520851.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a62380e25b36f21398f04826ae3859a1.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a62380e25b36f21398f04826ae3859a1.jpg" }
                         }
                     },
             new Book
@@ -6574,10 +6574,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 2,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_1e733005.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/b8de37dff6934069b9dd67ab1a5cb6c7.jpg" }
+                            new BookImage { Url = "/Data/BookImage/b8de37dff6934069b9dd67ab1a5cb6c7.jpg" }
                         }
                     },
             new Book
@@ -6602,10 +6602,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 371,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_216a5fa8.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9dfe3e1785cfb035991ebaa44d41a914.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9dfe3e1785cfb035991ebaa44d41a914.jpg" }
                         }
                     },
             new Book
@@ -6630,10 +6630,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 509,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_7045f1d1.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/654a9672469401ce8348a194f7c5e329.jpg" }
+                            new BookImage { Url = "/Data/BookImage/654a9672469401ce8348a194f7c5e329.jpg" }
                         }
                     },
             new Book
@@ -6658,10 +6658,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 667,
                         Rating = 5.0f,
-                        BookPath = "Data/Books/book_245f1f3f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/b8bebda03bff9877f5cdae5f21655bad.jpg" }
+                            new BookImage { Url = "/Data/BookImage/b8bebda03bff9877f5cdae5f21655bad.jpg" }
                         }
                     },
             new Book
@@ -6686,10 +6686,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_6dd154b3.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a9b3cdf3fee42a94bf35df086e84b517.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a9b3cdf3fee42a94bf35df086e84b517.jpg" }
                         }
                     },
             new Book
@@ -6714,10 +6714,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 524,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_28afc2b2.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/fa5552c488f33d95184e344642bc7a89.jpg" }
+                            new BookImage { Url = "/Data/BookImage/fa5552c488f33d95184e344642bc7a89.jpg" }
                         }
                     },
             new Book
@@ -6742,10 +6742,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 575,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_da388d82.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/89eb2f0c3096654b6c53d5d2131586c2.jpg" }
+                            new BookImage { Url = "/Data/BookImage/89eb2f0c3096654b6c53d5d2131586c2.jpg" }
                         }
                     },
             new Book
@@ -6770,10 +6770,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 829,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_0785ccec.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/cc59f814d5427c8ee6229fe92de50319.jpg" }
+                            new BookImage { Url = "/Data/BookImage/cc59f814d5427c8ee6229fe92de50319.jpg" }
                         }
                     },
             new Book
@@ -6798,10 +6798,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 589,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_675ac68c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/b0710e9f92fa1381409fbbbe349bbb0f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/b0710e9f92fa1381409fbbbe349bbb0f.jpg" }
                         }
                     },
             new Book
@@ -6826,10 +6826,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 21,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_ad7c268f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/d8f818806fa0d6b6a23b2eaed96b081b.jpg" }
+                            new BookImage { Url = "/Data/BookImage/d8f818806fa0d6b6a23b2eaed96b081b.jpg" }
                         }
                     },
             new Book
@@ -6854,10 +6854,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 460,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_15bce061.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/1634ece1d04b3c4e288eeabc9f10e677.jpg" }
+                            new BookImage { Url = "/Data/BookImage/1634ece1d04b3c4e288eeabc9f10e677.jpg" }
                         }
                     },
             new Book
@@ -6882,10 +6882,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 944,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_1a3cd474.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/e082b0491bbfb1cbb315ba080cbd0d95.jpg" }
+                            new BookImage { Url = "/Data/BookImage/e082b0491bbfb1cbb315ba080cbd0d95.jpg" }
                         }
                     },
             new Book
@@ -6910,10 +6910,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 828,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_d32c21b0.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/1bc5aef6fda9aeecc74ac62d44888828.jpg" }
+                            new BookImage { Url = "/Data/BookImage/1bc5aef6fda9aeecc74ac62d44888828.jpg" }
                         }
                     },
             new Book
@@ -6938,10 +6938,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 1,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_5c3e996f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/accfc90229ac8ec09b8fecb71df5d7e3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/accfc90229ac8ec09b8fecb71df5d7e3.jpg" }
                         }
                     },
             new Book
@@ -6966,10 +6966,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 1,
                         Rating = 3f,
-                        BookPath = "Data/Books/book_1adb49dd.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/953f7f273cc96eb4df5537e02a77c632.jpg" }
+                            new BookImage { Url = "/Data/BookImage/953f7f273cc96eb4df5537e02a77c632.jpg" }
                         }
                     },
             new Book
@@ -6994,10 +6994,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 807,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_119fa854.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4be90ed9c41356ec34247e49aec714a9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4be90ed9c41356ec34247e49aec714a9.jpg" }
                         }
                     },
             new Book
@@ -7022,10 +7022,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 514,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_e9847df5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8b8763086d1d3d22d2261f28c808bee0.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8b8763086d1d3d22d2261f28c808bee0.jpg" }
                         }
                     },
             new Book
@@ -7050,10 +7050,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 362,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_f4692366.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a0c320aa6db499cf85b1b6815d7389d3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a0c320aa6db499cf85b1b6815d7389d3.jpg" }
                         }
                     },
             new Book
@@ -7078,10 +7078,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 986,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_f4692366.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a0c320aa6db499cf85b1b6815d7389d3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a0c320aa6db499cf85b1b6815d7389d3.jpg" }
                         }
                     },
             new Book
@@ -7106,10 +7106,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 999,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_951bfe7f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/e6385f0a33ccf1a5f293f8cf00bbd793.jpg" }
+                            new BookImage { Url = "/Data/BookImage/e6385f0a33ccf1a5f293f8cf00bbd793.jpg" }
                         }
                     },
             new Book
@@ -7134,10 +7134,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 477,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_3db1def5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/64d4b7f1dc432e9484ef56153f631d06.jpg" }
+                            new BookImage { Url = "/Data/BookImage/64d4b7f1dc432e9484ef56153f631d06.jpg" }
                         }
                     },
             new Book
@@ -7162,10 +7162,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 168,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_ed4c6cb7.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/bc716d2f61399cf512798d0f5e377c4a.jpg" }
+                            new BookImage { Url = "/Data/BookImage/bc716d2f61399cf512798d0f5e377c4a.jpg" }
                         }
                     },
             new Book
@@ -7190,10 +7190,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 72,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_8396df69.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8327fcc720c958f4840f9150b4ce1270.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8327fcc720c958f4840f9150b4ce1270.jpg" }
                         }
                     },
             new Book
@@ -7218,10 +7218,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 150,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_e51aa6bc.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/0744c10a188fcc29258f6d6ea1844696.jpg" }
+                            new BookImage { Url = "/Data/BookImage/0744c10a188fcc29258f6d6ea1844696.jpg" }
                         }
                     },
             new Book
@@ -7246,10 +7246,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 395,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_b83fdb25.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3e0a4beb5c4c4f6480eeefbb0f8ea2a4.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3e0a4beb5c4c4f6480eeefbb0f8ea2a4.jpg" }
                         }
                     },
             new Book
@@ -7274,10 +7274,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 100,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_43b999e4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/331e54df1d67a1f6a162305e1503b9f9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/331e54df1d67a1f6a162305e1503b9f9.jpg" }
                         }
                     },
             new Book
@@ -7302,10 +7302,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 292,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_f4692366.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a0c320aa6db499cf85b1b6815d7389d3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a0c320aa6db499cf85b1b6815d7389d3.jpg" }
                         }
                     },
             new Book
@@ -7330,10 +7330,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 930,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_71362ace.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/f8cbe5a99675fff11ed4d83fc16e2071.jpg" }
+                            new BookImage { Url = "/Data/BookImage/f8cbe5a99675fff11ed4d83fc16e2071.jpg" }
                         }
                     },
             new Book
@@ -7358,10 +7358,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 707,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_d84da8be.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/95bea26aeb7a4c3a2be5bf305c76c323.jpg" }
+                            new BookImage { Url = "/Data/BookImage/95bea26aeb7a4c3a2be5bf305c76c323.jpg" }
                         }
                     },
             new Book
@@ -7386,10 +7386,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 4,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_a5672a41.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/af66a757879551f03eb17944eff72349.jpg" }
+                            new BookImage { Url = "/Data/BookImage/af66a757879551f03eb17944eff72349.jpg" }
                         }
                     },
             new Book
@@ -7414,10 +7414,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 616,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_f4692366.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a0c320aa6db499cf85b1b6815d7389d3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a0c320aa6db499cf85b1b6815d7389d3.jpg" }
                         }
                     },
             new Book
@@ -7442,10 +7442,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 452,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_efc2da89.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/9ef79268e6eabe82462873547d6b32e2.jpg" }
+                            new BookImage { Url = "/Data/BookImage/9ef79268e6eabe82462873547d6b32e2.jpg" }
                         }
                     },
             new Book
@@ -7470,10 +7470,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 75,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_66f1c22e.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/fed85d5c6ad7bab9f8198c2c69018deb.jpg" }
+                            new BookImage { Url = "/Data/BookImage/fed85d5c6ad7bab9f8198c2c69018deb.jpg" }
                         }
                     },
             new Book
@@ -7498,10 +7498,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 3,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_164ce3a3.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ed2a6ac97f61e8cfd8fe39a32537c14f.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ed2a6ac97f61e8cfd8fe39a32537c14f.jpg" }
                         }
                     },
             new Book
@@ -7526,10 +7526,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 8,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_e74d1286.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/26bd4c0a132b8d8f12d8fed1566e3874.jpg" }
+                            new BookImage { Url = "/Data/BookImage/26bd4c0a132b8d8f12d8fed1566e3874.jpg" }
                         }
                     },
             new Book
@@ -7554,10 +7554,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 172,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_85656258.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/a5a6c1ede802cc32b0aafbc6cb909064.jpg" }
+                            new BookImage { Url = "/Data/BookImage/a5a6c1ede802cc32b0aafbc6cb909064.jpg" }
                         }
                     },
             new Book
@@ -7582,10 +7582,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 203,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_8a53d37a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/31d203a28a49e523cf7ebbaf645fbf21.jpg" }
+                            new BookImage { Url = "/Data/BookImage/31d203a28a49e523cf7ebbaf645fbf21.jpg" }
                         }
                     },
             new Book
@@ -7610,10 +7610,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 3,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_89490de5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/fb7048db4beb6c1d931a1fa880ed2dc5.jpg" }
+                            new BookImage { Url = "/Data/BookImage/fb7048db4beb6c1d931a1fa880ed2dc5.jpg" }
                         }
                     },
             new Book
@@ -7638,10 +7638,10 @@ namespace BookStore.DAL
                         Category = Category.Biography,
                         RatingCount = 864,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_694f597d.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/87a205e86ec2cae8eebc1883293e45f9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/87a205e86ec2cae8eebc1883293e45f9.jpg" }
                         }
                     },
             new Book
@@ -7666,10 +7666,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_eba9a6ea.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2372888c094afb258d8abd743e339124.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2372888c094afb258d8abd743e339124.jpg" }
                         }
                     },
             new Book
@@ -7694,10 +7694,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 280,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_f857e869.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/8fa3e8648939f47d1186e08fd9100b33.jpg" }
+                            new BookImage { Url = "/Data/BookImage/8fa3e8648939f47d1186e08fd9100b33.jpg" }
                         }
                     },
             new Book
@@ -7722,10 +7722,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 393,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_40913e4b.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/f9fdab278c648456c55e77dcf766f01b.jpg" }
+                            new BookImage { Url = "/Data/BookImage/f9fdab278c648456c55e77dcf766f01b.jpg" }
                         }
                     },
             new Book
@@ -7750,10 +7750,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 181,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_873dafe4.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/1f8bcf89019bece3d75e1c0027904cd8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/1f8bcf89019bece3d75e1c0027904cd8.jpg" }
                         }
                     },
             new Book
@@ -7778,10 +7778,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 723,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_c1396fe8.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/5b9eb9c39a8e6c3eaf758f583d8b4f8c.jpg" }
+                            new BookImage { Url = "/Data/BookImage/5b9eb9c39a8e6c3eaf758f583d8b4f8c.jpg" }
                         }
                     },
             new Book
@@ -7806,10 +7806,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 796,
                         Rating = 3.6f,
-                        BookPath = "Data/Books/book_da39e330.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3f02eecd2c6977b121630ebad358c325.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3f02eecd2c6977b121630ebad358c325.jpg" }
                         }
                     },
             new Book
@@ -7834,10 +7834,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 1,
                         Rating = 5f,
-                        BookPath = "Data/Books/book_0f2ab18d.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/28f165779bec84de2744ef7ab7aeb30d.jpg" }
+                            new BookImage { Url = "/Data/BookImage/28f165779bec84de2744ef7ab7aeb30d.jpg" }
                         }
                     },
             new Book
@@ -7862,10 +7862,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 244,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_8fe8072e.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/75b7772e52fe8639cbe65768621010a2.jpg" }
+                            new BookImage { Url = "/Data/BookImage/75b7772e52fe8639cbe65768621010a2.jpg" }
                         }
                     },
             new Book
@@ -7890,10 +7890,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 215,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_a0a1fd75.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ad410831a01a526a4f7c8da25cac7c53.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ad410831a01a526a4f7c8da25cac7c53.jpg" }
                         }
                     },
             new Book
@@ -7918,10 +7918,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 65,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_39cf95c1.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6fad751a674c123746d71906ae679bd3.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6fad751a674c123746d71906ae679bd3.jpg" }
                         }
                     },
             new Book
@@ -7946,10 +7946,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 802,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_194c4b80.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/89a563ceae0bd414a4dd49a29096a51c.jpg" }
+                            new BookImage { Url = "/Data/BookImage/89a563ceae0bd414a4dd49a29096a51c.jpg" }
                         }
                     },
             new Book
@@ -7974,10 +7974,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 345,
                         Rating = 4.9f,
-                        BookPath = "Data/Books/book_e65fe8f7.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/f61ee1bfd27e3d5a7ecaefc146db4c41.jpg" }
+                            new BookImage { Url = "/Data/BookImage/f61ee1bfd27e3d5a7ecaefc146db4c41.jpg" }
                         }
                     },
             new Book
@@ -8002,10 +8002,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 877,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_cad8868c.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6ed17f2266a720508cd110c6086756fc.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6ed17f2266a720508cd110c6086756fc.jpg" }
                         }
                     },
             new Book
@@ -8030,10 +8030,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 437,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_7005c658.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3ecb1133e799b082ef2ce14eafb8cdc2.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3ecb1133e799b082ef2ce14eafb8cdc2.jpg" }
                         }
                     },
             new Book
@@ -8058,10 +8058,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 641,
                         Rating = 4.5f,
-                        BookPath = "Data/Books/book_e77a3133.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c037839352ba0e701d520b49bdf736f5.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c037839352ba0e701d520b49bdf736f5.jpg" }
                         }
                     },
             new Book
@@ -8086,10 +8086,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 591,
                         Rating = 3.5f,
-                        BookPath = "Data/Books/book_3430897e.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/afe3ae70c6a5e626c0b615dcab48b66c.jpg" }
+                            new BookImage { Url = "/Data/BookImage/afe3ae70c6a5e626c0b615dcab48b66c.jpg" }
                         }
                     },
             new Book
@@ -8114,10 +8114,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 224,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_75c6a99a.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c4b01705fe2a1eccec52d7eb50d8df07.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c4b01705fe2a1eccec52d7eb50d8df07.jpg" }
                         }
                     },
             new Book
@@ -8142,10 +8142,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 187,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_4a0150e9.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/046c54fa0b4507a0a86079c0f899e7ff.jpg" }
+                            new BookImage { Url = "/Data/BookImage/046c54fa0b4507a0a86079c0f899e7ff.jpg" }
                         }
                     },
             new Book
@@ -8170,10 +8170,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 435,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_2802a26b.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/60161c427eb9d008b7dbbd592258951b.jpg" }
+                            new BookImage { Url = "/Data/BookImage/60161c427eb9d008b7dbbd592258951b.jpg" }
                         }
                     },
             new Book
@@ -8198,10 +8198,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 650,
                         Rating = 4.3f,
-                        BookPath = "Data/Books/book_5c61e85b.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/2366031a9b8984adf9c864b17b48ebfc.jpg" }
+                            new BookImage { Url = "/Data/BookImage/2366031a9b8984adf9c864b17b48ebfc.jpg" }
                         }
                     },
             new Book
@@ -8226,10 +8226,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 499,
                         Rating = 3.9f,
-                        BookPath = "Data/Books/book_d6db18e6.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/82ccdcdefa8ce7b39cef65f3153182df.jpg" }
+                            new BookImage { Url = "/Data/BookImage/82ccdcdefa8ce7b39cef65f3153182df.jpg" }
                         }
                     },
             new Book
@@ -8254,10 +8254,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 91,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_32b64189.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/02fb3b4531400dc95137a0f11ed9ccbf.jpg" }
+                            new BookImage { Url = "/Data/BookImage/02fb3b4531400dc95137a0f11ed9ccbf.jpg" }
                         }
                     },
             new Book
@@ -8282,10 +8282,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 1,
                         Rating = 4f,
-                        BookPath = "Data/Books/book_73741c98.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/764e4a58e3c2b8102fd32c29b7eebebe.jpg" }
+                            new BookImage { Url = "/Data/BookImage/764e4a58e3c2b8102fd32c29b7eebebe.jpg" }
                         }
                     },
             new Book
@@ -8310,10 +8310,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 609,
                         Rating = 3.8f,
-                        BookPath = "Data/Books/book_e6ab4505.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/5e85f854bd4cadb99acd3204d4122f73.jpg" }
+                            new BookImage { Url = "/Data/BookImage/5e85f854bd4cadb99acd3204d4122f73.jpg" }
                         }
                     },
             new Book
@@ -8338,10 +8338,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 964,
                         Rating = 4.4f,
-                        BookPath = "Data/Books/book_cf2de105.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/915feb24b41228903ff369f70a4132a9.jpg" }
+                            new BookImage { Url = "/Data/BookImage/915feb24b41228903ff369f70a4132a9.jpg" }
                         }
                     },
             new Book
@@ -8366,10 +8366,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 351,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_4b3ccefa.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/feee41d393366b4aef630fc52510028d.jpg" }
+                            new BookImage { Url = "/Data/BookImage/feee41d393366b4aef630fc52510028d.jpg" }
                         }
                     },
             new Book
@@ -8394,10 +8394,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 582,
                         Rating = 4.0f,
-                        BookPath = "Data/Books/book_d5c8dcb9.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/cfc1ee797a1fac45c764697f97a0a6cc.jpg" }
+                            new BookImage { Url = "/Data/BookImage/cfc1ee797a1fac45c764697f97a0a6cc.jpg" }
                         }
                     },
             new Book
@@ -8422,10 +8422,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 2,
                         Rating = 3f,
-                        BookPath = "Data/Books/book_1722cafc.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/82b49c0675cfbedb4224898926a55046.jpg" }
+                            new BookImage { Url = "/Data/BookImage/82b49c0675cfbedb4224898926a55046.jpg" }
                         }
                     },
             new Book
@@ -8450,10 +8450,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 157,
                         Rating = 4.7f,
-                        BookPath = "Data/Books/book_07d49b14.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ba94222cfed4a6f27921032303080bda.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ba94222cfed4a6f27921032303080bda.jpg" }
                         }
                     },
             new Book
@@ -8478,10 +8478,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 560,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_8726c9ad.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/1b4e919d0f963064814d9b65af44ba01.jpg" }
+                            new BookImage { Url = "/Data/BookImage/1b4e919d0f963064814d9b65af44ba01.jpg" }
                         }
                     },
             new Book
@@ -8506,10 +8506,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 722,
                         Rating = 5.0f,
-                        BookPath = "Data/Books/book_dbb337b9.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/3dccf7f5492eaab4be20cc22d60572e1.jpg" }
+                            new BookImage { Url = "/Data/BookImage/3dccf7f5492eaab4be20cc22d60572e1.jpg" }
                         }
                     },
             new Book
@@ -8534,10 +8534,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 1,
                         Rating = 1f,
-                        BookPath = "Data/Books/book_d6b1b93f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/6163f4fe4bc3db229e05a1fc25afce13.jpg" }
+                            new BookImage { Url = "/Data/BookImage/6163f4fe4bc3db229e05a1fc25afce13.jpg" }
                         }
                     },
             new Book
@@ -8562,10 +8562,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 144,
                         Rating = 3.7f,
-                        BookPath = "Data/Books/book_9824093f.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/c41bb14a4d0707df1677e1789adfb103.jpg" }
+                            new BookImage { Url = "/Data/BookImage/c41bb14a4d0707df1677e1789adfb103.jpg" }
                         }
                     },
             new Book
@@ -8590,10 +8590,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 160,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_a4f0a810.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/4de662474d7ad8ce3bf7781c39dcf7c6.jpg" }
+                            new BookImage { Url = "/Data/BookImage/4de662474d7ad8ce3bf7781c39dcf7c6.jpg" }
                         }
                     },
             new Book
@@ -8618,10 +8618,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 254,
                         Rating = 4.2f,
-                        BookPath = "Data/Books/book_5ab907f0.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/ad0dfed9507dac4f4fe8b954a4647f5b.jpg" }
+                            new BookImage { Url = "/Data/BookImage/ad0dfed9507dac4f4fe8b954a4647f5b.jpg" }
                         }
                     },
             new Book
@@ -8646,10 +8646,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 366,
                         Rating = 4.1f,
-                        BookPath = "Data/Books/book_5ff91dbd.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/e3c7045dc17b148f132f9bf71bf9b280.jpg" }
+                            new BookImage { Url = "/Data/BookImage/e3c7045dc17b148f132f9bf71bf9b280.jpg" }
                         }
                     },
             new Book
@@ -8674,10 +8674,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 804,
                         Rating = 4.6f,
-                        BookPath = "Data/Books/book_63ac6bbe.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/153b79d44334eb917fab42a2b7789632.jpg" }
+                            new BookImage { Url = "/Data/BookImage/153b79d44334eb917fab42a2b7789632.jpg" }
                         }
                     },
             new Book
@@ -8702,10 +8702,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 88,
                         Rating = 5.0f,
-                        BookPath = "Data/Books/book_dd1d3026.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/5728d830bfc97b4d62047ab1330039c8.jpg" }
+                            new BookImage { Url = "/Data/BookImage/5728d830bfc97b4d62047ab1330039c8.jpg" }
                         }
                     },
             new Book
@@ -8730,10 +8730,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 57,
                         Rating = 4.8f,
-                        BookPath = "Data/Books/book_5fcec7ec.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/55da86e3a0e9baf364bc45e251c82839.jpg" }
+                            new BookImage { Url = "/Data/BookImage/55da86e3a0e9baf364bc45e251c82839.jpg" }
                         }
                     },
             new Book
@@ -8758,10 +8758,10 @@ namespace BookStore.DAL
                         Category = Category.History,
                         RatingCount = 355,
                         Rating = 4.3f,
-                        BookPath = "Data/Books/book_275b27d5.pdf",
+                        BookPath = "Data/Books/test.pdf",
                         BookImages = new List<BookImage>
                         {
-                            new BookImage { Url = "Data/BookImage/30636f66d5962ce7d04f42ba3d9d3294.jpg" }
+                            new BookImage { Url = "/Data/BookImage/30636f66d5962ce7d04f42ba3d9d3294.jpg" }
                         }
                     },
                 new Book

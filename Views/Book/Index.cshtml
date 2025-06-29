@@ -1,12 +1,8 @@
-﻿@using BookStore.ViewModels
-@using Microsoft.Ajax.Utilities
-@model BookStore.ViewModels.BookCardViewModel
+﻿@model BookStore.ViewModels.BookCardViewModel
 @{
     ViewBag.Title = Model.Book.Title;
     Layout = "~/Views/Shared/Store/_StoreLayout.cshtml";
-    var imageIds = Model.Book.BookImages.Select(bi => bi.ID);
-    var imageUrls = imageIds.Select(id => Url.Action("Index", "BookImage", new { id = id }));
- 
+
     var mainImageId = "main-book-image";
 }
 
@@ -20,22 +16,22 @@
         height: auto;
     }
 
-    .thumbnail-list img:hover {
-        border-color: #007bff;
-    }
-    
+        .thumbnail-list img:hover {
+            border-color: #007bff;
+        }
+
     .description-section {
         background: #f9f9f9;
         padding: 20px;
         border-radius: 6px;
         margin-top: 30px;
     }
-    
+
     .metadata-container {
         position: relative;
         margin: 20px 0;
     }
-    
+
     .metadata-carousel {
         display: flex;
         overflow-x: auto;
@@ -45,11 +41,11 @@
         scrollbar-width: none;
         width: 100%;
     }
-    
-    .metadata-carousel::-webkit-scrollbar {
-        display: none;
-    }
-    
+
+        .metadata-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
     .metadata-card {
         min-width: 110px;
         text-align: center;
@@ -58,13 +54,13 @@
         background: white;
         flex-shrink: 0;
     }
-    
+
     .metadata-label {
         font-size: 0.8rem;
         color: #555;
         margin-bottom: 8px;
     }
-    
+
     .metadata-value {
         font-size: 0.9rem;
         font-weight: 500;
@@ -76,9 +72,9 @@
         font-size: 1.5rem;
     }
 
-    .metadata-icon i {
-        font-size: inherit;
-    }
+        .metadata-icon i {
+            font-size: inherit;
+        }
 
     .carousel-nav {
         position: absolute;
@@ -97,63 +93,64 @@
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .carousel-nav.prev {
-        left: -16px;
-    }
+        .carousel-nav.prev {
+            left: -16px;
+        }
 
-    .carousel-nav.next {
-        right: -16px;
-    }
+        .carousel-nav.next {
+            right: -16px;
+        }
 
-    .carousel-nav:hover {
-        background: #f5f5f5;
-    }
+        .carousel-nav:hover {
+            background: #f5f5f5;
+        }
 
-    .carousel-nav i {
-        color: #555;
-        font-size: 12px;
-    }
+        .carousel-nav i {
+            color: #555;
+            font-size: 12px;
+        }
 
-    .carousel-nav.hidden {
-        display: none;
-    }
+        .carousel-nav.hidden {
+            display: none;
+        }
 
     .btn-group input[type="submit"] {
         display: none;
     }
+
     .btn-group label.btn {
         cursor: pointer;
     }
+
     .btn-group input[type="submit"]:checked + label {
         background-color: #0d6efd;
         color: white;
     }
-
 </style>
 
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-1 thumbnail-list">
-            @foreach (var img in imageUrls)
+            @foreach (var img in Model.Book.BookImages)
             {
-                <img src="@img" alt="Thumbnail" class="img-fluid rounded" onclick="document.getElementById('@mainImageId').src='@img'" />
+                <img src="@img.Url" alt="Thumbnail" class="img-fluid rounded" onclick="document.getElementById('@mainImageId').src='@img.Url'" />
             }
         </div>
 
         <div class="col-md-3">
-            <img id="@mainImageId" src="@imageUrls.First()" alt="@Model.Book.Title" class="img-fluid rounded shadow w-100" />
+            <img id="@mainImageId" src="@Model.Book.BookImages.First().Url" alt="@Model.Book.Title" class="img-fluid rounded shadow w-100" />
         </div>
 
         <div class="col-md-6">
             <h2 class="mb-2">@Model.Book.Title</h2>
             <h5 class="text-muted mb-4">by @Model.Book.Author</h5>
             <h4 class="text-success mb-4">$@Model.Book.Price.ToString("0.00")</h4>
-            
+
             <div class="metadata-container">
                 <button class="carousel-nav prev hidden">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                
+
                 <div class="metadata-carousel">
                     <div class="metadata-card">
                         <div class="metadata-label">Publisher</div>
@@ -191,7 +188,7 @@
                         <div class="metadata-value">@Model.Book.Rating.ToString("0.0")</div>
                     </div>
                 </div>
-                
+
                 <button class="carousel-nav next" aria-label="Next metadata">
                     <i class="fas fa-chevron-right"></i>
                 </button>
@@ -203,7 +200,7 @@
                     @foreach (var type in Model.Book.BookInfo.AvailableTypes)
                     {
                         <label class="btn btn-outline-primary @(type.BookType == Model.SelectedBookType ? "active" : "")">
-                            <input type="submit" name="selectedBookType" value="@type.BookType"/>
+                            <input type="submit" name="selectedBookType" value="@type.BookType" />
                             @type.BookType.ToString()
                         </label>
                     }
@@ -225,7 +222,7 @@
 
                 @if (Model.IsOwned)
                 {
-                    using (Html.BeginForm("Read", "Book", new { bookId = Model.Book.ID }))
+                    using (Html.BeginForm("Read", "Book"))
                     {
                         <button type="submit" class="btn btn-lg btn-info">Read</button>
                     }
@@ -246,7 +243,6 @@
 
     @if (Model.RecommendedBooks.Any())
     {
-
         <div class="mt-5">
             <h4 class="mb-3">
                 <span class="metadata-icon"><i class="fas fa-book"></i></span>
@@ -255,12 +251,10 @@
             <div class="row">
                 @foreach (var rec in Model.RecommendedBooks)
                 {
-                    var tmp = rec.BookImages.Select(bi => Url.Action("Index", "BookImage", new { id = bi.ID }));
-                    
                     <div class="col-md-2 mb-4">
                         <div class="card h-100 p-2 border-0">
                             <a href="@Url.Action("Index", "Book", new { BookID = rec.ID })">
-                                <img src="@tmp.First()" alt="Thumbnail" class="img-fluid rounded" />
+                                <img src="@rec.BookImages.First().Url" alt="Thumbnail" class="img-fluid rounded" />
                             </a>
                             <div class="card-body d-none d-lg-block border-0">
                                 <h6 class="card-title">@rec.Title</h6>
@@ -280,30 +274,30 @@
         const carousel = document.querySelector('.metadata-carousel');
         const prevBtn = document.querySelector('.carousel-nav.prev');
         const nextBtn = document.querySelector('.carousel-nav.next');
-        
+
         const card = document.querySelector('.metadata-card');
         const cardWidth = card.offsetWidth;
         const gap = 20;
         const scrollAmount = cardWidth + gap;
-        
+
         prevBtn.addEventListener('click', () => {
             carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
-        
+
         nextBtn.addEventListener('click', () => {
             carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         });
-        
+
         const updateNavButtons = () => {
             prevBtn.classList.toggle('hidden', carousel.scrollLeft <= 0);
-            nextBtn.classList.toggle('hidden', 
+            nextBtn.classList.toggle('hidden',
                 carousel.scrollLeft >= (carousel.scrollWidth - carousel.clientWidth - 1));
         };
-        
+
         carousel.addEventListener('scroll', updateNavButtons);
-        
+
         updateNavButtons();
-        
+
         window.addEventListener('resize', updateNavButtons);
     });
 </script>

@@ -5,12 +5,12 @@
 }
 
 <style>
-.truncate-3-lines {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;        
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
+    .truncate-3-lines {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 </style>
 
 <div class="jumbotron text-center bg-light p-5 rounded-3">
@@ -27,11 +27,10 @@
         @foreach (var card in Model.BookCards.Take(6))
         {
             var book = card.Book;
-            var imageUrls = Url.Action("Index", "BookImage", new { id = book.BookImages.First().ID });
-            
+            var image = book.BookImages?.FirstOrDefault()?.Url ?? "";
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm h-100">
-                    <img src="@imageUrls" class="card-img-top" alt="@book.Title" style="height: 400px; object-fit: cover;" />
+                    <img src="@image" class="card-img-top" alt="@book.Title" style="height: 400px; object-fit: cover;" />
                     <div class="card-body">
                         <h5 class="card-title">@book.Title</h5>
                         <p class="card-text truncate-3-lines">@(book.BookInfo.Description ?? "No description available.")</p>
